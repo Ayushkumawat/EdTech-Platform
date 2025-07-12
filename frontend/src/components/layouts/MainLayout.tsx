@@ -11,7 +11,7 @@ const MainLayout = () => {
    
 
     const getLayoutSettings = (path:any) => {
-        const dynamicLessonPathRegex = new RegExp(`${APP_PREFIX_PATH}/my_books/book_detail/[^/]+/lesson/[^/]+`);
+        const dynamicLessonPathRegex = new RegExp(`${APP_PREFIX_PATH}/my_books/book_detail/[^/]+/chapter/[^/]+`);
     
         if (path === `${APP_PREFIX_PATH}/home`) {
             return { headerStyle: 1, breadcrumbTitle: '', footerStyle: 1 };

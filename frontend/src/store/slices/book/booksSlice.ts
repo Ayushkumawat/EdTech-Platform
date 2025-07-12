@@ -167,6 +167,16 @@ const bookSlice = createSlice({
         resetError:(state)=>{
             state.error = null
 
+        },
+        resetBooksData:(state)=>{
+            state.booksData = []
+            state.purchasesBooksData = []
+            state.bookDetail = null
+            state.purchasedBookDetail = null
+            state.error = null
+            state.dialog = false
+            state.notification = null
+            state.loading = false
         }
         
     },
@@ -242,6 +252,6 @@ const bookSlice = createSlice({
     },
 })
 
-export const { setBooksData,findBookById,setDialogBox,resetError} = bookSlice.actions
+export const { setBooksData,findBookById,setDialogBox,resetError,resetBooksData} = bookSlice.actions
 
 export default bookSlice.reducer

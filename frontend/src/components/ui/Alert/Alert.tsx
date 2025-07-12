@@ -51,9 +51,9 @@ const TYPE_MAP = {
         icon: <HiExclamation />,
     },
     danger: {
-        backgroundColor: 'bg-red-50 dark:bg-red-500',
+        backgroundColor: 'bg-red-600 dark:bg-red-500',
         titleColor: 'text-red-700 dark:text-red-100',
-        textColor: 'text-red-500 dark:text-red-100',
+        textColor: 'text-red-600 dark:text-red-600',
         iconColor: 'text-red-400 dark:text-red-100',
         icon: <HiXCircle />,
     },

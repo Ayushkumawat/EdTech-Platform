@@ -11,7 +11,7 @@ import * as Yup from 'yup'
 import useAuth from '@/utils/hooks/useAuth'
 import type { CommonProps } from '@/@types/common'
 import { useEffect, useState } from 'react'
-import { apiGetPublicClasses } from '@/services/ClassService'
+import { apiGetClasses } from '@/services/ClassService'
 
 interface SignUpFormProps extends CommonProps {
     disableSubmit?: boolean
@@ -53,7 +53,7 @@ const SignUpForm = (props: SignUpFormProps) => {
             console.log('Fetching classes...');
             setLoadingClasses(true);
             try {
-                const response = await apiGetPublicClasses<any>();
+                const response = await apiGetClasses<any>();
                 console.log('Classes fetched successfully:', response.data);
             
                 
@@ -259,7 +259,7 @@ const SignUpForm = (props: SignUpFormProps) => {
                             </Button>
                             <div className="mt-4 text-center">
                                 <span>Already have an account? </span>
-                                <ActionLink to={signInUrl}>Sign in</ActionLink>
+                                <ActionLink to={signInUrl} className='!text-[var(--thm-primary)]'>Sign in</ActionLink>
                             </div>
                         </FormContainer>
                     </Form>

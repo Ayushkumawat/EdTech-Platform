@@ -6,6 +6,13 @@ import reducer, {
   useAppSelector,
 } from '@/views/teachingPage/store';
 import { injectReducer } from '@/store';
+import appConfig from '@/configs/app.config'
+import { apiAskGemini, apiAskGeminiImage } from '@/services/GeminiServices';
+import { PERSIST_STORE_NAME } from '@/constants/app.constant'
+import deepParseJson from '@/utils/deepParseJson'
+import store, { signOutSuccess } from '@/store'
+
+
 
 injectReducer('teaching', reducer);
 
@@ -17,6 +24,14 @@ const useTextToSpeech2 = () => {
   const isPlaying = useAppSelector((state) => state.teaching.data.isPlaying);
   const frequencyData = useAppSelector((state) => state.teaching.data.frequencyData);
   const dispatch = useAppDispatch();
+  const api_prifix= appConfig.apiPrefix1
+  const rawPersistData = localStorage.getItem(PERSIST_STORE_NAME)
+  const persistData = deepParseJson(rawPersistData)
+  let accessToken = (persistData as any).auth.session.token
+  if (!accessToken) {
+    const { auth } = store.getState()
+    accessToken = auth.session.token
+}
 
   const audioContextRef = useRef<AudioContext | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
@@ -193,31 +208,31 @@ const useTextToSpeech2 = () => {
         playbackTimeRef.current = 0;
         scheduledSourcesRef.current = [];
 
-        // Choose endpoint and body based on imageUrl
-        let endpoint = 'http://127.0.0.1:8000/api/v1/gemini/ask';
-        let body: any = { text };
+        // Use fetch for streaming support instead of axios
+        let endpoint, body;
         if (imageUrl) {
-          endpoint = 'http://127.0.0.1:8000/api/v1/gemini/ask-image';
-          body = { url: imageUrl, text }; // match your FastAPI signature
+          endpoint = api_prifix+'gemini/ask-image';
+          body = { url: imageUrl, text };
+        } else {
+          endpoint = api_prifix+'gemini/ask';
+          body = { text };
         }
-
         const response = await fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`
+          },
           body: JSON.stringify(body),
           signal: abortControllerRef.current.signal,
         });
-
         if (!response.body) throw new Error('No stream');
-
         const reader = response.body.getReader();
         let leftover: Uint8Array | null = null;
         let hasStartedPlaying = false;
-
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
-
           if (value) {
             let chunk = value;
             if (leftover) {
@@ -233,8 +248,6 @@ const useTextToSpeech2 = () => {
             }
             if (chunk.length > 0) {
               bufferQueueRef.current.push(chunk.buffer as ArrayBuffer);
-
-              // Set isPlaying to true when we start receiving audio data and are about to play
               if (!hasStartedPlaying && bufferQueueRef.current.length >= MIN_BUFFERED_CHUNKS) {
                 dispatch(setIsPlaying(true));
                 hasStartedPlaying = true;
@@ -249,15 +262,10 @@ const useTextToSpeech2 = () => {
             }
           }
         }
-
-        // Mark stream as ended
         streamEndedRef.current = true;
-
-        // Process any remaining chunks
         if (bufferQueueRef.current.length > 0) {
           playQueue();
         } else {
-          // If no remaining chunks, check if we should stop playing
           checkPlaybackComplete();
         }
       } catch (error) {

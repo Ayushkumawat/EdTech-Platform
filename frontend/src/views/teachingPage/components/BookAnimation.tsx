@@ -6,24 +6,13 @@ import flip2 from '../../../assets/audios/flip2.mp3';
 import flip3 from '../../../assets/audios/flip3.mp3';
 import flip4 from '../../../assets/audios/flip4.mp3';
 
+// Define props type
+interface BookAnimationProps {
+  pages?: string[];
+  startPageNumber?: number; // new prop
+}
 
-
-// Refactor Book to a const component
-const BookAnimation: React.FC = () => {
-  // Array of sample image URLs
-  const images = [
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/1.jpg",
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/2.jpg",
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/3.jpg",
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/4.jpg",
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/5.jpg",
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/6.jpg",
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/7.jpg",
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/8.jpg",
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/9.jpg",
-    "https://raw.githubusercontent.com/Ayushkumawat/Ayushkumawatportfolio/refs/heads/main/src/images/logo/10.jpg",
-  ];
-
+const BookAnimation: React.FC<BookAnimationProps> = ({ pages = [], startPageNumber = 18 }) => {
   // Preload audio refs
   const audioRefs = useRef([
     new Audio(flip2),
@@ -31,8 +20,14 @@ const BookAnimation: React.FC = () => {
     new Audio(flip4)
   ]);
 
+  // Ref for HTMLFlipBook instance
+  const bookRef = useRef<any>(null);
+
   // Track if last interaction was a click/tap
   const clickInitiatedRef = useRef(false);
+
+  // State for input box (default to startPageNumber)
+  const [inputPage, setInputPage] = useState(startPageNumber);
 
   // Play audio
   const playRandomFlipSound = () => {
@@ -58,22 +53,30 @@ const BookAnimation: React.FC = () => {
     clickInitiatedRef.current = false;
   };
 
-  const coverTexture = {
-    background: `
-      linear-gradient(135deg, #d5c9a1 25%, transparent 25%),
-      linear-gradient(225deg, #d5c9a1 25%, transparent 25%),
-      linear-gradient(315deg, #d5c9a1 25%, transparent 25%),
-      linear-gradient(45deg, #d5c9a1 25%, transparent 25%)`,
-    backgroundSize: '10px 10px',
-    backgroundPosition: '0 0, 0 5px, 5px -5px, -5px 0px'
-  };const [bookSize, setBookSize] = useState({ width: 800, height: 600 });
+  // Handler for input change (now expects actual book page number)
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputPage(Number(e.target.value));
+  };
+
+  // Handler for button click to flip to page (convert to 0-based chapter index)
+  const handleGoToPage = () => {
+    if (
+      bookRef.current &&
+      !isNaN(inputPage) &&
+      inputPage >= startPageNumber &&
+      inputPage < startPageNumber + pages.length
+    ) {
+      const pageIndex = inputPage - startPageNumber;
+      bookRef.current.pageFlip().flip(pageIndex);
+    }
+  };
 
   return (
-    <div className="w-full h-[90vh] relative flex items-center justify-center">
-
+    <div className="w-full h-[90vh] relative flex flex-col items-center justify-center">
       <HTMLFlipBook
+        ref={bookRef}
         width={1}
-        height={1.2}
+        height={1.3}
         size="stretch"
         minWidth={200}
         maxWidth={1200}
@@ -83,9 +86,8 @@ const BookAnimation: React.FC = () => {
         style={{ width: '100%', height: '100%' }}
         maxShadowOpacity={0.5}
         drawShadow={true}
-       
         onFlip={handleFlip}
-        startPage={0}
+        startPage={inputPage - startPageNumber}
         flippingTime={1000}
         usePortrait={true}
         startZIndex={0}
@@ -95,23 +97,42 @@ const BookAnimation: React.FC = () => {
         swipeDistance={30}
         showPageCorners={true}
         disableFlipByClick={false}
+        autoSize={true}
+        showCover={false}
       >
-        {images.map((url, idx) => (
+        {pages.map((url, idx) => (
           <div
             className="page"
-            key={idx}
-            style={{ padding: 0, width: '90%', height: '90%' }}
+            key={idx+1}
+            style={{ padding: 0, width: '100%', height: '100%' }}
             onMouseDown={handlePagePointerDown}
             onTouchStart={handlePagePointerDown}
           >
               <img 
                 src={url} 
                 alt={`Page ${idx + 1}`} 
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', objectPosition: 'center -38px' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', objectPosition: 'center -7px' }}
               />
           </div>
         ))}
       </HTMLFlipBook>
+      <div className="mt-4 flex gap-2 items-center">
+        <input
+          type="number"
+          min={startPageNumber}
+          max={startPageNumber + pages.length - 1}
+          value={inputPage}
+          onChange={handleInputChange}
+          className="border px-2 py-1 rounded w-24"
+          placeholder="Book page #"
+        />
+        <button
+          onClick={handleGoToPage}
+          className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+        >
+          Go to Page
+        </button>
+      </div>
     </div>
   );
 }

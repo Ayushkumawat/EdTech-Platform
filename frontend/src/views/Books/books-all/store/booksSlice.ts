@@ -22,6 +22,7 @@ export type Book = {
     class_id: string;
     teacher: string;
     duration: string;
+    cover_image: string; // Added cover_image as per new schema
     description: string;
     uid: string;
     chapters: Chapter[];
@@ -102,6 +103,15 @@ const bookSlice = createSlice({
         },
         resetNotifaction: (state) => {
             state.notification = null
+        },
+        resetBooksData: (state) => {
+            state.booksData = []
+            state.subjectsData = []
+            state.bookDetail = null
+            state.error = null
+            state.notification = null
+            state.bookLoading = false
+            state.detailLoading = false
         }
     },
     extraReducers: (builder) => {
@@ -133,6 +143,6 @@ const bookSlice = createSlice({
     },
 })
 
-export const { resetError, resetNotifaction } = bookSlice.actions
+export const { resetError, resetNotifaction, resetBooksData } = bookSlice.actions
 
 export default bookSlice.reducer

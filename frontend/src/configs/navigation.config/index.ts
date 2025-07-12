@@ -13,23 +13,19 @@ const navigationConfig:MenuItem[] = [
             icon:"home"
         },
         {
-            label: 'About',
-            path: `${APP_PREFIX_PATH}/about`
-        },
-        {
             label: 'Books',
             path:`${APP_PREFIX_PATH}/all_books`
             
         },
-
         {
-            label: 'Blog',
-            subMenu: []
+            label: 'Pricing',
+            path: '/pricing'
         },
         {
             label: 'Contact',
             path: '/contact'
         }
+      
     ];
 
 export default navigationConfig

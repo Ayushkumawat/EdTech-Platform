@@ -48,7 +48,7 @@ const MessageInput: React.FC<MessageInputProps> = ({setChatMessages,chatMessages
 
     const startTeaching = () => {
         setStartButton(false)
-        handleApiCall('start teaching',"https://scrappystickyinkymess.wordpress.com/wp-content/uploads/2013/08/plainaiw.jpg")
+        handleApiCall('start teaching')
     }
 
     useEffect(() => {
@@ -86,7 +86,7 @@ const MessageInput: React.FC<MessageInputProps> = ({setChatMessages,chatMessages
                         {message.length > 0 ? (
                             <button
                                 onClick={() => {
-                                    handleApiCall(message,"https://scrappystickyinkymess.wordpress.com/wp-content/uploads/2013/08/plainaiw.jpg")
+                                    handleApiCall(message)
                                 }}
                                 className="send-message-button-box-btn-send"
                             >

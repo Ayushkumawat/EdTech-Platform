@@ -61,7 +61,7 @@ const SignInForm = (props: SignInFormProps) => {
     return (
         <div className={className}>
             {message && (
-                <Alert showIcon className="mb-4" type="danger">
+                <Alert showIcon className="mb-4 !text-[var(--thm-primary)]" type="danger">
                     <>{message}</>
                 </Alert>
             )}
@@ -153,7 +153,7 @@ const SignInForm = (props: SignInFormProps) => {
                             </Button>
                             <div className="mt-4 text-center">
                                 <span>{`Don't have an account yet?`} </span>
-                                <ActionLink to={signUpUrl}>Sign up</ActionLink>
+                                <ActionLink to={signUpUrl} className='!text-[var(--thm-primary)]'>Sign up</ActionLink>
                             </div>
                         </FormContainer>
                     </Form>

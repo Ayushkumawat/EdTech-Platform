@@ -11,26 +11,32 @@ import SpaceOrganizationSlider1 from './components/OrganizationSlider'
 import Organization from './components/OrginazationContainer'
 import Faq from './components/Faq'
 import News from './components/News'
-import SplashCursor from '@/components/animation/SplashAnimation'
+import Ribbons from './Ribbons'
 
 const LandingPage = () => {
 
   return (
     <>
-    
-    <div className='overflow-hidden'>
-    <SplashCursor/>
-        <Banner/>
-        <Feature/>
-        <About/>
-        <Books/>
-        <Organization/>
-        <TeacherAbout/>
-        <Features/>
-        <Team/>
-        <Faq/>
-       
-       
+    <div className='overflow-hidden' style={{ position: 'relative' }}>
+      <Ribbons
+        baseThickness={20}
+        colors={['#e90b35']}
+        speedMultiplier={0.45}
+        maxAge={550}
+        enableFade={true}
+        enableShaderEffect={false}
+        // @ts-ignore
+        style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', pointerEvents: 'none', zIndex: 1000}}
+      />
+      <Banner/>
+      <Feature/>
+      <About/>
+      <Books/>
+      <Organization/>
+      <TeacherAbout/>
+      <Features/>
+      <Team/>
+      <Faq/>
     </div>
     </>
   )

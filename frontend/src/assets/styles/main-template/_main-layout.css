@@ -8079,7 +8079,9 @@
       overflow: hidden;
       z-index: 1;
   }
-  
+  .brand-one-inner{
+    background-color: var(--thm-primary);
+  }
   .brand-one .swiper-slide {
       display: flex;
       align-items: center;
@@ -10046,9 +10048,8 @@
       1. Variable CSS
   ===============================*/
   :root {
-    --thm-primary: #0d6efd;
-    --cursor-color: #0d6efd;
-    --thm-primary-rgb: 13, 110, 253;
+    --thm-primary: #e90b35;
+    --thm-primary-rgb: 233, 11, 53;
     --thm-white: #ffffff;
     --thm-white-rgb: 255, 255, 255;
     --thm-black: #11161f;
@@ -10061,7 +10062,7 @@
     --thm-font-weight: 400;
     --thm-white-bg: #ffffff;
     --thm-heading-font-weight: 700;
-    --thm-blue: #0d6efd;
+    --thm-blue: #e90b35;
     --thm-indigo: #6610f2;
     --thm-purple: #6f42c1;
     --thm-pink: #d63384;
@@ -14102,7 +14103,7 @@
   .book-page__single-img {
       position: relative;
       display: flex;
-      height: 180px;
+      height: 230px;
       object-fit: cover;
       overflow: hidden;
       justify-content: center; /* Center horizontally */
@@ -18025,7 +18026,7 @@
   }
   /* FONT_END */
   :root {
-    --swiper-theme-color: #007aff;
+    --swiper-theme-color: #e90b35;
     /*
     --swiper-preloader-color: var(--swiper-theme-color);
     --swiper-wrapper-transition-timing-function: initial;

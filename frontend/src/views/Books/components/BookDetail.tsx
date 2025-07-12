@@ -33,10 +33,10 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
         setActiveTab(tabId)
     }
 
-    const startLesson = (lessonId: string, bookId: string) => {
+    const startLesson = (chapterId: string, bookId: string) => {
         if (authenticated){
-            console.log(lessonId,bookId)
-            navigate(`${APP_PREFIX_PATH}/my_books/book_detail/${bookId}/lesson/${lessonId}`)
+            console.log(chapterId,bookId)
+            navigate(`${APP_PREFIX_PATH}/my_books/book_detail/${bookId}/chapter/${chapterId}`)
         }else{
             navigate(`/sign-in`)
         }
@@ -144,7 +144,7 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                     {/*  tabs container */}
                     <div>
                         {/*  tab navs  */}
-                        <div className="ed-book-details-tab-navs border border-gray-300 dark:border-gray-700 p-[10px]  flex gap-[10px] *:h-[56px] sm:*:h-[46px]  *:flex-auto *:bg-[rgba(var(--thm-primary-rgb),0.1)] *:px-[20px] lg:*:px-[15px] *:font-semibold overflow-auto">
+                        <div className="ed-book-details-tab-navs  border border-gray-300 dark:border-gray-700 p-[10px]  flex gap-[10px] *:h-[56px] sm:*:h-[46px]  *:flex-auto *:bg-[rgba(var(--thm-primary-rgb),0.1)] dark:*:bg-[rgba(var(--thm-primary-rgb),0.2)] dark: bg-gray-900 *:px-[20px] lg:*:px-[15px] *:font-semibold overflow-auto">
                             {tabs.map((tab) => (
                                 <button
                                     key={tab.tab}
@@ -415,14 +415,14 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                             {bookDetail?.chapters?.map((chapter, index) => (
                                 <div
                                     key={index}
-                                    className="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-[rgba(var(--thm-primary-rgb),0.1)]"
+                                    className="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-[rgba(var(--thm-primary-rgb),0.1)] dark:bg-[rgba(var(--thm-primary-rgb),0.2)]"
                                 >
                                     {/* Left */}
                                     <div className="flex items-center gap-[10px]">
                                         <span className="text-[20px] text-[var(--thm-primary)]">
                                             <MdOutlinePlayLesson />
                                         </span>
-                                        <span className="text-gray-900 dark:text-gray-100 font-[500]">
+                                        <span className="text-gray-900 dark:text-gray-300 font-[500]">
                                             {index + 1} :{' '}
                                             {chapter?.title ||
                                                 'Introduction'}

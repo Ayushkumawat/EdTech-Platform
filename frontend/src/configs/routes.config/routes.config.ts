@@ -12,12 +12,6 @@ const commonRoutes = [
         authority: [],
     },
     {
-        key: 'about',
-        path: `${APP_PREFIX_PATH}/about`,
-        component: lazy(() => import('@/views/demo/CollapseMenuItemView1')),
-        authority: [],
-    },
-    {
         key: 'appsAccount.settings',
         path: `${APP_PREFIX_PATH}/account/settings/:tab`,
         component: lazy(() => import('@/views/account/Settings')),
@@ -27,6 +21,14 @@ const commonRoutes = [
             headerContainer: true,
         },
     },
+       // --- Added Pricing Route ---
+    {
+        key: 'pricing',
+        path: '/pricing',
+        component: lazy(() => import('@/views/pricing/Pricing')),
+        authority: [],
+    }
+
 
 ]
 
@@ -48,7 +50,7 @@ export const protectedRoutes:Routes=[
     },
     {
     key: 'lesson_teaching',
-    path: `${APP_PREFIX_PATH}/my_books/book_detail/:bookId/lesson/:lessonId`,
+    path: `${APP_PREFIX_PATH}/my_books/book_detail/:bookId/chapter/:chapterId`,
     component: lazy(() => import('@/views/teachingPage')),
     authority: [],
     

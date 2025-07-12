@@ -9,7 +9,7 @@ import useResponsive from '@/utils/hooks/useResponsive'
 import reducer, {
     useAppSelector,
     useAppDispatch,
-    getLessonData,
+    getChapterData,
     resetError,
 } from './store'
 import React, { useEffect, useState } from 'react'
@@ -22,13 +22,13 @@ import BookAnimation from './components/BookAnimation'
 
 injectReducer('teaching', reducer)
 const TeachingPage = () => {
-    const { lessonId }: any = useParams<{ lessonId: string }>()
+    const { chapterId }: any = useParams<{ chapterId: string }>()
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const { smaller } = useResponsive()
     const mobileVisual = useAppSelector((state) => state.teaching.data.mobileVisual,)
-    const lessonData = useAppSelector((state) => state.teaching.data.lessonData)
-    const lessonLoading = useAppSelector((state) => state.teaching.data.lessonLoading,)
+    const chapterData = useAppSelector((state) => state.teaching.data.chapterData)
+    const chapterLoading = useAppSelector((state) => state.teaching.data.chapterLoading)
     const error = useAppSelector((state) => state.teaching.data.error)
     console.log(mobileVisual, 'moxile')
 
@@ -40,14 +40,21 @@ const TeachingPage = () => {
     }, [error])
 
     useEffect(() => {
-        if (!error && lessonId !== lessonData?.uid) {
-            dispatch(getLessonData(lessonId))
-        }
+        dispatch(getChapterData(chapterId))
     }, [])
 
     useEffect(() => {
-        console.log(lessonData)
-    }, [lessonData])
+        console.log(chapterData,"chapter")
+        console.log('chapterData.pages', chapterData?.pages);
+    }, [chapterData])
+
+    // Request fullscreen on mount
+    useEffect(() => {
+        if (document.fullscreenEnabled && !document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+        }
+    }, []);
+ 
 
     // Request fullscreen on mount
     useEffect(() => {
@@ -77,7 +84,7 @@ The HR 8799 system is a notable example of an exoplanetary system. It features a
     return (
         <>
             <Loading
-                loading={lessonLoading}
+                loading={chapterLoading}
                 className="fixed inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#11161f] z-[99999]"
             />
             <div className="teaching-page-container relative">
@@ -86,7 +93,7 @@ The HR 8799 system is a notable example of an exoplanetary system. It features a
                     <div className="flex justify-center">
                             <div className="book-sub-title">
                                 <h5 className='!text-[20px]'>
-                                    <span>Chapter One:</span> {lessonData?.title}
+                                    <span>Chapter One:</span> {chapterData?.title}
                                 </h5>
                             </div>
                             <i className="chevron-icon">
@@ -95,7 +102,7 @@ The HR 8799 system is a notable example of an exoplanetary system. It features a
                         </div>
                    
                     <div className='book-animation flex items-center shadow-lg '>
-                        <BookAnimation/>
+                        <BookAnimation pages={chapterData?.pages}/>
                     </div>
                     </div>
 

@@ -9,7 +9,6 @@ import mockServer from './mock';
 import appConfig from '@/configs/app.config';
 import './locales';
 import 'regenerator-runtime/runtime'
-import CustomCursor from './views/CustomCursor';
 import useResponsive from './utils/hooks/useResponsive';
 import {isMobile} from 'react-device-detect';
 
@@ -35,7 +34,6 @@ function App() {
                 <BrowserRouter>
                     <Theme>
                         <Layout />
-                        {!isMobile && <CustomCursor />}
                     </Theme>
                 </BrowserRouter>
             </PersistGate>

@@ -15,6 +15,10 @@ export async function apiSignIn(data: SignInCredential) {
         url: add_prefix+'/login',
         method: 'post',
         data,
+        headers: {
+    
+            'ngrok-skip-browser-warning': 'true' // Skip ngrok warning page
+        }
     })
 }
 
@@ -23,6 +27,10 @@ export async function apiSignUp(data: SignUpCredential) {
         url: add_prefix+'/sign-up',
         method: 'post',
         data,
+        headers: {
+        
+            'ngrok-skip-browser-warning': 'true' // Skip ngrok warning page
+        }
     })
 }
 
@@ -30,6 +38,7 @@ export async function apiSignOut() {
     return ApiService.fetchData({
         url:add_prefix+'/sign-out',
         method: 'get',
+
     })
 }
 

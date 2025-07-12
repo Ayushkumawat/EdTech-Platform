@@ -87,10 +87,10 @@ const BookListing = ({ booksdata, subjectsData }: BookListingProps) => {
                                     <div className="book-page__single">
                                         <div className="book-page__single-img">
                                             <img
-                                                src="/img/books/book_img6.jpeg"
+                                                src={book.cover_image}
                                                 alt={book.name || 'Book'}
                                             />
-                                            <div className="text">Sale</div>
+                                            <div className="text">{book.medium}</div>
                                         </div>
                                         <div className="book-page__single-content">
                                             <div className="text-box">

@@ -12,6 +12,10 @@ import { useNavigate } from 'react-router-dom'
 import useQuery from './useQuery'
 import type { SignInCredential, SignUpCredential } from '@/@types/auth'
 
+// Import the resetBooksData action
+import { resetBooksData as resetMainBooksData } from '@/store/slices/book/booksSlice'
+import { resetBooksData as resetAllBooksData } from '@/views/Books/books-all/store'
+
 type Status = 'success' | 'failed'
 
 function useAuth() {
@@ -39,16 +43,17 @@ function useAuth() {
                 dispatch(signInSuccess(token))
                 if (resp.data.user) {
                     dispatch(
-                        setUser(
-                            resp.data.user || {
-                                avatar: '',
-                                userName: 'Anonymous',
-                                authority: ['USER'],
-                                email: '',
-                            }
-                        )
+                        setUser({
+                            ...resp.data.user,
+                            loading: false
+                        })
                     )
                 }
+                
+                // Clear books data when signing in to ensure fresh data
+                console.log('Sign in: Clearing books data...')
+                dispatch(resetMainBooksData())
+                dispatch(resetAllBooksData())
                 
                 navigate(appConfig.authenticatedEntryPath,{ replace: true })
                 return {
@@ -74,16 +79,18 @@ function useAuth() {
                 dispatch(signInSuccess(token))
                 if (resp.data.user) {
                     dispatch(
-                        setUser(
-                            resp.data.user || {
-                                avatar: '',
-                                userName: 'Anonymous',
-                                authority: ['USER'],
-                                email: '',
-                            }
-                        )
+                        setUser({
+                            ...resp.data.user,
+                            loading: false
+                        })
                     )
                 }
+                
+                // Clear books data when signing up to ensure fresh data
+                console.log('Sign up: Clearing books data...')
+                dispatch(resetMainBooksData())
+                dispatch(resetAllBooksData())
+                
                 const redirectUrl = query.get(REDIRECT_URL_KEY)
                 navigate(appConfig.authenticatedEntryPath)
                 return {
@@ -106,11 +113,17 @@ function useAuth() {
         dispatch(
             setUser({
                 avatar: '',
-                userName: '',
+                first_name: '',
+                last_name: '',
                 email: '',
                 authority: [],
+                loading: false
             })
         )
+        // Clear books data when signing out
+        console.log('Sign out: Clearing books data...')
+        dispatch(resetMainBooksData())
+        dispatch(resetAllBooksData())
         navigate(appConfig.authenticatedEntryPath)
     }
 

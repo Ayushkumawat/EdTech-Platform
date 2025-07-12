@@ -38,7 +38,7 @@ const Spinner = forwardRef((props: SpinnerProps, ref) => {
 
     const spinnerClass = classNames(
         isSpining && 'animate-spin',
-        spinnerColor && `text-${spinnerColor}`,
+        spinnerColor && `text-[var(--thm-primary)]`,
         className
     )
 
