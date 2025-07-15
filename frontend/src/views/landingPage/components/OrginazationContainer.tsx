@@ -8,7 +8,7 @@ export default function Organization() {
             <div className="brand-one">
                 <div className="brand-one-inner flex w-full items-center max-w-[1300px] h-20">
                 <CurvedLoop 
-                marqueeText="Xafran ✦ Xafran ✦ Xafran ✦ Xafran ✦"
+                marqueeText="      Xafran      "
                 speed={2}
                 curveAmount={0}
                 direction="left"

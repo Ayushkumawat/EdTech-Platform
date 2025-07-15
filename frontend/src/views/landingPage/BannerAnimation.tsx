@@ -128,7 +128,7 @@ import {
         onPointerLeave={endDrag}
       >
         <svg
-          className="select-none w-full overflow-visible block aspect-[100/12] text-[3rem] font-bold tracking-[5px] uppercase leading-none"
+          className="select-none w-full overflow-visible block aspect-[100/12] text-[2.7rem] font-bold tracking-[5px] uppercase leading-none"
           viewBox="0 0 1440 50"
         >
           <text

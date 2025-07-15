@@ -17,6 +17,8 @@ export type TeachingState ={
   chapterLoading: boolean;
   error: any;
   notification: any;
+  currentPage: number;
+  inputPage: number;
 }
 
 const initialState: TeachingState = {
@@ -27,7 +29,9 @@ const initialState: TeachingState = {
   dotAnimation: false,
   mobileVisual: false,
   error: null,
-  notification: null
+  notification: null,
+  currentPage: 17,
+  inputPage: 17
 };
 
 export const getChapterData = createAsyncThunk(
@@ -61,6 +65,12 @@ const teachingSlice = createSlice({
     setMobileVisual(state, action) {
       state.mobileVisual = action.payload
     },
+    setCurrentPage(state, action) {
+      state.currentPage = action.payload
+    },
+    setInputPage(state, action) {
+      state.inputPage = action.payload
+    },
     resetError: (state) => {
       state.error = null
     }
@@ -82,6 +92,6 @@ const teachingSlice = createSlice({
             }
 });
 
-export const { resetError, setFrequencyData, setIsPlaying, setDotAnimation, setMobileVisual } = teachingSlice.actions;
+export const { resetError, setFrequencyData, setIsPlaying, setDotAnimation, setMobileVisual, setCurrentPage, setInputPage } = teachingSlice.actions;
 
 export default teachingSlice.reducer;

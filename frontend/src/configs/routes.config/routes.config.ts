@@ -21,13 +21,18 @@ const commonRoutes = [
             headerContainer: true,
         },
     },
-       // --- Added Pricing Route ---
     {
         key: 'pricing',
         path: '/pricing',
         component: lazy(() => import('@/views/pricing/Pricing')),
         authority: [],
-    }
+    },
+    {
+        key: 'contact',
+        path: '/contact',
+        component: lazy(() => import('@/views/contact/Contact')),
+        authority: []
+    },
 
 
 ]

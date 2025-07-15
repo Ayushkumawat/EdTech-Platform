@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix Google Form 400 Error - Find Entry IDs</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #dc2626;
+            text-align: center;
+            border-bottom: 3px solid #dc2626;
+            padding-bottom: 10px;
+        }
+        .error-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #dc2626;
+        }
+        .error-box h3 {
+            color: #dc2626;
+            margin: 0 0 10px 0;
+        }
+        .step {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        .step h3 {
+            color: #1e40af;
+            margin: 0 0 15px 0;
+        }
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .success-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #10b981;
+        }
+        .success-box h3 {
+            color: #10b981;
+            margin: 0 0 10px 0;
+        }
+        .form-url {
+            background: #eff6ff;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            word-break: break-all;
+            border: 1px solid #bfdbfe;
+        }
+        .warning {
+            background: #fefce8;
+            border: 1px solid #fde047;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #eab308;
+        }
+        .warning h3 {
+            color: #a16207;
+            margin: 0 0 10px 0;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .button {
+            background: #3b82f6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        .button:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 Fix Google Form 400 Error</h1>
+        
+        <div class="error-box">
+            <h3>Current Error:</h3>
+            <p><strong>Failed to load resource: the server responded with a status of 400</strong></p>
+            <p>This happens because your form is using placeholder entry IDs instead of the actual Google Form entry IDs.</p>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ Important</h3>
+            <p>Your Google Form URL is: <span class="form-url">https://docs.google.com/forms/d/1SZAxMP0wi8Pe1P0mp4dlUHEzowGjNl3l_gQO0MYTzSI</span></p>
+            <p>You need to find the correct entry IDs for your 5 fields: Name, Email, Phone, Subject, Message</p>
+        </div>
+
+        <div class="step">
+            <h3>Step 1: Open Your Google Form Preview</h3>
+            <ol>
+                <li>Go to: <a href="https://docs.google.com/forms/d/1SZAxMP0wi8Pe1P0mp4dlUHEzowGjNl3l_gQO0MYTzSI/edit" target="_blank" class="button">Open Form Editor</a></li>
+                <li>Click the <strong>"Preview"</strong> button (👁️ eye icon)</li>
+                <li>This will open the live form in a new tab</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Method 1 - Using Browser Console (Recommended)</h3>
+            <ol>
+                <li>On the form preview page, press <strong>F12</strong> to open Developer Tools</li>
+                <li>Click on the <strong>"Console"</strong> tab</li>
+                <li>Copy and paste this script:</li>
+            </ol>
+            <div class="code-block">
+document.querySelectorAll('input[name*="entry."], textarea[name*="entry."]').forEach((input, index) => {
+    const entryId = input.name;
+    const label = input.getAttribute('aria-label') || input.getAttribute('data-initial-value') || 'Unknown field';
+    console.log(`${index + 1}. ${entryId} - ${label}`);
+});
+            </div>
+            <p>Press <strong>Enter</strong> to run the script. It will show you all the entry IDs!</p>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Method 2 - Using Network Tab (Alternative)</h3>
+            <ol>
+                <li>On the form preview page, press <strong>F12</strong> → <strong>Network</strong> tab</li>
+                <li>Fill out the form with test data</li>
+                <li>Click <strong>Submit</strong></li>
+                <li>Look for a request to <span class="highlight">formResponse</span></li>
+                <li>Click on it and check the <strong>Request Payload</strong></li>
+                <li>You'll see the entry IDs with your test data</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Update Your Contact.tsx File</h3>
+            <p>Replace the placeholder entry IDs in your code with the actual ones you found:</p>
+            <div class="code-block">
+// Replace these placeholder IDs:
+googleFormData.append('entry.1234567890', formData.name);        // Name field
+googleFormData.append('entry.1234567891', formData.email);       // Email field
+googleFormData.append('entry.1234567892', formData.phone);       // Phone field
+googleFormData.append('entry.1234567893', formData.subject);     // Subject field
+googleFormData.append('entry.1234567894', formData.message);     // Message field
+
+// With the actual entry IDs you found:
+googleFormData.append('entry.ACTUAL_ID_1', formData.name);        // Name field
+googleFormData.append('entry.ACTUAL_ID_2', formData.email);       // Email field
+googleFormData.append('entry.ACTUAL_ID_3', formData.phone);       // Phone field
+googleFormData.append('entry.ACTUAL_ID_4', formData.subject);     // Subject field
+googleFormData.append('entry.ACTUAL_ID_5', formData.message);     // Message field
+            </div>
+        </div>
+
+        <div class="success-box">
+            <h3>✅ After Updating the Entry IDs</h3>
+            <ol>
+                <li>Save your Contact.tsx file</li>
+                <li>Test the form by submitting it</li>
+                <li>Check your Google Sheet to see if the data appears</li>
+                <li>The 400 error should be resolved!</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>Step 5: Common Entry ID Examples</h3>
+            <p>Entry IDs usually look like this:</p>
+            <div class="code-block">
+entry.123456789
+entry.987654321
+entry.555666777
+entry.111222333
+entry.999888777
+            </div>
+            <p>Each field in your form has a unique entry ID number.</p>
+        </div>
+
+        <div class="warning">
+            <h3>🔧 Quick Test</h3>
+            <p>Once you update the entry IDs, you can quickly test if they're working:</p>
+            <ol>
+                <li>Fill out your contact form</li>
+                <li>Submit it</li>
+                <li>Check if the success message appears</li>
+                <li>Go to your Google Sheet to verify the data was saved</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

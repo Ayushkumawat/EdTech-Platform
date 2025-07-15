@@ -87,8 +87,8 @@ The HR 8799 system is a notable example of an exoplanetary system. It features a
                 loading={chapterLoading}
                 className="fixed inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#11161f] z-[99999]"
             />
-            <div className="teaching-page-container relative">
-                <div className="teaching-page-content">
+            <div className="teaching-page-container relative h-screen overflow-hidden">
+                <div className="teaching-page-content h-full">
                     <div className="w-full h-full">
                     <div className="flex justify-center">
                             <div className="book-sub-title">
@@ -101,7 +101,7 @@ The HR 8799 system is a notable example of an exoplanetary system. It features a
                             </i>
                         </div>
                    
-                    <div className='book-animation flex items-center shadow-lg '>
+                    <div className='book-animation flex items-center shadow-lg h-fit w-full pt-4'>
                         <BookAnimation pages={chapterData?.pages}/>
                     </div>
                     </div>
