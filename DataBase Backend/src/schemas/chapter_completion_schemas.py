@@ -6,16 +6,18 @@ class ChapterCompletionBase(BaseModel):
     user_id: uuid.UUID
     chapter_id: uuid.UUID
     current_page: int
-    total_pages: int
 
-class ChapterCompletionCreate(ChapterCompletionBase):
-    pass
+class ChapterCompletionCreate(BaseModel):
+    user_id: uuid.UUID
+    chapter_id: uuid.UUID
 
 class ChapterCompletionUpdate(BaseModel):
     user_id: Optional[uuid.UUID] = None
     chapter_id: Optional[uuid.UUID] = None
     current_page: Optional[int] = None
-    total_pages: Optional[int] = None
+
+class ChapterPageOut(BaseModel):
+    current_page: int 
 
 class ChapterCompletionOut(ChapterCompletionBase):
     uid: uuid.UUID

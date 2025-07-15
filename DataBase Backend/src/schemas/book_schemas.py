@@ -11,6 +11,7 @@ class BookBase(BaseModel):
     class_id: uuid.UUID
     teacher: str
     duration: str
+    cover_image: str
     description: str
 
 class BookCreate(BookBase):
@@ -23,6 +24,7 @@ class BookUpdate(BaseModel):
     class_id: Optional[uuid.UUID] = None
     teacher: Optional[str] = None
     duration: Optional[str] = None
+    cover_image: Optional[str] = None
 
 class BookListOut(BookBase):
     uid: uuid.UUID

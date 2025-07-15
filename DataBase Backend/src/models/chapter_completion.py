@@ -13,7 +13,6 @@ class ChapterCompletion(Base):
     user_id = Column(PG_UUID(as_uuid=True), ForeignKey('user.uid'), nullable=False)
     chapter_id = Column(PG_UUID(as_uuid=True), ForeignKey('chapter.uid'), nullable=False)
     current_page = Column(Integer, nullable=False)
-    total_pages = Column(Integer, nullable=False)
 
     user = relationship("User", back_populates="chapter_completions", lazy="selectin")
     chapter = relationship("Chapter", back_populates="chapter_completions", lazy="selectin")

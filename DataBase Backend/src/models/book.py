@@ -15,6 +15,7 @@ class Book(Base):
     teacher = Column(String(255), nullable=False)
     duration = Column(String(255), nullable=False)
     description = Column(Text, nullable=True)
+    cover_image = Column(String(255), nullable=False)
     created_at = Column(TIMESTAMP, nullable=False, default=datetime.now)
     updated_at = Column(TIMESTAMP, nullable=False, default=datetime.now)
     class_id = Column(PG_UUID(as_uuid=True), ForeignKey('class.uid'), nullable=False)
