@@ -4,7 +4,6 @@ import Dialog from '@/components/ui/Dialog'
 import Segment from '@/components/ui/Segment'
 import classNames from 'classnames'
 import sleep from '@/utils/sleep'
-import { usePricingStore } from '../store/pricingStore'
 import { TbCheck, TbCreditCard, TbMail } from 'react-icons/tb'
 import {
     NumericFormat,
@@ -13,6 +12,7 @@ import {
 } from 'react-number-format'
 import { useNavigate } from 'react-router-dom'
 import { PaymentCycle } from '../types'
+import { useAppSelector, useAppDispatch, setPaymentDialog, setSelectedPlan, resetSelectedPlan } from '../store'
 
 function limit(val: string, max: string) {
     if (val.length === 1 && val[0] > max[0]) {
@@ -43,21 +43,22 @@ const PaymentDialog = () => {
 
     const navigate = useNavigate()
 
-    const { paymentDialog, setPaymentDialog, selectedPlan, setSelectedPlan } =
-        usePricingStore()
+    const paymentDialog = useAppSelector((state) => state.pricing.data.paymentDialog)
+    const selectedPlan = useAppSelector((state) => state.pricing.data.selectedPlan)
+    const dispatch = useAppDispatch()
 
     const handleDialogClose = async () => {
-        setPaymentDialog(false)
+        dispatch(setPaymentDialog(false))
         await sleep(200)
-        setSelectedPlan({})
+        dispatch(resetSelectedPlan())
         setPaymentSuccessful(false)
     }
 
     const handlePaymentChange = (paymentCycle: PaymentCycle) => {
-        setSelectedPlan({
+        dispatch(setSelectedPlan({
             ...selectedPlan,
             paymentCycle,
-        })
+        }))
     }
 
     const handlePay = async () => {

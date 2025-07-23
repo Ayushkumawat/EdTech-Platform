@@ -11,6 +11,7 @@ import { apiAskGemini, apiAskGeminiImage } from '@/services/GeminiServices';
 import { PERSIST_STORE_NAME } from '@/constants/app.constant'
 import deepParseJson from '@/utils/deepParseJson'
 import store, { signOutSuccess } from '@/store'
+import { current } from '@reduxjs/toolkit';
 
 
 
@@ -46,7 +47,8 @@ const useTextToSpeech2 = () => {
   const streamEndedRef = useRef(false);
 
   const initAudioContext = useCallback(async () => {
-    if (!audioContextRef.current) {
+    // Only create a new context if none exists or if the existing one is closed
+    if (!audioContextRef.current || audioContextRef.current.state === 'closed') {
       const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
       try {
         audioContextRef.current = new AudioContextClass({ sampleRate: SAMPLE_RATE });
@@ -82,15 +84,14 @@ const useTextToSpeech2 = () => {
       abortControllerRef.current.abort();
       abortControllerRef.current = null;
     }
-    // Fade out audio for better UX
+    // Instantly stop audio by setting gain to zero
     if (gainNodeRef.current && audioContextRef.current) {
       gainNodeRef.current.gain.cancelScheduledValues(audioContextRef.current.currentTime);
-      gainNodeRef.current.gain.setValueAtTime(gainNodeRef.current.gain.value, audioContextRef.current.currentTime);
-      gainNodeRef.current.gain.linearRampToValueAtTime(0, audioContextRef.current.currentTime + 0.2);
+      gainNodeRef.current.gain.setValueAtTime(0, audioContextRef.current.currentTime);
     }
-    // Stop all scheduled sources
+    // Stop and disconnect all scheduled sources
     scheduledSourcesRef.current.forEach(source => {
-      try { source.stop(); } catch {}
+      try { source.stop(); source.disconnect(); } catch {}
     });
     scheduledSourcesRef.current = [];
     playingRef.current = false;
@@ -102,10 +103,10 @@ const useTextToSpeech2 = () => {
     // Set playing state to false immediately when manually stopped
     dispatch(setIsPlaying(false));
     
-    // Restore gain after fade out
+    // Restore gain for next playback
     setTimeout(() => {
       if (gainNodeRef.current) gainNodeRef.current.gain.value = 1;
-    }, 250);
+    }, 50);
   }, [dispatch]);
 
   // PCM chunk playback function with scheduling
@@ -212,7 +213,7 @@ const useTextToSpeech2 = () => {
         let endpoint, body;
         if (imageUrl) {
           endpoint = api_prifix+'gemini/ask-image';
-          body = { url: imageUrl, text };
+          body = { url: imageUrl, text};
         } else {
           endpoint = api_prifix+'gemini/ask';
           body = { text };
@@ -307,6 +308,19 @@ const useTextToSpeech2 = () => {
   useEffect(() => {
     return () => {
       stopAudio();
+      // Clean up all scheduled sources
+      scheduledSourcesRef.current.forEach(source => {
+        try { source.stop(); source.disconnect(); } catch {}
+      });
+      scheduledSourcesRef.current = [];
+      // Disconnect gain node and analyser
+      if (gainNodeRef.current) {
+        try { gainNodeRef.current.disconnect(); } catch {}
+      }
+      if (analyserRef.current) {
+        try { analyserRef.current.disconnect(); } catch {}
+      }
+      // Close the audio context if it exists and is not already closed
       if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
         audioContextRef.current.close();
       }

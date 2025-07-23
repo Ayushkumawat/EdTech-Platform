@@ -2,11 +2,13 @@ export type PaymentCycle = 'monthly' | 'annually'
 
 export type SelectedPlan = {
     planName: string
-    paymentCycle: PaymentCycle
-    price: {
-        monthly: number
-        annually: number
-    }
+    planId: string
+    cost: number
+    duration: string
+    planDescription: string
+    hoursPerDay: number
+    dailyLimit: number
+    discount: number
 }
 
 export type GetPricingPanResponse = {

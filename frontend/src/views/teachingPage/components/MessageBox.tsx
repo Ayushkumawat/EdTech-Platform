@@ -4,9 +4,13 @@ import { HiOutlineUser } from 'react-icons/hi'
 import Avatar from '@/components/ui/Avatar/Avatar'
 import MessageInput from './MessageInput'
 
-const MessageBox = () => {
-  
-    const [chatMessages, setChatMessages] = useState<string[] | undefined>([])
+interface MessageBoxProps {
+    handleApiCall: (userInput: string, imageUrl?: string) => void;
+    chatMessages: string[] | undefined;
+    setChatMessages: React.Dispatch<React.SetStateAction<string[] | undefined>>;
+}
+
+const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, setChatMessages }) => {
   
     return (
         <>
@@ -38,7 +42,7 @@ const MessageBox = () => {
                     </div>
                 ))}
             </div>
-            <MessageInput setChatMessages={setChatMessages} chatMessages={chatMessages} />
+            <MessageInput handleApiCall={handleApiCall} setChatMessages={setChatMessages} chatMessages={chatMessages} />
 
  
         </div>

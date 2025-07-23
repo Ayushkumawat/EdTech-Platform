@@ -13,49 +13,41 @@ import useResponsive from '@/utils/hooks/useResponsive'
 import useTextToSpeech2 from '@/utils/hooks/useTextToSpeech2'
 
 interface MessageInputProps {
+    handleApiCall: (userInput: string, imageUrl?: string) => void;
     setChatMessages?: React.Dispatch<React.SetStateAction<string[] | undefined>>
     chatMessages?: string[] | undefined
 }
 
-const MessageInput: React.FC<MessageInputProps> = ({ setChatMessages, chatMessages }) => {
+const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessages, chatMessages }) => {
     const [micActive, setMicActive] = useState(false)
     const [message, setMessage] = useState('')
     const [responseMessage, setResponseMessage] = useState('')
     const [startButton, setStartButton] = useState(true)
-
     const { smaller } = useResponsive()
     const { textToSpeechConvert, isPlaying, stopAudio } = useTextToSpeech2()
 
     const mobileVisual = useAppSelector((state) => state.teaching.data.mobileVisual)
     const currentPage = useAppSelector((state) => state.teaching.data.currentPage)
     const inputPage = useAppSelector((state) => state.teaching.data.inputPage)
+    const chapterData = useAppSelector((state) => state.teaching.data.chapterData)
+    const current_page_image = (chapterData && currentPage !== null)
+  ? chapterData.pages[currentPage]
+  : undefined;
     const dispatch = useAppDispatch()
 
-    const shouldDisableInput = useMemo(() => inputPage !== currentPage, [inputPage, currentPage])
+    
 
-    const handleApiCall = useCallback((userInput: string, imageUrl?: string) => {
-        dispatch(setDotAnimation(true))
-        stopAudio()
-        if (chatMessages && setChatMessages) {
-            setChatMessages([...chatMessages, userInput])
-        }
-        if (smaller.sm) dispatch(setMobileVisual(true))
-        setMessage('')
-        setResponseMessage('A paragraph is a series of sentences that are correlated to each other in a healthy way')
-        textToSpeechConvert(userInput, imageUrl)
-    }, [chatMessages, setChatMessages, smaller.sm, dispatch, stopAudio, textToSpeechConvert])
+    const shouldDisableInput = useMemo(() => inputPage !== 0, [inputPage, currentPage])
 
     const { transcript, startListening, stopListening } = useSpeechToText(handleApiCall)
 
     const startTeaching = () => {
         setStartButton(false)
-        handleApiCall('start teaching')
+        console.log(current_page_image)
+        handleApiCall('start teaching this page',current_page_image)
     }
 
-    const continueThisPage = () => {
-        dispatch(setCurrentPage(inputPage))
-        handleApiCall(`continue teaching page ${inputPage}`)
-    }
+
 
     useEffect(() => {
         if (micActive && !isPlaying) {
@@ -112,7 +104,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ setChatMessages, chatMessag
                     <div className="mic-stop-btn-container">
                         {message.length > 0 ? (
                             <button
-                                onClick={!shouldDisableInput ? () => handleApiCall(message) : undefined}
+                                onClick={!shouldDisableInput ? () => { handleApiCall(message); setMessage(""); } : undefined}
                                 className="send-message-button-box-btn-send"
                                 style={sharedStyle}
                             >

@@ -116,12 +116,12 @@ const TeacherAbout = () => {
                         <div className="feauture-three__content">
                             <div className="sec-title">
                                 <div className="sub-title">
-                                    <h5 className="text-sm">OUR AI TEACHER</h5>
+                                    <h5 className="text-sm">OUR AI TEACHERS</h5>
                                 </div>
-                                <h2 className="flex text-4xl">He will Guide You</h2>
+                                <h2 className="flex text-4xl">They will Guide You</h2>
                                 <h2 className="flex text-4xl">Through the Wonders</h2>
                                 <h2 className="flex text-4xl items-center">
-                                    of Space{' '}
+                                    of Academics{' '}
                                     <div className="teacher_language_box">
                                         <LanguageSelector
                                             onLanguageChange={handleLanguageChange}
@@ -133,10 +133,10 @@ const TeacherAbout = () => {
 
                             <div className="text-box">
                                 <p>
-                                    Arki features minimal and stylish design. The theme is well
-                                    crafted for all the modern architect and interior design
-                                    website. With Arki, it makes your website look even more
-                                    attractive and impressive to
+                                <p>
+    Meet our multilingual AI teachers — always ready to explain, simplify, and engage. From solving math problems to exploring science and mastering language, they tailor each lesson based on the student's understanding. Available 24/7, they’re your personal academic guides across every subject.
+</p>
+
                                 </p>
                             </div>
                             <div className="btn-box">

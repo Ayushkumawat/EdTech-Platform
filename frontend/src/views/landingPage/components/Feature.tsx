@@ -23,8 +23,7 @@ const Feature = () => {
                 <div className="feauture-two__single-content">
                   <h2>
                     
-                      We Will Provide You <br />
-                      By Best Design
+                  Learn Without Limits 24/7
                    
                   </h2>
                 </div>
@@ -46,8 +45,8 @@ const Feature = () => {
                 <div className="feauture-two__single-content">
                   <h2>
                     <a href="#">
-                      We Have Qualified <br />
-                      Engineer’s Team
+                    Understand, Don't <br />
+                    Just Memorize
                     </a>
                   </h2>
                 </div>

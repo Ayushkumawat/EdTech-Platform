@@ -54,17 +54,13 @@ const About = () => {
                                         <h5>KNOW ABOUT XAFRAN</h5>
                                     </div>
                                     <h2>
-                                        We Take Care of <br /> Everything for
-                                        Your Goals
+                                    Stop Working Hard. <br /> Start Working Smart with AI.
                                     </h2>
                                 </div>
 
                                 <div className="about-two__content-text">
                                     <p>
-                                        Nullam eu nibh vitae est tempor molestie
-                                        id sed ex. Quisque dignissim maximus
-                                        ipsum, sed rutrum metus tincidunt et.
-                                        Sed eget tincidunt ipsum. Eget tincidunt
+                                    We believe learning is the ultimate adventure. Our platform is designed to ignite your natural curiosity, turning complex subjects into an exciting journey of discovery. With an AI tutor available 24/7, you can explore any concept, ask any question, and get instant answers tailored just for you.
                                     </p>
                                 </div>
 
@@ -73,19 +69,19 @@ const About = () => {
                                         <li>
                                             <p>
                                                 <span className="icon-verified"><FaCheckCircle/></span>{' '}
-                                                Feasibility Studies
+                                                Personalized Learning Paths
                                             </p>
                                         </li>
                                         <li>
                                             <p>
                                                 <span className="icon-verified"><FaCheckCircle/></span>{' '}
-                                                Conceptual Design
+                                                24/7 On-Demand Tutoring
                                             </p>
                                         </li>
                                         <li>
                                             <p>
                                                 <span className="icon-verified"><FaCheckCircle/></span>{' '}
-                                                Custom design & feature
+                                                Multi-Subject & Multilingual Support
                                             </p>
                                         </li>
                                     </ul>

@@ -33,7 +33,28 @@ const swiperOptions = {
 
 
 }
-const images=["/assets/img/slider/home_image.jpg","/assets/img/slider/home_image2.jpg","/assets/img/slider/home_image3.jpg"]
+const slides = [
+  {
+    image: "/assets/img/slider/1.jpg",
+    h3: "Personalized",
+    h2: "Learning"
+  },
+  {
+    image: "/assets/img/slider/home_image3.jpg",
+    h3: "Innovative",
+    h2: "Education"
+  },
+  {
+    image: "/assets/img/slider/2.png",
+    h3: "Think",
+    h2: "Beyond"
+  },
+  {
+    image: "/assets/img/slider/home_image2.jpg",
+      h3: "Infinite",
+    h2: "Learning"
+  },
+];
 
 export default function Banner() {
     const [isOpen, setOpen] = useState(false)
@@ -46,71 +67,60 @@ export default function Banner() {
   
     
       <Swiper {...swiperOptions} className="banner-carousel owl-theme owl-carousel owl-nav-none owl-dots-none">   
-        {images.map((ImageUrl)=>
-        (               
-        <SwiperSlide className="swiper-slide">
-            
-          <div className="image-layer" style={{backgroundImage: `url(${ImageUrl})`}}>
-            </div>
+        {slides.map((slide, idx) => (
+          <SwiperSlide className="swiper-slide" key={idx}>
+            <div className="image-layer" style={{backgroundImage: `url(${slide.image})`}}></div>
             <div className="shape1"><img src="/assets/img/shape/slider-v1-shape1.png" alt=""/></div>
             <div className="container px-5 py-5">
-                <div className="main-slider-one__single">
-                    
-                    <div className="main-slider-one__content">
-                        <div className="shape2 float-bob-x"><img src="/assets/img/shape/slider-v1-shape2.png"
-                                alt=""/></div>
-                        <div className='main-slider-one__content-container'>
-                        <h3>Cosmic</h3>
-                        <h2>Exploration</h2>
-                    
-                        <div className="btn-box">
-                            <div className="btn-one">
-                                <a className="thm-btn-one !bg-gray-300 hover:!text-gray-900" href="/contact">
-                                      <span><span className='txt'>Discover More</span></span>
-                                </a>
-                            </div>
-                            <div className="btn-two">
-                                <a onClick={() => setOpen(true)} className="video-popup" data-fancybox="video-1" data-caption="">
-                                    <div className="main-slider-one__icon">
-                                        <i ><FaPlay/></i>
-                                        <span>Watch Our Videos</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        </div>
-                        <div className='contact-info-footer'>
-
-                        <div className="contact-info">
-                   
-                            <ul>
-                                <li>
-                                    <div className="icon-box">
-                                        <span> <IoLocationOutline/></span>
-                                    </div>
-                                    <div className="text-box">
-                                        <p>465 NT Road. North West, England</p>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div className="icon-box">
-                                        <span><FaRegEnvelope/></span>
-                                    </div>
-                                    <div className="text-box">
-                                        <p><a href="mailto:yourmail@email.com">needhelpxafran@gmail.cpm</a>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+              <div className="main-slider-one__single">
+                <div className="main-slider-one__content">
+                  <div className="shape2 float-bob-x"><img src="/assets/img/shape/slider-v1-shape2.png" alt=""/></div>
+                  <div className='main-slider-one__content-container'>
+                    <h3>{slide.h3}</h3>
+                    <h2>{slide.h2}</h2>
+                    <div className="btn-box">
+                      <div className="btn-one">
+                        <a className="thm-btn-one !bg-gray-300 hover:!text-gray-900" href="/contact">
+                          <span><span className='txt'>Discover More</span></span>
+                        </a>
+                      </div>
+                      <div className="btn-two">
+                        <a onClick={() => setOpen(true)} className="video-popup" data-fancybox="video-1" data-caption="">
+                          <div className="main-slider-one__icon">
+                            <i ><FaPlay/></i>
+                            <span>Watch Our Videos</span>
+                          </div>
+                        </a>
                       </div>
                     </div>
+                  </div>
+                  <div className='contact-info-footer'>
+                    <div className="contact-info">
+                      <ul>
+                        <li>
+                          <div className="icon-box">
+                            <span> <IoLocationOutline/></span>
+                          </div>
+                          <div className="text-box">
+                            <p>465 NT Road. North West, England</p>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="icon-box">
+                            <span><FaRegEnvelope/></span>
+                          </div>
+                          <div className="text-box">
+                            <p><a href="mailto:yourmail@email.com">needhelpxafran@gmail.cpm</a></p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </SwiperSlide>
-        ))
-    }
+          </SwiperSlide>
+        ))}
        
         <div className="swiper-pagination1 swiper-pagination1-clickable swiper-pagination1-bullets" id="main-slider-one__pagination">
             <span className="swiper-pagination1-bullet swiper-pagination1-bullet-active"  role="button" aria-label="Go to slide 1"></span>

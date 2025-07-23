@@ -1,14 +1,15 @@
 import Segment from '@/components/ui/Segment'
-import { usePricingStore } from '../store/pricingStore'
+import { useAppSelector, useAppDispatch, setPaymentCycle } from '../store'
 import type { PaymentCycle } from '../types'
 
 const PaymentCycleToggle = () => {
-    const { paymentCycle, setPaymentCycle } = usePricingStore()
+    const paymentCycle = useAppSelector((state) => state.pricing.data.paymentCycle)
+    const dispatch = useAppDispatch()
 
     return (
         <Segment
             value={paymentCycle}
-            onChange={(val) => setPaymentCycle(val as PaymentCycle)}
+            onChange={(val) => dispatch(setPaymentCycle(val as PaymentCycle))}
         >
             <Segment.Item value="monthly">Monthly</Segment.Item>
             <Segment.Item value="annually">Annually</Segment.Item>

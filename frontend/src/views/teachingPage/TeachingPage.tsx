@@ -10,9 +10,13 @@ import reducer, {
     useAppSelector,
     useAppDispatch,
     getChapterData,
+    getChapterProgress,
     resetError,
+    setDotAnimation,
+    setMobileVisual,
 } from './store'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
+import useTextToSpeech2 from '@/utils/hooks/useTextToSpeech2'
 import { injectReducer } from '@/store'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
@@ -32,6 +36,23 @@ const TeachingPage = () => {
     const error = useAppSelector((state) => state.teaching.data.error)
     console.log(mobileVisual, 'moxile')
 
+    const [chatMessages, setChatMessages] = useState<string[] | undefined>([]);
+    const currentPage = useAppSelector((state) => state.teaching.data.currentPage);
+    const [responseMessage, setResponseMessage] = useState('');
+    const { textToSpeechConvert, isPlaying, stopAudio } = useTextToSpeech2();
+
+    const handleApiCall = (userInput: string, imageUrl?: string) => {
+        dispatch(setDotAnimation(true))
+        stopAudio()
+        if (chatMessages && setChatMessages) {
+            setChatMessages([...chatMessages, userInput])
+        }
+        if (smaller.sm) dispatch(setMobileVisual(true))
+        setResponseMessage('A paragraph is a series of sentences that are correlated to each other in a healthy way')
+        textToSpeechConvert(userInput, imageUrl)
+        
+    }
+
     useEffect(() => {
         if (error) {
             dispatch(resetError())
@@ -40,7 +61,9 @@ const TeachingPage = () => {
     }, [error])
 
     useEffect(() => {
+        
         dispatch(getChapterData(chapterId))
+        dispatch(getChapterProgress(chapterId))
     }, [])
 
     useEffect(() => {
@@ -82,53 +105,54 @@ The TRAPPIST-1 system is set to be an important target for observation with the 
 The HR 8799 system is a notable example of an exoplanetary system. It features a star, HR 8799, and its four orbiting exoplanets. To gain a deeper understanding of this system, you can watch the following video:`
 
     return (
-        <>
-            <Loading
-                loading={chapterLoading}
-                className="fixed inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#11161f] z-[99999]"
-            />
-            <div className="teaching-page-container relative h-screen overflow-hidden">
-                <div className="teaching-page-content h-full">
-                    <div className="w-full h-full">
-                    <div className="flex justify-center">
-                            <div className="book-sub-title">
-                                <h5 className='!text-[20px]'>
-                                    <span>Chapter One:</span> {chapterData?.title}
-                                </h5>
-                            </div>
-                            <i className="chevron-icon">
-                                <FaChevronLeft />
-                            </i>
-                        </div>
-                   
-                    <div className='book-animation flex items-center shadow-lg h-fit w-full pt-4'>
-                        <BookAnimation pages={chapterData?.pages}/>
-                    </div>
-                    </div>
-
-                    {!smaller.sm ? (
-                        <div className="book-side-container">
-                            <AudioVisualizer
-                                initialHeight={[15, 15, 15, 15]}
-                                intensity={50}
-                            />
-                            <MessageBox />
-                        </div>
-                    ) : (
-                        <>
-                            <MessageInput />
-                            <div
-                                className={`mobile-visulization-conatiner w-full ${mobileVisual ? 'active-mobile-visulization-conatiner' : ''}`}
-                            >
-                                <AudioVisualizer
-                                    initialHeight={[13, 13, 13, 13]}
-                                    intensity={30}
-                                />
-                            </div>
-                        </>
-                    )}
+        <>      
+            {(chapterLoading || currentPage == null) ? (
+                <div className="fixed inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#11161f] z-[99999]">
+                    <Loading loading={true} />
                 </div>
-            </div>
+            ) : (
+                <div className="teaching-page-container relative h-screen overflow-hidden">
+                    <div className="teaching-page-content h-full">
+                        <div className="w-full h-full">
+                            <div className="flex justify-center">
+                                <div className="book-sub-title">
+                                    <h5 className='!text-[20px]'>
+                                        <span>Chapter One:</span> {chapterData?.title}
+                                    </h5>
+                                </div>
+                                <i className="chevron-icon">
+                                    <FaChevronLeft />
+                                </i>
+                            </div>
+                            <div className='book-animation flex items-center shadow-lg h-fit w-full pt-4'>
+                                <BookAnimation pages={chapterData?.pages} handleApiCall={handleApiCall} />
+                            </div>
+                        </div>
+                        {!smaller.sm ? (
+                            <div className="book-side-container">
+                                <AudioVisualizer
+                                    initialHeight={[15, 15, 15, 15]}
+                                    intensity={50}
+                                />
+                                <MessageBox handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} />
+                            </div>
+                        ) : (
+                            <>
+                                <MessageInput handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} />
+                                <div
+                                    className={`mobile-visulization-conatiner w-full ${mobileVisual ? 'active-mobile-visulization-conatiner' : ''}`}
+                                    style={{ pointerEvents: 'none' }}
+                                >
+                                    <AudioVisualizer
+                                        initialHeight={[13, 13, 13, 13]}
+                                        intensity={30}
+                                    />
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </div>
+            )}
         </>
     )
 }

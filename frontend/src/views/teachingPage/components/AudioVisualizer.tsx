@@ -45,7 +45,7 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({initialHeight,intensit
   }, [frequencyData, isPlaying]);
 
   return (
-    <div className={`audio-visulizer-container`}>
+    <div className={`audio-visulizer-container`} style={{ pointerEvents: 'none' }}>
       <div className="canvas">
         {dotHeights.map((height, index) => (
           <div
