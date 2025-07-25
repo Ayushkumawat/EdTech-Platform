@@ -120,7 +120,7 @@ The HR 8799 system is a notable example of an exoplanetary system. It features a
                                         <span>Chapter One:</span> {chapterData?.title}
                                     </h5>
                                 </div>
-                                <i className="chevron-icon">
+                                <i className="chevron-icon" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
                                     <FaChevronLeft />
                                 </i>
                             </div>

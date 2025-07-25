@@ -1,5 +1,6 @@
 import Avatar from '@/components/ui/Avatar'
 import Dropdown from '@/components/ui/Dropdown'
+import Spinner from '@/components/ui/Spinner'
 import withHeaderItem from '@/utils/hoc/withHeaderItem'
 import useAuth from '@/utils/hooks/useAuth'
 import { Link } from 'react-router-dom'
@@ -7,7 +8,7 @@ import classNames from 'classnames'
 import { HiOutlineLogout, HiOutlineUser, HiOutlineCog } from 'react-icons/hi'
 import type { CommonProps } from '@/@types/common'
 import { FiActivity } from 'react-icons/fi'
-import { useAppSelector } from '@/store'
+import { useAppSelector, useAppDispatch, fetchCurrentUser, setUser } from '@/store'
 
 
 type DropdownList = {
@@ -24,20 +25,31 @@ const dropdownItemList: DropdownList[] = [
         icon: <HiOutlineUser />,
     },
     {
-        label: 'Account Setting',
+        label: 'Current Usage',
         path: '/app/account/settings/profile',
         icon: <HiOutlineCog />,
     },
     {
-        label: 'Activity Log',
-        path: '/app/account/activity-log',
-        icon: <FiActivity />,
-    },
+        label: 'Account Setting',
+        path: '/app/account/settings/profile',
+        icon: <HiOutlineCog />,
+    }
 ]
 const _UserDropdown = ({ className }: CommonProps) => {
 
     const { signOut } = useAuth()
     const user = useAppSelector((state) => state.auth.user)
+    const dispatch = useAppDispatch()
+
+    const fetchCurrentUsage = async () => {
+        if (user.loading) return // Prevent multiple calls
+        
+        try {
+            await dispatch(fetchCurrentUser())
+        } catch (error) {
+            console.error('Error fetching current usage:', error)
+        }
+    }
 
     const UserAvatar = (
         <div className={classNames(className, 'flex items-center gap-1  border-[var(--thm-primary)] border-[2px] p-[3px]')}>
@@ -52,6 +64,7 @@ const _UserDropdown = ({ className }: CommonProps) => {
                 renderTitle={UserAvatar}
                 placement="bottom-end"
                 trigger='hover'
+                onMouseEnter={fetchCurrentUsage}
             >
                 <Dropdown.Item variant="header">
                     <div className="py-3 px-3 flex items-center gap-2">
@@ -73,7 +86,7 @@ const _UserDropdown = ({ className }: CommonProps) => {
 
                     >
                         <Link 
-                            className="flex w-full" 
+                            className="flex w-full justify-between items-center" 
                             to={item.path}
                         >
                             <span className="flex gap-2">
@@ -82,6 +95,15 @@ const _UserDropdown = ({ className }: CommonProps) => {
                                 </span>
                                 <span>{item.label}</span>
                             </span>
+                            {item.label === 'Current Usage' && (
+                                <span className="text-sm opacity-75">
+                                    {user.loading ? (
+                                        <Spinner size={14} />
+                                    ) : (
+                                        (user.daily_usage || 0).toLocaleString()
+                                    )}
+                                </span>
+                            )}
                         </Link>
                     </Dropdown.Item>
                 ))}

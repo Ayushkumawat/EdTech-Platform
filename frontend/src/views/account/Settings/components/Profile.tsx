@@ -23,8 +23,10 @@ import * as Yup from 'yup'
 import type { OptionProps, ControlProps } from 'react-select'
 import type { FormikProps, FieldInputProps, FieldProps } from 'formik'
 import { useEffect, useState } from 'react'
-import { useAppSelector } from '@/store'
+import { useAppSelector, useAppDispatch } from '@/store'
+import { setUser } from '@/store/slices/auth/userSlice'
 import { apiGetClasses } from '@/services/ClassService'
+import { apiUpdateUser, UpdateUserRequest, UpdateUserResponse } from '@/services/UserService'
 
 export type ProfileFormModel = {
     name: string
@@ -50,9 +52,14 @@ const { Control } = components
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
-        .min(3, 'Too Short!')
-        .max(12, 'Too Long!')
-        .required('User Name Required'),
+        .required('Name Required')
+        .test('two-words', 'Please enter both first name and last name (exactly 2 words)', (value) => {
+            if (!value) return false;
+            const words = value.trim().split(/\s+/);
+            return words.length === 2 && words.every(word => word.length > 0);
+        })
+        .min(3, 'Name too short!')
+        .max(50, 'Name too long!'),
     email: Yup.string().email('Invalid email').required('Email Required'),
     class_id: Yup.string().required('Class Required'),
     avatar: Yup.string(),
@@ -125,8 +132,14 @@ const Profile = ({
 }: ProfileProps) => {
     const user_class_id = useAppSelector((state) => state.auth.user.class_id)
     const user_email = useAppSelector((state) => state.auth.user.email)
+    const user_first_name = useAppSelector((state) => state.auth.user.first_name)
+    const user_last_name = useAppSelector((state) => state.auth.user.last_name)
+    const dispatch = useAppDispatch()
     const [classOptions, setClassOptions] = useState<{ label: string; value: string }[]>([])
     const [loadingClasses, setLoadingClasses] = useState(false)
+    const [hasNameBeenTouched, setHasNameBeenTouched] = useState(false)
+    const [hasClassBeenTouched, setHasClassBeenTouched] = useState(false)
+    const [isUpdatingProfile, setIsUpdatingProfile] = useState(false)
 
     useEffect(() => {
         const fetchClasses = async () => {
@@ -155,35 +168,145 @@ const Profile = ({
         form.setFieldValue(field.name, URL.createObjectURL(file[0]))
     }
 
-    const onFormSubmit = (
+    const onFormSubmit = async (
         values: ProfileFormModel,
         setSubmitting: (isSubmitting: boolean) => void
     ) => {
-        console.log('values', values)
-        toast.push(<Notification title={'Profile updated'} type="success" />, {
-            placement: 'top-center',
-        })
-        setSubmitting(false)
+        try {
+            setIsUpdatingProfile(true);
+            
+            // Split name into first and last name
+            const nameParts = values.name.trim().split(/\s+/);
+            const firstName = nameParts[0] || '';
+            const lastName = nameParts[1] || '';
+            
+            const updateData: UpdateUserRequest = {
+                first_name: firstName,
+                last_name: lastName,
+                class_id: values.class_id,
+            };
+            
+            console.log('Updating user with data:', updateData);
+            
+            // Call the API
+            const response = await apiUpdateUser<UpdateUserResponse>(updateData);
+            
+            console.log('Update response:', response);
+            
+            // Update Redux store with new user data
+            dispatch(setUser({
+                first_name: firstName,
+                last_name: lastName,
+                email: user_email || '',
+                class_id: values.class_id,
+                avatar: values.avatar || '',
+                authority: [],
+                loading: false
+            }));
+            
+            toast.push(
+                <Notification 
+                    title="Profile updated successfully!" 
+                    type="success" 
+                />, 
+                {
+                    placement: 'top-center',
+                }
+            );
+            
+            // Reset touched states after successful update so new values become defaults
+            setHasNameBeenTouched(false);
+            setHasClassBeenTouched(false);
+            
+        } catch (error: any) {
+            console.error('Error updating profile:', error);
+            
+            // Extract error message from response if available
+            const errorMessage = error?.response?.data?.message || 
+                               error?.message || 
+                               'Failed to update profile. Please try again.';
+            
+            toast.push(
+                <Notification 
+                    title="Update Failed" 
+                    type="danger" 
+                >
+                    {errorMessage}
+                </Notification>, 
+                {
+                    placement: 'top-center',
+                }
+            );
+        } finally {
+            setIsUpdatingProfile(false);
+            setSubmitting(false);
+        }
     }
 
     return (
         <Formik
+            key={`${user_class_id}-${user_first_name}-${user_last_name}`}
             enableReinitialize
             initialValues={{
                 ...data,
+                name: data.name || 
+                      (user_first_name && user_last_name 
+                       ? `${user_first_name} ${user_last_name}` 
+                       : user_first_name || user_last_name || ''),
                 class_id: (data.class_id ?? user_class_id ?? ''),
                 email: (data.email ?? user_email ?? ''),
             }}
             validationSchema={validationSchema}
-            onSubmit={(values, { setSubmitting }) => {
-                setSubmitting(true)
-                setTimeout(() => {
-                    onFormSubmit(values, setSubmitting)
-                }, 1000)
+            onSubmit={async (values, { setSubmitting }) => {
+                setSubmitting(true);
+                await onFormSubmit(values, setSubmitting);
             }}
         >
             {({ values, touched, errors, isSubmitting, resetForm, setFieldValue }) => {
                 const validatorProps = { touched, errors }
+                
+                // Set the default class value when options are loaded
+                useEffect(() => {
+                    if (classOptions.length > 0 && user_class_id && !hasClassBeenTouched) {
+                        const matchingClass = classOptions.find(option => option.value === user_class_id)
+                        if (matchingClass && (!values.class_id || values.class_id === '')) {
+                            setFieldValue('class_id', user_class_id)
+                        }
+                    }
+                }, [classOptions, user_class_id, setFieldValue, hasClassBeenTouched])
+
+                // Additional effect to sync form with updated Redux state after profile update
+                // Only sync if user hasn't manually changed the class
+                useEffect(() => {
+                    if (!hasClassBeenTouched && classOptions.length > 0 && user_class_id && values.class_id !== user_class_id) {
+                        const matchingClass = classOptions.find(option => option.value === user_class_id)
+                        if (matchingClass) {
+                            setFieldValue('class_id', user_class_id)
+                        }
+                    }
+                }, [user_class_id, classOptions, values.class_id, setFieldValue, hasClassBeenTouched])
+
+                // Set the default name and email values from user data
+                useEffect(() => {
+                    // Only set name automatically if user hasn't touched the field yet
+                    if (!hasNameBeenTouched && !values.name && (user_first_name || user_last_name)) {
+                        let fullName = '';
+                        if (user_first_name && user_last_name) {
+                            fullName = `${user_first_name} ${user_last_name}`;
+                        } else if (user_first_name || user_last_name) {
+                            // If only one name is available, still set it but user will need to add the other
+                            fullName = user_first_name || user_last_name || '';
+                        }
+                        
+                        if (fullName) {
+                            setFieldValue('name', fullName);
+                        }
+                    }
+                    if (!values.email && user_email) {
+                        setFieldValue('email', user_email);
+                    }
+                }, [user_first_name, user_last_name, user_email, values.name, values.email, setFieldValue, hasNameBeenTouched])
+                
                 return (
                     <Form>
                         <FormContainer>
@@ -193,20 +316,29 @@ const Profile = ({
                             />
                             <FormRow
                                 name="name"
-                                label="Name"
+                                label="Full Name"
                                 {...validatorProps}
                             >
-                                <Field
-                                    type="text"
-                                    autoComplete="off"
-                                    name="name"
-                                    placeholder="Name"
-                                    component={Input}
-                                    className="border-white dark:border-gray-800"
-                                    prefix={
-                                        <HiOutlineUserCircle className="text-xl" />
-                                    }
-                                />
+                                <Field name="name">
+                                    {({ field, form }: FieldProps) => (
+                                        <Input
+                                            {...field}
+                                            type="text"
+                                            autoComplete="off"
+                                            placeholder="Enter first name and last name (e.g., John Doe)"
+                                            className="border-white dark:border-gray-800"
+                                            prefix={<HiOutlineUserCircle className="text-xl" />}
+                                            onChange={(e) => {
+                                                setHasNameBeenTouched(true);
+                                                form.setFieldValue('name', e.target.value);
+                                            }}
+                                            onBlur={(e) => {
+                                                setHasNameBeenTouched(true);
+                                                form.setFieldTouched('name', true);
+                                            }}
+                                        />
+                                    )}
+                                </Field>
                             </FormRow>
                             <FormRow
                                 name="email"
@@ -225,48 +357,6 @@ const Profile = ({
                                     }
                                 />
                             </FormRow>
-                            <FormRow
-                                name="avatar"
-                                label="Avatar"
-                                {...validatorProps}
-                            >
-                                <Field name="avatar">
-                                    {({ field, form }: FieldProps) => {
-                                        const avatarProps = field.value
-                                            ? { src: field.value }
-                                            : {}
-                                        return (
-                                            <Upload
-                                                className="cursor-pointer"
-                                                showList={false}
-                                                uploadLimit={1}
-                                                onChange={(files) =>
-                                                    onSetFormFile(
-                                                        form,
-                                                        field,
-                                                        files
-                                                    )
-                                                }
-                                                onFileRemove={(files) =>
-                                                    onSetFormFile(
-                                                        form,
-                                                        field,
-                                                        files
-                                                    )
-                                                }
-                                            >
-                                                <Avatar
-                                                    className="border-2 border-white dark:border-gray-800 shadow-lg"
-                                                    size={60}
-                                                    shape="circle"
-                                                    icon={<HiOutlineUser />}
-                                                    {...avatarProps}
-                                                />
-                                            </Upload>
-                                        )
-                                    }}
-                                </Field>
-                            </FormRow>
                             {/* Class Dropdown */}
                             <FormRow
                                 name="class_id"
@@ -274,17 +364,25 @@ const Profile = ({
                                 {...validatorProps}
                             >
                                 <Field name="class_id">
-                                    {({ field, form }: FieldProps) => (
-                                        <Select
-                                            field={field}
-                                            form={form}
-                                            options={classOptions}
-                                            isLoading={loadingClasses}
-                                            value={classOptions.find(option => option.value === values.class_id) || null}
-                                            onChange={option => form.setFieldValue('class_id', option?.value)}
-                                            placeholder="Select Class"
-                                        />
-                                    )}
+                                    {({ field, form }: FieldProps) => {
+                                        const selectedOption = classOptions.find(option => option.value === values.class_id);
+                                        
+                                        return (
+                                            <Select
+                                                field={field}
+                                                form={form}
+                                                options={classOptions}
+                                                isLoading={loadingClasses}
+                                                value={selectedOption || null}
+                                                onChange={option => {
+                                                    setHasClassBeenTouched(true);
+                                                    form.setFieldValue('class_id', option?.value || '');
+                                                }}
+                                                placeholder={loadingClasses ? "Loading classes..." : "Select Class"}
+                                                isDisabled={loadingClasses}
+                                            />
+                                        );
+                                    }}
                                 </Field>
                             </FormRow>
                             <FormDesription
@@ -322,49 +420,29 @@ const Profile = ({
                                     )}
                                 </Field>
                             </FormRow>
-                            <FormRow
-                                name="timeZone"
-                                label="Time Zone"
-                                {...validatorProps}
-                            >
-                                <Field
-                                    readOnly
-                                    type="text"
-                                    autoComplete="off"
-                                    name="timeZone"
-                                    placeholder="Time Zone"
-                                    component={Input}
-                                    prefix={
-                                        <HiOutlineGlobeAlt className="text-xl" />
-                                    }
-                                />
-                            </FormRow>
-                            <FormRow
-                                name="syncData"
-                                label="Sync Data"
-                                {...validatorProps}
-                                border={false}
-                            >
-                                <Field name="syncData" component={Switcher} />
-                            </FormRow>
                             <div className="mt-4 ltr:text-right">
                                 <Button
                                     className="ltr:mr-2 rtl:ml-2"
                                     type="button"
                                     shape='none'
-                                    
-                                    onClick={() => resetForm()}
+                                    disabled={isSubmitting || isUpdatingProfile}
+                                    onClick={() => {
+                                        resetForm();
+                                        setHasNameBeenTouched(false);
+                                        setHasClassBeenTouched(false);
+                                    }}
                                 >
                                     Reset
                                 </Button>
                                 <Button
                                     variant="solid"
                                     shape="none"
-                                    loading={isSubmitting}
+                                    loading={isSubmitting || isUpdatingProfile}
                                     className='!bg-[var(--thm-primary)] hover:opacity-80 '
                                     type="submit"
+                                    disabled={isSubmitting || isUpdatingProfile}
                                 >
-                                    {isSubmitting ? 'Updating' : 'Update'}
+                                    {(isSubmitting || isUpdatingProfile) ? 'Updating...' : 'Update'}
                                 </Button>
                             </div>
                         </FormContainer>

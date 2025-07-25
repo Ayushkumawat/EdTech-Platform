@@ -8,6 +8,7 @@ import {
     setDotAnimation,
     setMobileVisual,
     setCurrentPage,
+    setStartButton,
 } from '../store'
 import useResponsive from '@/utils/hooks/useResponsive'
 import useTextToSpeech2 from '@/utils/hooks/useTextToSpeech2'
@@ -22,7 +23,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
     const [micActive, setMicActive] = useState(false)
     const [message, setMessage] = useState('')
     const [responseMessage, setResponseMessage] = useState('')
-    const [startButton, setStartButton] = useState(true)
+    const startButton = useAppSelector((state) => state.teaching.data.startButton)
     const { smaller } = useResponsive()
     const { textToSpeechConvert, isPlaying, stopAudio } = useTextToSpeech2()
 
@@ -31,7 +32,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
     const inputPage = useAppSelector((state) => state.teaching.data.inputPage)
     const chapterData = useAppSelector((state) => state.teaching.data.chapterData)
     const current_page_image = (chapterData && currentPage !== null)
-  ? chapterData.pages[currentPage]
+  ? chapterData.pages[currentPage-1]
   : undefined;
     const dispatch = useAppDispatch()
 
@@ -42,9 +43,9 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
     const { transcript, startListening, stopListening } = useSpeechToText(handleApiCall)
 
     const startTeaching = () => {
-        setStartButton(false)
+        dispatch(setStartButton(false))
         console.log(current_page_image)
-        handleApiCall('start teaching this page',current_page_image)
+        //handleApiCall('start teaching this page',current_page_image)
     }
 
 
@@ -67,7 +68,18 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
     const sharedStyle: React.CSSProperties = {
         pointerEvents: shouldDisableInput ? 'none' as const : 'auto' as const,
         opacity: shouldDisableInput ? 0.5 : 1,
-        cursor: shouldDisableInput ? 'not-allowed' : 'pointer',
+    }
+
+    // Separate style for the button
+    const buttonStyle: React.CSSProperties = {
+        ...sharedStyle,
+        cursor: startButton ? 'pointer' : 'not-allowed',
+    }
+
+    // Separate style for the input
+    const inputStyle: React.CSSProperties = {
+        ...sharedStyle,
+        cursor: shouldDisableInput ? 'not-allowed' : 'text',
     }
 
     return (
@@ -82,6 +94,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
                 <div
                     className={`start-teaching-button ${startButton ? '' : 'start-teaching-button-deactive'}`}
                     onClick={startButton ? startTeaching : undefined}
+                    style={buttonStyle}
                 >
                     {startButton && 'Start Learning'}
                 </div>
@@ -98,7 +111,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         disabled={micActive || shouldDisableInput}
-                        style={{ cursor: sharedStyle.cursor }}
+                        style={inputStyle}
                     />
 
                     <div className="mic-stop-btn-container">

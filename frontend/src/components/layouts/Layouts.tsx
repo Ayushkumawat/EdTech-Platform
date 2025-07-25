@@ -13,7 +13,7 @@ import {
 } from '@/constants/theme.constant'
 import useDirection from '@/utils/hooks/useDirection'
 import useLocale from '@/utils/hooks/useLocale'
-import useAuth from '@/utils/hooks/useAuth'
+
 import { injectReducer } from '@/store'
 const layouts = {
     [LAYOUT_TYPE_CLASSIC]: lazy(() => import('./ClassicLayout')),
@@ -28,7 +28,7 @@ injectReducer("book_all",allBookReducer)
 
 const Layout = () => {
     const layoutType = useAppSelector((state) => state.theme.layout.type)
-    const { authenticated } = useAuth()
+ 
 
     
   
