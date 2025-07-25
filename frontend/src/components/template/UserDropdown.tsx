@@ -7,6 +7,7 @@ import classNames from 'classnames'
 import { HiOutlineLogout, HiOutlineUser, HiOutlineCog } from 'react-icons/hi'
 import type { CommonProps } from '@/@types/common'
 import { FiActivity } from 'react-icons/fi'
+import { useAppSelector } from '@/store'
 
 
 type DropdownList = {
@@ -36,10 +37,11 @@ const dropdownItemList: DropdownList[] = [
 const _UserDropdown = ({ className }: CommonProps) => {
 
     const { signOut } = useAuth()
+    const user = useAppSelector((state) => state.auth.user)
 
     const UserAvatar = (
         <div className={classNames(className, 'flex items-center gap-1  border-[var(--thm-primary)] border-[2px] p-[3px]')}>
-            <Avatar size={38} shape="circle"   src="/img/avatars/thumb-11.jpg" className="bg-slate-200 text-slate-400" icon={<HiOutlineUser />} />
+            <Avatar size={38} shape="circle"   src={user.avatar || "/img/avatars/thumb-11.jpg"} className="bg-slate-200 text-slate-400" icon={<HiOutlineUser />} />
         </div>
     )
 
@@ -53,12 +55,12 @@ const _UserDropdown = ({ className }: CommonProps) => {
             >
                 <Dropdown.Item variant="header">
                     <div className="py-3 px-3 flex items-center gap-2">
-                        <Avatar src="/img/avatars/thumb-11.jpg" shape="circle" icon={<HiOutlineUser />} />
+                        <Avatar src={user.avatar || "/img/avatars/thumb-11.jpg"} shape="circle" icon={<HiOutlineUser />} />
                         <div>
                             <div className="font-bold text-gray-900 dark:text-gray-100">
-                                User01
+                                {user.first_name || user.last_name ? `${user.first_name || ''} ${user.last_name || ''}`.trim() : 'User'}
                             </div>
-                            <div className="text-xs">user01@mail.com</div>
+                            <div className="text-xs">{user.email || 'user@mail.com'}</div>
                         </div>
                     </div>
                 </Dropdown.Item>

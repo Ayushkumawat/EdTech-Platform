@@ -22,11 +22,14 @@ import {
 import * as Yup from 'yup'
 import type { OptionProps, ControlProps } from 'react-select'
 import type { FormikProps, FieldInputProps, FieldProps } from 'formik'
+import { useEffect, useState } from 'react'
+import { useAppSelector } from '@/store'
+import { apiGetClasses } from '@/services/ClassService'
 
 export type ProfileFormModel = {
     name: string
     email: string
-    title: string
+    class_id: string
     avatar: string
     timeZone: string
     lang: string
@@ -51,7 +54,7 @@ const validationSchema = Yup.object().shape({
         .max(12, 'Too Long!')
         .required('User Name Required'),
     email: Yup.string().email('Invalid email').required('Email Required'),
-    title: Yup.string(),
+    class_id: Yup.string().required('Class Required'),
     avatar: Yup.string(),
     lang: Yup.string(),
     timeZone: Yup.string(),
@@ -113,13 +116,37 @@ const Profile = ({
     data = {
         name: '',
         email: '',
-        title: '',
+        class_id: '',
         avatar: '',
         timeZone: '',
         lang: '',
         syncData: false,
     },
 }: ProfileProps) => {
+    const user_class_id = useAppSelector((state) => state.auth.user.class_id)
+    const user_email = useAppSelector((state) => state.auth.user.email)
+    const [classOptions, setClassOptions] = useState<{ label: string; value: string }[]>([])
+    const [loadingClasses, setLoadingClasses] = useState(false)
+
+    useEffect(() => {
+        const fetchClasses = async () => {
+            setLoadingClasses(true)
+            try {
+                const response = await apiGetClasses<any>()
+                const options = (response.data || []).map((item: any) => ({
+                    label: item.name,
+                    value: item.uid,
+                }))
+                setClassOptions(options)
+            } catch (error) {
+                // handle error if needed
+            } finally {
+                setLoadingClasses(false)
+            }
+        }
+        fetchClasses()
+    }, [])
+
     const onSetFormFile = (
         form: FormikProps<ProfileFormModel>,
         field: FieldInputProps<ProfileFormModel>,
@@ -142,7 +169,11 @@ const Profile = ({
     return (
         <Formik
             enableReinitialize
-            initialValues={data}
+            initialValues={{
+                ...data,
+                class_id: (data.class_id ?? user_class_id ?? ''),
+                email: (data.email ?? user_email ?? ''),
+            }}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true)
@@ -151,7 +182,7 @@ const Profile = ({
                 }, 1000)
             }}
         >
-            {({ values, touched, errors, isSubmitting, resetForm }) => {
+            {({ values, touched, errors, isSubmitting, resetForm, setFieldValue }) => {
                 const validatorProps = { touched, errors }
                 return (
                     <Form>
@@ -188,6 +219,7 @@ const Profile = ({
                                     name="email"
                                     placeholder="Email"
                                     component={Input}
+                                    readOnly
                                     prefix={
                                         <HiOutlineMail className="text-xl" />
                                     }
@@ -235,22 +267,25 @@ const Profile = ({
                                     }}
                                 </Field>
                             </FormRow>
+                            {/* Class Dropdown */}
                             <FormRow
-                                name="title"
-                                label="Title"
+                                name="class_id"
+                                label="Class"
                                 {...validatorProps}
-                                border={false}
                             >
-                                <Field
-                                    type="text"
-                                    autoComplete="off"
-                                    name="title"
-                                    placeholder="Title"
-                                    component={Input}
-                                    prefix={
-                                        <HiOutlineBriefcase className="text-xl" />
-                                    }
-                                />
+                                <Field name="class_id">
+                                    {({ field, form }: FieldProps) => (
+                                        <Select
+                                            field={field}
+                                            form={form}
+                                            options={classOptions}
+                                            isLoading={loadingClasses}
+                                            value={classOptions.find(option => option.value === values.class_id) || null}
+                                            onChange={option => form.setFieldValue('class_id', option?.value)}
+                                            placeholder="Select Class"
+                                        />
+                                    )}
+                                </Field>
                             </FormRow>
                             <FormDesription
                                 className="mt-8"

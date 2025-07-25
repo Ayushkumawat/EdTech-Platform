@@ -10,7 +10,7 @@ export type AppConfig = {
 
 const appConfig: AppConfig = {
     apiPrefix: '/api',
-    apiPrefix1:'https://7707f29ba39a.ngrok-free.app/api/v1/',
+    apiPrefix1:'https://6a11d0e9b8cc.ngrok-free.app/api/v1/',
     authenticatedEntryPath: 'app/home',
     unAuthenticatedEntryPath: '/sign-in',
     tourPath: '/',
