@@ -120,8 +120,9 @@ async def get_user_by_id(user_id: str, session: AsyncSession = Depends(get_sessi
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
-@user_router.put("/{user_id}", response_model=UserOut)
-async def update_user(user_id: str, user_update: UserUpdate, session: AsyncSession = Depends(get_session)):
+@user_router.put("/", response_model=UserOut)
+async def update_user(user_update: UserUpdate, current_user: UserBase = Depends(get_current_user), session: AsyncSession = Depends(get_session)):
+    user_id = current_user.uid
     updated_user = await user_service.update_user(user_id, user_update, session)
     if not updated_user:
         raise HTTPException(status_code=404, detail="User not found")
@@ -198,7 +199,8 @@ async def login_users(login_data: UserLogin, session: AsyncSession = Depends(get
                     "user_id": str(user.uid),
                     "first_name": user.first_name,
                     "last_name": user.last_name,
-                    "class_id": str(user.class_id) 
+                    "class_id": str(user.class_id),
+                    "current_usage": user.daily_usage
                 }
             }
             if login_data.remember_me:

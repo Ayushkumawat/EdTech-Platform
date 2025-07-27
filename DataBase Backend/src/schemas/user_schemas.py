@@ -20,7 +20,7 @@ class UserUpdate(BaseModel):
     password: Optional[str] = None
     class_id: Optional[uuid.UUID] = None
     daily_usage: Optional[int] = None
-    subscription_id: uuid.UUID = None
+    subscription_id: Optional[uuid.UUID] = None
 
 class UserOut(BaseModel):
     uid: uuid.UUID
