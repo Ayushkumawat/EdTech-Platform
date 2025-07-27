@@ -6,333 +6,225 @@ import reducer, {
   useAppSelector,
 } from '@/views/teachingPage/store';
 import { injectReducer } from '@/store';
-import appConfig from '@/configs/app.config'
-import { apiAskGemini, apiAskGeminiImage } from '@/services/GeminiServices';
-import { PERSIST_STORE_NAME } from '@/constants/app.constant'
-import deepParseJson from '@/utils/deepParseJson'
-import store, { signOutSuccess } from '@/store'
-import { current } from '@reduxjs/toolkit';
-
-
+import appConfig from '@/configs/app.config';
+import { PERSIST_STORE_NAME } from '@/constants/app.constant';
+import deepParseJson from '@/utils/deepParseJson';
+import store from '@/store';
 
 injectReducer('teaching', reducer);
 
-const MIN_BUFFERED_CHUNKS = 5;
 const SAMPLE_RATE = 24000;
+const MIN_BUFFERED_CHUNKS = 5;
 const CONCAT_CHUNKS = 5;
 
-const useTextToSpeech2 = () => {
-  const isPlaying = useAppSelector((state) => state.teaching.data.isPlaying);
-  const frequencyData = useAppSelector((state) => state.teaching.data.frequencyData);
-  const dispatch = useAppDispatch();
-  const api_prifix= appConfig.apiPrefix1
-  const rawPersistData = localStorage.getItem(PERSIST_STORE_NAME)
-  const persistData = deepParseJson(rawPersistData)
-  let accessToken = (persistData as any).auth.session.token
-  if (!accessToken) {
-    const { auth } = store.getState()
-    accessToken = auth.session.token
-}
-
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const gainNodeRef = useRef<GainNode | null>(null);
-  const analyserRef = useRef<AnalyserNode | null>(null);
-  const animationFrameRef = useRef<number | null>(null);
-  const abortControllerRef = useRef<AbortController | null>(null);
-  const playingRef = useRef(false);
-  const bufferQueueRef = useRef<ArrayBuffer[]>([]);
-  const isChunkPlayingRef = useRef(false);
-  const playbackTimeRef = useRef<number>(0);
-  const scheduledSourcesRef = useRef<AudioBufferSourceNode[]>([]);
-  const streamEndedRef = useRef(false);
-
-  const initAudioContext = useCallback(async () => {
-    // Only create a new context if none exists or if the existing one is closed
-    if (!audioContextRef.current || audioContextRef.current.state === 'closed') {
-      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
-      try {
-        audioContextRef.current = new AudioContextClass({ sampleRate: SAMPLE_RATE });
-      } catch (e) {
-        console.warn('Custom sample rate not supported. Using default.');
-        audioContextRef.current = new AudioContextClass();
-      }
-      gainNodeRef.current = audioContextRef.current.createGain();
-      analyserRef.current = audioContextRef.current.createAnalyser();
-      analyserRef.current.fftSize = 2048;
-      analyserRef.current.smoothingTimeConstant = 0.8;
-      gainNodeRef.current.connect(analyserRef.current);
-      analyserRef.current.connect(audioContextRef.current.destination);
-    }
-    if (audioContextRef.current.state === 'suspended') {
-      await audioContextRef.current.resume();
-    }
-    return audioContextRef.current;
-  }, []);
-
-  const checkPlaybackComplete = useCallback(() => {
-    // Check if stream has ended and all audio has finished playing
-    if (streamEndedRef.current && 
-        scheduledSourcesRef.current.length === 0 && 
-        bufferQueueRef.current.length === 0) {
-      dispatch(setIsPlaying(false));
-      playingRef.current = false;
-    }
-  }, [dispatch]);
-
-  const stopAudio = useCallback(() => {
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-      abortControllerRef.current = null;
-    }
-    // Instantly stop audio by setting gain to zero
-    if (gainNodeRef.current && audioContextRef.current) {
-      gainNodeRef.current.gain.cancelScheduledValues(audioContextRef.current.currentTime);
-      gainNodeRef.current.gain.setValueAtTime(0, audioContextRef.current.currentTime);
-    }
-    // Stop and disconnect all scheduled sources
-    scheduledSourcesRef.current.forEach(source => {
-      try { source.stop(); source.disconnect(); } catch {}
-    });
-    scheduledSourcesRef.current = [];
-    playingRef.current = false;
-    bufferQueueRef.current = [];
-    isChunkPlayingRef.current = false;
-    playbackTimeRef.current = 0;
-    streamEndedRef.current = false;
-    
-    // Set playing state to false immediately when manually stopped
-    dispatch(setIsPlaying(false));
-    
-    // Restore gain for next playback
-    setTimeout(() => {
-      if (gainNodeRef.current) gainNodeRef.current.gain.value = 1;
-    }, 50);
-  }, [dispatch]);
-
-  // PCM chunk playback function with scheduling
-  const playPCMAudio = useCallback(async (pcmData: ArrayBuffer, scheduleTime: number) => {
-    try {
-      const audioContext = audioContextRef.current;
-      if (!audioContext) return 0;
-      const numChannels = 1;
-      const audioBuffer = audioContext.createBuffer(
-        numChannels,
-        pcmData.byteLength / 2,
-        SAMPLE_RATE
-      );
-      const channelData = audioBuffer.getChannelData(0);
-      const pcmView = new Int16Array(pcmData);
-      for (let i = 0; i < pcmView.length; i++) {
-        channelData[i] = pcmView[i] / 32768.0;
-      }
-      const source = audioContext.createBufferSource();
-      source.buffer = audioBuffer;
-      source.connect(gainNodeRef.current || audioContext.destination);
-      source.start(scheduleTime);
-      // Track this source for stopping
-      scheduledSourcesRef.current.push(source);
-      source.onended = () => {
-        // Remove this source from the array
-        scheduledSourcesRef.current = scheduledSourcesRef.current.filter(s => s !== source);
-        // Check if playback is complete after this source ends
-        setTimeout(() => checkPlaybackComplete(), 100);
-      };
-      return audioBuffer.duration;
-    } catch (error) {
-      console.error('Error playing PCM audio:', error);
-      return 0;
-    }
-  }, [checkPlaybackComplete]);
-
-  // Concatenate and schedule playback by fixed chunk count
-  const playQueue = useCallback(async () => {
-    if (isChunkPlayingRef.current) return;
-    isChunkPlayingRef.current = true;
-    const audioContext = audioContextRef.current;
-    if (!audioContext) return;
-    if (playbackTimeRef.current < audioContext.currentTime) {
-      playbackTimeRef.current = audioContext.currentTime;
-    }
-  
-    while (playingRef.current && bufferQueueRef.current.length >= CONCAT_CHUNKS) {
-      // Concatenate CONCAT_CHUNKS buffers
-      const chunks = bufferQueueRef.current.splice(0, CONCAT_CHUNKS);
-      const totalLength = chunks.reduce((sum, arr) => sum + arr.byteLength, 0);
-      const joined = new Uint8Array(totalLength);
-      let offset = 0;
-      for (const arr of chunks) {
-        joined.set(new Uint8Array(arr), offset);
-        offset += arr.byteLength;
-      }
-      const duration = await playPCMAudio(joined.buffer, playbackTimeRef.current);
-      playbackTimeRef.current += duration;
-    }
-
-    // Handle remaining chunks when stream has ended
-    if (streamEndedRef.current && bufferQueueRef.current.length > 0) {
-      const chunks = bufferQueueRef.current.splice(0);
-      const totalLength = chunks.reduce((sum, arr) => sum + arr.byteLength, 0);
-      const joined = new Uint8Array(totalLength);
-      let offset = 0;
-      for (const arr of chunks) {
-        joined.set(new Uint8Array(arr), offset);
-        offset += arr.byteLength;
-      }
-      const duration = await playPCMAudio(joined.buffer, playbackTimeRef.current);
-      playbackTimeRef.current += duration;
-    }
-    
-    isChunkPlayingRef.current = false;
-    
-    // Check if playback is complete after processing queue
-    setTimeout(() => checkPlaybackComplete(), 100);
-  }, [playPCMAudio, checkPlaybackComplete]);
-
-  // Streaming TTS with Fetch API
-  const textToSpeechConvert = useCallback(
-    async (text: string, imageUrl?: string) => {
-      if (!text.trim()) return;
-
-      stopAudio();
-
-      try {
-        const audioContext = await initAudioContext();
-        if (!audioContext || !gainNodeRef.current) {
-          throw new Error('Failed to initialize audio context');
-        }
-
-        playingRef.current = true;
-        streamEndedRef.current = false;
-        abortControllerRef.current = new AbortController();
-        bufferQueueRef.current = [];
-        isChunkPlayingRef.current = false;
-        playbackTimeRef.current = 0;
-        scheduledSourcesRef.current = [];
-
-        // Use fetch for streaming support instead of axios
-        let endpoint, body;
-        if (imageUrl) {
-          endpoint = api_prifix+'gemini/ask-image';
-          body = { url: imageUrl, text};
-        } else {
-          endpoint = api_prifix+'gemini/ask';
-          body = { text };
-        }
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`
-          },
-          body: JSON.stringify(body),
-          signal: abortControllerRef.current.signal,
-        });
-        if (!response.body) throw new Error('No stream');
-        const reader = response.body.getReader();
-        let leftover: Uint8Array | null = null;
-        let hasStartedPlaying = false;
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          if (value) {
-            let chunk = value;
-            if (leftover) {
-              const combined = new Uint8Array(leftover.length + chunk.length);
-              combined.set(leftover, 0);
-              combined.set(chunk, leftover.length);
-              chunk = combined;
-              leftover = null;
-            }
-            if (chunk.length % 2 !== 0) {
-              leftover = chunk.slice(chunk.length - 1);
-              chunk = chunk.slice(0, chunk.length - 1);
-            }
-            if (chunk.length > 0) {
-              bufferQueueRef.current.push(chunk.buffer as ArrayBuffer);
-              if (!hasStartedPlaying && bufferQueueRef.current.length >= MIN_BUFFERED_CHUNKS) {
-                dispatch(setIsPlaying(true));
-                hasStartedPlaying = true;
-                playQueue();
-              } else if (
-                hasStartedPlaying &&
-                !isChunkPlayingRef.current &&
-                bufferQueueRef.current.length >= CONCAT_CHUNKS
-              ) {
-                playQueue();
-              }
-            }
-          }
-        }
-        streamEndedRef.current = true;
-        if (bufferQueueRef.current.length > 0) {
-          playQueue();
-        } else {
-          checkPlaybackComplete();
-        }
-      } catch (error) {
-        console.error('TTS streaming error:', error);
-        dispatch(setIsPlaying(false));
-        playingRef.current = false;
-        streamEndedRef.current = false;
-      }
-    },
-    [dispatch, initAudioContext, stopAudio, playQueue, checkPlaybackComplete]);
-
-  useEffect(() => {
-    const updateFrequencyData = () => {
-      if (!analyserRef.current || !isPlaying) return;
-      const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
-      const getFrequency = () => {
-        if (!analyserRef.current || !isPlaying) return;
-        analyserRef.current.getByteFrequencyData(dataArray);
-        dispatch(setFrequencyData([...dataArray]));
-        if (isPlaying) {
-          animationFrameRef.current = requestAnimationFrame(getFrequency);
-        }
-      };
-      getFrequency();
-    };
-    if (isPlaying) {
-      updateFrequencyData();
-    } else if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-      animationFrameRef.current = null;
-    }
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [isPlaying, dispatch]);
-
-  useEffect(() => {
-    return () => {
-      stopAudio();
-      // Clean up all scheduled sources
-      scheduledSourcesRef.current.forEach(source => {
-        try { source.stop(); source.disconnect(); } catch {}
-      });
-      scheduledSourcesRef.current = [];
-      // Disconnect gain node and analyser
-      if (gainNodeRef.current) {
-        try { gainNodeRef.current.disconnect(); } catch {}
-      }
-      if (analyserRef.current) {
-        try { analyserRef.current.disconnect(); } catch {}
-      }
-      // Close the audio context if it exists and is not already closed
-      if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
-        audioContextRef.current.close();
-      }
-    };
-  }, [stopAudio]);
-
-  return {
-    textToSpeechConvert,
-    isPlaying,
-    frequencyData,
-    stopAudio,
-  };
+type TextToSpeechHook = {
+  textToSpeechConvert: (text: string, imageUrl?: string) => Promise<void>;
+  stopAudio: () => void;
+  isPlaying: boolean;
+  frequencyData: number[];
 };
 
-export default useTextToSpeech2;
+const useTextToSpeech = (): TextToSpeechHook => {
+  const dispatch = useAppDispatch();
+  const isPlaying = useAppSelector(state => state.teaching.data.isPlaying);
+  const frequencyData = useAppSelector(state => state.teaching.data.frequencyData);
+
+  const getToken = (): string => {
+    const raw = localStorage.getItem(PERSIST_STORE_NAME);
+    const data = deepParseJson(raw);
+    return (data as any)?.auth?.session?.token || store.getState().auth.session.token;
+  };
+
+  // Refs
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const gainRef = useRef<GainNode | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const bufferQueue = useRef<ArrayBuffer[]>([]);
+  const sourcesRef = useRef<AudioBufferSourceNode[]>([]);
+  const abortCtrlRef = useRef<AbortController | null>(null);
+  const playingRef = useRef<boolean>(false);
+  const streamEndedRef = useRef<boolean>(false);
+  const nextStartTime = useRef<number>(0);
+
+  const initAudio = useCallback(async (): Promise<AudioContext> => {
+    if (!audioCtxRef.current || audioCtxRef.current.state === 'closed') {
+      const Ctx = window.AudioContext || (window as any).webkitAudioContext;
+      try {
+        audioCtxRef.current = new Ctx({ sampleRate: SAMPLE_RATE });
+      } catch {
+        audioCtxRef.current = new Ctx();
+      }
+      gainRef.current = audioCtxRef.current.createGain();
+      analyserRef.current = audioCtxRef.current.createAnalyser();
+      analyserRef.current.fftSize = 2048;
+      analyserRef.current.smoothingTimeConstant = 0.8;
+      gainRef.current.connect(analyserRef.current);
+      analyserRef.current.connect(audioCtxRef.current.destination);
+    }
+    if (audioCtxRef.current.state === 'suspended') {
+      await audioCtxRef.current.resume();
+    }
+    return audioCtxRef.current;
+  }, []);
+
+  const scheduleChunk = useCallback(
+    async (arrayBuffer: ArrayBuffer): Promise<number> => {
+      const ctx = audioCtxRef.current;
+      if (!ctx || !playingRef.current) return 0;
+
+      const pcm = new Int16Array(arrayBuffer);
+      const audioBuf = ctx.createBuffer(1, pcm.length, SAMPLE_RATE);
+      const floatData = audioBuf.getChannelData(0);
+      pcm.forEach((v, i) => (floatData[i] = v / 32768));
+
+      const src = ctx.createBufferSource();
+      src.buffer = audioBuf;
+      src.connect(gainRef.current ?? ctx.destination);
+
+      const startTime = Math.max(ctx.currentTime, nextStartTime.current);
+      src.start(startTime);
+
+      nextStartTime.current = startTime + audioBuf.duration;
+      sourcesRef.current.push(src);
+
+      src.onended = () => {
+        sourcesRef.current = sourcesRef.current.filter(s => s !== src);
+        if (
+          streamEndedRef.current &&
+          sourcesRef.current.length === 0 &&
+          bufferQueue.current.length === 0
+        ) {
+          dispatch(setIsPlaying(false));
+          playingRef.current = false;
+        }
+      };
+
+      return audioBuf.duration;
+    },
+    [dispatch]
+  );
+
+  const processQueue = useCallback(async (): Promise<void> => {
+    if (!playingRef.current) return;
+
+    while (bufferQueue.current.length >= CONCAT_CHUNKS) {
+      const chunks = bufferQueue.current.splice(0, CONCAT_CHUNKS);
+      const total = chunks.reduce((sum, c) => sum + c.byteLength, 0);
+      const combined = new Uint8Array(total);
+      let offset = 0;
+      chunks.forEach(c => {
+        combined.set(new Uint8Array(c), offset);
+        offset += c.byteLength;
+      });
+      await scheduleChunk(combined.buffer);
+    }
+
+    if (streamEndedRef.current && bufferQueue.current.length > 0) {
+      const remaining = bufferQueue.current.splice(0);
+      const total = remaining.reduce((sum, c) => sum + c.byteLength, 0);
+      const combined = new Uint8Array(total);
+      let off = 0;
+      remaining.forEach(c => {
+        combined.set(new Uint8Array(c), off);
+        off += c.byteLength;
+      });
+      await scheduleChunk(combined.buffer);
+    }
+  }, [scheduleChunk]);
+
+  const stopAudio = useCallback(() => {
+    abortCtrlRef.current?.abort();
+    playingRef.current = false;
+    streamEndedRef.current = false;
+    bufferQueue.current = [];
+    nextStartTime.current = 0;
+    sourcesRef.current.forEach(src => { try { src.stop(); } catch {} });
+    sourcesRef.current = [];
+    dispatch(setIsPlaying(false));
+    if (gainRef.current) gainRef.current.gain.value = 1;
+  }, [dispatch]);
+
+  const textToSpeechConvert = useCallback(
+    async (text: string, imageUrl?: string): Promise<void> => {
+      if (!text.trim()) return;
+     
+
+      const ctx = await initAudio();
+      const token = getToken();
+      playingRef.current = true;
+      abortCtrlRef.current = new AbortController();
+      streamEndedRef.current = false;
+      nextStartTime.current = ctx.currentTime;
+
+      const endpoint = `${appConfig.apiPrefix1}gemini/${imageUrl ? 'ask-image' : 'ask'}`;
+      const payload = imageUrl
+        ? { url: imageUrl, text }
+        : { text };
+
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
+        signal: abortCtrlRef.current.signal,
+      });
+      if (!res.ok || !res.body) throw new Error('Audio stream error');
+
+      const reader = res.body.getReader();
+      let leftover: Uint8Array | null = null;
+      let started = false;
+
+      while (playingRef.current) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        let chunk = value;
+        if (leftover) {
+          chunk = new Uint8Array([...leftover, ...chunk]);
+          leftover = null;
+        }
+        if (chunk.length % 2 !== 0) {
+          leftover = chunk.slice(-1);
+          chunk = chunk.slice(0, -1);
+        }
+        if (chunk.length) {
+          bufferQueue.current.push(chunk.buffer as ArrayBuffer);
+          if (!started && bufferQueue.current.length >= MIN_BUFFERED_CHUNKS) {
+            dispatch(setIsPlaying(true));
+            started = true;
+            processQueue();
+          } else if (started) {
+            processQueue();
+          }
+        }
+      }
+
+      reader.releaseLock();
+      streamEndedRef.current = true;
+      processQueue();
+    },
+    [dispatch, initAudio, stopAudio, processQueue]
+  );
+
+  useEffect(() => {
+    let rafId: number;
+    const update = () => {
+      const analyser = analyserRef.current;
+      if (analyser && isPlaying) {
+        const data = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(data);
+       
+        rafId = requestAnimationFrame(update);
+      }
+    };
+    if (isPlaying) update();
+    return () => cancelAnimationFrame(rafId);
+  }, [isPlaying, dispatch]);
+
+  useEffect(() => () => stopAudio(), [stopAudio]);
+
+  return { textToSpeechConvert, stopAudio, isPlaying, frequencyData };
+};
+
+export default useTextToSpeech;

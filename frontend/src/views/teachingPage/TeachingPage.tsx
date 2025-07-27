@@ -34,12 +34,11 @@ const TeachingPage = () => {
     const chapterData = useAppSelector((state) => state.teaching.data.chapterData)
     const chapterLoading = useAppSelector((state) => state.teaching.data.chapterLoading)
     const error = useAppSelector((state) => state.teaching.data.error)
-    console.log(mobileVisual, 'moxile')
 
     const [chatMessages, setChatMessages] = useState<string[] | undefined>([]);
     const currentPage = useAppSelector((state) => state.teaching.data.currentPage);
     const [responseMessage, setResponseMessage] = useState('');
-    const { textToSpeechConvert, isPlaying, stopAudio } = useTextToSpeech2();
+    const { textToSpeechConvert, stopAudio } = useTextToSpeech2();
 
     const handleApiCall = (userInput: string, imageUrl?: string) => {
         dispatch(setDotAnimation(true))

@@ -17,7 +17,7 @@ const LandingPage = () => {
 
   return (
     <>
-    <div className='overflow-hidden' style={{ position: 'relative' }}>
+    <div style={{ position: 'relative' }}>
       <Ribbons
         baseThickness={20}
         colors={['#e90b35']}

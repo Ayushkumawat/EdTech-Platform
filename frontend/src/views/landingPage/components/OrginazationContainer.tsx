@@ -6,7 +6,7 @@ export default function Organization() {
         <>
             {/* Start Brand One*/}
             <div className="brand-one">
-                <div className="brand-one-inner flex w-full items-center max-w-[1300px] h-20">
+                <div className="brand-one-inner flex w-full items-center w-full h-16 md:h-20">
                 <CurvedLoop 
                 marqueeText="      Xafran      "
                 speed={2}

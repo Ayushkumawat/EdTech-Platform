@@ -139,7 +139,7 @@ function _Select<
     const twColor = {
         red: { 500: '#EF4444' },
         gray: { 600: '#4B5563', 300: '#D1D5DB', 700: '#374151' },
-        blue: { 50: '#EFF6FF', 100: '#DBEAFE' },
+        blue: { 50: '#EFF6FF', 100: 'transparent' },
         // Add other colors as necessary
     }
     const twHeight = {
@@ -174,7 +174,7 @@ function _Select<
             if (themeColors && themeColors[colorLevel as keyof typeof themeColors]) {
                 return shadaowBase + themeColors[colorLevel as keyof typeof themeColors]
             }
-            return shadaowBase + twColor.blue['100'] // fallback
+            return shadaowBase// fallback
         }
 
         return 'none'
@@ -232,7 +232,26 @@ function _Select<
                     fontSize: '14px', // small size
                     fontWeight: '600',
                 }),
-                menu: (provided) => ({ ...provided, zIndex: 50, backgroundColor: mode === 'dark' ? '#1F2937' : '#FFFFFF', border: `1px solid ${mode === 'dark' ? '#374151' : '#E5E7EB'}` }),
+                menu: (provided) => ({ 
+                    ...provided, 
+                    zIndex: 50, 
+                    backgroundColor: mode === 'dark' ? '#1F2937' : '#FFFFFF', 
+                    border: `1px solid ${mode === 'dark' ? '#374151' : '#E5E7EB'}`,
+                    '&::-webkit-scrollbar': {
+                        display: 'none'
+                    },
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none'
+                }),
+                menuList: (provided) => ({
+                    ...provided,
+                    '&::-webkit-scrollbar': {
+                        display: 'none'
+                    },
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none',
+                    overflow: 'auto'
+                }),
                 ...style,
             }}
             theme={(theme) => ({
@@ -253,8 +272,7 @@ function _Select<
                             ? twColor.gray['600']
                             : twColor.gray['300'],
                     primary25: twColor.gray['600'],
-                    primary50: twColor.blue['100'],
-                    primary: twColor.blue["100"],
+                
                 },
             })}
             themeColor={`${themeColor}-${primaryColorLevel}`}

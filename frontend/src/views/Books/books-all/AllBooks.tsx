@@ -32,6 +32,10 @@ const AllBooks = () => {
         }
     }
 
+    const handleClassChange = (newClassId: string) => {
+        dispatch(getBooksData(newClassId))
+    }
+
     useEffect(() => {
         fetchData()
     }, [])
@@ -55,7 +59,11 @@ const AllBooks = () => {
     return (
         <> 
             <Loading loading={bookLoading} className="fixed inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#11161f] z-[99999]" />
-            <BookListing booksdata={booksdata} subjectsData={subjectsData}/>
+            <BookListing 
+                booksdata={booksdata} 
+                subjectsData={subjectsData}
+                onClassChange={handleClassChange}
+            />
         </>
     )
 }

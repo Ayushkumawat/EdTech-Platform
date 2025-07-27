@@ -13,13 +13,18 @@ const Faq = () => {
             <h3 className="mt-2">FAQ</h3>
             <div className="flex flex-col md:flex-row gap-4 md:gap-20 mt-8">
                 <div className="min-w-[230px]">
-                    <Menu>
+                    <Menu className="bg-gray-100 dark:bg-[#11161f]">
                         {Object.entries(questionList).map(([key]) => (
                             <Menu.MenuItem
                                 key={key}
                                 isActive={key === selectedCategory}
                                 eventKey={key}
                                 onSelect={setSelectedCategory}
+                                className={`bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 ${
+                                    key === selectedCategory 
+                                        ? '!bg-gray-900 !text-white dark:bg-gray-900 !dark:text-white' 
+                                        : ''
+                                }`}
                             >
                                 {questionCategory[key]}
                             </Menu.MenuItem>

@@ -56,25 +56,44 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
   };
 
   const handlePtrDown = (e: React.MouseEvent | React.TouchEvent) => {
-    if ('button' in e && e.type === 'mousedown' && e.button !== 0) return;
-    clickRef.current = true;
-    playSound();
+    // Allow clicks on buttons and interactive elements
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'BUTTON' || target.closest('button')) {
+      return; // Allow button clicks
+    }
+    
+    // Completely prevent mouse events, but allow touch events for swipe
+    if (e.type === 'mousedown') {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+    
+    // Allow touch events for swipe functionality
+    if (e.type === 'touchstart') {
+      clickRef.current = true;
+      playSound();
+    }
   };
 
   const handleFlip = () => {
     const inst = bookRef.current?.pageFlip?.();
     if (!inst || typeof inst.getCurrentPageIndex !== 'function') return;
     const newIdx = inst.getCurrentPageIndex();
-    if (lastPageIndexRef.current !== null && typeof inputPage === 'number') {
+    
+    // Only update inputPage if it's currently 0 (not during AI speech)
+    if (lastPageIndexRef.current !== null && typeof inputPage === 'number' && inputPage === 0) {
       if (newIdx > lastPageIndexRef.current) dispatch(setInputPage(inputPage + 1));
       else if (newIdx < lastPageIndexRef.current) dispatch(setInputPage(inputPage - 1));
     }
+    
     lastPageIndexRef.current = newIdx;
     if (!clickRef.current) playSound();
     clickRef.current = false;
   };
 
   const continuePage = (pageNum: number, url: string) => {
+    console.log('continuePage called with:', pageNum, url);
     if (chapterId) dispatch(putChapterProgress({ uid: chapterId, current_page: pageNum }));
     playSound();
     const inst = bookRef.current?.pageFlip?.();
@@ -84,8 +103,9 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
       lastPageIndexRef.current = target;
     }
     dispatch(setInputPage(0));
-    dispatch(setStartButton(false)); // Added: set startButton to false
-    //handleApiCall('start teaching this page', url);
+    dispatch(setStartButton(false)); 
+    // Added: set startButton to false
+    handleApiCall('start teaching this page', url);
   };
 
   const handleMouseEnter = (pageNum: number) => {
@@ -103,6 +123,7 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
 
   useEffect(() => {
     const inst = bookRef.current?.pageFlip?.();
+    if (currentPage === null) return;
     const target = currentPage - startPageNumber;
     if (
       inst?.getCurrentPageIndex &&
@@ -130,14 +151,19 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
           maxShadowOpacity={0.5}
           drawShadow
           onFlip={handleFlip}
-          onFlipStart={() => setIsFlipping(true)}
-          onFlipEnd={() => setIsFlipping(false)}
           startPage={currentPage - startPageNumber}
           flippingTime={800}
           usePortrait
-          useMouseEvents
+          useMouseEvents={true}
           swipeDistance={30}
           autoSize
+          style={{}}
+          startZIndex={0}
+          showCover={false}
+          mobileScrollSupport={true}
+          clickEventForward={false}
+          showPageCorners={true}
+          disableFlipByClick={true}
         >
           {pages.map((url, idx) => {
             const pageNum = idx + startPageNumber;
@@ -148,8 +174,6 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
               <div
                 key={pageNum}
                 className={`relative overflow-hidden w-full h-full ${!isCurrent ? 'cursor-pointer' : ''}`}
-                onMouseDown={handlePtrDown}
-                onTouchStart={handlePtrDown}
                 onMouseEnter={() => handleMouseEnter(pageNum)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -166,6 +190,7 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
                   {isHovered && !isCurrent && (
                     <motion.div
                       className="inset-0 absolute bg-black bg-opacity-50 flex items-center justify-center"
+                      style={{ zIndex: 9999 }}
                       initial="hidden"
                       animate="visible"
                       exit="hidden"

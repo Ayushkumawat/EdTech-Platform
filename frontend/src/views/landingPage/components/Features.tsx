@@ -10,7 +10,7 @@ const Features = () => {
 
 
         <div className="why-choose-us-one">
-            <div className="flex justify-center w-full bg-[#181e2b] shadow-[0_0_25px_rgba(0,0,0,0.1)]">
+            <div className="flex justify-center w-full bg-[#181e2b] shadow-[0_0_25px_rgba(0,0,0,0.1)] h-[70vh] md:h-fit">
                 <div className='w-full relative'>
                     <img className="absolute bottom-0 left-0 w-[700px] h-auto" src="/featured_background.png" alt="" />
                     <div className="row flex justify-end">

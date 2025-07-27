@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import useTextToSpeech2 from '@/utils/hooks/useTextToSpeech2'
 import reducer,{setDotAnimation,useAppSelector,useAppDispatch,setMobileVisual} from "../store"
 import { injectReducer } from "@/store";
@@ -17,12 +17,22 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({initialHeight,intensit
   const mobileVisual=useAppSelector((state)=>state.teaching.data.mobileVisual)
   const {isPlaying, stopAudio, frequencyData } = useTextToSpeech2()
   const dispatch=useAppDispatch()
+
+  // Memoize dot heights calculation to prevent unnecessary re-renders
+  const calculatedDotHeights = useMemo(() => {
+    if (!isPlaying || !frequencyData || frequencyData.length === 0) {
+      return initialHeight;
+    }
+
+    return [30, 20, 10, 50].map(
+      (index) => (frequencyData[index] / 255) * intensity + initialHeight[0]
+    );
+  }, [frequencyData, isPlaying, initialHeight, intensity]);
  
   useEffect(() => {
-     
     if (isPlaying){
       console.log("this is playing")
-      dispatch(dispatch(setDotAnimation(false)))
+      dispatch(setDotAnimation(false))
     }
 
     if (!isPlaying) {
@@ -31,18 +41,10 @@ const AudioVisualizer: React.FC<AudioVisualizerProps> = ({initialHeight,intensit
       return;
     }
 
-    const newDotHeights = [30, 20, 10, 50].map(
-      (index) => (frequencyData[index] / 255) * intensity + initialHeight[0]
-    );
+    // Update dot heights only when calculated values change
+    setDotHeights(calculatedDotHeights);
 
-    setDotHeights((prevHeights) => {
-      if (JSON.stringify(prevHeights) !== JSON.stringify(newDotHeights)) {
-        return newDotHeights;
-      }
-      return prevHeights;
-    });
-
-  }, [frequencyData, isPlaying]);
+  }, [calculatedDotHeights, isPlaying, initialHeight, dispatch]);
 
   return (
     <div className={`audio-visulizer-container`} style={{ pointerEvents: 'none' }}>

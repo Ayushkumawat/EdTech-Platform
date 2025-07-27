@@ -4339,7 +4339,7 @@
 .main-slider-one__content .contact-info {
     position: relative;
     display: block;
-    margin-top: 150px;
+    margin-top: 90px;
     opacity: 0;
     transition: all 1500ms ease;
     transform: translateY(80px);
@@ -12312,6 +12312,7 @@
   .project-one {
       position: relative;
       display: block;
+      overflow: hidden;
       
       padding: 20px 0px 20px;
       z-index: 1;
@@ -12461,7 +12462,8 @@
   .why-choose-us-one {
       position: relative;
       display: block;
-      padding: 90px 0px 90px;
+      overflow: hidden;
+      padding: 130px 0px 130px;
       z-index: 1;
   }
   
@@ -12532,9 +12534,10 @@
       align-items: center;
      @apply border-b-2 border-b-gray-700;
       height: 100px;
-     
-      margin-bottom: 26px;
+      margin-bottom: 36px;
       padding-bottom: 25px;
+     
+      
 
   }
   
@@ -12592,7 +12595,8 @@
   
   .why-choose-us-one__content-box ul .why-choose-us-one__content .inner .content-box p {
       margin: 0;
-      font-size: small;
+      font-size: 12px;
+      line-height: 19px;
   }
   
   /***
@@ -15383,6 +15387,32 @@
   .cart-page .table>:not(:first-child) {
       border-top: 0px solid currentColor;
   }
+
+  
+  /*** 
+  =============================================
+      Pricing page Css
+  =============================================
+  ***/
+  .pricing-page .btn-box{ 
+    display: flex;
+    width:100%;
+    
+    justify-content: center;
+
+    background-color:var(--thm-primary);
+    color: var(--thm-white);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.016em;
+    padding: 11px 20px 11px;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+  }
+  .pricing-page .btn-box:hover {
+    background: var(--thm-black);;
+}
   
   /*** 
   =============================================
@@ -16068,7 +16098,7 @@
       .why-choose-us-one__content {
           max-width: 700px;
           width: 100%;
-          padding-inline: 20px;
+  
       }
   
       .call-to-action-one__content h2 {
@@ -16382,11 +16412,17 @@
       .why-choose-us-one__content-box_outer{
         width: 420px;
       }
-      .why-choose-us-one__content {
+      .why-choose-us-one__content-box_outer .why-choose-us-one__content {
           max-width: 700px;
+          margin-bottom: 26px !important;
+          margin-top: 26px !important;
           width: 100%;
           
       }
+      .why-choose-us-one__content-box ul .why-choose-us-one__content:last-child {
+        padding-bottom: 0;
+        margin-bottom: 30px;
+    }
      
   
       .call-to-action-one__content h2 {
@@ -16791,7 +16827,7 @@
           position: relative;
           right: 0;
           width: auto;
-          height: 250px;
+          height: 190px;
       }
   
       .feauture-two__single-content {
@@ -16800,6 +16836,9 @@
           float: none;
           text-align: center;
           margin-top: 30px;
+      }
+      .feauture-two__single-content h2{
+        font-size: 22px;
       }
   
       .feauture-two__single-img .icon-box {
@@ -17034,7 +17073,8 @@
           padding-left: 0px;
       }
       .why-choose-us-one__content-box ul .why-choose-us-one__content .inner .content-box h2{
-        font-size: 20px;
+        font-size: 16px;
+        line-height: 22px;
 
       }
   
@@ -17045,6 +17085,11 @@
           margin-right: 20px;
          
       }
+      .why-choose-us-one__content-box ul .why-choose-us-one__content:last-child {
+        padding-bottom: 0;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
   
       .call-to-action-one__bg::before {
           top: 0px;
@@ -17929,6 +17974,12 @@
   
   
   @media only screen and (max-width: 767px) {
+
+    .brand-one {
+ 
+      
+      padding: 50px 0 0px;
+  }
     #main-slider-one__pagination {
       display: none;
     }
@@ -17955,12 +18006,12 @@
     }
   
     .main-slider-one__content h3 {
-      font-size: 30px;
+      font-size: 37px;
       letter-spacing: -0.00em;
     }
   
     .main-slider-one__content h2 {
-      font-size: 42px;
+      font-size: 50px;
       letter-spacing: 0.00em;
     }
   

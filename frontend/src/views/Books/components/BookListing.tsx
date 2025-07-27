@@ -7,19 +7,84 @@ import { MdOutlineSearch } from 'react-icons/md'
 import { APP_PREFIX_PATH } from '@/constants/route.constant'
 import useAuth from '@/utils/hooks/useAuth'
 import { Link } from 'react-router-dom'
+import Select from '@/components/ui/Select'
+import { apiGetClasses } from '@/services/ClassService'
+import { apiGetSubjectBookByClass } from '@/services/BooksServices'
+import { useAppSelector, useAppDispatch, injectReducer } from '@/store'
 import type { Book, Subject } from '../books-all/store/booksSlice'
+import allBookReducer, {
+    useAppSelector as bookAppSelector,
+    getBooksData,
+    useAppDispatch as bookAppDispatch,
+    resetError,
+    resetNotifaction,
+    setSelectedClass
+} from '../books-all/store'
 
 interface BookListingProps {
     booksdata: Book[]
     subjectsData: Subject[]
+    onClassChange?: (classId: string) => void
 }
 
-const BookListing = ({ booksdata, subjectsData }: BookListingProps) => {
+const BookListing = ({ booksdata, subjectsData, onClassChange }: BookListingProps) => {
     const { authenticated } = useAuth()
+    const dispatch = useAppDispatch()
+    const bookDispatch = bookAppDispatch()
+    const user_class_id = useAppSelector((state) => state.auth.user.class_id)
+    const selectedClassFromRedux = bookAppSelector((state) => state.book_all.data.selectedClass)
     const [searchTerm, setSearchTerm] = useState('')
     const [selectedSubject, setSelectedSubject] = useState<string>('all')
 
-    // Filter books based on search term and selected subject
+    // Use selectedClassFromRedux with fallback to user_class_id
+    const selectedClass = selectedClassFromRedux || user_class_id || ''
+
+    const [classOptions, setClassOptions] = useState<{ label: string; value: string }[]>([])
+    const [loadingClasses, setLoadingClasses] = useState(false)
+    const [hasClassBeenTouched, setHasClassBeenTouched] = useState(false)
+
+    // Convert subjects to Select options format
+    const subjectOptions = [
+        { label: 'All Subjects', value: 'all' },
+        ...(subjectsData?.map((subject) => ({
+            label: subject.name,
+            value: subject.uid,
+        })) || [])
+    ]
+
+    // Fetch classes data
+    useEffect(() => {
+        const fetchClasses = async () => {
+            setLoadingClasses(true)
+            try {
+                const response = await apiGetClasses<any>()
+                const options = (response.data || []).map((item: any) => ({
+                    label: item.name,
+                    value: item.uid,
+                }))
+                setClassOptions(options)
+            } catch (error) {
+                console.error('Error fetching classes:', error)
+            } finally {
+                setLoadingClasses(false)
+            }
+        }
+        fetchClasses()
+    }, [])
+
+    // Handle class change
+    const handleClassChange = (classId: string) => {
+        setHasClassBeenTouched(true)
+        
+        // Dispatch to Redux using bookAppDispatch
+        bookDispatch(setSelectedClass(classId))
+        
+        if (onClassChange) {
+            onClassChange(classId)
+        }
+    }
+
+    // Filter books based on search term and selected subject only (class filtering is now handled by API)
     const filteredBooks = booksdata?.filter((book) => {
         const matchesSearch = book.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                              book.description.toLowerCase().includes(searchTerm.toLowerCase())
@@ -39,20 +104,28 @@ const BookListing = ({ booksdata, subjectsData }: BookListingProps) => {
                                     Showing {filteredBooks.length} results
                                 </p>
                             </div>
-                            <div className="flex gap-4 items-center">
+                            <div className="flex gap-4 items-center w-[700px]">
+                                {/* Class Filter */}
+                                <div className="w-56">
+                                    <Select
+                                        placeholder="Select Class"
+                                        options={classOptions}
+                                        value={classOptions.find(option => option.value === selectedClass)}
+                                        onChange={(option) => handleClassChange(option?.value || '')}
+                                        isDisabled={loadingClasses}
+                                        isLoading={loadingClasses}
+                                    />
+                                </div>
+                                
                                 {/* Subject Filter */}
-                                <select 
-                                    value={selectedSubject}
-                                    onChange={(e) => setSelectedSubject(e.target.value)}
-                                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                >
-                                    <option value="all">All Subjects</option>
-                                    {subjectsData?.map((subject) => (
-                                        <option key={subject.uid} value={subject.uid}>
-                                            {subject.name}
-                                        </option>
-                                    ))}
-                                </select>
+                                <div className="w-56">
+                                    <Select
+                                        placeholder="Select Subject"
+                                        options={subjectOptions}
+                                        value={subjectOptions.find(option => option.value === selectedSubject)}
+                                        onChange={(option) => setSelectedSubject(option?.value || 'all')}
+                                    />
+                                </div>
                                 
                                 {/* Search */}
                                 <div className="sidebar__single sidebar__search">

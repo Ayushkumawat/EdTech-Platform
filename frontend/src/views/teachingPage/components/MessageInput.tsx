@@ -38,14 +38,17 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
 
     
 
-    const shouldDisableInput = useMemo(() => inputPage !== 0, [inputPage, currentPage])
+    const shouldDisableInput = useMemo(() => {
+      // Allow interactions even when AI is speaking
+      return false;
+    }, []);
 
     const { transcript, startListening, stopListening } = useSpeechToText(handleApiCall)
 
     const startTeaching = () => {
         dispatch(setStartButton(false))
         console.log(current_page_image)
-        //handleApiCall('start teaching this page',current_page_image)
+        handleApiCall('start teaching this page',current_page_image)
     }
 
 

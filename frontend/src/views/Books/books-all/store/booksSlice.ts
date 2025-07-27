@@ -47,6 +47,7 @@ export type BookState = {
     booksData: Book[]
     subjectsData: Subject[]
     bookDetail: Book | null
+    selectedClass: string | null
     error: any
     notification: any;
 }
@@ -90,6 +91,7 @@ const initialState: BookState = {
     booksData: [],
     subjectsData: [],
     bookDetail: null,
+    selectedClass: null,
     error: null,
     notification: null,
 }
@@ -112,6 +114,9 @@ const bookSlice = createSlice({
             state.notification = null
             state.bookLoading = false
             state.detailLoading = false
+        },
+        setSelectedClass: (state, action: PayloadAction<string>) => {
+            state.selectedClass = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -143,6 +148,6 @@ const bookSlice = createSlice({
     },
 })
 
-export const { resetError, resetNotifaction, resetBooksData } = bookSlice.actions
+export const { resetError, resetNotifaction, resetBooksData, setSelectedClass } = bookSlice.actions
 
 export default bookSlice.reducer

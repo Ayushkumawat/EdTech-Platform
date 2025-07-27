@@ -24,7 +24,7 @@ const Plans = () => {
     }
 
     return (
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 xl:gap-4">
+        <div className="pricing-page grid grid-cols-1 xl:grid-cols-3 gap-8 xl:gap-4">
             {plans?.map((plan, index) => (
                 <div
                     key={plan.uid}
@@ -68,9 +68,8 @@ const Plans = () => {
                         </div>
                     </div>
                     <div className="mt-10">
-                        <Button
-                            color="primary"
-                            block
+                        <div
+                            className="btn-box"
                             onClick={() => {
                                 dispatch(setSelectedPlan({
                                     planName: plan.plan_name,
@@ -86,7 +85,7 @@ const Plans = () => {
                             }}
                         >
                             {plan.cost === 0 ? 'Start Free Trial' : 'Select plan'}
-                        </Button>
+                        </div>
                     </div>
                 </div>
             ))}

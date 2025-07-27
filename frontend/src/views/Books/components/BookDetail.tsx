@@ -432,7 +432,7 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                                     {/* Right */}
                                     
                                         <div className="flex items-center gap-[10px]">
-                                            <span className="text-[var(--thm-primary)] text-[22px]">
+                                            <span className="text-[var(--thm-primary)] text-[22px] cursor-pointer">
                                                 <i onClick={()=>{startLesson(chapter.uid,bookDetail?.uid)}}><IoPlayCircleOutline /></i>
                                             </span>
                                         </div>

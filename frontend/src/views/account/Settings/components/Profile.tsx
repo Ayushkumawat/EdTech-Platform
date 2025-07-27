@@ -210,7 +210,7 @@ const Profile = ({
                     type="success" 
                 />, 
                 {
-                    placement: 'top-center',
+                    placement: 'top-end',
                 }
             );
             
@@ -234,7 +234,7 @@ const Profile = ({
                     {errorMessage}
                 </Notification>, 
                 {
-                    placement: 'top-center',
+                    placement: 'top-end',
                 }
             );
         } finally {
