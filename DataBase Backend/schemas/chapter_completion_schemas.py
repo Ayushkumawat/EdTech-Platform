@@ -18,6 +18,7 @@ class ChapterCompletionUpdate(BaseModel):
 
 class ChapterPageOut(BaseModel):
     current_page: int 
+    uid: uuid.UUID
 
 class ChapterCompletionOut(ChapterCompletionBase):
     uid: uuid.UUID

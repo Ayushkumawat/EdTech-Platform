@@ -47,6 +47,7 @@ class SessionManager:
         self.audio_queues: Dict[str, asyncio.Queue] = {}
         self.receive_tasks: Dict[str, asyncio.Task] = {}
         self.token_usage: Dict[str, int] = {}  # Store total_used_tokens per user
+        self.response_complete: Dict[str, bool] = {}  # Track if response is complete for each user
     
     async def get_or_create_session(self, user_id):
         if user_id not in self.sessions:
@@ -55,6 +56,7 @@ class SessionManager:
             self.sessions[user_id] = await connection.__aenter__()
             self.audio_queues[user_id] = asyncio.Queue()
             self.receive_tasks[user_id] = asyncio.create_task(self.receive_audio(user_id))
+            self.response_complete[user_id] = False
         return self.sessions[user_id]
     
     async def update_token_usage(self, user_id: str, tokens: int, db_session: AsyncSession):
@@ -66,6 +68,14 @@ class SessionManager:
                 db_session=db_session
             )
         return user.daily_usage + tokens
+    
+    def start_new_request(self, user_id: str):
+        """Mark that a new request has started for this user"""
+        self.response_complete[user_id] = False
+    
+    def is_response_complete(self, user_id: str) -> bool:
+        """Check if the response is complete for this user"""
+        return self.response_complete.get(user_id, False)
     
     async def receive_audio(self, user_id):
         session = self.sessions[user_id]
@@ -100,6 +110,10 @@ class SessionManager:
                                 case types.ModalityTokenCount(modality=modality, token_count=count):
                                     print(f"{modality}: {count}", flush=True)
                                     print(f"{modality}: {count}", flush=True)
+                        # Mark response as complete when we receive usage metadata
+                        self.response_complete[user_id] = True
+                        # Put a special marker in the queue to signal end of response
+                        await self.audio_queues[user_id].put(None)
             except Exception as e:
                 print(f"Error in receive_audio for session {user_id}: {e}")
                 break
