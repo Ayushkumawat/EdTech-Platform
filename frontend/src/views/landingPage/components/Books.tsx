@@ -27,11 +27,11 @@ export default function Books() {
                 <div className="container mx-auto max-w-[1300px] px-4">
                     <div className="sec-title text-center">
                         <div className="sub-title">
-                            <h5>OUR RECENT COURSES</h5>
+                            <h5>BOOKS WE TEACH</h5>
                         </div>
                         <h2>
-                            Books We Designed <br />
-                            Check Our Work
+                            Pick a Book<br />
+                            Begin Your Journey!
                         </h2>
                     </div>
                     
@@ -62,18 +62,18 @@ export default function Books() {
                                 <div className="books_card__background relative h-80 overflow-hidden">
                                     <img
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop"
-                                        alt="Modern Book Design"
+                                        src="/assets/img/books/book1.jpg"
+                                        alt="Class 7: Exploring Society"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                                 </div>
                                 <div className="books_card__content absolute bottom-0 left-0 right-0 p-6 text-white">
                                     <div className="books_card__content--container space-y-3">
-                                        <h2 className="books_card__title text-2xl font-bold">
-                                            Modern <span>Design</span>
+                                        <h2 className="books_card__title text-xl font-bold">
+                                        <span className="text-[var(--thm-primary)]">Class 7:</span> Exploring Society
                                         </h2>
-                                        <p className="books_card__description text-gray-200 text-sm leading-relaxed">
-                                            Explore contemporary design principles and innovative approaches to modern book creation.
+                                        <p className="books_card__description text-gray-200 leading-relaxed">
+                                        Travel through India’s culture, people, and history in an exciting journey! Learn how society works through stories, maps, and missions – AI Onwards brings social science to life like never before.
                                         </p>
                                     </div>
                                     <button className="books_card__button mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition-colors duration-200 text-sm font-medium">
@@ -90,18 +90,18 @@ export default function Books() {
                                 <div className="books_card__background relative h-80 overflow-hidden">
                                     <img
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=600&fit=crop"
-                                        alt="Creative Literature"
+                                        src="/assets/img/books/book2.jpg"
+                                        alt="Class 8: Poorvi"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                                 </div>
                                 <div className="books_card__content absolute bottom-0 left-0 right-0 p-6 text-white">
                                     <div className="books_card__content--container space-y-3">
                                         <h2 className="books_card__title text-2xl font-bold">
-                                            Creative <span>Literature</span>
+                                        <span className="text-[var(--thm-primary)]">Class 8:</span> Poorvi
                                         </h2>
                                         <p className="books_card__description text-gray-200 text-sm leading-relaxed">
-                                            Discover the art of storytelling through beautifully crafted literary works and narratives.
+                                        Stories from the heart of India — told in English! Learn through village tales, real-life scenarios, and modern themes that connect language with everyday life. AI Onwards brings English alive through conversation and context.
                                         </p>
                                     </div>
                                     <button className="books_card__button mt-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full transition-colors duration-200 text-sm font-medium">
@@ -118,7 +118,7 @@ export default function Books() {
                                 <div className="books_card__background relative h-80 overflow-hidden">
                                     <img
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop"
+                                        src="/assets/img/books/book3.jpg"
                                         alt="Educational Content"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
@@ -146,7 +146,7 @@ export default function Books() {
                                 <div className="books_card__background relative h-80 overflow-hidden">
                                     <img
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=600&fit=crop"
+                                        src="/assets/img/books/book4.jpg"
                                         alt="Technical Guides"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
@@ -174,7 +174,7 @@ export default function Books() {
                                 <div className="books_card__background relative h-80 overflow-hidden">
                                     <img
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        src="https://images.unsplash.com/photo-1519791883288-dc8bd696e667?w=400&h=600&fit=crop"
+                                        src="/assets/img/books/book5.jpg"
                                         alt="Art & Culture"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
@@ -186,6 +186,90 @@ export default function Books() {
                                         </h2>
                                         <p className="books_card__description text-gray-200 text-sm leading-relaxed">
                                             Explore diverse cultures and artistic expressions from around the world.
+                                        </p>
+                                    </div>
+                                    <button className="books_card__button mt-4 bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition-colors duration-200 text-sm font-medium">
+                                        Read more
+                                    </button>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide className="swiper-slide">
+                            <div className="books_card group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                                 onMouseEnter={handleMouseEnter}
+                                 onMouseLeave={handleMouseLeave}>
+                                <div className="books_card__background relative h-80 overflow-hidden">
+                                    <img
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        src="/assets/img/books/book6.jpg"
+                                        alt="Class VI: Poorvi"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                </div>
+                                <div className="books_card__content absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <div className="books_card__content--container space-y-3">
+                                        <h2 className="books_card__title text-2xl font-bold">
+                                        <span className="text-[var(--thm-primary)]">Class 6:</span> Poorvi
+                                        </h2>
+                                        <p className="books_card__description text-gray-200 text-sm leading-relaxed">
+                                        Step into a vibrant world of stories, poems, and conversations! Poorvi makes English learning fun with colorful illustrations and engaging content, only on AI Onwards – where learning comes alive.
+                                        </p>
+                                    </div>
+                                    <button className="books_card__button mt-4 bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition-colors duration-200 text-sm font-medium">
+                                        Read more
+                                    </button>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide className="swiper-slide">
+                            <div className="books_card group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                                 onMouseEnter={handleMouseEnter}
+                                 onMouseLeave={handleMouseLeave}>
+                                <div className="books_card__background relative h-80 overflow-hidden">
+                                    <img
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        src="/assets/img/books/book7.jpg"
+                                        alt="Class 6: मल्हार"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                </div>
+                                <div className="books_card__content absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <div className="books_card__content--container space-y-3">
+                                        <h2 className="books_card__title text-2xl font-bold">
+                                        <span className="text-[var(--thm-primary)]">Class 6:</span> मल्हार
+                                        </h2>
+                                        <p className="books_card__description text-gray-200 text-sm leading-relaxed">
+                                        कहानियों और कविताओं की रंगीन दुनिया में प्रवेश करें! ‘मल्हार’ आपके हिंदी ज्ञान को मज़ेदार और सरल तरीके से बढ़ाता है। AI Onwards के साथ भाषा को अनुभव करें, पढ़ें और बोलें
+                                        </p>
+                                    </div>
+                                    <button className="books_card__button mt-4 bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition-colors duration-200 text-sm font-medium">
+                                        Read more
+                                    </button>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+
+                        <SwiperSlide className="swiper-slide">
+                            <div className="books_card group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                                 onMouseEnter={handleMouseEnter}
+                                 onMouseLeave={handleMouseLeave}>
+                                <div className="books_card__background relative h-80 overflow-hidden">
+                                    <img
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        src="/assets/img/books/book8.jpg"
+                                        alt="Class 7: Curiosity"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                </div>
+                                <div className="books_card__content absolute bottom-0 left-0 right-0 p-6 text-white">
+                                    <div className="books_card__content--container space-y-3">
+                                        <h2 className="books_card__title text-2xl font-bold">
+                                        <span className="text-[var(--thm-primary)]">Class 7:</span> Curiosity
+                                        </h2>
+                                        <p className="books_card__description text-gray-200 text-sm leading-relaxed">
+                                        Why does a ball bounce? How do plants breathe? Explore the wonders of science with “Curiosity”! Learn by doing, imagining, and questioning — only with AI Onwards' interactive and fun platform.
                                         </p>
                                     </div>
                                     <button className="books_card__button mt-4 bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-full transition-colors duration-200 text-sm font-medium">

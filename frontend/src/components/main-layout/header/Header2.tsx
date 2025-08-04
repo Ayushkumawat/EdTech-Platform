@@ -5,6 +5,7 @@ import useAuth from "@/utils/hooks/useAuth"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import DoubleSidedImage from '@/components/shared/DoubleSidedImage'
+import { IoMenu } from "react-icons/io5";
 export default function Header2({ isScrollingDown, scroll, isMobileMenu, handleMobileMenu, isSidebar, handlePopup, handleSidebar }: any) {
     const { authenticated } = useAuth()
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function Header2({ isScrollingDown, scroll, isMobileMenu, handleM
                     {/* header-lower */}
                     <div className="auto-container">
                         <div className="menu-area__inner">
-                            <div className="mobile-nav-toggler" onClick={handleMobileMenu}><i className="fas fa-bars"></i></div>
+                        <div className="mobile-nav-toggler" onClick={handleMobileMenu}><IoMenu/></div>
                             <div className="menu-wrap">
                                 <nav className="menu-nav">
                                     <div className="main-header-one__inner">

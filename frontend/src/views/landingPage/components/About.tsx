@@ -51,7 +51,7 @@ const About = () => {
                             <div className="about-two__content">
                                 <div className="sec-title">
                                     <div className="sub-title">
-                                        <h5>KNOW ABOUT XAFRAN</h5>
+                                        <h5>KNOW ABOUT Gurukul AI</h5>
                                     </div>
                                     <h2>
                                     Stop Working Hard. <br /> Start Working Smart with AI.

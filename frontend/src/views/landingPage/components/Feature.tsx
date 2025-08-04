@@ -6,7 +6,7 @@ const Feature = () => {
 
   return (
     <>
-      <section className="feauture-two">
+      <section className="feauture-two feature-section">
         <div className="container px-10 w-full max-w-[1350px]">
           <div className="row grid grid-cols-1 md:grid-cols-2 gap-4">
             {/*Start Feauture Two Single */}

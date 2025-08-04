@@ -21,12 +21,13 @@ import useAuth from '@/utils/hooks/useAuth'
 import { useNavigate } from 'react-router-dom';
 import { APP_PREFIX_PATH } from '@/constants/route.constant'
 import type { Book } from '../books-all/store/booksSlice'
+import useResponsive from '@/utils/hooks/useResponsive'
 
 const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
     const { authenticated } = useAuth()
     const navigate = useNavigate();
     console.log(bookDetail)
-
+    const { smaller } = useResponsive()
 
     const [activeTab, setActiveTab] = useState('overview')
     const handleTabClick = (tabId: string) => {
@@ -140,6 +141,46 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                             </div>
                         </div>
                     </div>
+                    
+
+                    {smaller.sm && (
+                        <div className="lg:!sticky top-[110px] right h-full border-2 border-gray-200 dark:border-gray-700 bg-gray-100  dark:bg-gray-900 max-w-full sm:w-full lg:w-[400px]  shrink-0 space-y-[30px] mb-[30px]">
+                            {/*  COURSE INFORMATION */}
+                            <div className="px-[25px]  py-[25px] ">
+                                <h5 className="font-bold text-[24px] text-[var(--thm-black)] mb-[20px]">
+                                    Chapters
+                                </h5>
+                                <div className="flex flex-col gap-2">
+                                    {bookDetail?.chapters?.map((chapter, index) => (
+                                        <div
+                                            key={index}
+                                            className="px-[16px] py-[14px] flex flex-wrap gap-[10px] items-center justify-between bg-[rgba(var(--thm-primary-rgb),0.1)] dark:bg-[rgba(var(--thm-primary-rgb),0.2)]"
+                                        >
+                                            {/* Left */}
+                                            <div className="flex items-center gap-[10px]">
+                                                <span className="text-[20px] text-[var(--thm-primary)]">
+                                                    <MdOutlinePlayLesson />
+                                                </span>
+                                                <span className="text-gray-900 dark:text-gray-300 font-[500] lg:w-[250px] w-[180px] ">
+                                                    {index + 1} :{' '}
+                                                    {chapter?.title || 'Introduction'}
+                                                </span>
+                                            </div>
+                                            {/* Right */}
+                                            <div className="flex items-center gap-[10px]">
+                                                <span className="text-[var(--thm-primary)] text-[22px] cursor-pointer">
+                                                    <i onClick={() => { startLesson(chapter.uid, bookDetail?.uid) }}><IoPlayCircleOutline /></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+
+
 
                     {/*  tabs container */}
                     <div>
@@ -402,15 +443,14 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                     </div>
                 </div>
             </div>
-
             {/*  right sidebar */}
-            <div className="lg:!sticky top-[110px] right h-full border-2 border-gray-200 dark:border-gray-700 bg-gray-100  dark:bg-gray-900 max-w-full sm:w-full lg:w-[350px]  shrink-0 space-y-[30px]">
-                {/*  COURSE INFORMATION */}
-                <div className="px-[25px]  py-[25px] ">
-                    <h5 className="font-bold text-[24px] text-[var(--thm-black)] mb-[20px]">
-                        Chapters
-                    </h5>
-                 
+            {!smaller.sm && (
+                <div className="lg:!sticky top-[110px] right h-full border-2 border-gray-200 dark:border-gray-700 bg-gray-100  dark:bg-gray-900 max-w-full sm:w-full lg:w-[400px]  shrink-0 space-y-[30px]">
+                    {/*  COURSE INFORMATION */}
+                    <div className="px-[25px]  py-[25px] ">
+                        <h5 className="font-bold text-[24px] text-[var(--thm-black)] mb-[20px]">
+                            Chapters
+                        </h5>
                         <div className="flex flex-col gap-2">
                             {bookDetail?.chapters?.map((chapter, index) => (
                                 <div
@@ -422,27 +462,23 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                                         <span className="text-[20px] text-[var(--thm-primary)]">
                                             <MdOutlinePlayLesson />
                                         </span>
-                                        <span className="text-gray-900 dark:text-gray-300 font-[500]">
+                                        <span className="text-gray-900 dark:text-gray-300 font-[500] lg:w-[250px] w-[180px] ">
                                             {index + 1} :{' '}
-                                            {chapter?.title ||
-                                                'Introduction'}
+                                            {chapter?.title || 'Introduction'}
                                         </span>
                                     </div>
-
                                     {/* Right */}
-                                    
-                                        <div className="flex items-center gap-[10px]">
-                                            <span className="text-[var(--thm-primary)] text-[22px] cursor-pointer">
-                                                <i onClick={()=>{startLesson(chapter.uid,bookDetail?.uid)}}><IoPlayCircleOutline /></i>
-                                            </span>
-                                        </div>
-                                 
+                                    <div className="flex items-center gap-[10px]">
+                                        <span className="text-[var(--thm-primary)] text-[22px] cursor-pointer">
+                                            <i onClick={() => { startLesson(chapter.uid, bookDetail?.uid) }}><IoPlayCircleOutline /></i>
+                                        </span>
+                                    </div>
                                 </div>
                             ))}
                         </div>
-                    
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     )
 }

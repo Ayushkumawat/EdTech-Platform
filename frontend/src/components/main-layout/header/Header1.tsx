@@ -27,8 +27,9 @@ export default function Header1({ isScrollingDown,scroll, handleMobileMenu}:any)
                                     <div className="main-header-one__inner">
                                         
                                         <div className="main-header-one__left">
-                                            <div className="logo-box">
-                                                <a href="/"> <img src="/assets/img/resource/logo-1.png" alt=""/></a>
+                                            <div className="flex !items-center gap-2">
+                                                <a href="/"> <img src="/assets/img/resource/logo3.png" alt="" className="max-w-[55px] h-auto"/></a>
+                                                <span className="font-bold text-[31px] text-white relative top-[3px] left-[-5px]">IONWARDS</span>
                                             </div>
                                         </div>
 

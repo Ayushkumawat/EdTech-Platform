@@ -36,14 +36,39 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
   : undefined;
     const dispatch = useAppDispatch()
 
-    
-
     const shouldDisableInput = useMemo(() => {
       // Allow interactions even when AI is speaking
       return false;
     }, []);
 
-    const { transcript, startListening, stopListening } = useSpeechToText(handleApiCall)
+    // Create a callback that handles the transcript properly
+    const handleTranscriptReady = useCallback((transcript: string) => {
+        console.log('Transcript ready:', transcript);
+        if (transcript.trim()) {
+            // Send the transcript immediately
+            handleApiCall(transcript, current_page_image)
+            // Clear the message input but keep microphone active
+            setMessage("")
+            // Don't stop the microphone - let it continue listening
+        }
+    }, [handleApiCall, current_page_image])
+
+    const { transcript, startListening, stopListening, error, browserSupportsSpeechRecognition } = useSpeechToText(handleTranscriptReady, 2000)
+
+    // Add debugging for transcript updates
+    useEffect(() => {
+        if (transcript && micActive) {
+            console.log('Current transcript:', transcript);
+        }
+    }, [transcript, micActive]);
+
+    // Handle speech recognition errors
+    useEffect(() => {
+        if (error) {
+            console.error('Speech recognition error:', error);
+            // You could show a toast notification here
+        }
+    }, [error]);
 
     const startTeaching = () => {
         dispatch(setStartButton(false))
@@ -51,13 +76,11 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
         handleApiCall('start teaching this page',current_page_image)
     }
 
-
-
     useEffect(() => {
-        if (micActive && !isPlaying) {
+        if (micActive) {
             startListening()
         }
-    }, [micActive, isPlaying, startListening])
+    }, [micActive, startListening])
 
     // Stop mic if user navigates away from current page
     useEffect(() => {
@@ -89,7 +112,9 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
         <>
             {micActive && transcript && (
                 <div className="chat-message-box-recognition-text-container">
-                    <h4 className="text-center">{transcript}</h4>
+                    <h4 className="text-center" style={{ color: 'white', textShadow: '0 0 10px rgba(0,0,0,0.8)' }}>
+                        {transcript}
+                    </h4>
                 </div>
             )}
 
@@ -110,7 +135,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
                 >
                     <input
                         type="text"
-                        placeholder={!micActive ? 'Enter Your Message' : ''}
+                        placeholder={!micActive ? 'Enter Your Message' : 'Listening...'}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         disabled={micActive || shouldDisableInput}
@@ -130,6 +155,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
                             <div className="flex gap-2">
                                 <button
                                     onClick={!shouldDisableInput ? () => {
+                                        console.log('Stopping microphone');
                                         setMicActive(false)
                                         stopListening()
                                     } : undefined}
@@ -143,15 +169,34 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
                                     <ImCross />
                                 </button>
 
+                                {micActive && transcript && (
+                                    <button
+                                        onClick={!shouldDisableInput ? () => {
+                                            console.log('Manually sending transcript:', transcript);
+                                            handleApiCall(transcript, current_page_image)
+                                            setMessage("")
+                                            // Keep microphone active for continuous listening
+                                        } : undefined}
+                                        className="send-message-button-box-btn-send"
+                                        style={sharedStyle}
+                                        title="Send current transcript"
+                                    >
+                                        <FaPaperPlane />
+                                    </button>
+                                )}
+
                                 <button
-                                    onClick={!shouldDisableInput ? () => {
+                                    onClick={!shouldDisableInput && browserSupportsSpeechRecognition ? () => {
+                                        console.log('Starting microphone');
                                         setMicActive(true)
                                         startListening()
                                     } : undefined}
                                     className={`send-message-button-box-btn-mic ${
                                         mobileVisual ? 'send-message-button-box-btn-mic-inactive' : ''
-                                    }`}
+                                    } ${micActive ? 'bg-red-500' : ''} ${!browserSupportsSpeechRecognition ? 'opacity-50 cursor-not-allowed' : ''}`}
                                     style={sharedStyle}
+                                    title={!browserSupportsSpeechRecognition ? 'Speech recognition not supported in this browser' : micActive ? 'Listening... Click to stop' : 'Click to start voice input'}
+                                    disabled={!browserSupportsSpeechRecognition}
                                 >
                                     <FaMicrophone />
                                 </button>

@@ -133,21 +133,38 @@ const useTextToSpeech = (): TextToSpeechHook => {
   }, [scheduleChunk]);
 
   const stopAudio = useCallback(() => {
+    // Abort any ongoing fetch request
     abortCtrlRef.current?.abort();
+    
+    // Stop all audio sources first
+    sourcesRef.current.forEach(src => { 
+      try { 
+        src.stop(); 
+        src.disconnect(); // Add disconnect for cleanup
+      } catch {} 
+    });
+    
+    // Reset all state
     playingRef.current = false;
     streamEndedRef.current = false;
     bufferQueue.current = [];
-    nextStartTime.current = 0;
-    sourcesRef.current.forEach(src => { try { src.stop(); } catch {} });
     sourcesRef.current = [];
+    nextStartTime.current = 0;
+    
+    // Update Redux state
     dispatch(setIsPlaying(false));
-    if (gainRef.current) gainRef.current.gain.value = 1;
+    dispatch(setFrequencyData(new Array(1024).fill(0))); // Reset frequency data
+    
+    // Optional: Suspend audio context to save resources
+    if (audioCtxRef.current && audioCtxRef.current.state === 'running') {
+      audioCtxRef.current.suspend().catch(() => {});
+    }
   }, [dispatch]);
 
   const textToSpeechConvert = useCallback(
     async (text: string, imageUrl?: string): Promise<void> => {
       if (!text.trim()) return;
-     
+      // Removed stopAudio() call since it's already called in handleApiCall
 
       const ctx = await initAudio();
       const token = getToken();
@@ -214,8 +231,10 @@ const useTextToSpeech = (): TextToSpeechHook => {
       if (analyser && isPlaying) {
         const data = new Uint8Array(analyser.frequencyBinCount);
         analyser.getByteFrequencyData(data);
-       
+        // dispatch(setFrequencyData(Array.from(data))); // Add this back
         rafId = requestAnimationFrame(update);
+      } else if (!isPlaying) {
+        dispatch(setFrequencyData(new Array(1024).fill(0))); // Reset frequency data when not playing
       }
     };
     if (isPlaying) update();

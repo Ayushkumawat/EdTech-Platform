@@ -20,7 +20,7 @@ export default function Header4({ scroll, isMobileMenu, handleMobileMenu, isSide
                             <div className="header-contact-box">
                                 <ul>
                                     <li><a href="tel:123456789">1(800)234-34-45</a></li>
-                                    <li><a href="mailto:yourmail@email.com">xafrancompany@gmail.com</a></li>
+                                    <li><a href="mailto:yourmail@email.com">GurukulAIcompany@gmail.com</a></li>
                                 </ul>
                             </div>
 

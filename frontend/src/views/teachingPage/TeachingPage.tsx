@@ -36,9 +36,10 @@ const TeachingPage = () => {
     const error = useAppSelector((state) => state.teaching.data.error)
 
     const [chatMessages, setChatMessages] = useState<string[] | undefined>([]);
+    // Remove local isAudioPlaying, use global isPlaying from Redux
     const currentPage = useAppSelector((state) => state.teaching.data.currentPage);
     const [responseMessage, setResponseMessage] = useState('');
-    const { textToSpeechConvert, stopAudio } = useTextToSpeech2();
+    const { textToSpeechConvert, stopAudio, isPlaying } = useTextToSpeech2();
 
     const handleApiCall = (userInput: string, imageUrl?: string) => {
         dispatch(setDotAnimation(true))
@@ -49,7 +50,6 @@ const TeachingPage = () => {
         if (smaller.sm) dispatch(setMobileVisual(true))
         setResponseMessage('A paragraph is a series of sentences that are correlated to each other in a healthy way')
         textToSpeechConvert(userInput, imageUrl)
-        
     }
 
     useEffect(() => {
@@ -85,24 +85,6 @@ const TeachingPage = () => {
         }
     }, []);
 
-    const md_content = `# Notable Exoplanetary Systems
-## Introduction
-
-Exoplanetary systems, which consist of planets orbiting stars beyond our Sun, have garnered significant attention from astronomers and the general public due to their remarkable diversity and potential to support life. The discovery of the first exoplanet in 1995 marked the beginning of a new era in astronomy, and since then, thousands of these celestial bodies have been identified, showcasing complex and unique characteristics.
-
-![Image relevant to early exoplanet discovery](https://github.com/user-attachments/assets/de087b29-ea76-46d1-8690-20681615e18f)
-
-## TRAPPIST-1 System
-The TRAPPIST-1 system is a fascinating exoplanetary system that has garnered significant attention in recent years. Located in the habitable zone of its star, at least three of the planets in this system are considered potential candidates for hosting liquid water and, by extension, life.
-
-### Key Features of the TRAPPIST-1 System
-The TRAPPIST-1 system is set to be an important target for observation with the James Webb Space Telescope, which will enable researchers to gain a deeper understanding of these distant worlds. A team of Canadian astronomers will be utilizing the Canadian-made Near-Infrared Imager and Slitless Spectrograph (NIRISS) instrument to study the atmospheres of TRAPPIST-1 d, f, and g.
-
-![Artist's concept of star TRAPPIST-1 and its seven exoplanets](https://github.com/user-attachments/assets/588ad340-7830-4332-9aa6-81e8f4b71172)
-
-## HR 8799 System
-The HR 8799 system is a notable example of an exoplanetary system. It features a star, HR 8799, and its four orbiting exoplanets. To gain a deeper understanding of this system, you can watch the following video:`
-
     return (
         <>      
             {(chapterLoading || currentPage == null) ? (
@@ -124,7 +106,11 @@ The HR 8799 system is a notable example of an exoplanetary system. It features a
                                 </i>
                             </div>
                             <div className='book-animation flex items-center shadow-lg h-fit w-full pt-4'>
-                                <BookAnimation pages={chapterData?.pages} handleApiCall={handleApiCall} />
+                                <BookAnimation 
+                                    pages={chapterData?.pages} 
+                                    handleApiCall={handleApiCall} 
+                                    isAudioPlaying={isPlaying}
+                                />
                             </div>
                         </div>
                         {!smaller.sm ? (

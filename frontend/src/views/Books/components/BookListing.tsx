@@ -154,8 +154,7 @@ const BookListing = ({ booksdata, subjectsData, onClassChange }: BookListingProp
                             return (
                                 <div
                                     key={book.uid}
-                                    className="wow animated fadeInUp"
-                                    data-wow-delay="0.1s"
+    
                                 >
                                     <div className="book-page__single">
                                         <div className="book-page__single-img">

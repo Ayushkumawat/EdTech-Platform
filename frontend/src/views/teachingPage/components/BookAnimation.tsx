@@ -12,6 +12,7 @@ interface BookAnimationProps {
   pages?: string[];
   startPageNumber?: number;
   handleApiCall: (userInput: string, imageUrl?: string) => void;
+  isAudioPlaying?: boolean;
 }
 
 const overlayVariants = {
@@ -23,12 +24,13 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
   pages,
   startPageNumber = 1,
   handleApiCall,
+  isAudioPlaying,
 }) => {
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector((s) => s.teaching.data.currentPage);
   const inputPage = useAppSelector((s) => s.teaching.data.inputPage);
   const chapterId = useAppSelector((s) => s.teaching.data.chapter_completion_id);
-  const { isPlaying } = useTextToSpeech2();
+  // const { isPlaying } = useTextToSpeech2();
 
   const audioRefs = React.useMemo(
     () => [new Audio(flip2), new Audio(flip3), new Audio(flip4)],
@@ -200,10 +202,11 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
                       <motion.button
                         onClick={() => continuePage(pageNum, url)}
                         whileHover={{ scale: 1.1 }}
-                        className="
-                          bg-[var(--thm-black)] text-white font-bold uppercase px-6 py-3
-                          transition-colors duration-200 hover:bg-[var(--thm-primary)]
-                        "
+                        className={
+                          `bg-[var(--thm-black)] text-white font-bold uppercase px-6 py-3 transition-colors duration-200 hover:bg-[var(--thm-primary)]` +
+                          (isAudioPlaying ? ' opacity-50 cursor-not-allowed' : '')
+                        }
+                        disabled={!!isAudioPlaying}
                       >
                         Continue This Page
                       </motion.button>

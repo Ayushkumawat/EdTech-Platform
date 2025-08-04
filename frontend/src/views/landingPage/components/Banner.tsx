@@ -7,6 +7,8 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { FaPlay } from "react-icons/fa6";
 import { FaRegEnvelope } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
+import { GiBookCover } from "react-icons/gi";
+import { useNavigate } from 'react-router-dom';
 
 const swiperOptions = {
     modules: [Autoplay, Pagination, Navigation],
@@ -58,6 +60,22 @@ const slides = [
 
 export default function Banner() {
     const [isOpen, setOpen] = useState(false)
+    const navigate = useNavigate();
+
+    const handleBookIconClick = () => {
+        navigate('/app/all_books');
+    };
+
+    const handleDiscoverMoreClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const featureSection = document.querySelector('.project-one');
+        if (featureSection) {
+            featureSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
   return (
     <>
     
@@ -80,15 +98,15 @@ export default function Banner() {
                     <h2>{slide.h2}</h2>
                     <div className="btn-box">
                       <div className="btn-one">
-                        <a className="thm-btn-one !bg-gray-300 hover:!text-gray-900" href="/contact">
+                        <a className="thm-btn-one !bg-gray-300 hover:!text-gray-900" onClick={handleBookIconClick} >
                           <span><span className='txt'>Discover More</span></span>
                         </a>
                       </div>
                       <div className="btn-two">
-                        <a onClick={() => setOpen(true)} className="video-popup" data-fancybox="video-1" data-caption="">
+                        <a onClick={handleDiscoverMoreClick} className="video-popup" data-fancybox="video-1" data-caption="">
                           <div className="main-slider-one__icon">
-                            <i ><FaPlay/></i>
-                            <span>Watch Our Videos</span>
+                            <i ><GiBookCover/></i>
+                            <span>Explore Your Books</span>
                           </div>
                         </a>
                       </div>
@@ -102,7 +120,7 @@ export default function Banner() {
                             <span> <IoLocationOutline/></span>
                           </div>
                           <div className="text-box">
-                            <p>465 NT Road. North West, England</p>
+                            <p>465 NT Road, Indore, Madhya Pradesh, India</p>
                           </div>
                         </li>
                         <li>
@@ -110,7 +128,7 @@ export default function Banner() {
                             <span><FaRegEnvelope/></span>
                           </div>
                           <div className="text-box">
-                            <p><a href="mailto:yourmail@email.com">needhelpxafran@gmail.cpm</a></p>
+                            <p><a href="mailto:aionwards.founder@gmail.com">aionwards.founder@gmail.com</a></p>
                           </div>
                         </li>
                       </ul>

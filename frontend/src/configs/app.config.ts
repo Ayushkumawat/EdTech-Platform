@@ -10,7 +10,7 @@ export type AppConfig = {
 
 const appConfig: AppConfig = {
     apiPrefix: '/api',
-    apiPrefix1:'https://77d87162b2c2.ngrok-free.app/api/v1/',
+    apiPrefix1:'https://edtech-platform-6dw3.onrender.com/api/v1/',
     authenticatedEntryPath: 'app/home',
     unAuthenticatedEntryPath: '/sign-in',
     tourPath: '/',

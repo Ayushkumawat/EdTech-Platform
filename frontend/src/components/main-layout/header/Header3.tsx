@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import useResponsive from "@/utils/hooks/useResponsive"
 import DoubleSidedImage from '@/components/shared/DoubleSidedImage'
+import { IoMenu } from "react-icons/io5";
 export default function Header3({ isScrollingDown,scroll, isMobileMenu, handleMobileMenu, isSidebar, handlePopup, handleSidebar }:any) {
     const { authenticated } = useAuth()
     const navigate = useNavigate();
@@ -14,12 +15,12 @@ export default function Header3({ isScrollingDown,scroll, isMobileMenu, handleMo
         <>
             {/* <header className="main-header header-style-three"> */}
             
-            <header className={`main-header main-header-one style2 style3 ${scroll ? "" : ""}`}>
+            <header className={`main-header main-header-one style3 ${scroll ? "" : ""}`}>
                 <div className={`menu-area ${scroll ? "sticky-menu" : ""} ${(!smaller.sm && isScrollingDown)?"sticky-menu-deactive":""}`}>
                     {/* header-lower */}
                     <div className="auto-container">
                     <div className="menu-area__inner">
-                        <div className="mobile-nav-toggler" onClick={handleMobileMenu}><i className="fas fa-bars"></i></div>
+                    <div className="mobile-nav-toggler" onClick={handleMobileMenu}><IoMenu/></div>
                         <div className="menu-wrap">
                             <nav className="menu-nav">
                                 <div className="main-header-one__inner">

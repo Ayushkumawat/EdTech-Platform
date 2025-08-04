@@ -4314,14 +4314,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid rgba(var(--thm-white-rgb), 0.4);
     color: var(--thm-primary);
     background: rgba(4, 23, 26, 0.4);
-    font-size: 18px;
+    font-size: 28px;
     font-weight: 700;
 }
 
@@ -7463,7 +7463,7 @@
       line-height: 1;
       color: var(--thm-white);
       display: none;
-      padding: 34px 0 35px;
+      padding: 30px 0 30px;
       transition: all 200ms linear;
       transition-delay: 0.1s;
       z-index: 5;
@@ -7916,7 +7916,7 @@
   }
   
   .main-header-one.style3 .navbar-wrap>ul>li>a {
-      padding: 38.5px 0px 37.5px;
+      padding: 33.5px 0px 33.5px;
   }
   
   /*=============================
@@ -8276,7 +8276,7 @@
       transform: scale(1);
   }
   
-  .service-one__single:hover .service-one__single-inner .icon-box span {
+  .service-one__single:hover .servicFe-one__single-inner .icon-box span {
       transform: scale(0.9);
       color: var(--thm-primary);
   }
@@ -9145,20 +9145,35 @@
       overflow: hidden;
   }
   
-  .team-two__single-img .inner img {
+  .team-two__single-img .inner .img1 {
       width: 300px;
-      height: 400px;
+      height: 450px;
       transition: .5s ease;
-      transform: scale(1.05);
+      transform: scale(1);
       object-fit: cover;
+      
       max-width: 100%;
 
   }
+  .team-two__single-img .inner .img2 {
+    width: 300px;
+    height: 450px;
+    transition: .5s ease;
+    transform: scale(1.2);
+    object-fit: cover;
+    
+    max-width: 100%;
+
+}
   
-  .team-two__single:hover .team-two__single-img .inner img {
-      transform: scale(1);
+  .team-two__single:hover .team-two__single-img .inner .img1 {
+      transform: scale(1.05);
+  }
+  .team-two__single:hover .team-two__single-img .inner .img2 {
+    transform: scale(1.25);
   }
   
+
   .team-two__single-img .inner::before {
       position: absolute;
       top: 0;
@@ -9181,7 +9196,8 @@
   
   .team-two__single-img .content-box {
       position: absolute;
-      left: 40px;
+      
+      left: 30px;
       bottom: 35px;
       z-index: 3;
   }
@@ -12210,7 +12226,8 @@
   }
   .books_card__content--container p{
     color: var(--thm-paragraph-color);
-    font-size: clamp(13px, 1.5vw, 15px) !important;
+    line-height: 1.5;
+    font-size: clamp(13px, 1vw, 15px) !important;
     
   }
   
@@ -12220,13 +12237,14 @@
     color: var(--thm-gray-bg);
     margin-bottom: 0;
     padding-bottom: 0 !important;
-    font-size: clamp(20px, 2vw, 24px);
+    font-size: clamp(20px, 1vw, 24px);
   }
   
 
   .books_card__description{
     padding-top: 0px !important;
     margin-top: 10px !important;
+
   }
   .books_card__button {
     padding: .40em 1.4em;

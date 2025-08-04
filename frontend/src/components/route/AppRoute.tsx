@@ -44,6 +44,11 @@ const AppRoute = <T extends Record<string, unknown>>({
         }
     }, [dispatch, layoutType, previousLayout, props.layout, routeKey])
 
+    // Scroll to top when location changes
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [location.pathname])
+
     useEffect(() => {
         handleLayoutChange()
     }, [location, handleLayoutChange])
