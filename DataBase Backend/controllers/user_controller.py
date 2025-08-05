@@ -53,14 +53,12 @@ async def get_all_users(session: AsyncSession = Depends(get_session)):
 @user_router.post("/google")
 async def google_login(google_data: dict, session: AsyncSession = Depends(get_session)):
     """
-    Handles Google sign up/login. Expects {id_token, class_id} from frontend.
-    Extracts user info from Google token using user_service.verify_google_token.
+    Handles Google sign up/login. Expects {id_token, class_id?} from frontend.
+    If class_id is provided and user does not exist, creates user (signup).
+    If class_id is not provided, only allows login for existing users.
     """
     user_info = await user_service.verify_google_token(google_data["id_token"])
-    class_id = google_data["class_id"]
-    class_ = await class_service.get_class_by_id(class_id, session)
-    if not class_:
-        raise HTTPException(status_code=404, detail="Class not found")
+    class_id = google_data.get("class_id")
     if not user_info:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Google token")
 
@@ -81,6 +79,12 @@ async def google_login(google_data: dict, session: AsyncSession = Depends(get_se
 
     user = await user_service.get_user_by_email(email, session)
     if user is None:
+        # Signup flow: require class_id
+        if not class_id:
+            raise HTTPException(status_code=400, detail="class_id is required for Google signup")
+        class_ = await class_service.get_class_by_id(class_id, session)
+        if not class_:
+            raise HTTPException(status_code=404, detail="Class not found")
         user_create = UserCreate(
             email=email,
             first_name=first_name,
