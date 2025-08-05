@@ -9,6 +9,7 @@ class UserBase(BaseModel):
     email: EmailStr
     password: str
     class_id: Optional[uuid.UUID] = None
+    google_id: Optional[str] = None
 
 class UserCreate(UserBase):
     pass
@@ -26,6 +27,7 @@ class UserOut(BaseModel):
     uid: uuid.UUID
     first_name: str
     last_name: str
+    google_id: Optional[str] = None
     email: str
     class_id: uuid.UUID
     role_id: uuid.UUID
