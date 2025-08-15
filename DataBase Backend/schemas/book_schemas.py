@@ -9,7 +9,6 @@ class BookBase(BaseModel):
     name: str
     medium: str
     subject_id: uuid.UUID
-    subject: SubjectOut
     class_id: uuid.UUID
     teacher: str
     duration: str
@@ -30,11 +29,13 @@ class BookUpdate(BaseModel):
 
 class BookListOut(BookBase):
     uid: uuid.UUID
+    subject: SubjectOut
     class Config:
         orm_mode = True
 
 class BookOut(BookBase):
     uid: uuid.UUID
+    subject: SubjectOut
     chapters: Optional[list[ChapterOutbook]] = []
     reviews: Optional[list[ReviewOutBook]] = []
 
