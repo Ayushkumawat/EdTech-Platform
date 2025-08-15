@@ -3,12 +3,13 @@ from typing import Optional
 import uuid
 from .chapter_schemas import ChapterOut, ChapterOutbook
 from .review_schemas import ReviewOut, ReviewOutBook
+from .subject_schemas import SubjectOut
 
 class BookBase(BaseModel):
     name: str
     medium: str
     subject_id: uuid.UUID
-    subject_name: str
+    subject: SubjectOut
     class_id: uuid.UUID
     teacher: str
     duration: str
