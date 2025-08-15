@@ -8,6 +8,7 @@ class BookBase(BaseModel):
     name: str
     medium: str
     subject_id: uuid.UUID
+    subject_name: str
     class_id: uuid.UUID
     teacher: str
     duration: str
