@@ -9,9 +9,11 @@ from utils import verify_password, create_access_token, generate_passwd_hash
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from dependencies import get_current_user
+from dal_files.class_dal import ClassDAL
 
 user_router = APIRouter()
 user_service = UserDAL()
+class_service = ClassDAL()
 
 class SendOtpRequest(BaseModel):
     email: str
@@ -50,20 +52,45 @@ async def get_all_users(session: AsyncSession = Depends(get_session)):
 
 @user_router.post("/google")
 async def google_login(google_data: dict, session: AsyncSession = Depends(get_session)):
+    """
+    Handles Google sign up/login. Expects {id_token, class_id?} from frontend.
+    If class_id is provided and user does not exist, creates user (signup).
+    If class_id is not provided, only allows login for existing users.
+    """
     user_info = await user_service.verify_google_token(google_data["id_token"])
+    class_id = google_data.get("class_id")
     if not user_info:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Google token")
-    google_id = user_info["sub"]
-    email = user_info["email"]
+
+    # Extract info from token (already handled in user_dal)
+    google_id = user_info.get("sub")
+    email = user_info.get("email")
     first_name = user_info.get("first_name", "")
     last_name = user_info.get("last_name", "")
+
+    if not email:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email not found in Google token")
+
+    # Fallbacks for missing names
+    if not first_name.strip():
+        first_name = email.split("@")[0] if email else "User"
+    if not last_name.strip():
+        last_name = ""
+
     user = await user_service.get_user_by_email(email, session)
     if user is None:
+        # Signup flow: require class_id
+        if not class_id:
+            raise HTTPException(status_code=400, detail="class_id is required for Google signup")
+        class_ = await class_service.get_class_by_id(class_id, session)
+        if not class_:
+            raise HTTPException(status_code=404, detail="Class not found")
         user_create = UserCreate(
             email=email,
             first_name=first_name,
             last_name=last_name,
             google_id=google_id,
+            class_id=class_id
         )
         user = await user_service.create_user(user_create, session)
     user_data = {

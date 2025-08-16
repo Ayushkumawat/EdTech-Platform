@@ -3,6 +3,7 @@ from typing import Optional
 import uuid
 from .chapter_schemas import ChapterOut, ChapterOutbook
 from .review_schemas import ReviewOut, ReviewOutBook
+from .subject_schemas import SubjectOut
 
 class BookBase(BaseModel):
     name: str
@@ -28,11 +29,13 @@ class BookUpdate(BaseModel):
 
 class BookListOut(BookBase):
     uid: uuid.UUID
+    subject: SubjectOut
     class Config:
         orm_mode = True
 
 class BookOut(BookBase):
     uid: uuid.UUID
+    subject: SubjectOut
     chapters: Optional[list[ChapterOutbook]] = []
     reviews: Optional[list[ReviewOutBook]] = []
 

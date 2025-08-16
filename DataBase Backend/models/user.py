@@ -12,7 +12,7 @@ class User(Base):
     first_name = Column(String(255), nullable=False)
     last_name = Column(String(255), nullable=False)
     email = Column(String(255), nullable=False, unique=True)
-    password_hash = Column(String(255), nullable=False)
+    password_hash = Column(String(255), nullable=True)
     class_id = Column(PG_UUID(as_uuid=True), ForeignKey('class.uid'), nullable=False)
     role_id = Column(PG_UUID(as_uuid=True), ForeignKey('role.uid'), nullable=False)
     subscription_id = Column(PG_UUID(as_uuid=True), ForeignKey('subscription.uid'), nullable=False)
