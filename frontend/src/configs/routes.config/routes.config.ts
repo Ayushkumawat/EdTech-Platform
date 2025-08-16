@@ -12,6 +12,12 @@ const commonRoutes = [
         authority: [],
     },
     {
+        key: 'liveAudio',
+        path: '/live-audio',
+        component: lazy(() => import('@/views/liveAudio/LiveAudioPage')),
+        authority: [],
+    },
+    {
         key: 'appsAccount.settings',
         path: `${APP_PREFIX_PATH}/account/settings/:tab`,
         component: lazy(() => import('@/views/account/Settings')),

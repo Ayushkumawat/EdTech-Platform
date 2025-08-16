@@ -60,6 +60,20 @@ const TeachingPage = () => {
         textToSpeechConvert(userInput, imageUrl)
     }
 
+    const handleBackClick = useCallback(() => {
+        const goBack = () => navigate(-1)
+        try {
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document
+                    .exitFullscreen()
+                    .catch(() => {})
+                    .finally(goBack)
+                return
+            }
+        } catch (_) {}
+        goBack()
+    }, [navigate])
+
 
     useEffect(() => {
         if (error) {
@@ -117,7 +131,7 @@ const TeachingPage = () => {
                                         <span>{chapterLabel}:</span> {chapterData?.title}
                                     </h5>
                                 </div>
-                                <i className="chevron-icon" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
+                                <i className="chevron-icon" onClick={handleBackClick} style={{ cursor: 'pointer' }}>
                                     <FaChevronLeft />
                                 </i>
                             </div>
