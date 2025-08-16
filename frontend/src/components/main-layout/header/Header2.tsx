@@ -21,13 +21,9 @@ export default function Header2({ isScrollingDown, scroll, isMobileMenu, handleM
                                 <nav className="menu-nav">
                                     <div className="main-header-one__inner">
                                         <div className="main-header-one__left">
-                                            <div className="logo-box">
-                                                <DoubleSidedImage
-                                                    src="/assets/img/resource/logo-2.png"
-
-                                                    darkModeSrc="/assets/img/resource/logo-1.png"
-                                                    alt="elstar"
-                                                />
+                                        <div className="flex !items-center gap-2">
+                                                <a href="/"> <img src="/assets/img/resource/logo3.png" alt="" className="max-w-[55px] h-auto"/></a>
+                                                <img src="/assets/img/resource/logo3_text.png" alt="IONWARDS" className="h-[28px] relative top-[3px] left-[-5px]"/>
                                             </div>
 
                                             <div className="navbar-wrap main-menu">

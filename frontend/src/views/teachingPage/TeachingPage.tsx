@@ -16,6 +16,7 @@ import reducer, {
     setMobileVisual,
 } from './store'
 import React, { useEffect, useState, useCallback } from 'react'
+import { useAppDispatch as useBooksAppDispatch, useAppSelector as useBooksAppSelector, getBookDetail } from '@/views/Books/books-all/store'
 import useTextToSpeech2 from '@/utils/hooks/useTextToSpeech2'
 import { injectReducer } from '@/store'
 import { useNavigate } from 'react-router-dom'
@@ -26,7 +27,7 @@ import BookAnimation from './components/BookAnimation'
 
 injectReducer('teaching', reducer)
 const TeachingPage = () => {
-    const { chapterId }: any = useParams<{ chapterId: string }>()
+    const { chapterId, bookId }: any = useParams<{ chapterId: string; bookId: string }>()
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const { smaller } = useResponsive()
@@ -36,10 +37,17 @@ const TeachingPage = () => {
     const error = useAppSelector((state) => state.teaching.data.error)
 
     const [chatMessages, setChatMessages] = useState<string[] | undefined>([]);
+
+    // Book detail for teacher name
+    const bookDetail = useBooksAppSelector((state) => state.book_all?.data?.bookDetail);
+    const booksDispatch = useBooksAppDispatch();
     // Remove local isAudioPlaying, use global isPlaying from Redux
     const currentPage = useAppSelector((state) => state.teaching.data.currentPage);
     const [responseMessage, setResponseMessage] = useState('');
     const { textToSpeechConvert, stopAudio, isPlaying } = useTextToSpeech2();
+
+    const isHindiMedium = !!bookDetail?.medium && (/[\u0900-\u097F]/.test(bookDetail.medium) || bookDetail.medium.toLowerCase().includes('hindi'))
+    const chapterLabel = isHindiMedium ? 'अध्याय' : 'Chapter'
 
     const handleApiCall = (userInput: string, imageUrl?: string) => {
         dispatch(setDotAnimation(true))
@@ -52,12 +60,20 @@ const TeachingPage = () => {
         textToSpeechConvert(userInput, imageUrl)
     }
 
+
     useEffect(() => {
         if (error) {
             dispatch(resetError())
             navigate(`${APP_PREFIX_PATH}/my_books`, { replace: true })
         }
     }, [error])
+
+    // Fetch book detail from route params only if not already in store
+    useEffect(() => {
+        if (bookId && (!bookDetail || bookDetail?.uid !== bookId)) {
+            booksDispatch(getBookDetail(bookId));
+        }
+    }, [bookId, bookDetail?.uid, booksDispatch]);
 
     useEffect(() => {
         
@@ -86,9 +102,9 @@ const TeachingPage = () => {
     }, []);
 
     return (
-        <>      
+        <>		
             {(chapterLoading || currentPage == null) ? (
-                <div className="fixed inset-0 flex items-center justify-center bg-gray-100 dark:bg-[#11161f] z-[99999]">
+                <div className="fixed inset-0 flex items-center justify-center z-[99999]">
                     <Loading loading={true} />
                 </div>
             ) : (
@@ -98,7 +114,7 @@ const TeachingPage = () => {
                             <div className="flex justify-center">
                                 <div className="book-sub-title">
                                     <h5 className='!text-[20px]'>
-                                        <span>Chapter One:</span> {chapterData?.title}
+                                        <span>{chapterLabel}:</span> {chapterData?.title}
                                     </h5>
                                 </div>
                                 <i className="chevron-icon" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
@@ -119,7 +135,7 @@ const TeachingPage = () => {
                                     initialHeight={[15, 15, 15, 15]}
                                     intensity={50}
                                 />
-                                <MessageBox handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} />
+                                <MessageBox handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} teacherName={bookDetail?.teacher} subjectName={bookDetail?.subject?.name} medium={bookDetail?.medium} />
                             </div>
                         ) : (
                             <>

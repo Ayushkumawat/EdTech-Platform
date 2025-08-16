@@ -2,21 +2,37 @@ import Menu from "../Menu"
 import MobileMenu from "../MobileMenu"
 import UserDropdown from "@/components/template/UserDropdown"
 import useAuth from "@/utils/hooks/useAuth"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
 import useResponsive from "@/utils/hooks/useResponsive"
 import DoubleSidedImage from '@/components/shared/DoubleSidedImage'
 import { IoMenu } from "react-icons/io5";
+import { APP_PREFIX_PATH } from "@/constants/route.constant"
+
 export default function Header3({ isScrollingDown,scroll, isMobileMenu, handleMobileMenu, isSidebar, handlePopup, handleSidebar }:any) {
     const { authenticated } = useAuth()
     const navigate = useNavigate();
+    const location = useLocation();
     const {smaller} =useResponsive()
+    
+    // Check if we're on a page where navbar should always be visible
+    const shouldAlwaysShowNavbar = () => {
+        const path = location.pathname;
+        const bookDetailRegex = new RegExp(`^${APP_PREFIX_PATH}/all_books/book_detail/[^/]+$`);
+        const settingsRegex = new RegExp(`^${APP_PREFIX_PATH}/account/settings/[^/]+$`);
+        
+        return bookDetailRegex.test(path) || settingsRegex.test(path);
+    };
+    
+    // Determine if navbar should hide on scroll
+    const shouldHideOnScroll = !shouldAlwaysShowNavbar() && !smaller.sm && isScrollingDown;
+    
     return (
         <>
             {/* <header className="main-header header-style-three"> */}
             
             <header className={`main-header main-header-one style3 ${scroll ? "" : ""}`}>
-                <div className={`menu-area ${scroll ? "sticky-menu" : ""} ${(!smaller.sm && isScrollingDown)?"sticky-menu-deactive":""}`}>
+                <div className={`menu-area ${scroll ? "sticky-menu" : ""} ${shouldHideOnScroll ? "sticky-menu-deactive" : ""}`}>
                     {/* header-lower */}
                     <div className="auto-container">
                     <div className="menu-area__inner">
@@ -25,14 +41,10 @@ export default function Header3({ isScrollingDown,scroll, isMobileMenu, handleMo
                             <nav className="menu-nav">
                                 <div className="main-header-one__inner">
                                     <div className="main-header-one__left">
-                                        <div className="logo-box">
-                                        <DoubleSidedImage
-                                                    src="/assets/img/resource/logo-2.png"
-
-                                                    darkModeSrc="/assets/img/resource/logo-1.png"
-                                                    alt="elstar"
-                                                />
-                                        </div>
+                                    <div className="flex !items-center gap-2">
+                                                <a href="/"> <img src="/assets/img/resource/logo3.png" alt="" className="max-w-[55px] h-auto"/></a>
+                                                <img src="/assets/img/resource/logo3_text.png" alt="IONWARDS" className="h-[28px] relative top-[3px] left-[-5px]"/>
+                                            </div>
                                     </div>
 
                                     <div className="main-header-one__middle">

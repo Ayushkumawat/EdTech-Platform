@@ -99,49 +99,57 @@ const BookListing = ({ booksdata, subjectsData, onClassChange }: BookListingProp
                 <div className="container max-w-[1300px]">
                     <div className="book-page__top">
                         <div className="book-page__top-inner">
-                            <div className="book-page__top-left">
-                                <p>
+                           
+                            <div className="flex flex-col md:flex-row w-full gap-2 md:justify-between md:items-center">
+                            <div className="book-page__top-left ">
+                                <p className='w-fit'>
                                     Showing {filteredBooks.length} results
                                 </p>
                             </div>
-                            <div className="flex gap-4 items-center w-[700px]">
-                                {/* Class Filter */}
-                                <div className="w-56">
-                                    <Select
-                                        placeholder="Select Class"
-                                        options={classOptions}
-                                        value={classOptions.find(option => option.value === selectedClass)}
-                                        onChange={(option) => handleClassChange(option?.value || '')}
-                                        isDisabled={loadingClasses}
-                                        isLoading={loadingClasses}
-                                    />
-                                </div>
                                 
-                                {/* Subject Filter */}
-                                <div className="w-56">
-                                    <Select
-                                        placeholder="Select Subject"
-                                        options={subjectOptions}
-                                        value={subjectOptions.find(option => option.value === selectedSubject)}
-                                        onChange={(option) => setSelectedSubject(option?.value || 'all')}
-                                    />
-                                </div>
-                                
-                                {/* Search */}
-                                <div className="sidebar__single sidebar__search">
-                                    <form className="sidebar__search-form">
-                                        <input
-                                            type="search"
-                                            placeholder="Search books..."
-                                            value={searchTerm}
-                                            onChange={(e) => setSearchTerm(e.target.value)}
+                                {/* Mobile: Stacked vertically, Desktop: Right side filters */}
+                                <div className="flex flex-col-reverse md:flex-row gap-2 md:items-center">
+                                    {/* Class Filter */}
+                                    <div className='flex flex-row gap-2 md:items-center mb-2 md:mb-0'>
+                                        <div className="w-full md:w-48">
+                                        <Select
+                                            
+                                            placeholder="Select Class"
+                                            options={classOptions}
+                                            value={classOptions.find(option => option.value === selectedClass)}
+                                            onChange={(option) => handleClassChange(option?.value || '')}
+                                            isDisabled={loadingClasses}
+                                            isLoading={loadingClasses}
                                         />
-                                        <button type="submit">
-                                            <i className="fa fa-search text-[28px]">
-                                                <MdOutlineSearch />
-                                            </i>
-                                        </button>
-                                    </form>
+                                    </div>
+                                    
+                                    {/* Subject Filter */}
+                                    <div className="w-full md:w-48">
+                                        <Select
+                                            placeholder="Select Subject"
+                                            options={subjectOptions}
+                                            value={subjectOptions.find(option => option.value === selectedSubject)}
+                                            onChange={(option) => setSelectedSubject(option?.value || 'all')}
+                                        />
+                                    </div>
+                                    </div>
+                                    
+                                    {/* Search */}
+                                    <div className="sidebar__single sidebar__search w-full md:w-[300px] md:ml-4">
+                                        <form className="sidebar__search-form">
+                                            <input
+                                                type="search"
+                                                placeholder="Search books..."
+                                                value={searchTerm}
+                                                onChange={(e) => setSearchTerm(e.target.value)}
+                                            />
+                                            <button type="submit">
+                                                <i className="fa fa-search text-[28px]">
+                                                    <MdOutlineSearch />
+                                                </i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -156,17 +164,26 @@ const BookListing = ({ booksdata, subjectsData, onClassChange }: BookListingProp
                                     key={book.uid}
     
                                 >
-                                    <div className="book-page__single">
-                                        <div className="book-page__single-img">
+                                    <div className="book-page__single relative">
+                                        <div className="book-page__single-img w-full relative">
                                             <img
                                                 src={book.cover_image}
                                                 alt={book.name || 'Book'}
+                                                className="w-full h-auto object-cover"
                                             />
                                             <div className="text">{book.medium}</div>
+                                            {/* Hours badge positioned at bottom right of image */}
+                                            <div className="absolute bottom-2 right-2 flex items-center gap-1 text-white font-bold text-[11px] bg-gray-800 px-2 py-1 rounded-full min-w-[60px] justify-center shadow-md">
+                                                <FaClock className="text-xs text-[var(--thm-primary)]" />
+                                                <span className='text-gray-400'>{book.duration}</span>
+                                            </div>
                                         </div>
+                                        
                                         <div className="book-page__single-content">
-                                            <div className="text-box">
-                                                <h4>{book.name}</h4>
+                                            <div className="text-box w-full">
+                                                <div className="flex items-center justify-between w-[100%]">
+                                                    <h4 className="w-full">{book.name}</h4>
+                                                </div>
                                                 <p className="text-sm text-gray-600 mt-1">{subject?.name}</p>
                                             </div>
                                             <div className="rating-box">
@@ -185,39 +202,26 @@ const BookListing = ({ booksdata, subjectsData, onClassChange }: BookListingProp
                                                 <p>({book.reviews?.length || 0})</p>
                                             </div>
                                             <div className="book-stats">
-                                                <div>
-                                                    <i>
+                                                <div className="flex items-center">
+                                                    <i className="flex-shrink-0">
                                                         <FaUser />
                                                     </i>
-                                                    <span>
+                                                    <span className="text-sm truncate" title={book.teacher}>
                                                         {book.teacher}
                                                     </span>
                                                 </div>
-                                                <div>
-                                                    <i>
+                                                <div className="flex items-center">
+                                                    <i className="flex-shrink-0">
                                                         <IoDocumentTextSharp />
                                                     </i>
-                                                    <span>
+                                                    <span className="text-sm">
                                                         {book.chapters?.length || 0} Chapters
                                                     </span>
                                                 </div>
-                                                <div>
-                                                    <i>
-                                                        <FaClock />
-                                                    </i>
-                                                    <span>
-                                                        {book.duration} min
-                                                    </span>
-                                                </div>
                                             </div>
-                                            <div className="btn-box">
-                                                <Link
-                                                    to={`${APP_PREFIX_PATH}/all_books/book_detail/${book.uid}`}
-                                                >
-                                                   Start Learning
-                                                    
-                                                </Link>
-                                            </div>
+                                            <Link className="btn-box" to={`${APP_PREFIX_PATH}/all_books/book_detail/${book.uid}`}>
+                                                Start Learning
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -230,23 +234,6 @@ const BookListing = ({ booksdata, subjectsData, onClassChange }: BookListingProp
                             <p className="text-gray-500">No books found matching your criteria.</p>
                         </div>
                     )}
-
-                    <ul className="styled-pagination text-center mt-6 flex justify-center space-x-2">
-                        <li>
-                            <Link to="#">1</Link>
-                        </li>
-                        <li>
-                            <Link to="#">2</Link>
-                        </li>
-                        <li>
-                            <Link to="#">3</Link>
-                        </li>
-                        <li className="arrow next active">
-                            <Link to="#">
-                                <span className="icon-left-arrow"></span>
-                            </Link>
-                        </li>
-                    </ul>
                 </div>
             </section>
             {/* End Shop Page */}

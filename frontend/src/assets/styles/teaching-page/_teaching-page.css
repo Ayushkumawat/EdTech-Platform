@@ -70,7 +70,7 @@
   
   /* Canvas & Dot */
   .audio-visulizer-container{
-    @apply bg-gray-900 border border-gray-800  flex place-content-center h-[70px] w-[230px] rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]
+    @apply bg-gray-900 border border-gray-800  flex place-content-center h-[70px] w-[250px] rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]
   }
   .canvas {
     @apply flex justify-center items-center gap-1;
@@ -121,7 +121,7 @@
   
   
   .send-message-button-box .input-box input[type="text"] {
-    @apply text-gray-700  outline-none border-none placeholder:text-sm placeholder:text-gray-500 font-[var(--thm-font)] h-[40px] bg-transparent  pl-5;
+    @apply text-white outline-none border-none placeholder:text-sm placeholder:text-gray-500 font-[var(--thm-font)] h-[40px] bg-transparent pl-5;
   }
   
   
@@ -154,13 +154,18 @@
   
   /* Chat message box arrow */
   .chat-message-box-container {
-    @apply flex w-[230px] relative flex-col rounded-lg pb-2 bg-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:bg-[#181e2b] object-cover transition-all duration-500 ease-in-out;
+    @apply flex w-[250px] relative flex-col rounded-lg pb-2 bg-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:bg-[#181e2b] object-cover transition-all duration-500 ease-in-out overflow-hidden;
     height: clamp(150px, 85vh, 1000px);
   }
   
   
   .chat-message-box-body-content{
-    @apply block relative w-fit py-2 px-4 shadow-md rounded-lg font-bold text-wrap break-words bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300
+    @apply block relative w-fit py-2 px-4 shadow-md rounded-lg font-medium text-[14px] leading-6 text-wrap break-words bg-gray-100 dark:bg-gray-800 text-gray-200
+    ;
+    max-width: 95%;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
   .chat-message-box-body-content::before {
     content: "";
@@ -231,23 +236,23 @@
   }
   
   .chat-message-box-body{
-    @apply flex flex-col gap-2 items-end p-3;
+    @apply flex flex-col gap-3 items-end p-3;
     overflow-y: auto;
     height: calc(100% - 60px - 50px);
     justify-content: flex-start;
   }
   
+  /* Hide scrollbar for chat message box body */
   .chat-message-box-body::-webkit-scrollbar {
-    @apply w-[6px];
+    @apply w-0;
   }
   
-  .chat-message-box-body::-webkit-scrollbar-track {
-    @apply bg-gray-300 dark:bg-gray-700 rounded-lg;
+  .chat-message-box-body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
   }
   
-  .chat-message-box-body::-webkit-scrollbar-thumb {
-    @apply bg-[var(--thm-primary)] rounded-lg;
-  }
+ 
   
   /* Book side container */
   .book-side-container {

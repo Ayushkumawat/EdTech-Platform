@@ -8,13 +8,19 @@ interface MessageBoxProps {
     handleApiCall: (userInput: string, imageUrl?: string) => void;
     chatMessages: string[] | undefined;
     setChatMessages: React.Dispatch<React.SetStateAction<string[] | undefined>>;
+    teacherName?: string;
+    subjectName?: string;
+    medium?: string;
 }
 
-const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, setChatMessages }) => {
+const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, setChatMessages, teacherName, subjectName, medium }) => {
   
+    const isHindiMedium = !!medium && (/[\u0900-\u097F]/.test(medium) || medium.toLowerCase().includes('hindi'))
+
+
     return (
         <>
-        <div className='flex relative h-full justify-center items-center'>
+        <div className='flex relative h-full items-start justify-start'>
         
 
         <div className={`chat-message-box-container`}>
@@ -30,8 +36,12 @@ const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, se
                     />
                 </div>
                 <div className="chat-message-box-header-content">
-                    <h4>Space Teacher</h4>
-                    <h3>Prof. Adam Brown</h3>
+                   <h3>{teacherName || 'Prof. Adam Brown'}</h3>
+                    {subjectName && (
+                        <h4>{subjectName} teacher</h4>
+                    )}
+                    
+                  
                 </div>
             </div>
 

@@ -8,16 +8,21 @@ import { divide } from "lodash";
 import { APP_PREFIX_PATH } from "@/constants/route.constant";
 import { useLocation, Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import useResponsive from "@/utils/hooks/useResponsive";
+ 
+ 
 export default function Header1({ isScrollingDown,scroll, handleMobileMenu}:any) {
     console.log(isScrollingDown,"its scroll")
     const { authenticated } = useAuth()
     const navigate = useNavigate();
-    const {larger} =useResponsive()
+    const location = useLocation();
+    
+    // Determine if navbar should hide on scroll (no route gating)
+    const shouldHideOnScroll = scroll && isScrollingDown;
+    
     return (
         <>
             <header className={`main-header main-header-one !z-10`}>
-                <div className={`menu-area ${scroll ? "sticky-menu" : ""} ${(larger.lg && isScrollingDown)?"sticky-menu-deactive":""}`}>
+                <div className={`menu-area ${scroll ? "sticky-menu" : ""} ${shouldHideOnScroll ? "sticky-menu-deactive" : ""}`}>
                     {/* header-lower */}
                     <div className="auto-container">
                         <div className="menu-area__inner">
@@ -29,7 +34,7 @@ export default function Header1({ isScrollingDown,scroll, handleMobileMenu}:any)
                                         <div className="main-header-one__left">
                                             <div className="flex !items-center gap-2">
                                                 <a href="/"> <img src="/assets/img/resource/logo3.png" alt="" className="max-w-[55px] h-auto"/></a>
-                                                <span className="font-bold text-[31px] text-white relative top-[3px] left-[-5px]">IONWARDS</span>
+                                                <img src="/assets/img/resource/logo3_text.png" alt="IONWARDS" className="h-[28px] relative top-[3px] left-[-5px]"/>
                                             </div>
                                         </div>
 

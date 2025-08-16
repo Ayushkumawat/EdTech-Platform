@@ -15,7 +15,7 @@ export default function Team() {
                             <h5>OUR FOUNDING TEAM</h5>
                         </div>
                         <h2>Founders Of AI Onwards<br/>
-                            Visionaries Behind Gurukul AI</h2>
+                            Visionaries Behind  AI Onwards</h2>
                     </div>
                     <div className="row grid gap-2 grid-cols-1 md:grid-cols-2 xl:grid-cols-2 place-items-center ">
                         {/*Start Team Two Single */}

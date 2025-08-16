@@ -26,6 +26,16 @@ export type SignUpCredential = {
     password: string
 }
 
+export type GoogleSignUpCredential = {
+    // first_name: string,
+    // last_name: string,
+    class_id?: string,
+    // email: string
+    id_token: string
+    // id_token: string
+    // password: string
+}
+
 export type ForgotPassword = {
     email: string
 }

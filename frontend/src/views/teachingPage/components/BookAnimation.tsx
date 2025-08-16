@@ -50,6 +50,13 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
     }
   }, [currentPage, startPageNumber]);
 
+  // Add a non-interactive placeholder page if original pages length is odd
+  const placeholderImageUrl = 'https://fra.cloud.appwrite.io/v1/storage/buckets/685a7bd100084facdc95/files/689f2d4700084dd7da73/view?project=685987e3000799209566&mode=admin';
+  const displayPages = React.useMemo(() => {
+    if (!Array.isArray(pages)) return pages;
+    return pages.length % 2 === 1 ? [...pages, placeholderImageUrl] : pages;
+  }, [pages]);
+
   const playSound = () => {
     const idx = Math.floor(Math.random() * audioRefs.length);
     const aud = audioRefs[idx];
@@ -82,13 +89,12 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
     const inst = bookRef.current?.pageFlip?.();
     if (!inst || typeof inst.getCurrentPageIndex !== 'function') return;
     const newIdx = inst.getCurrentPageIndex();
-    
-    // Only update inputPage if it's currently 0 (not during AI speech)
+
     if (lastPageIndexRef.current !== null && typeof inputPage === 'number' && inputPage === 0) {
       if (newIdx > lastPageIndexRef.current) dispatch(setInputPage(inputPage + 1));
       else if (newIdx < lastPageIndexRef.current) dispatch(setInputPage(inputPage - 1));
     }
-    
+
     lastPageIndexRef.current = newIdx;
     if (!clickRef.current) playSound();
     clickRef.current = false;
@@ -137,9 +143,11 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
     }
   }, [currentPage, startPageNumber]);
 
+  // Using react-pageflip: render pages as React children so images display reliably
+
   return (
     <div className="w-full h-[88vh] flex items-center justify-center relative">
-      {Array.isArray(pages) && typeof currentPage === 'number' ? (
+      {Array.isArray(displayPages) && typeof currentPage === 'number' ? (
         <HTMLFlipBook
           ref={bookRef}
           width={1}
@@ -150,7 +158,7 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
           minHeight={200}
           maxHeight={1300}
           className="w-full h-full"
-          maxShadowOpacity={0.5}
+          maxShadowOpacity={0.6}
           drawShadow
           onFlip={handleFlip}
           startPage={currentPage - startPageNumber}
@@ -167,29 +175,35 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
           showPageCorners={true}
           disableFlipByClick={true}
         >
-          {pages.map((url, idx) => {
+          {displayPages.map((url, idx) => {
             const pageNum = idx + startPageNumber;
             const isCurrent = pageNum === currentPage;
-            const isHovered = hoveredPage === pageNum;
+            const isExtraPlaceholder = Array.isArray(pages) && pages.length % 2 === 1 && idx === displayPages.length - 1;
 
             return (
               <div
                 key={pageNum}
-                className={`relative overflow-hidden w-full h-full ${!isCurrent ? 'cursor-pointer' : ''}`}
-                onMouseEnter={() => handleMouseEnter(pageNum)}
+                className={`relative overflow-hidden w-full h-full ${!isCurrent && !isExtraPlaceholder ? 'cursor-pointer' : ''}`}
+                onMouseEnter={() => { if (!isExtraPlaceholder) handleMouseEnter(pageNum); }}
                 onMouseLeave={handleMouseLeave}
               >
                 <img
                   src={url}
                   alt={`Page ${pageNum}`}
+                  crossOrigin="anonymous"
+                  referrerPolicy="no-referrer"
+                  loading="lazy"
+                  onError={() => {
+                    try { console.warn('Image failed to load:', url); } catch {}
+                  }}
                   className={
                     `w-full h-full object-cover transition-filter duration-500 ease-in-out` +
-                    (isHovered && !isCurrent ? ' brightness-75' : '')
+                    (hoveredPage === pageNum && !isCurrent && !isExtraPlaceholder ? ' brightness-75' : '')
                   }
                 />
 
                 <AnimatePresence>
-                  {isHovered && !isCurrent && (
+                  {hoveredPage === pageNum && !isCurrent && !isExtraPlaceholder && (
                     <motion.div
                       className="inset-0 absolute bg-black bg-opacity-50 flex items-center justify-center"
                       style={{ zIndex: 9999 }}

@@ -5,6 +5,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import { RiInstagramFill } from 'react-icons/ri'
 import { IoCall } from 'react-icons/io5'
 import useAuth from '@/utils/hooks/useAuth'
+import { useAppSelector } from '@/store/hook'
 import classNames from 'classnames'
 import Avatar from '../ui/Avatar/Avatar'
 import { HiOutlineLogout, HiOutlineUser, HiOutlineCog } from 'react-icons/hi'
@@ -18,6 +19,8 @@ import type { ReactNode } from 'react'
 export default function MobileMenu({ handleMobileMenu }: any) {
 
     const { authenticated, signOut } = useAuth()
+    const firstName = useAppSelector((state) => state.auth.user.first_name)
+    const lastName = useAppSelector((state) => state.auth.user.last_name)
     const navigate = useNavigate()
     const { mode } = useConfig()
 
@@ -32,17 +35,7 @@ export default function MobileMenu({ handleMobileMenu }: any) {
             label: 'Profile',
             path: '/app/account/settings/profile',
             icon: <HiOutlineUser />,
-        },
-        {
-            label: 'Account Setting',
-            path: '/app/account/settings/profile',
-            icon: <HiOutlineCog />,
-        },
-        {
-            label: 'Activity Log',
-            path: '/app/account/activity-log',
-            icon: <FiActivity />,
-        },
+        }
     ]
 
     const MenuProfileContent = () => {
@@ -51,7 +44,7 @@ export default function MobileMenu({ handleMobileMenu }: any) {
                 <div className="profile-info">
                     <div className='profile-icon flex items-center gap-1  border-[var(--thm-primary)] border-[2px] p-[3px] rounded-full'>
                         <Avatar
-                            size={51}
+                            size={41}
                             shape="circle"
                             src="/img/avatars/thumb-11.jpg"
                             className="bg-slate-200 text-slate-400"
@@ -60,7 +53,7 @@ export default function MobileMenu({ handleMobileMenu }: any) {
                     </div>
                     <div className="profile-details">
                         <h5 className="greeting">
-                            Hi, Abhishek Jain
+                            {`Hi, ${firstName || ''}${lastName ? ' ' + lastName : ''}`}
                         </h5>
                         <p className="welcome-text">Welcome back</p>
                     </div>
@@ -220,8 +213,8 @@ export default function MobileMenu({ handleMobileMenu }: any) {
                         <ul className="clearfix list-wrap">
                             <li>
                                 <a href="#">
-                                    <i className="fab fa-facebook-f">
-                                        <FaFacebookF />
+                                    <i className="fab fa-linkedin-in">
+                                        <FaLinkedinIn />
                                     </i>
                                 </a>
                             </li>
@@ -236,20 +229,6 @@ export default function MobileMenu({ handleMobileMenu }: any) {
                                 <a href="#">
                                     <i className="fab fa-instagram">
                                         <RiInstagramFill />
-                                    </i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i className="fab fa-linkedin-in">
-                                        <FaLinkedinIn />
-                                    </i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i className="fab fa-youtube">
-                                        <FaYoutube />
                                     </i>
                                 </a>
                             </li>

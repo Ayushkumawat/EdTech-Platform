@@ -51,7 +51,7 @@ const About = () => {
                             <div className="about-two__content">
                                 <div className="sec-title">
                                     <div className="sub-title">
-                                        <h5>KNOW ABOUT Gurukul AI</h5>
+                                        <h5>KNOW ABOUT AI ONWARDS</h5>
                                     </div>
                                     <h2>
                                     Stop Working Hard. <br /> Start Working Smart with AI.
@@ -88,7 +88,7 @@ const About = () => {
                                 </div>
 
                                 <div className="about-two__content-bottom flex flex-wrap items-center justify-between">
-                                    <div className="author-box flex items-center">
+                                    <div className="flex items-center">
                                         <div className="img-box">
                                             <img
                                                 src="assets/img/about/about-v2-img3.jpg"

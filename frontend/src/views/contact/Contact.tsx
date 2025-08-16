@@ -107,21 +107,21 @@ const Contact = () => {
                                 <div className="space-y-6">
                                     <div className="flex items-center space-x-4">
                                         <div className="flex-shrink-0">
-                                            <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                                            <div className="w-12 h-12 bg-[var(--thm-primary)] rounded-full flex items-center justify-center">
                                                 <FaMapMarkerAlt className="text-white text-lg" />
                                             </div>
                                         </div>
                                         <div>
                                             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Address</h3>
                                             <p className="text-gray-600 dark:text-gray-300">
-                                                254, North City, Bulex Center, New York
+                                                Kanadia Road,Indore, Madhya Pradesh, India
                                             </p>
                                         </div>
                                     </div>
 
                                     <div className="flex items-center space-x-4">
                                         <div className="flex-shrink-0">
-                                            <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                                            <div className="w-12 h-12 bg-[var(--thm-primary)] rounded-full flex items-center justify-center">
                                                 <FaPhone className="text-white text-lg" />
                                             </div>
                                         </div>
@@ -139,7 +139,7 @@ const Contact = () => {
 
                                     <div className="flex items-center space-x-4">
                                         <div className="flex-shrink-0">
-                                            <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                                            <div className="w-12 h-12 bg-[var(--thm-primary)] rounded-full flex items-center justify-center">
                                                 <FaEnvelope className="text-white text-lg" />
                                             </div>
                                         </div>
@@ -147,9 +147,7 @@ const Contact = () => {
                                             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Email</h3>
                                             <p className="text-gray-600 dark:text-gray-300">
                                                 <a href="mailto:info@example.com" className="hover:text-red-600 transition-colors">
-                                                    info@example.com
-                                                </a> or <a href="mailto:info@example.com" className="hover:text-red-600 transition-colors">
-                                                    info@example.com
+                                                    aionwards.founder@gmail.com
                                                 </a>
                                             </p>
                                         </div>
@@ -178,7 +176,7 @@ const Contact = () => {
                                                 value={formData.name}
                                                 onChange={handleInputChange}
                                                 placeholder="Your Name*"
-                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors"
+                                                className="w-full px-4 py-3 bg-gray-10 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white transition-colors"
                                             />
                                         </div>
                                         <div>
@@ -190,7 +188,7 @@ const Contact = () => {
                                                 value={formData.email}
                                                 onChange={handleInputChange}
                                                 placeholder="Your Email*"
-                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white transition-colors"
                                             />
                                         </div>
                                     </div>
@@ -205,7 +203,7 @@ const Contact = () => {
                                                 value={formData.phone}
                                                 onChange={handleInputChange}
                                                 placeholder="Phone*"
-                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white transition-colors"
                                             />
                                         </div>
                                         <div>
@@ -217,7 +215,7 @@ const Contact = () => {
                                                 value={formData.subject}
                                                 onChange={handleInputChange}
                                                 placeholder="Subject*"
-                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-colors"
+                                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white transition-colors"
                                             />
                                         </div>
                                     </div>
@@ -231,7 +229,7 @@ const Contact = () => {
                                             value={formData.message}
                                             onChange={handleInputChange}
                                             placeholder="Write Message*"
-                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white resize-none transition-colors"
+                                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white resize-none transition-colors"
                                         />
                                     </div>
 
@@ -239,7 +237,7 @@ const Contact = () => {
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className={`bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-semibold py-3 px-8 rounded-md transition-colors duration-300 uppercase tracking-wide ${
+                                            className={`bg-[var(--thm-primary)] hover:bg-red-700 disabled:bg-red-400 text-white font-semibold py-3 px-8 rounded-md transition-colors duration-300 uppercase tracking-wide ${
                                                 submitStatus === 'success' ? 'bg-green-600' : submitStatus === 'error' ? 'bg-red-700' : ''
                                             }`}
                                         >

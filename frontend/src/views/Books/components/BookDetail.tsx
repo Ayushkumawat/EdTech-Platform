@@ -76,7 +76,7 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                     </h4>
 
                     {/*  book meta */}
-                    <div className="border-b border-gray-300 dark:border-gray-700 pb-[25px] flex lg:flex-nowrap flex-wrap items-center gap-[30px] lg:gap-[60px]  mb-[34px]">
+                    <div className="border-b border-gray-300 dark:border-gray-700 pb-[25px] flex lg:flex-nowrap flex-wrap items-center gap-[26px]   mb-[34px]">
                         {/*  single info */}
                         <div className="flex items-center gap-[10px] border-l border-gray-300 dark:border-gray-700 first:border-none pl-[10px] first:pl-0">
                             <div className="chat-message-box-avatar-container">
@@ -102,6 +102,18 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                         <div className="flex items-center gap-[10px] border-l border-gray-300 dark:border-gray-700 first:border-none pl-[10px] first:pl-0">
                             <div>
                                 <h6 className="font-medium leading-[1.2]">
+                                    Subject
+                                </h6>
+                                <span className="font-medium text-[14px] text-gray-500 leading-[1]">
+                                    {bookDetail?.subject?.name}
+                                </span>
+                            </div>
+                        </div>
+
+                         {/*  single info */}
+                         <div className="flex items-center gap-[10px] border-l border-gray-300 dark:border-gray-700 first:border-none pl-[10px] first:pl-0">
+                            <div>
+                                <h6 className="font-medium leading-[1.2]">
                                     Medium
                                 </h6>
                                 <span className="font-medium text-[14px] text-gray-500 leading-[1]">
@@ -110,8 +122,22 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                             </div>
                         </div>
 
+                      
+
                         {/*  single info */}
                         <div className="flex items-center gap-[10px] border-l border-gray-300 dark:border-gray-700 first:border-none pl-[10px] first:pl-0">
+                            <div>
+                                <h6 className="font-medium leading-[1.2]">
+                                    Duration
+                                </h6>
+                                <span className="font-medium text-[14px] text-gray-500 leading-[1]">
+                                    {bookDetail?.duration}
+                                </span>
+                            </div>
+                        </div>
+
+                          {/*  single info */}
+                          <div className="flex items-center gap-[10px] border-l border-gray-300 dark:border-gray-700 first:border-none pl-[10px] first:pl-0">
                             <div>
                                 <h6 className="font-medium leading-[1.2]">
                                     Reviews
@@ -129,17 +155,6 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                             </div>
                         </div>
 
-                        {/*  single info */}
-                        <div className="flex items-center gap-[10px] border-l border-gray-300 dark:border-gray-700 first:border-none pl-[10px] first:pl-0">
-                            <div>
-                                <h6 className="font-medium leading-[1.2]">
-                                    Duration
-                                </h6>
-                                <span className="font-medium text-[14px] text-gray-500 leading-[1]">
-                                    {bookDetail?.duration} minutes
-                                </span>
-                            </div>
-                        </div>
                     </div>
                     
 
@@ -216,22 +231,7 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                                     </div>
                                 </div>
 
-                                <div>
-                                    <h4 className="font-semibold text-[30px] lg:text-[27px] xs:text-[25px] xxs:text-[23px] mt-[28px] mb-[15px]">
-                                        Requirements for The Book
-                                    </h4>
-                                    <div className="space-y-[10px]">
-                                        <p className="text-edgray">
-                                            Nulla facilisi. Vestibulum tristique
-                                            sem in eros eleifend imperdiet.
-                                            Donec quis convallis neque. In id
-                                            lacus pulvinar lacus, eget vulputate
-                                            lectus. Ut viverra bibendum lorem,
-                                            at tempus nibh mattis in. Sed a
-                                            massa eget lacus consequat auctor.
-                                        </p>
-                                    </div>
-                                </div>
+                          
                             </div>
 
  

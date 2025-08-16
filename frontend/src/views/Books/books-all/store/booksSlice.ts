@@ -4,15 +4,20 @@ import { apiGetSubjectBookByClass, apiGetBookDetail } from '@/services/BooksServ
 export type Chapter = {
     uid: string;
     title: string;
-    description: string;
-    // Add other chapter properties as needed
+    description?: string;
 };
 
 export type Review = {
     uid: string;
-    rating: number;
-    comment: string;
-    // Add other review properties as needed
+    rating?: number;
+    comment?: string;
+};
+
+export type Subject = {
+    name: string;
+    description: string;
+    class_id: string;
+    uid: string;
 };
 
 export type Book = {
@@ -22,18 +27,12 @@ export type Book = {
     class_id: string;
     teacher: string;
     duration: string;
-    cover_image: string; // Added cover_image as per new schema
+    cover_image: string;
     description: string;
     uid: string;
+    subject?: Subject; // New nested subject object in detail response
     chapters: Chapter[];
     reviews: Review[];
-};
-
-export type Subject = {
-    name: string;
-    description: string;
-    class_id: string;
-    uid: string;
 };
 
 export type ClassBooksResponse = {

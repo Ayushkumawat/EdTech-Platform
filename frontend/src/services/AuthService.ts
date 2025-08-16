@@ -6,9 +6,12 @@ import type {
     ResetPassword,
     SignInResponse,
     SignUpResponse,
+    GoogleSignUpCredential
 } from '@/@types/auth'
 import appConfig from '@/configs/app.config'
 const add_prefix=appConfig.enableMock?"":"users"
+
+
 
 export async function apiSignIn(data: SignInCredential) {
     return ApiService.fetchData<SignInResponse>({
@@ -65,4 +68,14 @@ export async function apiGetCurrentUser() {
     })
 }
 
-
+export async function apiSignGoogle(data: GoogleSignUpCredential) {
+    return ApiService.fetchData<SignUpResponse>({
+        url: add_prefix+'/google',
+        method: 'post',
+        data,
+        headers: {
+        
+            'ngrok-skip-browser-warning': 'true' // Skip ngrok warning page
+        }
+    })
+}

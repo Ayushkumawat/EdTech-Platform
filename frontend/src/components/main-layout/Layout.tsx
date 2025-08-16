@@ -15,13 +15,35 @@ declare global {
   }
 }
 
+interface BreadcrumbItem {
+    label: string;
+    path: string | null;
+}
+
+interface LayoutProps {
+    headerStyle?: number | null;
+    footerStyle?: number | null;
+    headTitle?: string;
+    breadcrumbTitle?: string | null;
+    breadcrumbPath?: BreadcrumbItem[];
+    children: React.ReactNode;
+    wrapperCls?: string;
+}
 
 import Header1 from "./header/Header1"
 import Header2 from './header/Header2'
 import Header3 from "./header/Header3"
 import Header4 from "./header/Header4"
 
-export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, children, wrapperCls }:any) {
+export default function Layout({ 
+    headerStyle, 
+    footerStyle, 
+    headTitle, 
+    breadcrumbTitle, 
+    breadcrumbPath,
+    children, 
+    wrapperCls 
+}: LayoutProps) {
     const [scroll, setScroll] = useState(false)
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isScrollingDown, setIsScrollingDown] = useState(false);
@@ -78,13 +100,18 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
                 {headerStyle == 2 ? <Header2 isScrollingDown={isScrollingDown} scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} /> : null}
                 {headerStyle == 3 ? <Header3 isScrollingDown={isScrollingDown} scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} /> : null}
                 {headerStyle == 4 ? <Header4 isScrollingDown={isScrollingDown} scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} /> : null}
- 
+
 
 
                
               
 
-                {breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} />}
+                {breadcrumbTitle && (
+                    <Breadcrumb 
+                        breadcrumbTitle={breadcrumbTitle} 
+                        breadcrumbPath={breadcrumbPath}
+                    />
+                )}
                 
 
                 {children}

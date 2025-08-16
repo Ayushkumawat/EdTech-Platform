@@ -39,12 +39,10 @@ type AccountSetting = {
 type GetAccountSettingData = AccountSetting
 
 const Profile = lazy(() => import('./components/Profile'))
-const Password = lazy(() => import('./components/Password'))
 const NotificationSetting = lazy(
     () => import('./components/NotificationSetting')
 )
 const Integration = lazy(() => import('./components/Integration'))
-const Billing = lazy(() => import('./components/Billing'))
 
 const { TabNav, TabList } = Tabs
 
@@ -56,8 +54,6 @@ const settingsMenu: Record<
     }
 > = {
     profile: { label: 'Profile', path: 'profile' },
-    password: { label: 'Password', path: 'password' },
-    billing: { label: 'Billing', path: 'billing' },
 }
 
 const Settings = () => {
@@ -107,14 +103,10 @@ const Settings = () => {
                         {currentTab === 'profile' && (
                             <Profile data={data.profile} />
                         )}
-                        {currentTab === 'password' && (
-                            <Password data={data.loginHistory} />
-                        )}
                         {currentTab === 'notification' && (
                             <NotificationSetting data={data.notification} />
                         )}
                         {currentTab === 'integration' && <Integration />}
-                        {currentTab === 'billing' && <Billing />}
                     </Suspense>
                 </div>
             </AdaptableCard>
