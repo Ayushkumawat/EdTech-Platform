@@ -7,7 +7,7 @@ class UserBase(BaseModel):
     first_name: str
     last_name: str
     email: EmailStr
-    password: Optional[str] = None
+    password: str
     class_id: Optional[uuid.UUID] = None
     google_id: Optional[str] = None
 

@@ -12,8 +12,8 @@ class Settings(BaseSettings):
     jwt_secret:str
     jwt_algorithm:str
     redis_host:str
-    google_client_id:str
     redis_port:int
+    google_client_id:str
     redis_password:str
     gdrive_service_account_file: str
     gdrive_folder_id: str
