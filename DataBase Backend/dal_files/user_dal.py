@@ -42,6 +42,7 @@ class UserDAL:
             raise HTTPException(status_code=400, detail="Default subscription not found")
         new_user.role_id = default_role.uid
         new_user.subscription_id = default_subscription.uid
+        new_user.daily_credits = default_subscription.daily_limit
         try:
             db_session.add(new_user)
             await db_session.commit()
@@ -67,6 +68,18 @@ class UserDAL:
         await db_session.commit()
         await db_session.refresh(user)
         return user
+    
+    async def update_credits(self, user_id: str, token_used:int, db_session: AsyncSession) :
+        user = await self.get_user_by_id(user_id, db_session)
+        if not user:
+            return None
+        if user.daily_credits - token_used < 0:
+            return {"Status": "Inactive"}
+        elif user.daily_credits - token_used >= 0:
+            user.daily_credits = user.daily_credits - token_used
+            await db_session.commit()
+            await db_session.refresh(user)
+            return {"Status": "Active"}
 
     async def delete_user(self, user_id: str, db_session: AsyncSession) -> bool:
         user = await self.get_user_by_id(user_id, db_session)

@@ -155,6 +155,14 @@ async def update_user(user_update: UserUpdate, current_user: UserBase = Depends(
         raise HTTPException(status_code=404, detail="User not found")
     return updated_user
 
+@user_router.get("/user_token_status/{token_used}")
+async def update_token(token_used:int, current_user: UserBase = Depends(get_current_user), session: AsyncSession = Depends(get_session)):
+    user_id = current_user.uid
+    Usage_status = await user_service.update_credits(user_id, token_used, session)
+    if not Usage_status:
+        raise HTTPException(status_code=404, detail="User not found")
+    return Usage_status
+
 @user_router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_user(user_id: str, session: AsyncSession = Depends(get_session)):
     success = await user_service.delete_user(user_id, session)

@@ -20,7 +20,7 @@ class UserUpdate(BaseModel):
     email: Optional[EmailStr] = None
     password: Optional[str] = None
     class_id: Optional[uuid.UUID] = None
-    daily_usage: Optional[int] = None
+    daily_credits: Optional[int] = None
     subscription_id: Optional[uuid.UUID] = None
 
 class UserOut(BaseModel):
@@ -32,7 +32,7 @@ class UserOut(BaseModel):
     class_id: uuid.UUID
     role_id: uuid.UUID
     subscription_id: uuid.UUID
-    daily_usage: int
+    daily_credits: int
     created_at: datetime
     updated_at: datetime
 

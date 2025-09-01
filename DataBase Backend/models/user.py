@@ -17,7 +17,7 @@ class User(Base):
     role_id = Column(PG_UUID(as_uuid=True), ForeignKey('role.uid'), nullable=False)
     subscription_id = Column(PG_UUID(as_uuid=True), ForeignKey('subscription.uid'), nullable=False)
     google_id = Column(String(255), nullable=True, unique=True)
-    daily_usage = Column(Integer, nullable=False, default=0)
+    daily_credits = Column(Integer, nullable=False, default=0)
     created_at = Column(TIMESTAMP, nullable=False, default=datetime.now)
     updated_at = Column(TIMESTAMP, nullable=False, default=datetime.now)
 
