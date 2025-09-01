@@ -103,7 +103,7 @@ const SignUp = () => {
     };
 
     return (
-        <GoogleOAuthProvider clientId="932880233723-oe3radmfviujjvd7vo409erc71l8u8hs.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="421969447253-4ph117jikerj89nc476hdq73trslklo2.apps.googleusercontent.com">
             <div className="relative top-[-10px]">
                 <div className="mb-4">
                     <h3 className="mb-1">Sign Up</h3>

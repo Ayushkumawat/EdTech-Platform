@@ -235,7 +235,7 @@ async def login_users(login_data: UserLogin, session: AsyncSession = Depends(get
                     "first_name": user.first_name,
                     "last_name": user.last_name,
                     "class_id": str(user.class_id),
-                    "current_usage": user.daily_credits
+                    "daily_credits": user.daily_credits
                 }
             }
             if login_data.remember_me:

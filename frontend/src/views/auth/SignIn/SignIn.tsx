@@ -55,7 +55,7 @@ const SignIn = () => {
     };
 
     return (
-        <GoogleOAuthProvider clientId="932880233723-oe3radmfviujjvd7vo409erc71l8u8hs.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId="421969447253-4ph117jikerj89nc476hdq73trslklo2.apps.googleusercontent.com">
             <div className="mb-8">
                 <h3 className="mb-1">Welcome back!</h3>
                 <p>Please enter your credentials to sign in!</p>
