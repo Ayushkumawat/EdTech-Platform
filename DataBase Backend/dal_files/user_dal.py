@@ -73,10 +73,13 @@ class UserDAL:
         user = await self.get_user_by_id(user_id, db_session)
         if not user:
             return None
-        if user.daily_credits - token_used < 0:
+        if user.daily_credits <= 0:
             return {"Status": "Inactive"}
-        elif user.daily_credits - token_used >= 0:
-            user.daily_credits = user.daily_credits - token_used
+        else:
+            if user.daily_credits - token_used < 0:
+                user.daily_credits = 0
+            else:
+                user.daily_credits = user.daily_credits - token_used
             await db_session.commit()
             await db_session.refresh(user)
             return {"Status": "Active"}
