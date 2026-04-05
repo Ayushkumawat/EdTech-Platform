@@ -6,6 +6,7 @@ export type AppConfig = {
     tourPath: string
     locale: string
     enableMock: boolean
+    googleClientId: string
 }
 
 const appConfig: AppConfig = {
@@ -16,6 +17,7 @@ const appConfig: AppConfig = {
     tourPath: '/',
     locale: 'en',
     enableMock: false,
+    googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || '421969447253-4ph117jikerj89nc476hdq73trslklo2.apps.googleusercontent.com',
 }
 
 export default appConfig

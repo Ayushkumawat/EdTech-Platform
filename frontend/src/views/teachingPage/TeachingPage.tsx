@@ -44,14 +44,13 @@ const TeachingPage = () => {
     // Remove local isAudioPlaying, use global isPlaying from Redux
     const currentPage = useAppSelector((state) => state.teaching.data.currentPage);
     const [responseMessage, setResponseMessage] = useState('');
-    const { textToSpeechConvert, stopAudio, isPlaying } = useTextToSpeech2();
+    const { textToSpeechConvert, isPlaying, startMicStream, stopMicStream, isMicActive } = useTextToSpeech2();
 
     const isHindiMedium = !!bookDetail?.medium && (/[\u0900-\u097F]/.test(bookDetail.medium) || bookDetail.medium.toLowerCase().includes('hindi'))
     const chapterLabel = isHindiMedium ? 'अध्याय' : 'Chapter'
 
     const handleApiCall = (userInput: string, imageUrl?: string) => {
         dispatch(setDotAnimation(true))
-        stopAudio()
         if (chatMessages && setChatMessages) {
             setChatMessages([...chatMessages, userInput])
         }
@@ -149,11 +148,11 @@ const TeachingPage = () => {
                                     initialHeight={[15, 15, 15, 15]}
                                     intensity={50}
                                 />
-                                <MessageBox handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} teacherName={bookDetail?.teacher} subjectName={bookDetail?.subject?.name} medium={bookDetail?.medium} />
+                                <MessageBox handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} teacherName={bookDetail?.teacher} subjectName={bookDetail?.subject?.name} medium={bookDetail?.medium} startMicStream={startMicStream} stopMicStream={stopMicStream} isMicActive={isMicActive} />
                             </div>
                         ) : (
                             <>
-                                <MessageInput handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} />
+                                <MessageInput handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} startMicStream={startMicStream} stopMicStream={stopMicStream} isMicActive={isMicActive} />
                                 <div
                                     className={`mobile-visulization-conatiner w-full ${mobileVisual ? 'active-mobile-visulization-conatiner' : ''}`}
                                     style={{ pointerEvents: 'none' }}

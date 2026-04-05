@@ -116,7 +116,7 @@ export class GdmLiveAudio extends LitElement {
 	}
 
 	private async initSession() {
-		const model = 'gemini-2.5-flash-preview-native-audio-dialog';
+		const model = 'gemini-3.1-flash-live-preview';
 
 		try {
 			this.isSessionOpen = false;

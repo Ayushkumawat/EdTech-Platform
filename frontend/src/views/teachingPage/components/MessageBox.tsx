@@ -11,9 +11,12 @@ interface MessageBoxProps {
     teacherName?: string;
     subjectName?: string;
     medium?: string;
+    startMicStream?: (imageUrl?: string) => Promise<void>;
+    stopMicStream?: () => void;
+    isMicActive?: boolean;
 }
 
-const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, setChatMessages, teacherName, subjectName, medium }) => {
+const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, setChatMessages, teacherName, subjectName, medium, startMicStream, stopMicStream, isMicActive }) => {
   
     const isHindiMedium = !!medium && (/[\u0900-\u097F]/.test(medium) || medium.toLowerCase().includes('hindi'))
 
@@ -52,7 +55,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, se
                     </div>
                 ))}
             </div>
-            <MessageInput handleApiCall={handleApiCall} setChatMessages={setChatMessages} chatMessages={chatMessages} />
+            <MessageInput handleApiCall={handleApiCall} setChatMessages={setChatMessages} chatMessages={chatMessages} startMicStream={startMicStream} stopMicStream={stopMicStream} isMicActive={isMicActive} />
 
  
         </div>
