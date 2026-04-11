@@ -1,7 +1,6 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import HTMLFlipBook from 'react-pageflip';
-import { useAppSelector, useAppDispatch, putChapterProgress, setInputPage, setStartButton } from '../store';
-import useTextToSpeech2 from '@/utils/hooks/useTextToSpeech2';
+import { useAppSelector, useAppDispatch, putChapterProgress, setInputPage, setStartButton, setDotAnimation } from '../store';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import flip2 from '../../../assets/audios/flip2.mp3';
@@ -13,6 +12,7 @@ interface BookAnimationProps {
   startPageNumber?: number;
   handleApiCall: (userInput: string, imageUrl?: string) => void;
   isAudioPlaying?: boolean;
+  isUsageInactive?: boolean;
 }
 
 const overlayVariants = {
@@ -25,12 +25,12 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
   startPageNumber = 1,
   handleApiCall,
   isAudioPlaying,
+  isUsageInactive = false,
 }) => {
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector((s) => s.teaching.data.currentPage);
   const inputPage = useAppSelector((s) => s.teaching.data.inputPage);
   const chapterId = useAppSelector((s) => s.teaching.data.chapter_completion_id);
-  // const { isPlaying } = useTextToSpeech2();
 
   const audioRefs = React.useMemo(
     () => [new Audio(flip2), new Audio(flip3), new Audio(flip4)],
@@ -41,6 +41,7 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
 
   const [hoveredPage, setHoveredPage] = useState<number | null>(null);
   const [isFlipping, setIsFlipping] = useState(false);
+  const [isProcessingPage, setIsProcessingPage] = useState(false);
   const hoverTimer = useRef<number>();
 
   const lastPageIndexRef = useRef<number | null>(null);
@@ -50,7 +51,6 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
     }
   }, [currentPage, startPageNumber]);
 
-  // Add a non-interactive placeholder page if original pages length is odd
   const placeholderImageUrl = 'https://fra.cloud.appwrite.io/v1/storage/buckets/685a7bd100084facdc95/files/689f2d4700084dd7da73/view?project=685987e3000799209566&mode=admin';
   const displayPages = React.useMemo(() => {
     if (!Array.isArray(pages)) return pages;
@@ -65,20 +65,17 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
   };
 
   const handlePtrDown = (e: React.MouseEvent | React.TouchEvent) => {
-    // Allow clicks on buttons and interactive elements
     const target = e.target as HTMLElement;
     if (target.tagName === 'BUTTON' || target.closest('button')) {
-      return; // Allow button clicks
+      return;
     }
     
-    // Completely prevent mouse events, but allow touch events for swipe
     if (e.type === 'mousedown') {
       e.preventDefault();
       e.stopPropagation();
       return false;
     }
     
-    // Allow touch events for swipe functionality
     if (e.type === 'touchstart') {
       clickRef.current = true;
       playSound();
@@ -101,8 +98,13 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
   };
 
   const continuePage = (pageNum: number, url: string) => {
-    console.log('continuePage called with:', pageNum, url);
+    if (isUsageInactive || isProcessingPage) return;
+    setIsProcessingPage(true);
+
+    dispatch(setDotAnimation(true));
+
     if (chapterId) dispatch(putChapterProgress({ uid: chapterId, current_page: pageNum }));
+
     playSound();
     const inst = bookRef.current?.pageFlip?.();
     const target = pageNum - startPageNumber;
@@ -111,9 +113,10 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
       lastPageIndexRef.current = target;
     }
     dispatch(setInputPage(0));
-    dispatch(setStartButton(false)); 
-    // Added: set startButton to false
+    dispatch(setStartButton(false));
     handleApiCall('start teaching this page', url);
+
+    setTimeout(() => setIsProcessingPage(false));
   };
 
   const handleMouseEnter = (pageNum: number) => {
@@ -142,8 +145,6 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
       lastPageIndexRef.current = target;
     }
   }, [currentPage, startPageNumber]);
-
-  // Using react-pageflip: render pages as React children so images display reliably
 
   return (
     <div className="w-full h-[88vh] flex items-center justify-center relative">
@@ -178,6 +179,7 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
           {displayPages.map((url, idx) => {
             const pageNum = idx + startPageNumber;
             const isCurrent = pageNum === currentPage;
+            const isRightPage = idx % 2 === 1;
             const isExtraPlaceholder = Array.isArray(pages) && pages.length % 2 === 1 && idx === displayPages.length - 1;
 
             return (
@@ -202,10 +204,56 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
                   }
                 />
 
+                {/* Static inner-edge shadows (gutter/spine effect) */}
+                {!isExtraPlaceholder && (
+                  <div className="pointer-events-none absolute inset-0 z-[5]">
+                    {isRightPage ? (
+                      <>
+                        {/* RIGHT PAGE: shadow on the LEFT edge (spine side) */}
+                        <div
+                          className="absolute top-0 bottom-0 left-0 w-32"
+                          style={{
+                            background: 'linear-gradient(to right, rgba(0,0,0,0.35), rgba(0,0,0,0.15), rgba(0,0,0,0.05), rgba(0,0,0,0))',
+                            opacity: 0.7,
+                          }}
+                        />
+                        <div
+                          className="absolute top-0 bottom-0 left-0 w-12"
+                          style={{
+                            background: 'linear-gradient(to right, rgba(0,0,0,0.45), rgba(0,0,0,0.1), rgba(0,0,0,0))',
+                            opacity: 0.6,
+                          }}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        {/* LEFT PAGE: shadow on the RIGHT edge (spine side) */}
+                        <div
+                          className="absolute top-0 bottom-0 right-0 w-32"
+                          style={{
+                            background: 'linear-gradient(to left, rgba(0,0,0,0.35), rgba(0,0,0,0.15), rgba(0,0,0,0.05), rgba(0,0,0,0))',
+                            opacity: 0.7,
+                          }}
+                        />
+                        <div
+                          className="absolute top-0 bottom-0 right-0 w-12"
+                          style={{
+                            background: 'linear-gradient(to left, rgba(0,0,0,0.45), rgba(0,0,0,0.1), rgba(0,0,0,0))',
+                            opacity: 0.6,
+                          }}
+                        />
+                      </>
+                    )}
+                  </div>
+                )}
+
+                {/* Hover overlay */}
                 <AnimatePresence>
                   {hoveredPage === pageNum && !isCurrent && !isExtraPlaceholder && (
                     <motion.div
-                      className="inset-0 absolute bg-black bg-opacity-50 flex items-center justify-center"
+                      className={`inset-0 absolute flex flex-col items-center justify-center gap-3 ${
+                        isUsageInactive ? 'bg-red-900 bg-opacity-70' : 'bg-black bg-opacity-50'
+                      }`}
                       style={{ zIndex: 9999 }}
                       initial="hidden"
                       animate="visible"
@@ -215,14 +263,11 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
                     >
                       <motion.button
                         onClick={() => continuePage(pageNum, url)}
-                        whileHover={{ scale: 1.1 }}
-                        className={
-                          `bg-[var(--thm-black)] text-white font-bold uppercase px-6 py-3 transition-colors duration-200 hover:bg-[var(--thm-primary)]` +
-                          (isAudioPlaying ? ' opacity-50 cursor-not-allowed' : '')
-                        }
-                        disabled={!!isAudioPlaying}
+                        whileHover={!isUsageInactive ? { scale: 1.1 } : {}}
+                        className="font-bold uppercase px-6 py-3 bg-[var(--thm-black)] text-white hover:bg-[var(--thm-primary)]"
+                        disabled={isUsageInactive}
                       >
-                        Continue This Page
+                        {isUsageInactive ? 'Usage Limit Reached' : 'Continue This Page'}
                       </motion.button>
                     </motion.div>
                   )}

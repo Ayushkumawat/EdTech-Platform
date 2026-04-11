@@ -6,6 +6,10 @@ import reducer, {
   setDotAnimation,
   useAppDispatch,
   useAppSelector,
+  appendStreamingUserText,
+  appendStreamingModelText,
+  flushUserTranscript,
+  flushModelTranscriptToChat,
 } from '@/views/teachingPage/store';
 import { injectReducer } from '@/store';
 import { createBlob, decode, decodeAudioData, encode } from '@/features/liveAudio/utils';
@@ -85,6 +89,7 @@ const useTextToSpeech = (): TextToSpeechHook => {
       analyserRef.current.smoothingTimeConstant = 0.8;
       gainRef.current.connect(analyserRef.current);
       analyserRef.current.connect(audioCtxRef.current.destination);
+      (window as any).__audioOutputNode = gainRef.current;
     }
     if (audioCtxRef.current.state === 'suspended') {
       await audioCtxRef.current.resume();
@@ -200,21 +205,32 @@ const useTextToSpeech = (): TextToSpeechHook => {
 
   const handleLiveMessage = useCallback(async (message: LiveServerMessage) => {
     try {
-      // Capture output transcription for conversation history
+      // Capture output transcription for conversation history + live display
       if ((message.serverContent as any)?.outputTranscription?.text) {
-        currentModelTranscriptRef.current += (message.serverContent as any).outputTranscription.text;
+        const text = (message.serverContent as any).outputTranscription.text;
+        currentModelTranscriptRef.current += text;
+        dispatch(appendStreamingModelText(text));
+      }
+
+      // Capture input transcription (user's speech) for live display
+      if ((message.serverContent as any)?.inputTranscription?.text) {
+        const text = (message.serverContent as any).inputTranscription.text;
+        dispatch(appendStreamingUserText(text));
       }
 
       const parts = message.serverContent?.modelTurn?.parts ?? [];
 
       if (parts.length > 0) {
-        // New model turn audio arriving — clear flags so we hear it.
         if (skipAudioRef.current) {
           skipAudioRef.current = false;
         }
         if (clientMutedRef.current) {
           clientMutedRef.current = false;
           if (gainRef.current) gainRef.current.gain.value = 1;
+        }
+        // Flush user transcript when model starts responding
+        if (!serverTurnActiveRef.current) {
+          dispatch(flushUserTranscript());
         }
         serverTurnActiveRef.current = true;
 
@@ -229,6 +245,9 @@ const useTextToSpeech = (): TextToSpeechHook => {
           dispatch(setDotAnimation(false));
           dispatch(setIsPlaying(true));
           playingRef.current = true;
+          window.dispatchEvent(
+            new CustomEvent('liveAudioPlayback', { detail: { state: 'playing' } })
+          );
 
           nextStartTime.current = Math.max(nextStartTime.current, ctx.currentTime);
           const audioBuffer = await decodeAudioData(decode(inlineData.data), ctx, 24000, 1);
@@ -245,12 +264,18 @@ const useTextToSpeech = (): TextToSpeechHook => {
             if (streamEndedRef.current && sourcesRef.current.length === 0) {
               dispatch(setIsPlaying(false));
               playingRef.current = false;
+              window.dispatchEvent(
+                new CustomEvent('liveAudioPlayback', { detail: { state: 'idle' } })
+              );
             }
           };
         }
       }
 
       if ((message.serverContent as any)?.interrupted) {
+        window.dispatchEvent(
+          new CustomEvent('liveAudioPlayback', { detail: { state: 'clearing' } })
+        );
         sourcesRef.current.forEach(s => { try { s.stop(); } catch {} });
         sourcesRef.current = [];
         nextStartTime.current = audioCtxRef.current?.currentTime ?? 0;
@@ -260,6 +285,10 @@ const useTextToSpeech = (): TextToSpeechHook => {
         dispatch(setIsPlaying(false));
         playingRef.current = false;
         flushModelTranscript();
+        dispatch(flushModelTranscriptToChat());
+        window.dispatchEvent(
+          new CustomEvent('liveAudioPlayback', { detail: { state: 'idle' } })
+        );
         console.log('[GeminiLive] Interrupted');
       }
 
@@ -268,6 +297,15 @@ const useTextToSpeech = (): TextToSpeechHook => {
         streamEndedRef.current = true;
         skipAudioRef.current = false;
         flushModelTranscript();
+        dispatch(flushModelTranscriptToChat());
+
+        if (sourcesRef.current.length === 0) {
+          dispatch(setIsPlaying(false));
+          playingRef.current = false;
+          window.dispatchEvent(
+            new CustomEvent('liveAudioPlayback', { detail: { state: 'idle' } })
+          );
+        }
         console.log('[GeminiLive] Turn complete');
       }
     } catch (err) {
@@ -316,6 +354,8 @@ const useTextToSpeech = (): TextToSpeechHook => {
     const config: any = {
       responseModalities: [Modality.AUDIO],
       speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Orus' } } },
+      inputAudioTranscription: {},
+      outputAudioTranscription: {},
     };
 
     const systemParts: any[] = [];
@@ -422,12 +462,20 @@ const useTextToSpeech = (): TextToSpeechHook => {
         }
 
         stopCurrentAudioSources();
-        playingRef.current = true;
-        dispatch(setDotAnimation(true));
 
+        // When interrupting, explicitly clear playback state so the visualizer
+        // sees idle during the "thinking" window before new audio arrives.
         if (wasModelSpeaking) {
+          dispatch(setIsPlaying(false));
+          playingRef.current = false;
+          window.dispatchEvent(
+            new CustomEvent('liveAudioPlayback', { detail: { state: 'idle' } })
+          );
           flushModelTranscript();
         }
+
+        playingRef.current = true;
+        dispatch(setDotAnimation(true));
         currentModelTranscriptRef.current = '';
 
         const canReuse =

@@ -77,7 +77,7 @@
   }
   
   .dot {
-    @apply w-[15px] rounded-full transition duration-500 ease-in-out;
+    @apply w-[15px] rounded-full;
   }
   
   .dot-animation{
@@ -171,11 +171,28 @@
     content: "";
     position: absolute;
     display: block;
-    top: 0px; /* Adjust based on your design */
-    right: -8px; /* Adjust based on your design */
+    top: 0px;
+    right: -8px;
     width: 0;
     height: 0;
-    @apply border-l-[13px] border-b-[11px] border-solid border-l-gray-100 dark:border-l-gray-800 border-b-transparent;
+    border-left: 13px solid var(--bubble-arrow-color, theme('colors.gray.100'));
+    border-bottom: 11px solid transparent;
+  }
+
+  :is(.dark) .chat-message-box-body-content::before {
+    border-left-color: var(--bubble-arrow-color, theme('colors.gray.800'));
+  }
+
+  .chat-bubble-left::before {
+    right: auto !important;
+    left: -8px !important;
+    border-left: none !important;
+    border-right: 13px solid var(--bubble-arrow-color, theme('colors.gray.100'));
+    border-bottom: 11px solid transparent;
+  }
+
+  :is(.dark) .chat-bubble-left::before {
+    border-right-color: var(--bubble-arrow-color, theme('colors.gray.800'));
   }
   
   /* Microphone button container */

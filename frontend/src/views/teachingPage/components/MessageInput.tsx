@@ -71,14 +71,6 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
 
     return (
         <>
-            {isMicActive && (
-                <div className="chat-message-box-recognition-text-container">
-                    <h4 className="text-center" style={{ color: 'white', textShadow: '0 0 10px rgba(0,0,0,0.8)' }}>
-                        🎙️ Voice mode active — speak naturally
-                    </h4>
-                </div>
-            )}
-
             <div className="send-message-button-box">
                 <div
                     className={`start-teaching-button ${startButton ? '' : 'start-teaching-button-deactive'}`}

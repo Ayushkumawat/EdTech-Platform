@@ -8,7 +8,12 @@ export type ChapterContent = {
   book_id: string;
 };
 
-export type TeachingState ={
+export type TranscriptMessage = {
+  role: 'user' | 'model';
+  text: string;
+};
+
+export type TeachingState = {
   isPlaying: boolean;
   frequencyData: number[];
   chapter_completion_id: string | null;
@@ -19,15 +24,18 @@ export type TeachingState ={
   error: any;
   notification: any;
   currentPage: number | null;
-  inputPage: number| null;
-  startButton: boolean; // Added
+  inputPage: number | null;
+  startButton: boolean;
+  streamingUserText: string;
+  streamingModelText: string;
+  liveTranscripts: TranscriptMessage[];
 }
 
 const initialState: TeachingState = {
   isPlaying: false,
   frequencyData: [],
   chapterData: null,
-  chapter_completion_id:null,
+  chapter_completion_id: null,
   chapterLoading: false,
   dotAnimation: false,
   mobileVisual: false,
@@ -35,7 +43,10 @@ const initialState: TeachingState = {
   notification: null,
   currentPage: null,
   inputPage: 0,
-  startButton: true // Added
+  startButton: true,
+  streamingUserText: '',
+  streamingModelText: '',
+  liveTranscripts: [],
 };
 
 export const getChapterData = createAsyncThunk(
@@ -119,11 +130,42 @@ const teachingSlice = createSlice({
     setInputPage(state, action) {
       state.inputPage = action.payload
     },
-    setStartButton(state, action) { // Added
+    setStartButton(state, action) {
       state.startButton = action.payload;
     },
+    appendStreamingUserText(state, action: PayloadAction<string>) {
+      state.streamingUserText += action.payload;
+    },
+    appendStreamingModelText(state, action: PayloadAction<string>) {
+      state.streamingModelText += action.payload;
+    },
+    flushUserTranscript(state) {
+      const text = state.streamingUserText.trim();
+      if (text) {
+        state.liveTranscripts.push({ role: 'user', text });
+      }
+      state.streamingUserText = '';
+    },
+    flushModelTranscriptToChat(state) {
+      const text = state.streamingModelText.trim();
+      if (text) {
+        state.liveTranscripts.push({ role: 'model', text });
+      }
+      state.streamingModelText = '';
+    },
+    addUserMessage(state, action: PayloadAction<string>) {
+      const text = action.payload.trim();
+      if (text) {
+        state.liveTranscripts.push({ role: 'user', text });
+      }
+    },
+    clearLiveTranscripts(state) {
+      state.liveTranscripts = [];
+      state.streamingUserText = '';
+      state.streamingModelText = '';
+    },
     resetError: (state) => {
-      state.error = null
+      state.error = null;
     }
   },
   extraReducers: (builder) => {
@@ -169,6 +211,11 @@ const teachingSlice = createSlice({
   },
 });
 
-export const { resetError, setFrequencyData, setIsPlaying, setDotAnimation, setMobileVisual, setCurrentPage, setInputPage, setStartButton } = teachingSlice.actions;
+export const {
+  resetError, setFrequencyData, setIsPlaying, setDotAnimation, setMobileVisual,
+  setCurrentPage, setInputPage, setStartButton,
+  appendStreamingUserText, appendStreamingModelText,
+  flushUserTranscript, flushModelTranscriptToChat, clearLiveTranscripts, addUserMessage,
+} = teachingSlice.actions;
 
 export default teachingSlice.reducer;

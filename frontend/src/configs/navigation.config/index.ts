@@ -18,10 +18,6 @@ const navigationConfig:MenuItem[] = [
             
         },
         {
-            label: 'Live Audio',
-            path: '/live-audio'
-        },
-        {
             label: 'Pricing',
             path: '/pricing'
         },

@@ -62,6 +62,7 @@ export class GdmLiveAudio extends LitElement {
 		error: { state: true },
 		inputNode: { state: true },
 		outputNode: { state: true },
+		sessionReady: { state: true },
 	};
 
 	declare isRecording: boolean;
@@ -69,6 +70,7 @@ export class GdmLiveAudio extends LitElement {
 	declare error: string;
 	declare inputNode: GainNode;
 	declare outputNode: GainNode;
+	declare sessionReady: boolean;
 
 	private client!: GoogleGenAI;
 	private session?: Session;
@@ -82,15 +84,63 @@ export class GdmLiveAudio extends LitElement {
 	private isSessionOpen = false;
 	private sessionOpenPromise?: Promise<boolean>;
 	private resolveSessionOpen?: (value: boolean) => void;
+	private boundEventHandlers: { event: string; handler: EventListener }[] = [];
 
 	constructor() {
 		super();
 		this.isRecording = false;
 		this.status = '';
 		this.error = '';
+		this.sessionReady = false;
 		this.inputNode = this.inputAudioContext.createGain();
 		this.outputNode = this.outputAudioContext.createGain();
+		this.setupDocumentEventListeners();
 		this.initClient();
+	}
+
+	private setupDocumentEventListeners() {
+		const handlers: [string, (e: Event) => void][] = [
+			['liveAudioResumeOutput', () => {
+				this.inputAudioContext.resume().catch(() => {});
+				this.outputAudioContext.resume().catch(() => {});
+			}],
+			['liveAudioStartMic', () => this.startRecording()],
+			['liveAudioStopMic', () => this.stopRecording()],
+			['sendLiveText', (e: Event) => {
+				const detail = (e as CustomEvent).detail;
+				if (detail?.text && this.session && this.isSessionOpen) {
+					this.session.sendRealtimeInput({ text: detail.text });
+				}
+			}],
+			['sendImage', (e: Event) => {
+				const detail = (e as CustomEvent).detail;
+				if (detail && this.session && this.isSessionOpen) {
+					const parts: any[] = [];
+					if (detail.imageData) {
+						parts.push({ inlineData: { data: detail.imageData, mimeType: detail.mimeType || 'image/jpeg' } });
+					}
+					if (detail.text) {
+						parts.push({ text: detail.text });
+					}
+					if (parts.length > 0) {
+						this.session.sendClientContent({ turns: [{ role: 'user', parts }], turnComplete: true });
+					}
+				}
+			}],
+		];
+		for (const [event, handler] of handlers) {
+			const h = handler as EventListener;
+			document.addEventListener(event, h);
+			this.boundEventHandlers.push({ event, handler: h });
+		}
+	}
+
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		for (const { event, handler } of this.boundEventHandlers) {
+			document.removeEventListener(event, handler);
+		}
+		this.boundEventHandlers = [];
 	}
 
 	private initAudio() {
@@ -129,33 +179,34 @@ export class GdmLiveAudio extends LitElement {
 					onopen: () => {
 						this.updateStatus('Opened');
 						this.isSessionOpen = true;
+						this.sessionReady = true;
 						this.resolveSessionOpen?.(true);
-						// Kickoff: ask the model to speak a ready message to verify output path
+						window.dispatchEvent(new CustomEvent('liveAudioSessionOpened'));
 						try {
-							(this.session as any)?.send?.({
-								clientContent: [
-									{
-										role: 'user',
-										parts: [{ text: 'Say: Hello, I am ready to chat.' }],
-									},
-								],
+							this.session?.sendClientContent({
+								turns: [{ role: 'user', parts: [{ text: 'Say: Hello, I am ready to chat.' }] }],
+								turnComplete: true,
 							});
 						} catch {}
 					},
 					onmessage: async (message: LiveServerMessage) => {
-						const audio = message.serverContent?.modelTurn?.parts?.[0]?.inlineData as
-							| { data: string }
-							| undefined;
+						const parts = message.serverContent?.modelTurn?.parts ?? [];
 
-						if (audio) {
-							this.updateStatus('↘️ Audio chunk received');
+						for (const part of parts) {
+							const inline = (part as any).inlineData as { data: string } | undefined;
+							if (!inline?.data) continue;
+
+							window.dispatchEvent(
+								new CustomEvent('liveAudioPlayback', { detail: { state: 'playing' } })
+							);
+
 							this.nextStartTime = Math.max(
 								this.nextStartTime,
 								this.outputAudioContext.currentTime
 							);
 
 							const audioBuffer = await decodeAudioData(
-								decode(audio.data),
+								decode(inline.data),
 								this.outputAudioContext,
 								24000,
 								1
@@ -163,18 +214,26 @@ export class GdmLiveAudio extends LitElement {
 							const source = this.outputAudioContext.createBufferSource();
 							source.buffer = audioBuffer;
 							source.connect(this.outputNode);
-							this.updateStatus('🔊 Playing response...');
+
 							source.addEventListener('ended', () => {
 								this.sources.delete(source);
+								if (this.sources.size === 0) {
+									window.dispatchEvent(
+										new CustomEvent('liveAudioPlayback', { detail: { state: 'idle' } })
+									);
+								}
 							});
 
 							source.start(this.nextStartTime);
-							this.nextStartTime = this.nextStartTime + audioBuffer.duration;
+							this.nextStartTime += audioBuffer.duration;
 							this.sources.add(source);
 						}
 
 						const interrupted = (message.serverContent as any)?.interrupted as boolean | undefined;
 						if (interrupted) {
+							window.dispatchEvent(
+								new CustomEvent('liveAudioPlayback', { detail: { state: 'clearing' } })
+							);
 							for (const source of this.sources.values()) {
 								source.stop();
 								this.sources.delete(source);
@@ -185,6 +244,7 @@ export class GdmLiveAudio extends LitElement {
 					onerror: (e: ErrorEvent) => {
 						this.updateError(e.message);
 						this.isSessionOpen = false;
+						this.sessionReady = false;
 						if (this.isRecording) {
 							this.stopRecording();
 						}
@@ -192,7 +252,11 @@ export class GdmLiveAudio extends LitElement {
 					onclose: (e: CloseEvent) => {
 						this.updateStatus('Close: ' + e.reason);
 						this.isSessionOpen = false;
+						this.sessionReady = false;
 						this.resolveSessionOpen?.(false);
+						window.dispatchEvent(
+							new CustomEvent('liveAudioSessionClosed', { detail: { reason: e.reason } })
+						);
 						if (this.isRecording) {
 							this.stopRecording();
 						}

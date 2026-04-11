@@ -14,6 +14,8 @@ import reducer, {
     resetError,
     setDotAnimation,
     setMobileVisual,
+    addUserMessage,
+    flushModelTranscriptToChat,
 } from './store'
 import React, { useEffect, useState, useCallback } from 'react'
 import { useAppDispatch as useBooksAppDispatch, useAppSelector as useBooksAppSelector, getBookDetail } from '@/views/Books/books-all/store'
@@ -51,6 +53,8 @@ const TeachingPage = () => {
 
     const handleApiCall = (userInput: string, imageUrl?: string) => {
         dispatch(setDotAnimation(true))
+        dispatch(flushModelTranscriptToChat())
+        dispatch(addUserMessage(userInput))
         if (chatMessages && setChatMessages) {
             setChatMessages([...chatMessages, userInput])
         }
