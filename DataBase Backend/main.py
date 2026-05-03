@@ -14,6 +14,7 @@ from controllers.chapter_completion_controller import chapter_completion_router
 from controllers.subject_controller import subject_router
 from controllers.roles_controller import roles_router
 from controllers.quiz_controller import quiz_router
+from controllers.activity_controller import activity_router
 # from controllers.gemini_controller import router as gemini_router
 
 
@@ -46,4 +47,5 @@ app.include_router(chapter_completion_router, prefix=f"/api/{version}/chaptercom
 app.include_router(subject_router, prefix=f"/api/{version}/subjects", tags=["subjects"])
 app.include_router(roles_router, prefix=f"/api/{version}/roles", tags=["roles"])
 app.include_router(quiz_router, prefix=f"/api/{version}/quizzes", tags=["quizzes"])
+app.include_router(activity_router, prefix=f"/api/{version}/activities", tags=["activities"])
 # app.include_router(gemini_router, prefix=f"/api/{version}/gemini", tags=["gemini"])

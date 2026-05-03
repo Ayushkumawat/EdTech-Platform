@@ -1,4 +1,7 @@
-from pydantic_settings import BaseSettings,SettingsConfigDict
+from typing import Optional
+
+from pydantic import Field
+from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
 import os
 
@@ -17,7 +20,10 @@ class Settings(BaseSettings):
     redis_password:str
     gdrive_service_account_file: str
     gdrive_folder_id: str
-    gemini_api_key:str
+    gemini_api_key: str
+    # Loaded from env var YOUTUBE_API_KEY (same pattern as GEMINI_API_KEY in .env)
+    youtube_api_key: Optional[str] = Field(default=None, validation_alias="YOUTUBE_API_KEY")
+
     class Config:
         env_file = DOTENV  
         env_file_encoding = 'utf-8'
