@@ -16,9 +16,10 @@ export type VideoCard = {
 };
 
 export type TranscriptMessage = {
-  role: 'user' | 'model' | 'videos';
+  role: 'user' | 'model' | 'videos' | 'video_prompt';
   text: string;
   videos?: VideoCard[];
+  topic?: string;
 };
 
 export type TeachingState = {
@@ -178,6 +179,14 @@ const teachingSlice = createSlice({
     addVideoMessage(state, action: PayloadAction<VideoCard[]>) {
       state.liveTranscripts.push({ role: 'videos', text: '', videos: action.payload });
     },
+    addVideoPrompt(state, action: PayloadAction<{ topic: string; videos: VideoCard[] }>) {
+      state.liveTranscripts.push({
+        role: 'video_prompt',
+        text: '',
+        topic: action.payload.topic,
+        videos: action.payload.videos,
+      });
+    },
     clearLiveTranscripts(state) {
       state.liveTranscripts = [];
       state.streamingUserText = '';
@@ -238,7 +247,7 @@ export const {
   setCurrentPage, setInputPage, setStartButton,
   appendStreamingUserText, appendStreamingModelText,
   flushUserTranscript, flushModelTranscriptToChat, clearLiveTranscripts, addUserMessage,
-  addVideoMessage,
+  addVideoMessage, addVideoPrompt,
 } = teachingSlice.actions;
 
 export default teachingSlice.reducer;

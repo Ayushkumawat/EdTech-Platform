@@ -70,7 +70,7 @@
   
   /* Canvas & Dot */
   .audio-visulizer-container{
-    @apply bg-gray-900 border border-gray-800  flex place-content-center h-[70px] w-[250px] rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]
+    @apply bg-gray-900 border border-gray-800  flex place-content-center h-[70px] w-[290px] rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]
   }
   .canvas {
     @apply flex justify-center items-center gap-1;
@@ -154,7 +154,7 @@
   
   /* Chat message box arrow */
   .chat-message-box-container {
-    @apply flex w-[250px] relative flex-col rounded-lg pb-2 bg-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:bg-[#181e2b] object-cover transition-all duration-500 ease-in-out overflow-hidden;
+    @apply flex w-[290px] relative flex-col rounded-lg pb-2 bg-gray-200 shadow-[0_3px_10px_rgb(0,0,0,0.2)] dark:bg-[#181e2b] object-cover transition-all duration-500 ease-in-out overflow-hidden;
     height: clamp(150px, 85vh, 1000px);
   }
   

@@ -11,6 +11,7 @@ import reducer, {
   flushUserTranscript,
   flushModelTranscriptToChat,
   addVideoMessage,
+  addVideoPrompt,
 } from '@/views/teachingPage/store';
 import { injectReducer } from '@/store';
 import { createBlob, decode, decodeAudioData, encode } from '@/features/liveAudio/utils';
@@ -237,22 +238,21 @@ const useTextToSpeech = (): TextToSpeechHook => {
               if (videos.length > 0) {
                 dispatch(addVideoMessage(videos));
               }
-              // Send tool response back to Gemini so it can continue talking
+              // Acknowledge to Gemini so it can continue talking
               liveSessionRef.current?.sendToolResponse({
                 functionResponses: [{
                   id: call.id,
                   name: 'get_activity_videos',
-                  response: { videos },
+                  response: { status: 'ok', topic, count: videos.length },
                 }],
               });
             } catch (err) {
               console.error('[GeminiLive] get_activity_videos failed:', err);
-              // Send empty response so Gemini isn't left waiting
               liveSessionRef.current?.sendToolResponse({
                 functionResponses: [{
                   id: call.id,
                   name: 'get_activity_videos',
-                  response: { videos: [] },
+                  response: { status: 'error', videos: [] },
                 }],
               });
             }
