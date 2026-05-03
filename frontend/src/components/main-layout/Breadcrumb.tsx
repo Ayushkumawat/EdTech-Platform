@@ -13,7 +13,7 @@ interface BreadcrumbProps {
 export default function Breadcrumb({ breadcrumbTitle, breadcrumbPath = [] }: BreadcrumbProps) {
     // Don't render anything if breadcrumbTitle is null
     if (!breadcrumbTitle) {
-        return null;
+        return null
     }
     
     return (

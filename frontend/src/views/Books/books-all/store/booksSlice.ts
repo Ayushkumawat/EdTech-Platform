@@ -5,6 +5,8 @@ export type Chapter = {
     uid: string;
     title: string;
     description?: string;
+    passed_at?: string | null;
+    best_quiz_score?: number | null;
 };
 
 export type Review = {

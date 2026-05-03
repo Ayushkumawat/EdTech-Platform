@@ -17,6 +17,7 @@ import { FaFacebookF } from 'react-icons/fa'
 import { FaLock } from 'react-icons/fa6'
 import { IoPlayCircleOutline } from 'react-icons/io5'
 import { FaRegStar } from 'react-icons/fa6'
+import { HiOutlineCheckCircle } from 'react-icons/hi'
 import useAuth from '@/utils/hooks/useAuth'
 import { useNavigate } from 'react-router-dom';
 import { APP_PREFIX_PATH } from '@/constants/route.constant'
@@ -176,10 +177,19 @@ const bookDetail = ({bookDetail}: {bookDetail: Book}) => {
                                                 <span className="text-[20px] text-[var(--thm-primary)]">
                                                     <MdOutlinePlayLesson />
                                                 </span>
-                                                <span className="text-gray-900 dark:text-gray-300 font-[500] lg:w-[250px] w-[180px] ">
-                                                    {index + 1} :{' '}
-                                                    {chapter?.title || 'Introduction'}
-                                                </span>
+                                                <div>
+                                                    <span className="text-gray-900 dark:text-gray-300 font-[500] lg:w-[250px] w-[180px] block">
+                                                        {index + 1} :{' '}
+                                                        {chapter?.title || 'Introduction'}
+                                                    </span>
+                                                    {chapter?.passed_at && (
+                                                        <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-green-600 dark:text-green-400 mt-0.5">
+                                                            <HiOutlineCheckCircle />
+                                                            Completed
+                                                            {chapter.best_quiz_score != null && ` · ${chapter.best_quiz_score}%`}
+                                                        </span>
+                                                    )}
+                                                </div>
                                             </div>
                                             {/* Right */}
                                             <div className="flex items-center gap-[10px]">

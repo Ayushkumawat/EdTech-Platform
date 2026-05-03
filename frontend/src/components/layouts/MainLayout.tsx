@@ -52,6 +52,15 @@ const MainLayout = () => {
                 }
             },
             {
+                pattern: new RegExp(`^${APP_PREFIX_PATH}/my_books/book_detail/([^/]+)/chapter/([^/]+)/quiz$`),
+                config: { 
+                    headerStyle: null, 
+                    breadcrumbTitle: null, 
+                    footerStyle: null,
+                    breadcrumbPath: []
+                }
+            },
+            {
                 pattern: new RegExp(`^${APP_PREFIX_PATH}/account/settings/([^/]+)$`),
                 config: { 
                     headerStyle: 3, 

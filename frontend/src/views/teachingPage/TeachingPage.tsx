@@ -3,6 +3,7 @@ import AudioVisualizer from './components/AudioVisualizer'
 import MarkdownDisplay from './components/MarkdownDisplay'
 import { FaChevronLeft } from 'react-icons/fa'
 import { FaArrowRotateLeft } from 'react-icons/fa6'
+import { HiOutlineCheckCircle } from 'react-icons/hi'
 import 'regenerator-runtime/runtime'
 import MessageInput from './components/MessageInput'
 import useResponsive from '@/utils/hooks/useResponsive'
@@ -56,6 +57,8 @@ const TeachingPage = () => {
 
     const isHindiMedium = !!bookDetail?.medium && (/[\u0900-\u097F]/.test(bookDetail.medium) || bookDetail.medium.toLowerCase().includes('hindi'))
     const chapterLabel = isHindiMedium ? 'अध्याय' : 'Chapter'
+    const passedAt = useAppSelector((state) => state.teaching.data.passed_at)
+    const bestQuizScore = useAppSelector((state) => state.teaching.data.best_quiz_score)
 
     const handleApiCall = (userInput: string, imageUrl?: string) => {
         dispatch(setDotAnimation(true))
@@ -156,8 +159,14 @@ const TeachingPage = () => {
                         <div className="w-full h-full">
                             <div className="flex justify-center">
                                 <div className="book-sub-title">
-                                    <h5 className='!text-[20px]'>
+                                    <h5 className='!text-[20px] flex items-center gap-2 flex-wrap'>
                                         <span>{chapterLabel}:</span> {chapterData?.title}
+                                        {passedAt && (
+                                            <span className="inline-flex items-center gap-1 text-xs font-semibold text-green-500 bg-green-100 dark:bg-green-900 dark:bg-opacity-40 px-2 py-0.5 rounded-full">
+                                                <HiOutlineCheckCircle className="text-sm" />
+                                                Completed{bestQuizScore != null ? ` · ${bestQuizScore}%` : ''}
+                                            </span>
+                                        )}
                                     </h5>
                                 </div>
                                 <i className="chevron-icon" onClick={handleBackClick} style={{ cursor: 'pointer' }}>
@@ -169,6 +178,8 @@ const TeachingPage = () => {
                                     pages={chapterData?.pages} 
                                     handleApiCall={handleApiCall} 
                                     isAudioPlaying={isPlaying}
+                                    bookId={bookId}
+                                    chapterId={chapterId}
                                 />
                             </div>
                         </div>

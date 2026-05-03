@@ -11,7 +11,7 @@ export type AppConfig = {
 
 const appConfig: AppConfig = {
     apiPrefix: '/api',
-    apiPrefix1:'https://edtech-platform-6dw3.onrender.com/api/v1/',
+    apiPrefix1:'http://localhost:8000/api/v1/',
     authenticatedEntryPath: 'app/home',
     unAuthenticatedEntryPath: '/sign-in',
     tourPath: '/',

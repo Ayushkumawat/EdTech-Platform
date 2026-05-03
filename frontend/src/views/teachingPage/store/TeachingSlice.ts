@@ -29,6 +29,9 @@ export type TeachingState = {
   streamingUserText: string;
   streamingModelText: string;
   liveTranscripts: TranscriptMessage[];
+  passed_at: string | null;
+  best_quiz_score: number | null;
+  quiz_attempts: number;
 }
 
 const initialState: TeachingState = {
@@ -47,6 +50,9 @@ const initialState: TeachingState = {
   streamingUserText: '',
   streamingModelText: '',
   liveTranscripts: [],
+  passed_at: null,
+  best_quiz_score: null,
+  quiz_attempts: 0,
 };
 
 export const getChapterData = createAsyncThunk(
@@ -67,8 +73,10 @@ export const getChapterData = createAsyncThunk(
 // Type for chapter progress response
 type ChapterProgress = {
   current_page: number;
-  uid:string
-  // Add other fields if needed
+  uid: string;
+  passed_at: string | null;
+  best_quiz_score: number | null;
+  quiz_attempts: number;
 };
 
 export const getChapterProgress = createAsyncThunk(
@@ -184,11 +192,14 @@ const teachingSlice = createSlice({
               })
         // Add case for getChapterProgress
         .addCase(getChapterProgress.fulfilled, (state, action) => {
-            state.chapter_completion_id=action.payload.uid
+            state.chapter_completion_id = action.payload.uid
             if (typeof action.payload.current_page === 'number') {
               state.currentPage = action.payload.current_page;
               state.inputPage = 0
             }
+            state.passed_at = action.payload.passed_at ?? null
+            state.best_quiz_score = action.payload.best_quiz_score ?? null
+            state.quiz_attempts = action.payload.quiz_attempts ?? 0
         })
         .addCase(getChapterProgress.rejected, (state, action: any) => {
             state.error = action.payload?.detail || 'Failed to fetch chapter progress.';

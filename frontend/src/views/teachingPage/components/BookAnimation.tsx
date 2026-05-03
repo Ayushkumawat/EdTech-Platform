@@ -1,7 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import HTMLFlipBook from 'react-pageflip';
+import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch, putChapterProgress, setInputPage, setStartButton, setDotAnimation } from '../store';
 import { AnimatePresence, motion } from 'framer-motion';
+import { APP_PREFIX_PATH } from '@/constants/route.constant';
+import { HiOutlineAcademicCap, HiOutlineCheckCircle } from 'react-icons/hi';
 
 import flip2 from '../../../assets/audios/flip2.mp3';
 import flip3 from '../../../assets/audios/flip3.mp3';
@@ -13,6 +16,8 @@ interface BookAnimationProps {
   handleApiCall: (userInput: string, imageUrl?: string) => void;
   isAudioPlaying?: boolean;
   isUsageInactive?: boolean;
+  bookId?: string;
+  chapterId?: string;
 }
 
 const overlayVariants = {
@@ -26,11 +31,27 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
   handleApiCall,
   isAudioPlaying,
   isUsageInactive = false,
+  bookId,
+  chapterId: chapterIdProp,
 }) => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector((s) => s.teaching.data.currentPage);
   const inputPage = useAppSelector((s) => s.teaching.data.inputPage);
   const chapterId = useAppSelector((s) => s.teaching.data.chapter_completion_id);
+  const passedAt = useAppSelector((s) => s.teaching.data.passed_at);
+
+  const isLastPage =
+    typeof currentPage === 'number' &&
+    Array.isArray(pages) &&
+    pages.length > 0 &&
+    currentPage === pages.length;
+
+  const handleTakeQuiz = () => {
+    if (bookId && chapterIdProp) {
+      navigate(`${APP_PREFIX_PATH}/my_books/book_detail/${bookId}/chapter/${chapterIdProp}/quiz`);
+    }
+  };
 
   const audioRefs = React.useMemo(
     () => [new Audio(flip2), new Audio(flip3), new Audio(flip4)],
@@ -147,7 +168,7 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
   }, [currentPage, startPageNumber]);
 
   return (
-    <div className="w-full h-[88vh] flex items-center justify-center relative">
+    <div className="w-full h-[88vh] flex flex-col items-center justify-center relative">
       {Array.isArray(displayPages) && typeof currentPage === 'number' ? (
         <HTMLFlipBook
           ref={bookRef}
@@ -281,6 +302,34 @@ const BookAnimation: React.FC<BookAnimationProps> = ({
           <p className="text-gray-500">Loading pages…</p>
         </div>
       )}
+
+      {/* Take Quiz CTA — shown only on the last page */}
+      <AnimatePresence>
+        {isLastPage && bookId && chapterIdProp && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="absolute bottom-4 left-0 right-0 flex flex-col items-center gap-2 z-[100]"
+          >
+            {passedAt && (
+              <div className="flex items-center gap-1.5 text-green-500 text-xs font-semibold">
+                <HiOutlineCheckCircle className="text-base" />
+                Completed
+              </div>
+            )}
+            <button
+              onClick={handleTakeQuiz}
+              className="flex items-center gap-2 px-7 py-3 rounded-xl text-white font-bold text-sm shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
+              style={{ background: 'var(--thm-primary)' }}
+            >
+              <HiOutlineAcademicCap className="text-lg" />
+              {passedAt ? 'Retake Quiz' : 'Take Quiz'}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

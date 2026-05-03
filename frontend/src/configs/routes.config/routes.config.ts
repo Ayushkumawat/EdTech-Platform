@@ -66,6 +66,12 @@ export const protectedRoutes:Routes=[
     authority: [],
     
 },
+    {
+        key: 'chapter_quiz',
+        path: `${APP_PREFIX_PATH}/my_books/book_detail/:bookId/chapter/:chapterId/quiz`,
+        component: lazy(() => import('@/views/quizPage')),
+        authority: [],
+    },
 ]
 
 
