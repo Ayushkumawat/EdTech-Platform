@@ -1,3 +1,5 @@
+import os
+
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker, declarative_base
 from typing import AsyncGenerator
@@ -11,10 +13,21 @@ SQLALCHEMY_DATABASE_URL = (
     f"@{settings.database_hostname}:{settings.database_port}/{settings.database_name}"
 )
 
-# Create async engine
+_sqlalchemy_echo = os.getenv("SQLALCHEMY_ECHO", "").lower() in ("1", "true", "yes")
+
+# Create async engine (single instance — do not recreate per request)
 async_engine: AsyncEngine = create_async_engine(
     SQLALCHEMY_DATABASE_URL,
-    echo=True,
+    echo=_sqlalchemy_echo,
+    pool_pre_ping=True,
+)
+
+# Session factory — create once, reuse for every request (was incorrectly built inside get_session)
+async_session_factory = sessionmaker(
+    bind=async_engine,
+    class_=AsyncSession,
+    expire_on_commit=False,
+    autoflush=False,
 )
 
 # Initialize the DB
@@ -39,12 +52,7 @@ async def init_db():
 
 # Dependency to get the DB session
 async def get_session() -> AsyncGenerator[AsyncSession, None]:
-    async_session = sessionmaker(
-        bind=async_engine,
-        class_=AsyncSession,
-        expire_on_commit=False
-    )
-    async with async_session() as session:
+    async with async_session_factory() as session:
         yield session
 
 # CLI run support

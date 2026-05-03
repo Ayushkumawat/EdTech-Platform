@@ -36,12 +36,11 @@ class UserLogin(BaseModel):
     remember_me: bool = False
 
 @user_router.get("/me", response_model=UserOut)
-async def get_current_user(current_user: UserBase = Depends(get_current_user), session: AsyncSession = Depends(get_session)):
-    user_id = current_user.uid
-    if not user_id:
+async def read_me_profile(current_user: UserBase = Depends(get_current_user)):
+    """Return the authenticated user — no second DB round-trip."""
+    if not current_user.uid:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not authenticated")
-    user = await user_service.get_user_by_id(user_id, session)
-    return user
+    return current_user
 
 @user_router.get("/all-users", response_model=list[UserOut])
 async def get_all_users(session: AsyncSession = Depends(get_session)):
