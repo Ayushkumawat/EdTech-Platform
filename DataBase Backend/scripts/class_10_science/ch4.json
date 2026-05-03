@@ -1,0 +1,362 @@
+[
+  {
+    "text": "What type of bonds does carbon predominantly form in its compounds?",
+    "option_a": "Ionic bonds",
+    "option_b": "Metallic bonds",
+    "option_c": "Covalent bonds",
+    "option_d": "Hydrogen bonds",
+    "correct_option": "c",
+    "explanation": "Carbon achieves noble gas configuration by sharing its four valence electrons, forming covalent bonds."
+  },
+  {
+    "text": "What is the valency of carbon?",
+    "option_a": "2",
+    "option_b": "3",
+    "option_c": "4",
+    "option_d": "6",
+    "correct_option": "c",
+    "explanation": "Carbon has an atomic number of 6 and an electronic configuration of 2, 4. Thus, it has 4 valence electrons, making its valency 4 (tetravalency)."
+  },
+  {
+    "text": "The unique ability of carbon to form bonds with other atoms of carbon, giving rise to large molecules, is called:",
+    "option_a": "Isomerism",
+    "option_b": "Catenation",
+    "option_c": "Tetravalency",
+    "option_d": "Polymerization",
+    "correct_option": "b",
+    "explanation": "Catenation is the property of self-linking of an element's atoms through covalent bonds to form long chains or rings."
+  },
+  {
+    "text": "Which allotrope of carbon has a structure resembling a geodesic dome or a football?",
+    "option_a": "Diamond",
+    "option_b": "Graphite",
+    "option_c": "Buckminsterfullerene",
+    "option_d": "Graphene",
+    "correct_option": "c",
+    "explanation": "Buckminsterfullerene (C-60) has carbon atoms arranged in the shape of a football."
+  },
+  {
+    "text": "Which of the following allotropes of carbon is a good conductor of electricity?",
+    "option_a": "Diamond",
+    "option_b": "Fullerene",
+    "option_c": "Coal",
+    "option_d": "Graphite",
+    "correct_option": "d",
+    "explanation": "In graphite, each carbon atom is bonded to three other carbon atoms, leaving one free valence electron per atom which conducts electricity."
+  },
+  {
+    "text": "Compounds of carbon having only single bonds between the carbon atoms are known as:",
+    "option_a": "Unsaturated hydrocarbons",
+    "option_b": "Saturated hydrocarbons",
+    "option_c": "Aromatic hydrocarbons",
+    "option_d": "Aliphatic rings",
+    "correct_option": "b",
+    "explanation": "Saturated hydrocarbons (alkanes) contain only single covalent bonds between carbon atoms."
+  },
+  {
+    "text": "What is the general formula for alkanes?",
+    "option_a": "CnH2n",
+    "option_b": "CnH2n-2",
+    "option_c": "CnH2n+2",
+    "option_d": "CnH2n+1",
+    "correct_option": "c",
+    "explanation": "The general molecular formula for alkanes (saturated hydrocarbons) is CnH2n+2, where n is the number of carbon atoms."
+  },
+  {
+    "text": "What is the general formula for alkenes?",
+    "option_a": "CnH2n+2",
+    "option_b": "CnH2n",
+    "option_c": "CnH2n-2",
+    "option_d": "CnHn",
+    "correct_option": "b",
+    "explanation": "Alkenes are unsaturated hydrocarbons containing at least one double bond, with the general formula CnH2n."
+  },
+  {
+    "text": "The first member of the alkyne homologous series is:",
+    "option_a": "Methyne",
+    "option_b": "Ethyne",
+    "option_c": "Propyne",
+    "option_d": "Butyne",
+    "correct_option": "b",
+    "explanation": "An alkyne requires at least a triple bond between two carbon atoms, so the first member must have two carbon atoms (Ethyne/Acetylene)."
+  },
+  {
+    "text": "Successive members of a homologous series differ by a mass of:",
+    "option_a": "12 u",
+    "option_b": "14 u",
+    "option_c": "16 u",
+    "option_d": "2 u",
+    "correct_option": "b",
+    "explanation": "Successive members in a homologous series differ by a -CH2 unit. The mass of Carbon is 12 and Hydrogen is 1, so 12 + (2*1) = 14 u."
+  },
+  {
+    "text": "Which functional group is present in the compound 'Propanal'?",
+    "option_a": "Alcohol",
+    "option_b": "Ketone",
+    "option_c": "Aldehyde",
+    "option_d": "Carboxylic acid",
+    "correct_option": "c",
+    "explanation": "The suffix '-al' indicates the presence of an aldehyde functional group (-CHO)."
+  },
+  {
+    "text": "Which functional group does the suffix '-one' represent?",
+    "option_a": "Alcohol",
+    "option_b": "Ketone",
+    "option_c": "Aldehyde",
+    "option_d": "Ester",
+    "correct_option": "b",
+    "explanation": "Compounds with a ketone functional group (-C=O) end with the suffix '-one' (e.g., propanone)."
+  },
+  {
+    "text": "What is the minimum number of carbon atoms required to form a ketone?",
+    "option_a": "1",
+    "option_b": "2",
+    "option_c": "3",
+    "option_d": "4",
+    "correct_option": "c",
+    "explanation": "A ketone group (>C=O) must be flanked by two carbon atoms. Therefore, the simplest ketone is propanone (acetone) with 3 carbon atoms."
+  },
+  {
+    "text": "The functional group -COOH is characteristic of:",
+    "option_a": "Aldehydes",
+    "option_b": "Ketones",
+    "option_c": "Alcohols",
+    "option_d": "Carboxylic acids",
+    "correct_option": "d",
+    "explanation": "The carboxyl group (-COOH) is the identifying functional group for carboxylic acids, named with the suffix '-oic acid'."
+  },
+  {
+    "text": "Complete combustion of a hydrocarbon generally yields:",
+    "option_a": "Carbon monoxide and water",
+    "option_b": "Carbon dioxide and water",
+    "option_c": "Carbon and water",
+    "option_d": "Hydrogen and carbon dioxide",
+    "correct_option": "b",
+    "explanation": "Carbon compounds burn completely in the presence of excess oxygen to yield carbon dioxide, water, heat, and light."
+  },
+  {
+    "text": "Saturated hydrocarbons generally burn with a:",
+    "option_a": "Yellow, sooty flame",
+    "option_b": "Clean, blue flame",
+    "option_c": "Red flame",
+    "option_d": "Green flame",
+    "correct_option": "b",
+    "explanation": "Because they have a lower carbon-to-hydrogen ratio, saturated hydrocarbons undergo complete combustion, producing a clean blue flame."
+  },
+  {
+    "text": "Unsaturated hydrocarbons generally burn with a:",
+    "option_a": "Clean, blue flame",
+    "option_b": "Colorless flame",
+    "option_c": "Yellow flame with lots of black smoke",
+    "option_d": "Bright white flame",
+    "correct_option": "c",
+    "explanation": "Due to a higher percentage of carbon, unsaturated hydrocarbons undergo incomplete combustion in air, resulting in a sooty, yellow flame."
+  },
+  {
+    "text": "When ethanol is heated with alkaline potassium permanganate, it forms:",
+    "option_a": "Ethane",
+    "option_b": "Ethene",
+    "option_c": "Ethanal",
+    "option_d": "Ethanoic acid",
+    "correct_option": "d",
+    "explanation": "Alkaline KMnO4 is a strong oxidizing agent that oxidizes ethanol (an alcohol) directly into ethanoic acid (a carboxylic acid)."
+  },
+  {
+    "text": "The conversion of vegetable oils into vegetable ghee is an example of:",
+    "option_a": "Oxidation reaction",
+    "option_b": "Substitution reaction",
+    "option_c": "Addition reaction",
+    "option_d": "Displacement reaction",
+    "correct_option": "c",
+    "explanation": "Unsaturated vegetable oils undergo an addition reaction with hydrogen (hydrogenation) in the presence of a nickel catalyst to form saturated solid fats."
+  },
+  {
+    "text": "Which catalyst is commonly used in the hydrogenation of oils?",
+    "option_a": "Iron",
+    "option_b": "Nickel",
+    "option_c": "Copper",
+    "option_d": "Manganese dioxide",
+    "correct_option": "b",
+    "explanation": "Nickel (or Palladium) is used as a catalyst to add hydrogen across the double bonds of unsaturated fats."
+  },
+  {
+    "text": "The reaction of methane with chlorine in the presence of sunlight is a:",
+    "option_a": "Addition reaction",
+    "option_b": "Decomposition reaction",
+    "option_c": "Substitution reaction",
+    "option_d": "Combustion reaction",
+    "correct_option": "c",
+    "explanation": "Chlorine atoms replace (substitute) hydrogen atoms in methane one by one in the presence of sunlight."
+  },
+  {
+    "text": "What are the products when ethanol reacts with sodium metal?",
+    "option_a": "Sodium ethanoate and oxygen",
+    "option_b": "Sodium ethoxide and hydrogen",
+    "option_c": "Sodium ethoxide and water",
+    "option_d": "Sodium ethanoate and hydrogen",
+    "correct_option": "b",
+    "explanation": "Alcohols react with active metals like sodium to form the corresponding metal alkoxide (sodium ethoxide) and liberate hydrogen gas."
+  },
+  {
+    "text": "Heating ethanol with excess concentrated sulphuric acid at 443 K results in the dehydration of ethanol to give:",
+    "option_a": "Ethane",
+    "option_b": "Ethene",
+    "option_c": "Ethyne",
+    "option_d": "Ethanoic acid",
+    "correct_option": "b",
+    "explanation": "Concentrated H2SO4 acts as a dehydrating agent, removing a water molecule from ethanol to produce ethene (an unsaturated hydrocarbon)."
+  },
+  {
+    "text": "A 5-8% solution of acetic acid in water is commonly known as:",
+    "option_a": "Glacial acetic acid",
+    "option_b": "Formalin",
+    "option_c": "Vinegar",
+    "option_d": "Brine",
+    "correct_option": "c",
+    "explanation": "Vinegar is a dilute aqueous solution of acetic acid (ethanoic acid) used widely as a food preservative."
+  },
+  {
+    "text": "Pure ethanoic acid is called 'glacial acetic acid' because:",
+    "option_a": "It looks like a glacier.",
+    "option_b": "It freezes in cold climates during winter.",
+    "option_c": "It is found in glaciers.",
+    "option_d": "It cools the stomach.",
+    "correct_option": "b",
+    "explanation": "Pure ethanoic acid has a melting point of 290 K and often freezes during winter in cold climates, resembling ice or a glacier."
+  },
+  {
+    "text": "The reaction between a carboxylic acid and an alcohol forms a sweet-smelling substance called a/an:",
+    "option_a": "Ether",
+    "option_b": "Ketone",
+    "option_c": "Ester",
+    "option_d": "Aldehyde",
+    "correct_option": "c",
+    "explanation": "Esterification is the reaction between an acid (like ethanoic acid) and an alcohol (like ethanol) to form an ester and water."
+  },
+  {
+    "text": "Which reaction is utilized in the preparation of soap?",
+    "option_a": "Esterification",
+    "option_b": "Saponification",
+    "option_c": "Hydrogenation",
+    "option_d": "Oxidation",
+    "correct_option": "b",
+    "explanation": "Saponification is the alkaline hydrolysis of an ester (fats/oils) to produce the sodium/potassium salt of a carboxylic acid, which is soap."
+  },
+  {
+    "text": "When ethanoic acid reacts with sodium carbonate, which gas is rapidly evolved?",
+    "option_a": "Hydrogen",
+    "option_b": "Oxygen",
+    "option_c": "Carbon dioxide",
+    "option_d": "Carbon monoxide",
+    "correct_option": "c",
+    "explanation": "Acids react with carbonates and bicarbonates to produce a salt, water, and brisk effervescence of carbon dioxide gas."
+  },
+  {
+    "text": "Chemically, soaps are:",
+    "option_a": "Sodium or potassium salts of long-chain carboxylic acids",
+    "option_b": "Ammonium salts of long-chain carboxylic acids",
+    "option_c": "Sulphonate salts of long-chain carboxylic acids",
+    "option_d": "Calcium salts of long-chain carboxylic acids",
+    "correct_option": "a",
+    "explanation": "Soaps are the sodium (Na) or potassium (K) salts of naturally occurring long-chain fatty acids (carboxylic acids)."
+  },
+  {
+    "text": "Chemically, synthetic detergents are usually:",
+    "option_a": "Sodium salts of long-chain carboxylic acids",
+    "option_b": "Calcium salts of long-chain carboxylic acids",
+    "option_c": "Sodium salts of sulphonic acids or ammonium salts",
+    "option_d": "Potassium salts of short-chain carboxylic acids",
+    "correct_option": "c",
+    "explanation": "Detergents are generally sodium salts of sulphonic acids or ammonium salts with chlorides or bromides ions, which don't form insoluble precipitates with hard water."
+  },
+  {
+    "text": "In a soap micelle, the hydrophobic end is oriented towards the:",
+    "option_a": "Water",
+    "option_b": "Center (dirt/oil drop)",
+    "option_c": "Air",
+    "option_d": "Surface of the container",
+    "correct_option": "b",
+    "explanation": "The hydrophobic (water-repelling) hydrocarbon tail interacts with the oily dirt at the center of the micelle, while the hydrophilic head faces the surrounding water."
+  },
+  {
+    "text": "Hard water contains the dissolved salts of:",
+    "option_a": "Sodium and Potassium",
+    "option_b": "Calcium and Magnesium",
+    "option_c": "Iron and Zinc",
+    "option_d": "Chlorine and Fluorine",
+    "correct_option": "b",
+    "explanation": "The hardness of water is caused by the presence of dissolved calcium and magnesium ions."
+  },
+  {
+    "text": "Why do soaps not form a good lather in hard water?",
+    "option_a": "Soap molecules evaporate.",
+    "option_b": "Hard water is acidic.",
+    "option_c": "Soap reacts with calcium and magnesium to form insoluble scum.",
+    "option_d": "Soap is insoluble in cold water.",
+    "correct_option": "c",
+    "explanation": "The sodium/potassium ions in soap are replaced by calcium and magnesium ions in hard water, forming an insoluble precipitate called scum."
+  },
+  {
+    "text": "Which of the following compounds is an isomer of butane?",
+    "option_a": "Propane",
+    "option_b": "Pentane",
+    "option_c": "2-methylpropane (Isobutane)",
+    "option_d": "Ethene",
+    "correct_option": "c",
+    "explanation": "Butane (C4H10) has two structural isomers: n-butane (straight chain) and 2-methylpropane/isobutane (branched chain)."
+  },
+  {
+    "text": "Why does carbon not form a C4+ cation?",
+    "option_a": "It has empty orbitals.",
+    "option_b": "It would require a massive amount of energy to remove four electrons.",
+    "option_c": "It is highly electronegative.",
+    "option_d": "It has no valence electrons.",
+    "correct_option": "b",
+    "explanation": "Removing four electrons to form a C4+ cation requires an immense amount of energy, making the resulting nucleus with six protons highly unstable holding only two electrons."
+  },
+  {
+    "text": "Why does carbon not form a C4- anion?",
+    "option_a": "It would be difficult for the nucleus with 6 protons to hold 10 electrons.",
+    "option_b": "It would require too much ionization energy.",
+    "option_c": "Carbon lacks space in its electron shells.",
+    "option_d": "It is a metal.",
+    "correct_option": "a",
+    "explanation": "Gaining four extra electrons to form a C4- anion is difficult because a nucleus with only 6 protons cannot effectively hold 10 electrons due to inter-electronic repulsion."
+  },
+  {
+    "text": "What is the IUPAC name for HCHO?",
+    "option_a": "Formaldehyde",
+    "option_b": "Methanal",
+    "option_c": "Ethanal",
+    "option_d": "Methanol",
+    "correct_option": "b",
+    "explanation": "HCHO has one carbon atom and an aldehyde group, so its IUPAC name is Methanal. (Formaldehyde is its common name)."
+  },
+  {
+    "text": "How many electrons are shared in a carbon-carbon triple bond?",
+    "option_a": "2",
+    "option_b": "3",
+    "option_c": "4",
+    "option_d": "6",
+    "correct_option": "d",
+    "explanation": "A single covalent bond consists of 2 shared electrons. Therefore, a triple bond shares 3 pairs of electrons, totaling 6 electrons."
+  },
+  {
+    "text": "What percentage of carbon is present in the earth's crust in the form of minerals?",
+    "option_a": "0.02%",
+    "option_b": "0.03%",
+    "option_c": "2.0%",
+    "option_d": "20%",
+    "correct_option": "a",
+    "explanation": "Despite its importance, carbon is present in a very small amount. The earth's crust has only 0.02% carbon in the form of minerals (carbonates, coal, petroleum)."
+  },
+  {
+    "text": "Which atom is known as a heteroatom in organic compounds?",
+    "option_a": "Carbon",
+    "option_b": "Hydrogen",
+    "option_c": "Any element replacing hydrogen in the hydrocarbon chain (e.g., Oxygen, Nitrogen, Halogens)",
+    "option_d": "Only noble gases",
+    "correct_option": "c",
+    "explanation": "In an organic molecule, an element that replaces one or more hydrogen atoms (like O, N, S, or halogens) is referred to as a heteroatom."
+  }
+]

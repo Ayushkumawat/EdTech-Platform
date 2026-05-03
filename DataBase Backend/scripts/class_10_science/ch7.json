@@ -1,0 +1,362 @@
+[
+  {
+    "text": "The process by which living organisms produce new individuals similar to themselves is called:",
+    "option_a": "Respiration",
+    "option_b": "Nutrition",
+    "option_c": "Reproduction",
+    "option_d": "Excretion",
+    "correct_option": "c",
+    "explanation": "Reproduction is the biological process by which new individual organisms 'offspring' are produced from their 'parents'."
+  },
+  {
+    "text": "During cell division, the basic event in reproduction is the creation of a:",
+    "option_a": "RNA copy",
+    "option_b": "DNA copy",
+    "option_c": "Protein copy",
+    "option_d": "Mitochondria copy",
+    "correct_option": "b",
+    "explanation": "The creation of a DNA copy is the most fundamental event in reproduction, ensuring genetic information is passed to the next generation."
+  },
+  {
+    "text": "Which of the following organisms reproduces by binary fission?",
+    "option_a": "Plasmodium",
+    "option_b": "Hydra",
+    "option_c": "Amoeba",
+    "option_d": "Spirogyra",
+    "correct_option": "c",
+    "explanation": "Amoeba reproduces asexually through binary fission, where one parent cell divides into two identical daughter cells."
+  },
+  {
+    "text": "Leishmania, which causes kala-azar, reproduces by:",
+    "option_a": "Binary fission in a definite orientation",
+    "option_b": "Multiple fission",
+    "option_c": "Budding",
+    "option_d": "Fragmentation",
+    "correct_option": "a",
+    "explanation": "Leishmania has a whip-like structure at one end and reproduces by binary fission occurring in a definite longitudinal orientation."
+  },
+  {
+    "text": "Plasmodium, the malarial parasite, reproduces by:",
+    "option_a": "Binary fission",
+    "option_b": "Multiple fission",
+    "option_c": "Budding",
+    "option_d": "Regeneration",
+    "correct_option": "b",
+    "explanation": "Plasmodium divides simultaneously into many daughter cells by multiple fission."
+  },
+  {
+    "text": "Spirogyra reproduces by breaking up into smaller pieces upon maturation. This process is called:",
+    "option_a": "Regeneration",
+    "option_b": "Fission",
+    "option_c": "Fragmentation",
+    "option_d": "Budding",
+    "correct_option": "c",
+    "explanation": "In Spirogyra, a multicellular organism with simple body organization, the body breaks into smaller pieces (fragments) that grow into new individuals."
+  },
+  {
+    "text": "If a Planaria is cut into several pieces, each piece grows into a complete organism. This is known as:",
+    "option_a": "Budding",
+    "option_b": "Fragmentation",
+    "option_c": "Spore formation",
+    "option_d": "Regeneration",
+    "correct_option": "d",
+    "explanation": "Regeneration is the ability of a fully differentiated organism to give rise to new individual organisms from its body parts."
+  },
+  {
+    "text": "Yeast reproduces asexually by:",
+    "option_a": "Binary fission",
+    "option_b": "Budding",
+    "option_c": "Fragmentation",
+    "option_d": "Multiple fission",
+    "correct_option": "b",
+    "explanation": "Yeast cells reproduce by budding, where a small outgrowth (bud) forms on the parent cell, detaches, and grows into a new individual."
+  },
+  {
+    "text": "The thread-like structures that develop on bread kept in moist conditions are the hyphae of:",
+    "option_a": "Amoeba",
+    "option_b": "Yeast",
+    "option_c": "Rhizopus",
+    "option_d": "Paramecium",
+    "correct_option": "c",
+    "explanation": "Rhizopus is a bread mould fungus that grows as thread-like hyphae and reproduces asexually via spores."
+  },
+  {
+    "text": "In Rhizopus, the blob-on-a-stick structures that contain spores are called:",
+    "option_a": "Hyphae",
+    "option_b": "Sporangia",
+    "option_c": "Buds",
+    "option_d": "Roots",
+    "correct_option": "b",
+    "explanation": "Sporangia are the reproductive structures in Rhizopus that contain microscopic spores capable of growing into new individuals."
+  },
+  {
+    "text": "Vegetative propagation refers to the formation of new plants from:",
+    "option_a": "Stem, roots, and leaves",
+    "option_b": "Flowers, fruits, and seeds",
+    "option_c": "Stem, flowers, and fruits",
+    "option_d": "Leaves, flowers, and seeds",
+    "correct_option": "a",
+    "explanation": "Vegetative propagation is an asexual reproduction method in plants where new plants develop from vegetative parts like roots, stems, and leaves."
+  },
+  {
+    "text": "Bryophyllum can be propagated vegetatively by the:",
+    "option_a": "Stem",
+    "option_b": "Root",
+    "option_c": "Leaf",
+    "option_d": "Flower",
+    "correct_option": "c",
+    "explanation": "Bryophyllum leaves have buds in their margins that fall on the soil and develop into new plants."
+  },
+  {
+    "text": "Which of the following is an advantage of vegetative propagation?",
+    "option_a": "Plants grown this way bear flowers and fruits earlier than those from seeds.",
+    "option_b": "It produces plants with high genetic variation.",
+    "option_c": "It requires two parent plants.",
+    "option_d": "It depends highly on pollinating agents.",
+    "correct_option": "a",
+    "explanation": "Vegetative propagation allows plants to bear flowers and fruits earlier and ensures the offspring are genetically identical to the parent."
+  },
+  {
+    "text": "The male reproductive part of a flower is called the:",
+    "option_a": "Carpel",
+    "option_b": "Stamen",
+    "option_c": "Petal",
+    "option_d": "Sepal",
+    "correct_option": "b",
+    "explanation": "The stamen is the male reproductive organ of a flower, consisting of an anther and a filament."
+  },
+  {
+    "text": "The female reproductive part of a flower is called the:",
+    "option_a": "Stamen",
+    "option_b": "Carpel",
+    "option_c": "Anther",
+    "option_d": "Filament",
+    "correct_option": "b",
+    "explanation": "The carpel (or pistil) is the female reproductive organ, consisting of the stigma, style, and ovary."
+  },
+  {
+    "text": "Which of the following flowers is unisexual?",
+    "option_a": "Hibiscus",
+    "option_b": "Mustard",
+    "option_c": "Papaya",
+    "option_d": "Rose",
+    "correct_option": "c",
+    "explanation": "Papaya and watermelon have unisexual flowers, meaning they contain either stamens or carpels, but not both."
+  },
+  {
+    "text": "The transfer of pollen grains from the anther to the stigma of a flower is known as:",
+    "option_a": "Fertilization",
+    "option_b": "Pollination",
+    "option_c": "Germination",
+    "option_d": "Transpiration",
+    "correct_option": "b",
+    "explanation": "Pollination is the physical transfer of pollen from the male part (anther) to the female receptive surface (stigma)."
+  },
+  {
+    "text": "If the transfer of pollen occurs in the same flower, it is referred to as:",
+    "option_a": "Cross-pollination",
+    "option_b": "Self-pollination",
+    "option_c": "Artificial pollination",
+    "option_d": "Double fertilization",
+    "correct_option": "b",
+    "explanation": "Self-pollination occurs when pollen from an anther lands on the stigma of the same flower."
+  },
+  {
+    "text": "After fertilization in plants, the ovary develops into the:",
+    "option_a": "Seed",
+    "option_b": "Fruit",
+    "option_c": "Flower",
+    "option_d": "Stem",
+    "correct_option": "b",
+    "explanation": "Following fertilization, the ovary rapidly grows and ripens to form the fruit."
+  },
+  {
+    "text": "After fertilization in plants, the ovules develop into:",
+    "option_a": "Fruits",
+    "option_b": "Seeds",
+    "option_c": "Petals",
+    "option_d": "Leaves",
+    "correct_option": "b",
+    "explanation": "The ovules inside the ovary develop a tough coat and gradually convert into seeds."
+  },
+  {
+    "text": "In a seed, the future shoot that develops during germination is called the:",
+    "option_a": "Radicle",
+    "option_b": "Cotyledon",
+    "option_c": "Plumule",
+    "option_d": "Endosperm",
+    "correct_option": "c",
+    "explanation": "The plumule is the part of the plant embryo that develops into the future shoot, while the radicle develops into the root."
+  },
+  {
+    "text": "The period during adolescence when the reproductive tissues begin to mature is called:",
+    "option_a": "Menopause",
+    "option_b": "Gestation",
+    "option_c": "Puberty",
+    "option_d": "Senescence",
+    "correct_option": "c",
+    "explanation": "Puberty is the transitional phase during which physical and hormonal changes occur, leading to sexual maturity."
+  },
+  {
+    "text": "The formation of sperms in human males takes place in the:",
+    "option_a": "Vas deferens",
+    "option_b": "Prostate gland",
+    "option_c": "Testes",
+    "option_d": "Seminal vesicle",
+    "correct_option": "c",
+    "explanation": "The testes are the primary male reproductive organs responsible for producing sperm and the hormone testosterone."
+  },
+  {
+    "text": "Why are human testes located outside the abdominal cavity in the scrotum?",
+    "option_a": "To protect them from mechanical injury",
+    "option_b": "Because sperm formation requires a lower temperature than the normal body temperature",
+    "option_c": "To facilitate easy delivery of sperms",
+    "option_d": "Because they require a higher temperature than the normal body temperature",
+    "correct_option": "b",
+    "explanation": "The scrotum keeps the testes 2 to 3 degrees Celsius cooler than the core body temperature, which is essential for healthy sperm production."
+  },
+  {
+    "text": "Which hormone brings about the changes in appearance seen in boys at the time of puberty?",
+    "option_a": "Estrogen",
+    "option_b": "Progesterone",
+    "option_c": "Testosterone",
+    "option_d": "Insulin",
+    "correct_option": "c",
+    "explanation": "Testosterone, secreted by the testes, triggers the development of male secondary sexual characteristics."
+  },
+  {
+    "text": "Which glands add their secretions to the sperms to provide nutrition and make their transport easier?",
+    "option_a": "Prostate and seminal vesicles",
+    "option_b": "Pancreas and liver",
+    "option_c": "Thyroid and pituitary",
+    "option_d": "Adrenal and salivary glands",
+    "correct_option": "a",
+    "explanation": "The prostate gland and seminal vesicles secrete fluids that nourish the sperm and make the semen fluid for easier transport."
+  },
+  {
+    "text": "The female germ-cells (eggs) are made in the:",
+    "option_a": "Uterus",
+    "option_b": "Cervix",
+    "option_c": "Fallopian tubes",
+    "option_d": "Ovaries",
+    "correct_option": "d",
+    "explanation": "Ovaries are the primary female reproductive organs where eggs (ova) are produced."
+  },
+  {
+    "text": "Fertilization of the egg by the sperm in human females usually takes place in the:",
+    "option_a": "Uterus",
+    "option_b": "Ovary",
+    "option_c": "Fallopian tube",
+    "option_d": "Vagina",
+    "correct_option": "c",
+    "explanation": "The sperm meets and fertilizes the egg in the Fallopian tube (oviduct) before the embryo travels to the uterus."
+  },
+  {
+    "text": "The special tissue through which the developing embryo gets nutrition from the mother's blood is the:",
+    "option_a": "Ovary",
+    "option_b": "Uterus",
+    "option_c": "Placenta",
+    "option_d": "Cervix",
+    "correct_option": "c",
+    "explanation": "The placenta is a disc-like tissue embedded in the uterine wall that facilitates the exchange of nutrients, oxygen, and waste between mother and fetus."
+  },
+  {
+    "text": "If the egg is not fertilized, the thick and spongy lining of the uterus slowly breaks and comes out through the vagina as blood and mucous. This is called:",
+    "option_a": "Fertilization",
+    "option_b": "Implantation",
+    "option_c": "Menstruation",
+    "option_d": "Ovulation",
+    "correct_option": "c",
+    "explanation": "Menstruation is the monthly shedding of the unneeded uterine lining when pregnancy does not occur."
+  },
+  {
+    "text": "Which of the following is a sexually transmitted disease caused by a virus?",
+    "option_a": "Syphilis",
+    "option_b": "Gonorrhoea",
+    "option_c": "HIV-AIDS",
+    "option_d": "Cholera",
+    "correct_option": "c",
+    "explanation": "HIV (Human Immunodeficiency Virus) causes AIDS. Warts are also caused by viruses, while Syphilis and Gonorrhoea are bacterial."
+  },
+  {
+    "text": "Which of the following is a bacterial sexually transmitted disease?",
+    "option_a": "Warts",
+    "option_b": "HIV-AIDS",
+    "option_c": "Hepatitis",
+    "option_d": "Gonorrhoea",
+    "correct_option": "d",
+    "explanation": "Gonorrhoea and Syphilis are common sexually transmitted infections caused by bacteria."
+  },
+  {
+    "text": "The use of a condom is an example of which type of contraceptive method?",
+    "option_a": "Surgical method",
+    "option_b": "Chemical method",
+    "option_c": "Mechanical barrier method",
+    "option_d": "Intrauterine device",
+    "correct_option": "c",
+    "explanation": "Condoms act as mechanical barriers that prevent the sperm from reaching the egg."
+  },
+  {
+    "text": "Oral contraceptive pills prevent pregnancy by:",
+    "option_a": "Killing the sperms",
+    "option_b": "Changing the hormonal balance so eggs are not released",
+    "option_c": "Blocking the fallopian tubes",
+    "option_d": "Creating a mechanical barrier",
+    "correct_option": "b",
+    "explanation": "Oral pills change the body's hormonal balance, suppressing ovulation so that no egg is released for fertilization."
+  },
+  {
+    "text": "Copper-T is a contraceptive device placed in the:",
+    "option_a": "Ovary",
+    "option_b": "Fallopian tube",
+    "option_c": "Uterus",
+    "option_d": "Vagina",
+    "correct_option": "c",
+    "explanation": "Copper-T is an Intrauterine Device (IUD) placed inside the uterus by a doctor to prevent implantation and pregnancy."
+  },
+  {
+    "text": "The surgical method of contraception in males where the vas deferens is blocked is called:",
+    "option_a": "Tubectomy",
+    "option_b": "Vasectomy",
+    "option_c": "Ovariectomy",
+    "option_d": "Hysterectomy",
+    "correct_option": "b",
+    "explanation": "In a vasectomy, a small portion of the vas deferens is cut or tied off to prevent sperms from entering the semen."
+  },
+  {
+    "text": "The surgical method of contraception in females where the fallopian tubes are blocked is called:",
+    "option_a": "Vasectomy",
+    "option_b": "Tubectomy",
+    "option_c": "Laparoscopy",
+    "option_d": "Hysteroscopy",
+    "correct_option": "b",
+    "explanation": "In a tubectomy, the fallopian tubes are blocked, preventing the egg from reaching the uterus and meeting the sperm."
+  },
+  {
+    "text": "Which of the following creates a risk of side effects because it is placed directly into the body to prevent pregnancy?",
+    "option_a": "Condoms",
+    "option_b": "Copper-T",
+    "option_c": "Natural methods",
+    "option_d": "Abstinence",
+    "correct_option": "b",
+    "explanation": "Devices like Copper-T (IUDs) can cause side effects such as irritation or bleeding because they are foreign objects placed in the uterus."
+  },
+  {
+    "text": "The ratio of males to females in a population is known as the:",
+    "option_a": "Birth rate",
+    "option_b": "Death rate",
+    "option_c": "Sex ratio",
+    "option_d": "Population density",
+    "correct_option": "c",
+    "explanation": "The sex ratio is a demographic term referring to the proportion of males to females in a given population."
+  },
+  {
+    "text": "Female foeticide is heavily linked to the illegal practice of:",
+    "option_a": "Prenatal sex determination",
+    "option_b": "Using contraceptives",
+    "option_c": "Surgical sterilization",
+    "option_d": "Using Copper-T",
+    "correct_option": "a",
+    "explanation": "Prenatal sex determination via ultrasound is misused to identify female fetuses, leading to illegal female foeticide and a declining child sex ratio."
+  }
+]

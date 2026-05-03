@@ -1,0 +1,314 @@
+[
+  {
+    "text": "Which of the following is a renewable source of energy?",
+    "option_a": "Coal",
+    "option_b": "Petroleum",
+    "option_c": "Wind energy",
+    "option_d": "Natural gas",
+    "correct_option": "c",
+    "explanation": "Wind energy is renewable and does not get exhausted."
+  },
+  {
+    "text": "Which of the following is a non-renewable source of energy?",
+    "option_a": "Solar energy",
+    "option_b": "Wind energy",
+    "option_c": "Fossil fuels",
+    "option_d": "Hydropower",
+    "correct_option": "c",
+    "explanation": "Fossil fuels are limited and non-renewable."
+  },
+  {
+    "text": "A good source of energy should:",
+    "option_a": "Produce less energy",
+    "option_b": "Be expensive",
+    "option_c": "Be easily available and economical",
+    "option_d": "Be difficult to store",
+    "correct_option": "c",
+    "explanation": "Good energy source should be efficient, economical, and easy to store."
+  },
+  {
+    "text": "Which fuel is most commonly used in kitchens in India?",
+    "option_a": "Coal",
+    "option_b": "LPG",
+    "option_c": "Wood",
+    "option_d": "Kerosene",
+    "correct_option": "b",
+    "explanation": "LPG is widely used due to clean burning."
+  },
+  {
+    "text": "Thermal power plants use:",
+    "option_a": "Water",
+    "option_b": "Fossil fuels",
+    "option_c": "Wind",
+    "option_d": "Solar energy",
+    "correct_option": "b",
+    "explanation": "Coal and other fossil fuels are used in thermal plants."
+  },
+
+  {
+    "text": "Hydroelectric power plants convert:",
+    "option_a": "Chemical energy to electrical",
+    "option_b": "Kinetic energy to potential energy",
+    "option_c": "Potential energy of water to electricity",
+    "option_d": "Heat energy to light",
+    "correct_option": "c",
+    "explanation": "Stored water’s potential energy is converted to electricity."
+  },
+  {
+    "text": "Which is a disadvantage of fossil fuels?",
+    "option_a": "High energy output",
+    "option_b": "Easy storage",
+    "option_c": "Pollution",
+    "option_d": "Low cost",
+    "correct_option": "c",
+    "explanation": "Burning fossil fuels releases pollutants."
+  },
+  {
+    "text": "Biogas mainly contains:",
+    "option_a": "Oxygen",
+    "option_b": "Methane",
+    "option_c": "Carbon dioxide",
+    "option_d": "Nitrogen",
+    "correct_option": "b",
+    "explanation": "Methane is the main component of biogas."
+  },
+  {
+    "text": "Solar energy is harnessed using:",
+    "option_a": "Turbines",
+    "option_b": "Solar cells",
+    "option_c": "Dams",
+    "option_d": "Generators",
+    "correct_option": "b",
+    "explanation": "Solar cells convert sunlight into electricity."
+  },
+  {
+    "text": "Wind energy is produced due to:",
+    "option_a": "Earth’s rotation",
+    "option_b": "Temperature differences",
+    "option_c": "Pressure differences",
+    "option_d": "All of these",
+    "correct_option": "d",
+    "explanation": "Wind is caused by uneven heating and pressure differences."
+  },
+
+  {
+    "text": "Which energy source causes least pollution?",
+    "option_a": "Coal",
+    "option_b": "Petroleum",
+    "option_c": "Solar energy",
+    "option_d": "Diesel",
+    "correct_option": "c",
+    "explanation": "Solar energy is clean and eco-friendly."
+  },
+  {
+    "text": "Energy from tides is called:",
+    "option_a": "Wind energy",
+    "option_b": "Tidal energy",
+    "option_c": "Hydro energy",
+    "option_d": "Thermal energy",
+    "correct_option": "b",
+    "explanation": "Tidal movements generate tidal energy."
+  },
+  {
+    "text": "Geothermal energy is obtained from:",
+    "option_a": "Sun",
+    "option_b": "Water",
+    "option_c": "Earth’s interior heat",
+    "option_d": "Wind",
+    "correct_option": "c",
+    "explanation": "Heat inside Earth is used."
+  },
+  {
+    "text": "Nuclear energy is obtained from:",
+    "option_a": "Chemical reactions",
+    "option_b": "Nucleus of atoms",
+    "option_c": "Wind",
+    "option_d": "Sunlight",
+    "correct_option": "b",
+    "explanation": "Energy is released from atomic nuclei."
+  },
+  {
+    "text": "Which is not a conventional energy source?",
+    "option_a": "Coal",
+    "option_b": "Petroleum",
+    "option_c": "Solar energy",
+    "option_d": "Natural gas",
+    "correct_option": "c",
+    "explanation": "Solar energy is non-conventional."
+  },
+
+  {
+    "text": "Energy from sea waves is called:",
+    "option_a": "Wave energy",
+    "option_b": "Wind energy",
+    "option_c": "Solar energy",
+    "option_d": "Thermal energy",
+    "correct_option": "a",
+    "explanation": "Wave motion is used to generate electricity."
+  },
+  {
+    "text": "Which fuel produces the most heat?",
+    "option_a": "Wood",
+    "option_b": "Coal",
+    "option_c": "Biogas",
+    "option_d": "Petroleum",
+    "correct_option": "d",
+    "explanation": "Petroleum has high calorific value."
+  },
+  {
+    "text": "The efficiency of a fuel depends on:",
+    "option_a": "Color",
+    "option_b": "Calorific value",
+    "option_c": "Shape",
+    "option_d": "Size",
+    "correct_option": "b",
+    "explanation": "Higher calorific value means more energy."
+  },
+  {
+    "text": "Which is a disadvantage of hydropower?",
+    "option_a": "Pollution",
+    "option_b": "High cost",
+    "option_c": "Displacement of people",
+    "option_d": "Low energy",
+    "correct_option": "c",
+    "explanation": "Dams displace local population."
+  },
+  {
+    "text": "Biomass energy comes from:",
+    "option_a": "Water",
+    "option_b": "Plants and animal waste",
+    "option_c": "Sun",
+    "option_d": "Wind",
+    "correct_option": "b",
+    "explanation": "Organic matter produces biomass energy."
+  },
+
+  {
+    "text": "Which energy source is most reliable?",
+    "option_a": "Solar",
+    "option_b": "Wind",
+    "option_c": "Fossil fuels",
+    "option_d": "Tidal",
+    "correct_option": "c",
+    "explanation": "Fossil fuels provide continuous supply."
+  },
+  {
+    "text": "Which source depends on weather?",
+    "option_a": "Coal",
+    "option_b": "Solar energy",
+    "option_c": "Nuclear",
+    "option_d": "Petroleum",
+    "correct_option": "b",
+    "explanation": "Solar depends on sunlight."
+  },
+  {
+    "text": "Acid rain is caused by:",
+    "option_a": "Solar energy",
+    "option_b": "Wind",
+    "option_c": "Burning fossil fuels",
+    "option_d": "Water",
+    "correct_option": "c",
+    "explanation": "Fossil fuels release harmful gases."
+  },
+  {
+    "text": "Which is eco-friendly energy?",
+    "option_a": "Coal",
+    "option_b": "Petrol",
+    "option_c": "Wind energy",
+    "option_d": "Diesel",
+    "correct_option": "c",
+    "explanation": "Wind energy produces no pollution."
+  },
+  {
+    "text": "Which energy source is inexhaustible?",
+    "option_a": "Coal",
+    "option_b": "Petroleum",
+    "option_c": "Solar energy",
+    "option_d": "Gas",
+    "correct_option": "c",
+    "explanation": "Solar energy is unlimited."
+  },
+
+  {
+    "text": "Which is an example of biofuel?",
+    "option_a": "Petrol",
+    "option_b": "Diesel",
+    "option_c": "Biogas",
+    "option_d": "Coal",
+    "correct_option": "c",
+    "explanation": "Biogas is derived from organic waste."
+  },
+  {
+    "text": "Solar cooker works on:",
+    "option_a": "Reflection",
+    "option_b": "Refraction",
+    "option_c": "Greenhouse effect",
+    "option_d": "Dispersion",
+    "correct_option": "c",
+    "explanation": "Heat is trapped inside."
+  },
+  {
+    "text": "Windmills convert:",
+    "option_a": "Heat to electricity",
+    "option_b": "Kinetic energy to electricity",
+    "option_c": "Light to heat",
+    "option_d": "Chemical to electrical",
+    "correct_option": "b",
+    "explanation": "Wind kinetic energy is converted to electrical."
+  },
+  {
+    "text": "Which energy source has radiation risk?",
+    "option_a": "Wind",
+    "option_b": "Solar",
+    "option_c": "Nuclear",
+    "option_d": "Hydro",
+    "correct_option": "c",
+    "explanation": "Nuclear energy involves radioactive materials."
+  },
+
+  {
+    "text": "Which source is cheapest?",
+    "option_a": "Coal",
+    "option_b": "Solar",
+    "option_c": "Biogas",
+    "option_d": "Wind",
+    "correct_option": "a",
+    "explanation": "Coal is relatively cheaper."
+  },
+  {
+    "text": "Energy crisis occurs due to:",
+    "option_a": "Excess supply",
+    "option_b": "Overuse of resources",
+    "option_c": "Low demand",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Overuse leads to shortage."
+  },
+  {
+    "text": "Which is the cleanest fossil fuel?",
+    "option_a": "Coal",
+    "option_b": "Petroleum",
+    "option_c": "Natural gas",
+    "option_d": "Wood",
+    "correct_option": "c",
+    "explanation": "Natural gas burns cleaner."
+  },
+  {
+    "text": "Which energy source has highest efficiency?",
+    "option_a": "Solar",
+    "option_b": "Nuclear",
+    "option_c": "Wind",
+    "option_d": "Hydro",
+    "correct_option": "b",
+    "explanation": "Nuclear energy produces large energy."
+  },
+  {
+    "text": "Energy stored in fuels is:",
+    "option_a": "Mechanical",
+    "option_b": "Chemical",
+    "option_c": "Electrical",
+    "option_d": "Thermal",
+    "correct_option": "b",
+    "explanation": "Fuel stores chemical energy."
+  }
+]

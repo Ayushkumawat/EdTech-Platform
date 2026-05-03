@@ -15,5 +15,7 @@ class Chapter(Base):
 
     books = relationship("Book", back_populates="chapters", lazy="selectin")
     chapter_completions = relationship("ChapterCompletion", back_populates="chapter", lazy="selectin")
+    quiz_questions = relationship("QuizQuestion", back_populates="chapter", lazy="selectin")
+    quiz_attempts  = relationship("QuizAttempt",  back_populates="chapter", lazy="selectin")
 
     __table_args__ = ()

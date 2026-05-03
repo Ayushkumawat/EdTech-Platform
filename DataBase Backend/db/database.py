@@ -29,6 +29,7 @@ async def init_db():
     from models.chapter_completion import ChapterCompletion
     from models.class_model import Class
     from models.subject import Subject
+    from models.quiz import QuizQuestion, QuizAttempt, QuizAttemptQuestion
     # ...import other models here if needed
 
     async with async_engine.begin() as conn:

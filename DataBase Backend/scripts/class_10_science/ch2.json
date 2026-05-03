@@ -1,0 +1,362 @@
+[
+  {
+    "text": "Which of the following is a natural indicator?",
+    "option_a": "Methyl orange",
+    "option_b": "Phenolphthalein",
+    "option_c": "Litmus",
+    "option_d": "Universal indicator",
+    "correct_option": "c",
+    "explanation": "Litmus is a natural indicator extracted from lichens, whereas methyl orange and phenolphthalein are synthetic indicators."
+  },
+  {
+    "text": "What is the colour of phenolphthalein in a basic solution?",
+    "option_a": "Colourless",
+    "option_b": "Pink",
+    "option_c": "Yellow",
+    "option_d": "Red",
+    "correct_option": "b",
+    "explanation": "Phenolphthalein is an acid-base indicator that remains colourless in acidic solutions and turns pink in basic solutions."
+  },
+  {
+    "text": "Which gas is usually liberated when an acid reacts with a metal?",
+    "option_a": "Oxygen",
+    "option_b": "Carbon dioxide",
+    "option_c": "Nitrogen",
+    "option_d": "Hydrogen",
+    "correct_option": "d",
+    "explanation": "Metals displace hydrogen from acids to form salt and liberate hydrogen gas."
+  },
+  {
+    "text": "How is the presence of hydrogen gas tested?",
+    "option_a": "It turns lime water milky.",
+    "option_b": "It extinguishes a burning splinter with a pop sound.",
+    "option_c": "It burns with a dazzling white flame.",
+    "option_d": "It turns damp red litmus blue.",
+    "correct_option": "b",
+    "explanation": "Hydrogen gas is highly combustible and burns with a characteristic 'pop' sound when a burning candle or splinter is brought near it."
+  },
+  {
+    "text": "When an acid reacts with a metal carbonate, the products formed are:",
+    "option_a": "Salt, water, and hydrogen gas",
+    "option_b": "Salt, water, and carbon dioxide gas",
+    "option_c": "Salt and hydrogen gas",
+    "option_d": "Salt and carbon dioxide gas",
+    "correct_option": "b",
+    "explanation": "Acids react with metal carbonates to produce a corresponding salt, carbon dioxide gas, and water."
+  },
+  {
+    "text": "Passing carbon dioxide gas through lime water turns it milky due to the formation of:",
+    "option_a": "Calcium bicarbonate",
+    "option_b": "Calcium hydroxide",
+    "option_c": "Calcium carbonate",
+    "option_d": "Calcium oxide",
+    "correct_option": "c",
+    "explanation": "The milky appearance is due to the formation of an insoluble white precipitate of calcium carbonate (CaCO3)."
+  },
+  {
+    "text": "What happens when excess carbon dioxide is passed through milky lime water?",
+    "option_a": "It becomes even more milky.",
+    "option_b": "The milkiness disappears.",
+    "option_c": "It turns blue.",
+    "option_d": "A black precipitate is formed.",
+    "correct_option": "b",
+    "explanation": "The milkiness disappears because the insoluble calcium carbonate converts into soluble calcium bicarbonate [Ca(HCO3)2]."
+  },
+  {
+    "text": "The reaction between an acid and a base to give a salt and water is known as a:",
+    "option_a": "Decomposition reaction",
+    "option_b": "Combination reaction",
+    "option_c": "Neutralisation reaction",
+    "option_d": "Reduction reaction",
+    "correct_option": "c",
+    "explanation": "In a neutralisation reaction, the H+ ions from the acid and OH- ions from the base combine to form water, neutralising each other's effect."
+  },
+  {
+    "text": "Metallic oxides are generally:",
+    "option_a": "Acidic in nature",
+    "option_b": "Basic in nature",
+    "option_c": "Neutral in nature",
+    "option_d": "Amphoteric in nature",
+    "correct_option": "b",
+    "explanation": "Metallic oxides react with acids to form salt and water, similar to the reaction of a base with an acid, indicating they are basic in nature."
+  },
+  {
+    "text": "Non-metallic oxides are generally:",
+    "option_a": "Acidic in nature",
+    "option_b": "Basic in nature",
+    "option_c": "Neutral in nature",
+    "option_d": "Amphoteric in nature",
+    "correct_option": "a",
+    "explanation": "Non-metallic oxides (like CO2, SO2) dissolve in water to form acids and react with bases to form salt and water, showing their acidic nature."
+  },
+  {
+    "text": "Aqueous solutions of acids conduct electricity because of the presence of:",
+    "option_a": "Molecules",
+    "option_b": "Free electrons",
+    "option_c": "Hydrogen ions (H+)",
+    "option_d": "Hydroxide ions (OH-)",
+    "correct_option": "c",
+    "explanation": "Acids dissociate in water to produce hydrogen ions (H+ or H3O+), which are responsible for the conduction of electricity."
+  },
+  {
+    "text": "Why does dry HCl gas not change the colour of dry blue litmus paper?",
+    "option_a": "Dry HCl gas is basic.",
+    "option_b": "Dry HCl gas does not contain water to form H+ ions.",
+    "option_c": "Litmus paper only works with liquids.",
+    "option_d": "Dry HCl gas is a neutral compound.",
+    "correct_option": "b",
+    "explanation": "Acidic behavior requires the dissociation of H+ ions, which only occurs in the presence of moisture/water."
+  },
+  {
+    "text": "The correct way to dilute a concentrated acid is to:",
+    "option_a": "Add water to the concentrated acid slowly.",
+    "option_b": "Add the concentrated acid to water slowly with constant stirring.",
+    "option_c": "Mix both simultaneously.",
+    "option_d": "Add ice to the acid.",
+    "correct_option": "b",
+    "explanation": "Diluting acid is highly exothermic. Adding water to acid can cause the mixture to splash out and cause burns. Acid should always be added slowly to water."
+  },
+  {
+    "text": "On the pH scale, a value of 14 indicates a:",
+    "option_a": "Strong acid",
+    "option_b": "Weak acid",
+    "option_c": "Weak base",
+    "option_d": "Strong base",
+    "correct_option": "d",
+    "explanation": "The pH scale ranges from 0 to 14. A value of 14 represents the highest concentration of OH- ions, indicating a very strong base."
+  },
+  {
+    "text": "What is the pH range of the human body?",
+    "option_a": "7.0 to 7.8",
+    "option_b": "5.5 to 6.5",
+    "option_c": "8.0 to 9.0",
+    "option_d": "6.0 to 7.0",
+    "correct_option": "a",
+    "explanation": "The human body works optimally within a narrow, slightly alkaline pH range of 7.0 to 7.8."
+  },
+  {
+    "text": "Which acid is produced in our stomach to help in the digestion of food?",
+    "option_a": "Sulphuric acid",
+    "option_b": "Nitric acid",
+    "option_c": "Hydrochloric acid",
+    "option_d": "Acetic acid",
+    "correct_option": "c",
+    "explanation": "The stomach produces hydrochloric acid (HCl), which creates an acidic medium to facilitate the action of the enzyme pepsin."
+  },
+  {
+    "text": "To get relief from acidity in the stomach, which of the following is commonly used?",
+    "option_a": "Vinegar",
+    "option_b": "Lemon juice",
+    "option_c": "Antacid (like Milk of Magnesia)",
+    "option_d": "Common salt",
+    "correct_option": "c",
+    "explanation": "Antacids are mild bases (like magnesium hydroxide) that neutralize the excess acid produced in the stomach."
+  },
+  {
+    "text": "Tooth decay starts when the pH of the mouth is lower than:",
+    "option_a": "7.0",
+    "option_b": "6.5",
+    "option_c": "5.5",
+    "option_d": "8.0",
+    "correct_option": "c",
+    "explanation": "Bacteria in the mouth produce acids by degrading sugar and food particles. When the pH drops below 5.5, it causes the corrosion of tooth enamel."
+  },
+  {
+    "text": "Which acid is injected into our body during a bee sting?",
+    "option_a": "Oxalic acid",
+    "option_b": "Citric acid",
+    "option_c": "Methanoic acid",
+    "option_d": "Lactic acid",
+    "correct_option": "c",
+    "explanation": "A bee sting leaves methanoic acid (formic acid) in the skin, which causes pain and irritation."
+  },
+  {
+    "text": "What is the chemical formula of bleaching powder?",
+    "option_a": "CaCO3",
+    "option_b": "CaO",
+    "option_c": "CaOCl2",
+    "option_d": "Ca(OH)2",
+    "correct_option": "c",
+    "explanation": "Bleaching powder is synthesized by the action of chlorine on dry slaked lime, giving the formula CaOCl2 (calcium oxychloride)."
+  },
+  {
+    "text": "The process of manufacturing sodium hydroxide by passing electricity through aqueous sodium chloride is called:",
+    "option_a": "Neutralisation",
+    "option_b": "Chlor-alkali process",
+    "option_c": "Galvanisation",
+    "option_d": "Decomposition",
+    "correct_option": "b",
+    "explanation": "It is called the chlor-alkali process because the products formed are chlorine ('chlor') and sodium hydroxide ('alkali')."
+  },
+  {
+    "text": "What is the chemical name of baking soda?",
+    "option_a": "Sodium carbonate",
+    "option_b": "Sodium hydrogen carbonate",
+    "option_c": "Sodium hydroxide",
+    "option_d": "Sodium chloride",
+    "correct_option": "b",
+    "explanation": "Baking soda is sodium hydrogen carbonate (NaHCO3), also known as sodium bicarbonate."
+  },
+  {
+    "text": "Which gas is responsible for making bread or cake soft and spongy?",
+    "option_a": "Oxygen",
+    "option_b": "Hydrogen",
+    "option_c": "Nitrogen",
+    "option_d": "Carbon dioxide",
+    "correct_option": "d",
+    "explanation": "When baking powder is heated or mixed with water, carbon dioxide gas is produced, which bubbles through the dough and makes it rise."
+  },
+  {
+    "text": "Washing soda has the chemical formula:",
+    "option_a": "Na2CO3",
+    "option_b": "Na2CO3.7H2O",
+    "option_c": "Na2CO3.10H2O",
+    "option_d": "NaHCO3",
+    "correct_option": "c",
+    "explanation": "Washing soda is hydrated sodium carbonate, containing 10 molecules of water of crystallization (Na2CO3.10H2O)."
+  },
+  {
+    "text": "Plaster of Paris is obtained by heating:",
+    "option_a": "Limestone",
+    "option_b": "Gypsum",
+    "option_c": "Baking soda",
+    "option_d": "Washing soda",
+    "correct_option": "b",
+    "explanation": "On heating gypsum (CaSO4.2H2O) at 373 K, it loses water molecules to become calcium sulphate hemihydrate (Plaster of Paris)."
+  },
+  {
+    "text": "How many molecules of water of crystallization are present in blue copper sulphate crystals?",
+    "option_a": "2",
+    "option_b": "5",
+    "option_c": "7",
+    "option_d": "10",
+    "correct_option": "b",
+    "explanation": "The chemical formula of hydrated copper sulphate is CuSO4.5H2O, so it has 5 molecules of water of crystallization."
+  },
+  {
+    "text": "Which acid is naturally present in tomatoes?",
+    "option_a": "Acetic acid",
+    "option_b": "Citric acid",
+    "option_c": "Oxalic acid",
+    "option_d": "Tartaric acid",
+    "correct_option": "c",
+    "explanation": "Tomatoes are a natural source of oxalic acid."
+  },
+  {
+    "text": "Which acid is naturally present in curd?",
+    "option_a": "Lactic acid",
+    "option_b": "Tartaric acid",
+    "option_c": "Methanoic acid",
+    "option_d": "Citric acid",
+    "correct_option": "a",
+    "explanation": "Curd (sour milk) contains lactic acid, produced by Lactobacillus bacteria."
+  },
+  {
+    "text": "An aqueous solution of sodium chloride is commonly known as:",
+    "option_a": "Slaked lime",
+    "option_b": "Brine",
+    "option_c": "Baking powder",
+    "option_d": "Soda ash",
+    "correct_option": "b",
+    "explanation": "A concentrated, aqueous solution of sodium chloride (NaCl) is called brine."
+  },
+  {
+    "text": "In the chlor-alkali process, which gas is given off at the anode?",
+    "option_a": "Hydrogen",
+    "option_b": "Oxygen",
+    "option_c": "Chlorine",
+    "option_d": "Carbon dioxide",
+    "correct_option": "c",
+    "explanation": "During the electrolysis of brine, chloride ions are oxidized at the anode to form chlorine gas (Cl2)."
+  },
+  {
+    "text": "In the chlor-alkali process, which gas is given off at the cathode?",
+    "option_a": "Hydrogen",
+    "option_b": "Oxygen",
+    "option_c": "Chlorine",
+    "option_d": "Carbon dioxide",
+    "correct_option": "a",
+    "explanation": "During the electrolysis of brine, water is reduced at the cathode to produce hydrogen gas (H2)."
+  },
+  {
+    "text": "Baking powder is a mixture of baking soda and a mild edible acid such as:",
+    "option_a": "Hydrochloric acid",
+    "option_b": "Sulphuric acid",
+    "option_c": "Tartaric acid",
+    "option_d": "Nitric acid",
+    "correct_option": "c",
+    "explanation": "Baking powder consists of sodium hydrogen carbonate and a mild solid acid like tartaric acid, which neutralizes the bitter taste of the sodium carbonate formed during heating."
+  },
+  {
+    "text": "Which chemical is used in soda-acid fire extinguishers?",
+    "option_a": "Calcium carbonate",
+    "option_b": "Sodium hydrogen carbonate",
+    "option_c": "Sodium chloride",
+    "option_d": "Sodium hydroxide",
+    "correct_option": "b",
+    "explanation": "Soda-acid fire extinguishers contain a solution of sodium hydrogen carbonate (baking soda) and sulphuric acid, which react to produce a rapid stream of CO2 gas."
+  },
+  {
+    "text": "A solution turns red litmus blue. Its pH is likely to be:",
+    "option_a": "1",
+    "option_b": "4",
+    "option_c": "5",
+    "option_d": "10",
+    "correct_option": "d",
+    "explanation": "Bases turn red litmus blue. Basic solutions have a pH greater than 7. Therefore, 10 is the correct answer."
+  },
+  {
+    "text": "What happens when water is added to Plaster of Paris?",
+    "option_a": "It dissolves completely.",
+    "option_b": "It evaporates.",
+    "option_c": "It sets into a hard solid mass.",
+    "option_d": "It catches fire.",
+    "correct_option": "c",
+    "explanation": "When mixed with water, Plaster of Paris (calcium sulphate hemihydrate) changes back to gypsum (calcium sulphate dihydrate), forming a hard solid mass."
+  },
+  {
+    "text": "Which of the following is an olfactory indicator?",
+    "option_a": "Turmeric",
+    "option_b": "Vanilla extract",
+    "option_c": "Red cabbage leaves",
+    "option_d": "Petunia petals",
+    "correct_option": "b",
+    "explanation": "Olfactory indicators are substances whose odour changes in acidic or basic media. Vanilla extract, clove oil, and onion are examples."
+  },
+  {
+    "text": "A salt derived from a strong acid and a strong base has a pH of:",
+    "option_a": "Less than 7",
+    "option_b": "More than 7",
+    "option_c": "Exactly 7",
+    "option_d": "0",
+    "correct_option": "c",
+    "explanation": "Salts of a strong acid and a strong base (like NaCl) are neutral, so their aqueous solutions have a pH of 7."
+  },
+  {
+    "text": "A salt derived from a strong acid and a weak base will be:",
+    "option_a": "Acidic",
+    "option_b": "Basic",
+    "option_c": "Neutral",
+    "option_d": "Amphoteric",
+    "correct_option": "a",
+    "explanation": "The strong acid dominates over the weak base, leaving excess H+ ions in solution, making the salt solution acidic (pH < 7)."
+  },
+  {
+    "text": "Which of the following acids is present in sour milk?",
+    "option_a": "Glycolic acid",
+    "option_b": "Lactic acid",
+    "option_c": "Citric acid",
+    "option_d": "Tartaric acid",
+    "correct_option": "b",
+    "explanation": "Sour milk and curd contain lactic acid."
+  },
+  {
+    "text": "When copper sulphate crystals are heated strongly in a test tube, what is the colour of the solid residue?",
+    "option_a": "Blue",
+    "option_b": "Green",
+    "option_c": "White",
+    "option_d": "Black",
+    "correct_option": "c",
+    "explanation": "On heating, blue copper sulphate crystals (CuSO4.5H2O) lose their water of crystallization and become anhydrous copper sulphate (CuSO4), which is white."
+  }
+]

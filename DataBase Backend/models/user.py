@@ -27,4 +27,5 @@ class User(Base):
     role = relationship("Role", back_populates="users")
     class_ = relationship("Class", back_populates="users")
     subscription = relationship("Subscription", back_populates="users", lazy="selectin")
+    quiz_attempts = relationship("QuizAttempt", back_populates="user", lazy="selectin")
     __table_args__ = ()

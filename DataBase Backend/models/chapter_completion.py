@@ -13,6 +13,9 @@ class ChapterCompletion(Base):
     user_id = Column(PG_UUID(as_uuid=True), ForeignKey('user.uid'), nullable=False)
     chapter_id = Column(PG_UUID(as_uuid=True), ForeignKey('chapter.uid'), nullable=False)
     current_page = Column(Integer, nullable=False)
+    passed_at       = Column(TIMESTAMP, nullable=True)
+    best_quiz_score = Column(Integer, nullable=True)
+    quiz_attempts   = Column(Integer, nullable=False, default=0)
 
     user = relationship("User", back_populates="chapter_completions", lazy="selectin")
     chapter = relationship("Chapter", back_populates="chapter_completions", lazy="selectin")

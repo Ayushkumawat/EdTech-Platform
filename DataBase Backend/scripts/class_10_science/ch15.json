@@ -1,0 +1,333 @@
+[
+  {
+    "text": "An ecosystem consists of:",
+    "option_a": "Only living organisms",
+    "option_b": "Only non-living components",
+    "option_c": "Both living and non-living components",
+    "option_d": "Only plants",
+    "correct_option": "c",
+    "explanation": "Ecosystem includes both biotic and abiotic components."
+  },
+  {
+    "text": "Which of the following is a biotic component?",
+    "option_a": "Water",
+    "option_b": "Soil",
+    "option_c": "Plants",
+    "option_d": "Air",
+    "correct_option": "c",
+    "explanation": "Biotic components are living organisms."
+  },
+  {
+    "text": "Which of the following is an abiotic component?",
+    "option_a": "Animals",
+    "option_b": "Plants",
+    "option_c": "Water",
+    "option_d": "Microorganisms",
+    "correct_option": "c",
+    "explanation": "Abiotic components are non-living factors like water."
+  },
+  {
+    "text": "The first trophic level consists of:",
+    "option_a": "Consumers",
+    "option_b": "Producers",
+    "option_c": "Decomposers",
+    "option_d": "Carnivores",
+    "correct_option": "b",
+    "explanation": "Producers like plants form the first trophic level."
+  },
+  {
+    "text": "Green plants are called:",
+    "option_a": "Consumers",
+    "option_b": "Decomposers",
+    "option_c": "Producers",
+    "option_d": "Carnivores",
+    "correct_option": "c",
+    "explanation": "Plants produce their own food."
+  },
+
+  {
+    "text": "Animals that eat plants are called:",
+    "option_a": "Carnivores",
+    "option_b": "Herbivores",
+    "option_c": "Omnivores",
+    "option_d": "Decomposers",
+    "correct_option": "b",
+    "explanation": "Herbivores depend on plants."
+  },
+  {
+    "text": "A sequence of organisms where each is eaten by the next is called:",
+    "option_a": "Food web",
+    "option_b": "Food chain",
+    "option_c": "Ecosystem",
+    "option_d": "Habitat",
+    "correct_option": "b",
+    "explanation": "Food chain shows energy flow."
+  },
+  {
+    "text": "Multiple food chains connected together form:",
+    "option_a": "Food web",
+    "option_b": "Food cycle",
+    "option_c": "Energy chain",
+    "option_d": "None",
+    "correct_option": "a",
+    "explanation": "Food web is interlinked food chains."
+  },
+  {
+    "text": "Energy transfer between trophic levels is about:",
+    "option_a": "50%",
+    "option_b": "10%",
+    "option_c": "100%",
+    "option_d": "1%",
+    "correct_option": "b",
+    "explanation": "Only 10% energy is transferred."
+  },
+  {
+    "text": "Decomposers break down:",
+    "option_a": "Living organisms",
+    "option_b": "Dead organic matter",
+    "option_c": "Water",
+    "option_d": "Air",
+    "correct_option": "b",
+    "explanation": "They recycle nutrients."
+  },
+
+  {
+    "text": "Which organism is a decomposer?",
+    "option_a": "Cow",
+    "option_b": "Tiger",
+    "option_c": "Bacteria",
+    "option_d": "Human",
+    "correct_option": "c",
+    "explanation": "Bacteria decompose dead matter."
+  },
+  {
+    "text": "Biodegradable substances are:",
+    "option_a": "Not decomposed",
+    "option_b": "Decomposed by microbes",
+    "option_c": "Always toxic",
+    "option_d": "Artificial",
+    "correct_option": "b",
+    "explanation": "Microorganisms break them down."
+  },
+  {
+    "text": "Which is biodegradable?",
+    "option_a": "Plastic",
+    "option_b": "Glass",
+    "option_c": "Paper",
+    "option_d": "Metal",
+    "correct_option": "c",
+    "explanation": "Paper decomposes naturally."
+  },
+  {
+    "text": "Which is non-biodegradable?",
+    "option_a": "Wood",
+    "option_b": "Plastic",
+    "option_c": "Leaves",
+    "option_d": "Food waste",
+    "correct_option": "b",
+    "explanation": "Plastic does not decompose easily."
+  },
+  {
+    "text": "Accumulation of non-biodegradable substances leads to:",
+    "option_a": "Fertility",
+    "option_b": "Pollution",
+    "option_c": "Growth",
+    "option_d": "Energy",
+    "correct_option": "b",
+    "explanation": "They persist and pollute environment."
+  },
+
+  {
+    "text": "Biological magnification refers to:",
+    "option_a": "Decrease of toxins",
+    "option_b": "Increase of toxins at higher trophic levels",
+    "option_c": "Energy decrease",
+    "option_d": "Food chain breakdown",
+    "correct_option": "b",
+    "explanation": "Toxins accumulate up the food chain."
+  },
+  {
+    "text": "Ozone layer protects us from:",
+    "option_a": "Infrared rays",
+    "option_b": "UV radiation",
+    "option_c": "X-rays",
+    "option_d": "Gamma rays",
+    "correct_option": "b",
+    "explanation": "Ozone absorbs harmful UV rays."
+  },
+  {
+    "text": "Ozone depletion is caused by:",
+    "option_a": "CO2",
+    "option_b": "CFCs",
+    "option_c": "Oxygen",
+    "option_d": "Nitrogen",
+    "correct_option": "b",
+    "explanation": "CFCs damage ozone layer."
+  },
+  {
+    "text": "Which is a greenhouse gas?",
+    "option_a": "Oxygen",
+    "option_b": "Nitrogen",
+    "option_c": "Carbon dioxide",
+    "option_d": "Helium",
+    "correct_option": "c",
+    "explanation": "CO2 traps heat."
+  },
+  {
+    "text": "Greenhouse effect causes:",
+    "option_a": "Cooling",
+    "option_b": "Global warming",
+    "option_c": "Rainfall",
+    "option_d": "Wind",
+    "correct_option": "b",
+    "explanation": "Heat gets trapped."
+  },
+
+  {
+    "text": "Which is a natural ecosystem?",
+    "option_a": "Aquarium",
+    "option_b": "Garden",
+    "option_c": "Forest",
+    "option_d": "Farm",
+    "correct_option": "c",
+    "explanation": "Forest is naturally formed."
+  },
+  {
+    "text": "Which is an artificial ecosystem?",
+    "option_a": "River",
+    "option_b": "Forest",
+    "option_c": "Aquarium",
+    "option_d": "Ocean",
+    "correct_option": "c",
+    "explanation": "Aquarium is man-made."
+  },
+  {
+    "text": "Energy flow in ecosystem is:",
+    "option_a": "Cyclic",
+    "option_b": "Unidirectional",
+    "option_c": "Random",
+    "option_d": "Reversible",
+    "correct_option": "b",
+    "explanation": "Energy flows in one direction."
+  },
+  {
+    "text": "Maximum energy is available at:",
+    "option_a": "Top level",
+    "option_b": "Middle level",
+    "option_c": "Producer level",
+    "option_d": "Decomposer level",
+    "correct_option": "c",
+    "explanation": "Producers receive maximum energy."
+  },
+  {
+    "text": "Which is the top consumer?",
+    "option_a": "Herbivore",
+    "option_b": "Carnivore",
+    "option_c": "Producer",
+    "option_d": "Decomposer",
+    "correct_option": "b",
+    "explanation": "Carnivores occupy top level."
+  },
+
+  {
+    "text": "Which process recycles nutrients?",
+    "option_a": "Photosynthesis",
+    "option_b": "Decomposition",
+    "option_c": "Respiration",
+    "option_d": "Digestion",
+    "correct_option": "b",
+    "explanation": "Decomposition returns nutrients."
+  },
+  {
+    "text": "Garbage disposal method best for organic waste:",
+    "option_a": "Burning",
+    "option_b": "Landfill",
+    "option_c": "Composting",
+    "option_d": "Dumping",
+    "correct_option": "c",
+    "explanation": "Composting converts waste into manure."
+  },
+  {
+    "text": "Which practice is eco-friendly?",
+    "option_a": "Burning plastic",
+    "option_b": "Recycling",
+    "option_c": "Dumping waste",
+    "option_d": "Using polythene",
+    "correct_option": "b",
+    "explanation": "Recycling reduces pollution."
+  },
+  {
+    "text": "Which is NOT biodegradable?",
+    "option_a": "Fruit peel",
+    "option_b": "Paper",
+    "option_c": "Plastic",
+    "option_d": "Leaves",
+    "correct_option": "c",
+    "explanation": "Plastic persists in environment."
+  },
+
+  {
+    "text": "Food chain always begins with:",
+    "option_a": "Carnivores",
+    "option_b": "Herbivores",
+    "option_c": "Producers",
+    "option_d": "Decomposers",
+    "correct_option": "c",
+    "explanation": "Plants start food chain."
+  },
+  {
+    "text": "Which level has least energy?",
+    "option_a": "Producers",
+    "option_b": "Primary consumers",
+    "option_c": "Top consumers",
+    "option_d": "Decomposers",
+    "correct_option": "c",
+    "explanation": "Energy decreases upward."
+  },
+  {
+    "text": "Which gas depletion causes skin cancer risk?",
+    "option_a": "CO2",
+    "option_b": "Ozone",
+    "option_c": "Oxygen",
+    "option_d": "Nitrogen",
+    "correct_option": "b",
+    "explanation": "Ozone depletion increases UV exposure."
+  },
+  {
+    "text": "Which waste is easiest to decompose?",
+    "option_a": "Plastic",
+    "option_b": "Glass",
+    "option_c": "Food waste",
+    "option_d": "Metal",
+    "correct_option": "c",
+    "explanation": "Organic waste decomposes quickly."
+  },
+  {
+    "text": "Which level receives energy directly from sun?",
+    "option_a": "Consumers",
+    "option_b": "Producers",
+    "option_c": "Carnivores",
+    "option_d": "Decomposers",
+    "correct_option": "b",
+    "explanation": "Plants absorb solar energy."
+  },
+
+  {
+    "text": "Which of the following is not part of food chain?",
+    "option_a": "Producers",
+    "option_b": "Consumers",
+    "option_c": "Decomposers",
+    "option_d": "Machines",
+    "correct_option": "d",
+    "explanation": "Machines are not biological."
+  },
+  {
+    "text": "Increase in CFC leads to:",
+    "option_a": "Global warming",
+    "option_b": "Ozone depletion",
+    "option_c": "Rainfall",
+    "option_d": "Cooling",
+    "correct_option": "b",
+    "explanation": "CFC damages ozone."
+  }
+]

@@ -1,0 +1,324 @@
+[
+  {
+    "text": "Magnetic field is produced by:",
+    "option_a": "Electric charge only",
+    "option_b": "Magnet only",
+    "option_c": "Both magnet and electric current",
+    "option_d": "None",
+    "correct_option": "c",
+    "explanation": "Both magnets and electric current produce magnetic fields."
+  },
+  {
+    "text": "The SI unit of magnetic field is:",
+    "option_a": "Tesla",
+    "option_b": "Ohm",
+    "option_c": "Ampere",
+    "option_d": "Volt",
+    "correct_option": "a",
+    "explanation": "Magnetic field is measured in tesla."
+  },
+  {
+    "text": "Magnetic field lines:",
+    "option_a": "Intersect each other",
+    "option_b": "Never intersect",
+    "option_c": "Are straight",
+    "option_d": "Are random",
+    "correct_option": "b",
+    "explanation": "Field lines never intersect each other."
+  },
+  {
+    "text": "The direction of magnetic field is given by:",
+    "option_a": "Right-hand thumb rule",
+    "option_b": "Ohm’s law",
+    "option_c": "Snell’s law",
+    "option_d": "Newton’s law",
+    "correct_option": "a",
+    "explanation": "Right-hand thumb rule gives direction of field."
+  },
+  {
+    "text": "Magnetic field around a straight conductor is:",
+    "option_a": "Circular",
+    "option_b": "Straight",
+    "option_c": "Elliptical",
+    "option_d": "Random",
+    "correct_option": "a",
+    "explanation": "Field lines form concentric circles."
+  },
+  {
+    "text": "Magnetic field strength increases with:",
+    "option_a": "Decrease in current",
+    "option_b": "Increase in current",
+    "option_c": "Decrease in length",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "More current produces stronger magnetic field."
+  },
+  {
+    "text": "A coil of wire wrapped in cylindrical form is called:",
+    "option_a": "Motor",
+    "option_b": "Solenoid",
+    "option_c": "Generator",
+    "option_d": "Transformer",
+    "correct_option": "b",
+    "explanation": "Solenoid produces magnetic field like a bar magnet."
+  },
+  {
+    "text": "Magnetic field inside a solenoid is:",
+    "option_a": "Weak",
+    "option_b": "Random",
+    "option_c": "Uniform",
+    "option_d": "Zero",
+    "correct_option": "c",
+    "explanation": "Inside solenoid field is uniform and parallel."
+  },
+  {
+    "text": "An electromagnet is made by:",
+    "option_a": "Iron",
+    "option_b": "Steel",
+    "option_c": "Soft iron core with coil",
+    "option_d": "Copper only",
+    "correct_option": "c",
+    "explanation": "Soft iron core enhances magnetic effect."
+  },
+  {
+    "text": "Soft iron is used in electromagnets because:",
+    "option_a": "High resistance",
+    "option_b": "Retains magnetism",
+    "option_c": "Loses magnetism quickly",
+    "option_d": "Low current",
+    "correct_option": "c",
+    "explanation": "Soft iron easily magnetizes and demagnetizes."
+  },
+
+  {
+    "text": "The force on a current-carrying conductor depends on:",
+    "option_a": "Magnetic field",
+    "option_b": "Current",
+    "option_c": "Length",
+    "option_d": "All of these",
+    "correct_option": "d",
+    "explanation": "Force depends on B, I, and length."
+  },
+  {
+    "text": "Direction of force is given by:",
+    "option_a": "Right-hand rule",
+    "option_b": "Fleming’s left-hand rule",
+    "option_c": "Ohm’s law",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Fleming’s left-hand rule gives force direction."
+  },
+  {
+    "text": "The formula for force on conductor is:",
+    "option_a": "F = BIL",
+    "option_b": "F = BIL sinθ",
+    "option_c": "F = IR",
+    "option_d": "F = V/I",
+    "correct_option": "b",
+    "explanation": "Force depends on angle also."
+  },
+  {
+    "text": "Maximum force occurs when angle is:",
+    "option_a": "0°",
+    "option_b": "30°",
+    "option_c": "90°",
+    "option_d": "180°",
+    "correct_option": "c",
+    "explanation": "sin 90° = 1, so force is maximum."
+  },
+  {
+    "text": "Electric motor converts:",
+    "option_a": "Mechanical to electrical",
+    "option_b": "Electrical to mechanical",
+    "option_c": "Heat to energy",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Motor converts electrical energy into mechanical energy."
+  },
+  {
+    "text": "Principle of motor is:",
+    "option_a": "Heating effect",
+    "option_b": "Magnetic effect",
+    "option_c": "Chemical effect",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Motor works on magnetic effect of current."
+  },
+  {
+    "text": "Split ring in motor acts as:",
+    "option_a": "Switch",
+    "option_b": "Commutator",
+    "option_c": "Battery",
+    "option_d": "Magnet",
+    "correct_option": "b",
+    "explanation": "It reverses current direction."
+  },
+  {
+    "text": "Electric generator converts:",
+    "option_a": "Electrical to mechanical",
+    "option_b": "Mechanical to electrical",
+    "option_c": "Heat to electrical",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Generator produces electricity from motion."
+  },
+  {
+    "text": "Generator works on:",
+    "option_a": "Electromagnetic induction",
+    "option_b": "Heating",
+    "option_c": "Reflection",
+    "option_d": "Refraction",
+    "correct_option": "a",
+    "explanation": "Based on Faraday’s law."
+  },
+  {
+    "text": "Direction of induced current is given by:",
+    "option_a": "Fleming’s right-hand rule",
+    "option_b": "Left-hand rule",
+    "option_c": "Ohm’s law",
+    "option_d": "None",
+    "correct_option": "a",
+    "explanation": "Right-hand rule is used for generators."
+  },
+
+  {
+    "text": "Magnetic field lines inside magnet go from:",
+    "option_a": "North to south",
+    "option_b": "South to north",
+    "option_c": "Random",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Inside magnet direction is S to N."
+  },
+  {
+    "text": "Magnetic field is strongest where lines are:",
+    "option_a": "Far apart",
+    "option_b": "Close together",
+    "option_c": "Straight",
+    "option_d": "Random",
+    "correct_option": "b",
+    "explanation": "Density indicates strength."
+  },
+  {
+    "text": "Compass needle is:",
+    "option_a": "Bar magnet",
+    "option_b": "Electromagnet",
+    "option_c": "Wire",
+    "option_d": "Battery",
+    "correct_option": "a",
+    "explanation": "Compass behaves like a small magnet."
+  },
+  {
+    "text": "Magnetic field is a:",
+    "option_a": "Scalar",
+    "option_b": "Vector",
+    "option_c": "Tensor",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "It has magnitude and direction."
+  },
+  {
+    "text": "Magnetic field lines outside magnet go from:",
+    "option_a": "South to north",
+    "option_b": "North to south",
+    "option_c": "Random",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Outside magnet N to S."
+  },
+
+  {
+    "text": "AC current changes:",
+    "option_a": "Magnitude only",
+    "option_b": "Direction only",
+    "option_c": "Both",
+    "option_d": "None",
+    "correct_option": "c",
+    "explanation": "AC varies in magnitude and direction."
+  },
+  {
+    "text": "DC current is:",
+    "option_a": "Alternating",
+    "option_b": "Constant direction",
+    "option_c": "Random",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "DC flows in one direction."
+  },
+
+  {
+    "text": "Frequency of AC in India is:",
+    "option_a": "50 Hz",
+    "option_b": "60 Hz",
+    "option_c": "100 Hz",
+    "option_d": "25 Hz",
+    "correct_option": "a",
+    "explanation": "Standard AC frequency is 50 Hz."
+  },
+  {
+    "text": "Transformer works on:",
+    "option_a": "Heating effect",
+    "option_b": "Electromagnetic induction",
+    "option_c": "Reflection",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Transformer uses induction principle."
+  },
+
+  {
+    "text": "Fuse works on:",
+    "option_a": "Magnetic effect",
+    "option_b": "Heating effect",
+    "option_c": "Chemical effect",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Fuse melts due to heat."
+  },
+  {
+    "text": "Earth wire is used for:",
+    "option_a": "Voltage",
+    "option_b": "Safety",
+    "option_c": "Current",
+    "option_d": "Power",
+    "correct_option": "b",
+    "explanation": "Prevents electric shock."
+  },
+
+  {
+    "text": "Magnetic field direction depends on:",
+    "option_a": "Current direction",
+    "option_b": "Voltage",
+    "option_c": "Resistance",
+    "option_d": "None",
+    "correct_option": "a",
+    "explanation": "Reversing current reverses field."
+  },
+  {
+    "text": "Increasing turns in solenoid:",
+    "option_a": "Decreases field",
+    "option_b": "Increases field",
+    "option_c": "No effect",
+    "option_d": "Zero",
+    "correct_option": "b",
+    "explanation": "More turns → stronger field."
+  },
+
+  {
+    "text": "Magnetic field due to current loop is:",
+    "option_a": "Zero",
+    "option_b": "Like bar magnet",
+    "option_c": "Random",
+    "option_d": "Straight",
+    "correct_option": "b",
+    "explanation": "Circular loop behaves like magnet."
+  },
+  {
+    "text": "North pole of solenoid depends on:",
+    "option_a": "Current direction",
+    "option_b": "Voltage",
+    "option_c": "Resistance",
+    "option_d": "Length",
+    "correct_option": "a",
+    "explanation": "Direction determines polarity."
+  }
+]

@@ -1,0 +1,361 @@
+[
+  {
+    "text": "The bouncing back of light into the same medium is called:",
+    "option_a": "Refraction",
+    "option_b": "Reflection",
+    "option_c": "Dispersion",
+    "option_d": "Diffraction",
+    "correct_option": "b",
+    "explanation": "Reflection is the bouncing back of light into the same medium."
+  },
+  {
+    "text": "The angle of incidence is equal to:",
+    "option_a": "Angle of deviation",
+    "option_b": "Angle of reflection",
+    "option_c": "Angle of refraction",
+    "option_d": "Angle of diffraction",
+    "correct_option": "b",
+    "explanation": "According to the law of reflection, angle of incidence equals angle of reflection."
+  },
+  {
+    "text": "The image formed by a plane mirror is:",
+    "option_a": "Real and inverted",
+    "option_b": "Virtual and erect",
+    "option_c": "Real and erect",
+    "option_d": "Virtual and inverted",
+    "correct_option": "b",
+    "explanation": "Plane mirrors form virtual, erect images of same size."
+  },
+  {
+    "text": "The relationship between focal length (f) and radius of curvature (R) is:",
+    "option_a": "R = f/2",
+    "option_b": "f = 2R",
+    "option_c": "R = 2f",
+    "option_d": "f = R",
+    "correct_option": "c",
+    "explanation": "For spherical mirrors, R = 2f."
+  },
+  {
+    "text": "Concave mirror is also called:",
+    "option_a": "Diverging mirror",
+    "option_b": "Plane mirror",
+    "option_c": "Converging mirror",
+    "option_d": "None",
+    "correct_option": "c",
+    "explanation": "Concave mirrors converge parallel rays."
+  },
+  {
+    "text": "Convex mirror is also called:",
+    "option_a": "Converging mirror",
+    "option_b": "Diverging mirror",
+    "option_c": "Plane mirror",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Convex mirrors diverge rays."
+  },
+  {
+    "text": "The laws of reflection are valid for:",
+    "option_a": "Plane mirror only",
+    "option_b": "Concave mirror only",
+    "option_c": "Convex mirror only",
+    "option_d": "All reflecting surfaces",
+    "correct_option": "d",
+    "explanation": "Laws of reflection apply to all reflecting surfaces."
+  },
+  {
+    "text": "When object is placed within focus of concave mirror, image formed is:",
+    "option_a": "Real and inverted",
+    "option_b": "Virtual and erect",
+    "option_c": "Real and erect",
+    "option_d": "Virtual and inverted",
+    "correct_option": "b",
+    "explanation": "Inside focus → virtual, erect image."
+  },
+  {
+    "text": "A convex mirror always forms image which is:",
+    "option_a": "Real and inverted",
+    "option_b": "Virtual and erect",
+    "option_c": "Real and erect",
+    "option_d": "Virtual and inverted",
+    "correct_option": "b",
+    "explanation": "Convex mirrors always form virtual, erect images."
+  },
+  {
+    "text": "The diameter of reflecting surface is called:",
+    "option_a": "Radius",
+    "option_b": "Focus",
+    "option_c": "Aperture",
+    "option_d": "Pole",
+    "correct_option": "c",
+    "explanation": "Aperture is the diameter of reflecting surface."
+  },
+
+  {
+    "text": "Light travels fastest in:",
+    "option_a": "Water",
+    "option_b": "Glass",
+    "option_c": "Vacuum",
+    "option_d": "Air",
+    "correct_option": "c",
+    "explanation": "Speed of light is maximum in vacuum."
+  },
+  {
+    "text": "When light travels from rarer to denser medium, its speed:",
+    "option_a": "Increases",
+    "option_b": "Decreases",
+    "option_c": "Remains same",
+    "option_d": "Becomes zero",
+    "correct_option": "b",
+    "explanation": "Speed decreases in denser medium."
+  },
+  {
+    "text": "Refractive index depends on:",
+    "option_a": "Color of light",
+    "option_b": "Nature of medium",
+    "option_c": "Temperature",
+    "option_d": "All of these",
+    "correct_option": "d",
+    "explanation": "All factors affect refractive index."
+  },
+  {
+    "text": "The bending of light when it passes from one medium to another is called:",
+    "option_a": "Reflection",
+    "option_b": "Refraction",
+    "option_c": "Dispersion",
+    "option_d": "Diffraction",
+    "correct_option": "b",
+    "explanation": "Refraction is bending of light."
+  },
+  {
+    "text": "Unit of focal length is:",
+    "option_a": "Meter",
+    "option_b": "Second",
+    "option_c": "Newton",
+    "option_d": "Joule",
+    "correct_option": "a",
+    "explanation": "Focal length is measured in meters."
+  },
+  {
+    "text": "A concave mirror forms real image when object is placed:",
+    "option_a": "Between P and F",
+    "option_b": "At F",
+    "option_c": "Beyond F",
+    "option_d": "At infinity",
+    "correct_option": "c",
+    "explanation": "Real images form when object is beyond focus."
+  },
+  {
+    "text": "The mirror formula is:",
+    "option_a": "1/f = 1/v + 1/u",
+    "option_b": "f = uv",
+    "option_c": "v = u + f",
+    "option_d": "None",
+    "correct_option": "a",
+    "explanation": "Mirror formula: 1/f = 1/v + 1/u."
+  },
+  {
+    "text": "Magnification is given by:",
+    "option_a": "v/u",
+    "option_b": "u/v",
+    "option_c": "f/u",
+    "option_d": "v/f",
+    "correct_option": "a",
+    "explanation": "Magnification m = v/u."
+  },
+  {
+    "text": "Convex lens is also called:",
+    "option_a": "Diverging lens",
+    "option_b": "Converging lens",
+    "option_c": "Plane lens",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Convex lens converges light rays."
+  },
+  {
+    "text": "Concave lens always forms image which is:",
+    "option_a": "Real",
+    "option_b": "Virtual",
+    "option_c": "Inverted",
+    "option_d": "Magnified",
+    "correct_option": "b",
+    "explanation": "Concave lens always forms virtual image."
+  },
+
+  {
+    "text": "Power of lens is measured in:",
+    "option_a": "Watt",
+    "option_b": "Diopter",
+    "option_c": "Newton",
+    "option_d": "Meter",
+    "correct_option": "b",
+    "explanation": "Power is measured in diopter."
+  },
+  {
+    "text": "1 diopter equals:",
+    "option_a": "1/m",
+    "option_b": "1 cm",
+    "option_c": "1 m",
+    "option_d": "1 sec",
+    "correct_option": "a",
+    "explanation": "1D = 1/f (in meters)."
+  },
+  {
+    "text": "Sign convention follows:",
+    "option_a": "Left positive",
+    "option_b": "Right positive",
+    "option_c": "New Cartesian convention",
+    "option_d": "None",
+    "correct_option": "c",
+    "explanation": "New Cartesian sign convention is used."
+  },
+  {
+    "text": "Image distance is positive when:",
+    "option_a": "Image formed in front",
+    "option_b": "Image formed behind",
+    "option_c": "Both",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Positive when image is behind mirror."
+  },
+  {
+    "text": "Object distance is always:",
+    "option_a": "Positive",
+    "option_b": "Negative",
+    "option_c": "Zero",
+    "option_d": "Infinite",
+    "correct_option": "b",
+    "explanation": "Object is placed left, so negative."
+  },
+
+  {
+    "text": "Rear view mirrors are:",
+    "option_a": "Plane mirrors",
+    "option_b": "Concave mirrors",
+    "option_c": "Convex mirrors",
+    "option_d": "None",
+    "correct_option": "c",
+    "explanation": "Convex mirrors give wide field of view."
+  },
+  {
+    "text": "Image formed by convex mirror is:",
+    "option_a": "Real",
+    "option_b": "Virtual",
+    "option_c": "Inverted",
+    "option_d": "Magnified",
+    "correct_option": "b",
+    "explanation": "Always virtual."
+  },
+  {
+    "text": "Image at infinity for concave mirror occurs when object is at:",
+    "option_a": "Focus",
+    "option_b": "Center",
+    "option_c": "Infinity",
+    "option_d": "Pole",
+    "correct_option": "a",
+    "explanation": "Object at focus → image at infinity."
+  },
+  {
+    "text": "When object is at infinity, image is formed at:",
+    "option_a": "Focus",
+    "option_b": "Pole",
+    "option_c": "Center",
+    "option_d": "Infinity",
+    "correct_option": "a",
+    "explanation": "Parallel rays meet at focus."
+  },
+
+  {
+    "text": "Lens formula is:",
+    "option_a": "1/f = 1/v - 1/u",
+    "option_b": "1/f = 1/v + 1/u",
+    "option_c": "v = u + f",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Lens formula same as mirror formula."
+  },
+  {
+    "text": "Magnification in lens is:",
+    "option_a": "v/u",
+    "option_b": "u/v",
+    "option_c": "f/u",
+    "option_d": "v/f",
+    "correct_option": "a",
+    "explanation": "m = v/u."
+  },
+
+  {
+    "text": "Power of convex lens is:",
+    "option_a": "Negative",
+    "option_b": "Positive",
+    "option_c": "Zero",
+    "option_d": "Infinite",
+    "correct_option": "b",
+    "explanation": "Convex lens has positive power."
+  },
+  {
+    "text": "Power of concave lens is:",
+    "option_a": "Positive",
+    "option_b": "Negative",
+    "option_c": "Zero",
+    "option_d": "Infinite",
+    "correct_option": "b",
+    "explanation": "Concave lens has negative power."
+  },
+
+  {
+    "text": "The SI unit of refractive index is:",
+    "option_a": "Meter",
+    "option_b": "Second",
+    "option_c": "No unit",
+    "option_d": "Newton",
+    "correct_option": "c",
+    "explanation": "Refractive index is dimensionless."
+  },
+  {
+    "text": "Snell’s law relates:",
+    "option_a": "Angle and velocity",
+    "option_b": "Angles of incidence and refraction",
+    "option_c": "Speed and distance",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Snell’s law relates angles."
+  },
+
+  {
+    "text": "Critical angle is defined for:",
+    "option_a": "Reflection",
+    "option_b": "Refraction",
+    "option_c": "Total internal reflection",
+    "option_d": "Diffraction",
+    "correct_option": "c",
+    "explanation": "Critical angle is for TIR."
+  },
+  {
+    "text": "Total internal reflection occurs when:",
+    "option_a": "Rarer to denser",
+    "option_b": "Denser to rarer",
+    "option_c": "Same medium",
+    "option_d": "Vacuum",
+    "correct_option": "b",
+    "explanation": "Occurs from denser to rarer medium."
+  },
+
+  {
+    "text": "Optical center of lens is:",
+    "option_a": "Edge",
+    "option_b": "Center",
+    "option_c": "Focus",
+    "option_d": "Pole",
+    "correct_option": "b",
+    "explanation": "Light passes undeviated through optical center."
+  },
+  {
+    "text": "Principal axis is:",
+    "option_a": "Curved line",
+    "option_b": "Straight line through center",
+    "option_c": "Focus line",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Principal axis is straight line through center."
+  }
+]

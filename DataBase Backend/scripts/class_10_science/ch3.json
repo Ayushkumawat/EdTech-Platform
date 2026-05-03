@@ -1,0 +1,362 @@
+[
+  {
+    "text": "Which of the following metals exists in a liquid state at room temperature?",
+    "option_a": "Sodium",
+    "option_b": "Mercury",
+    "option_c": "Iron",
+    "option_d": "Copper",
+    "correct_option": "b",
+    "explanation": "Mercury is the only metal that is liquid at room temperature."
+  },
+  {
+    "text": "Which non-metal is a liquid at room temperature?",
+    "option_a": "Chlorine",
+    "option_b": "Bromine",
+    "option_c": "Iodine",
+    "option_d": "Fluorine",
+    "correct_option": "b",
+    "explanation": "Bromine is a non-metal that exists as a liquid at room temperature."
+  },
+  {
+    "text": "The property of metals by which they can be beaten into thin sheets is called:",
+    "option_a": "Ductility",
+    "option_b": "Malleability",
+    "option_c": "Sonorousity",
+    "option_d": "Conductivity",
+    "correct_option": "b",
+    "explanation": "Malleability is the physical property of a metal that allows it to be beaten into thin sheets."
+  },
+  {
+    "text": "The property of metals by which they can be drawn into thin wires is called:",
+    "option_a": "Ductility",
+    "option_b": "Malleability",
+    "option_c": "Sonorousity",
+    "option_d": "Lustre",
+    "correct_option": "a",
+    "explanation": "Ductility is the ability of metals to be drawn into thin wires. Gold is the most ductile metal."
+  },
+  {
+    "text": "Which of the following is the best conductor of heat?",
+    "option_a": "Lead",
+    "option_b": "Silver",
+    "option_c": "Iron",
+    "option_d": "Aluminum",
+    "correct_option": "b",
+    "explanation": "Silver and copper are the best conductors of heat among metals."
+  },
+  {
+    "text": "Which among the following is a poor conductor of heat?",
+    "option_a": "Silver",
+    "option_b": "Copper",
+    "option_c": "Lead",
+    "option_d": "Gold",
+    "correct_option": "c",
+    "explanation": "Lead and mercury are comparatively poor conductors of heat."
+  },
+  {
+    "text": "Which of the following non-metals is lustrous?",
+    "option_a": "Sulphur",
+    "option_b": "Oxygen",
+    "option_c": "Nitrogen",
+    "option_d": "Iodine",
+    "correct_option": "d",
+    "explanation": "Iodine is a non-metal but it has a shiny surface (lustre)."
+  },
+  {
+    "text": "Which allotrope of carbon is the hardest natural substance known?",
+    "option_a": "Graphite",
+    "option_b": "Diamond",
+    "option_c": "Fullerene",
+    "option_d": "Graphene",
+    "correct_option": "b",
+    "explanation": "Diamond, an allotrope of carbon, is the hardest naturally occurring substance and has a very high melting point."
+  },
+  {
+    "text": "Which allotrope of carbon is a good conductor of electricity?",
+    "option_a": "Diamond",
+    "option_b": "Graphite",
+    "option_c": "Fullerene",
+    "option_d": "Coal",
+    "correct_option": "b",
+    "explanation": "Graphite has free electrons which make it a good conductor of electricity, unlike other non-metals."
+  },
+  {
+    "text": "Which of the following alkali metals is so soft that it can be cut with a knife?",
+    "option_a": "Iron",
+    "option_b": "Sodium",
+    "option_c": "Zinc",
+    "option_d": "Copper",
+    "correct_option": "b",
+    "explanation": "Alkali metals like lithium, sodium, and potassium are very soft and can be easily cut with a knife."
+  },
+  {
+    "text": "Metallic oxides are generally ________ in nature.",
+    "option_a": "Acidic",
+    "option_b": "Basic",
+    "option_c": "Amphoteric",
+    "option_d": "Neutral",
+    "correct_option": "b",
+    "explanation": "Most metallic oxides are basic in nature as they react with acids to form salt and water."
+  },
+  {
+    "text": "Which of the following is an amphoteric oxide?",
+    "option_a": "Sodium oxide",
+    "option_b": "Potassium oxide",
+    "option_c": "Aluminum oxide",
+    "option_d": "Magnesium oxide",
+    "correct_option": "c",
+    "explanation": "Aluminum oxide (Al2O3) and Zinc oxide (ZnO) are amphoteric as they react with both acids and bases to produce salt and water."
+  },
+  {
+    "text": "Which metal catches fire if kept in the open and is hence stored in kerosene?",
+    "option_a": "Magnesium",
+    "option_b": "Sodium",
+    "option_c": "Calcium",
+    "option_d": "Aluminum",
+    "correct_option": "b",
+    "explanation": "Sodium and potassium react so vigorously with oxygen and moisture that they catch fire, so they are stored immersed in kerosene oil."
+  },
+  {
+    "text": "Which of the following metals reacts violently with cold water?",
+    "option_a": "Zinc",
+    "option_b": "Iron",
+    "option_c": "Potassium",
+    "option_d": "Lead",
+    "correct_option": "c",
+    "explanation": "Potassium and sodium react violently with cold water, and the reaction is highly exothermic."
+  },
+  {
+    "text": "Which metal does not react with cold water but reacts with hot water?",
+    "option_a": "Sodium",
+    "option_b": "Magnesium",
+    "option_c": "Copper",
+    "option_d": "Gold",
+    "correct_option": "b",
+    "explanation": "Magnesium does not react with cold water; it reacts with hot water to form magnesium hydroxide and hydrogen gas."
+  },
+  {
+    "text": "Which of the following metals reacts only with steam?",
+    "option_a": "Calcium",
+    "option_b": "Iron",
+    "option_c": "Silver",
+    "option_d": "Potassium",
+    "correct_option": "b",
+    "explanation": "Metals like aluminum, iron, and zinc do not react either with cold or hot water, but they react with steam."
+  },
+  {
+    "text": "Why does calcium float on water during its reaction with water?",
+    "option_a": "It is lighter than water",
+    "option_b": "Bubbles of hydrogen gas formed stick to the surface of the metal",
+    "option_c": "It does not react with water",
+    "option_d": "It forms a layer of oxygen gas",
+    "correct_option": "b",
+    "explanation": "The reaction of calcium with water is less violent, and the bubbles of hydrogen gas evolved stick to the surface, making it float."
+  },
+  {
+    "text": "Which metals do not react with water at all?",
+    "option_a": "Lead, Copper, Silver, Gold",
+    "option_b": "Iron, Zinc, Aluminum",
+    "option_c": "Sodium, Potassium, Calcium",
+    "option_d": "Magnesium, Aluminum, Lead",
+    "correct_option": "a",
+    "explanation": "Metals like lead, copper, silver, and gold are very unreactive and do not react with water under any condition."
+  },
+  {
+    "text": "Hydrogen gas is generally NOT evolved when a metal reacts with which acid?",
+    "option_a": "Hydrochloric acid",
+    "option_b": "Sulphuric acid",
+    "option_c": "Nitric acid",
+    "option_d": "Acetic acid",
+    "correct_option": "c",
+    "explanation": "Nitric acid (HNO3) is a strong oxidizing agent. It oxidizes the H2 produced to water and itself gets reduced to nitrogen oxides."
+  },
+  {
+    "text": "Which metals react with very dilute nitric acid to evolve hydrogen gas?",
+    "option_a": "Copper and Silver",
+    "option_b": "Magnesium and Manganese",
+    "option_c": "Iron and Zinc",
+    "option_d": "Sodium and Potassium",
+    "correct_option": "b",
+    "explanation": "Magnesium (Mg) and Manganese (Mn) are the only two metals that react with very dilute HNO3 to evolve H2 gas."
+  },
+  {
+    "text": "Aqua regia is a freshly prepared mixture of concentrated hydrochloric acid and concentrated nitric acid in the ratio of:",
+    "option_a": "1:3",
+    "option_b": "3:1",
+    "option_c": "1:1",
+    "option_d": "2:1",
+    "correct_option": "b",
+    "explanation": "Aqua regia (Royal water) is a 3:1 mixture of concentrated HCl and concentrated HNO3. It can dissolve gold and platinum."
+  },
+  {
+    "text": "According to the reactivity series, which is the most reactive metal?",
+    "option_a": "Gold",
+    "option_b": "Iron",
+    "option_c": "Potassium",
+    "option_d": "Sodium",
+    "correct_option": "c",
+    "explanation": "Potassium (K) is at the top of the reactivity series, making it the most reactive metal."
+  },
+  {
+    "text": "Ionic compounds have high melting and boiling points because:",
+    "option_a": "They share electrons equally",
+    "option_b": "A considerable amount of energy is required to break the strong inter-ionic attraction",
+    "option_c": "They consist of weak intermolecular forces",
+    "option_d": "They are highly volatile",
+    "correct_option": "b",
+    "explanation": "The strong electrostatic forces of attraction between oppositely charged ions require a large amount of heat energy to break."
+  },
+  {
+    "text": "Ionic compounds conduct electricity in which of the following states?",
+    "option_a": "Solid state only",
+    "option_b": "Molten state and aqueous solution",
+    "option_c": "Gaseous state",
+    "option_d": "Solid and molten state",
+    "correct_option": "b",
+    "explanation": "In molten and aqueous states, the ions become free to move and conduct electricity, whereas in the solid state, their movement is restricted."
+  },
+  {
+    "text": "The minerals from which a metal can be profitably and conveniently extracted are called:",
+    "option_a": "Gangue",
+    "option_b": "Ores",
+    "option_c": "Slag",
+    "option_d": "Alloys",
+    "correct_option": "b",
+    "explanation": "An ore is a naturally occurring solid material from which a metal or valuable mineral can be extracted profitably."
+  },
+  {
+    "text": "What is cinnabar?",
+    "option_a": "An ore of Copper (CuS)",
+    "option_b": "An ore of Iron (Fe2O3)",
+    "option_c": "An ore of Mercury (HgS)",
+    "option_d": "An ore of Zinc (ZnS)",
+    "correct_option": "c",
+    "explanation": "Cinnabar (HgS) is the primary ore of mercury, from which mercury is extracted by heating in air."
+  },
+  {
+    "text": "The process of converting sulphide ores into oxides by heating strongly in the presence of excess air is called:",
+    "option_a": "Calcination",
+    "option_b": "Roasting",
+    "option_c": "Smelting",
+    "option_d": "Refining",
+    "correct_option": "b",
+    "explanation": "Roasting is used for sulphide ores where they are heated in the presence of excess air to convert them to oxides."
+  },
+  {
+    "text": "The process of converting carbonate ores into oxides by heating strongly in limited air is called:",
+    "option_a": "Calcination",
+    "option_b": "Roasting",
+    "option_c": "Reduction",
+    "option_d": "Galvanisation",
+    "correct_option": "a",
+    "explanation": "Calcination is the heating of carbonate ores in limited air to decompose them into metal oxides and carbon dioxide."
+  },
+  {
+    "text": "In the thermite reaction, iron(III) oxide reacts with which metal to produce molten iron used for joining railway tracks?",
+    "option_a": "Zinc",
+    "option_b": "Copper",
+    "option_c": "Aluminum",
+    "option_d": "Sodium",
+    "correct_option": "c",
+    "explanation": "The highly exothermic reaction of iron(III) oxide with aluminum produces molten iron, which is used to join cracked machine parts and railway tracks."
+  },
+  {
+    "text": "In the electrolytic refining of copper, the pure metal is deposited at the:",
+    "option_a": "Anode",
+    "option_b": "Cathode",
+    "option_c": "Bottom of the tank",
+    "option_d": "Surface of the electrolyte",
+    "correct_option": "b",
+    "explanation": "In electrolytic refining, the pure metal from the electrolyte deposits on the negatively charged cathode."
+  },
+  {
+    "text": "During electrolytic refining, the insoluble impurities that settle down at the bottom of the anode are called:",
+    "option_a": "Gangue",
+    "option_b": "Slag",
+    "option_c": "Anode mud",
+    "option_d": "Ore",
+    "correct_option": "c",
+    "explanation": "The soluble impurities go into the solution, while the insoluble impurities settle at the bottom of the anode and are known as anode mud."
+  },
+  {
+    "text": "Which two conditions are necessary for the rusting of iron?",
+    "option_a": "Air and vacuum",
+    "option_b": "Air and water (moisture)",
+    "option_c": "Water and oil",
+    "option_d": "Nitrogen and water",
+    "correct_option": "b",
+    "explanation": "Iron rusts when it is exposed to both oxygen (from the air) and water (moisture) simultaneously."
+  },
+  {
+    "text": "Galvanisation is a method of protecting steel and iron from rusting by coating them with a thin layer of:",
+    "option_a": "Copper",
+    "option_b": "Tin",
+    "option_c": "Zinc",
+    "option_d": "Aluminum",
+    "correct_option": "c",
+    "explanation": "Galvanisation protects iron/steel by providing a sacrificial layer of zinc, which is more reactive and oxidizes instead of the iron."
+  },
+  {
+    "text": "An alloy is a homogeneous mixture of:",
+    "option_a": "A metal and a non-metal only",
+    "option_b": "Two or more metals, or a metal and a non-metal",
+    "option_c": "Two non-metals only",
+    "option_d": "A liquid and a gas",
+    "correct_option": "b",
+    "explanation": "An alloy is created by melting a primary metal and adding other elements (metals or non-metals) to improve its properties."
+  },
+  {
+    "text": "Brass is an alloy of:",
+    "option_a": "Copper and Tin",
+    "option_b": "Lead and Tin",
+    "option_c": "Copper and Zinc",
+    "option_d": "Iron and Carbon",
+    "correct_option": "c",
+    "explanation": "Brass is an alloy composed primarily of copper and zinc, and it is not a good conductor of electricity compared to pure copper."
+  },
+  {
+    "text": "Bronze is an alloy of:",
+    "option_a": "Copper and Zinc",
+    "option_b": "Copper and Tin",
+    "option_c": "Lead and Tin",
+    "option_d": "Iron and Chromium",
+    "correct_option": "b",
+    "explanation": "Bronze is an alloy of copper and tin, widely used for making statues and medals."
+  },
+  {
+    "text": "Which of the following alloys is used for welding electrical wires together?",
+    "option_a": "Brass",
+    "option_b": "Bronze",
+    "option_c": "Solder",
+    "option_d": "Amalgam",
+    "correct_option": "c",
+    "explanation": "Solder is an alloy of lead and tin. It has a low melting point and is used for welding electrical wires."
+  },
+  {
+    "text": "If one of the metals in an alloy is mercury, then the alloy is known as an:",
+    "option_a": "Solder",
+    "option_b": "Amalgam",
+    "option_c": "Brass",
+    "option_d": "Steel",
+    "correct_option": "b",
+    "explanation": "Any alloy in which one of the constituent metals is mercury is termed an amalgam (e.g., sodium amalgam, dental amalgam)."
+  },
+  {
+    "text": "Pure gold is known as:",
+    "option_a": "22 carat gold",
+    "option_b": "24 carat gold",
+    "option_c": "18 carat gold",
+    "option_d": "20 carat gold",
+    "correct_option": "b",
+    "explanation": "Pure gold is 24 carats. It is very soft and usually alloyed with silver or copper (forming 22 carat gold) to make it hard enough for jewelry."
+  },
+  {
+    "text": "Which non-metal is highly reactive and kept in water to prevent it from reacting with atmospheric oxygen?",
+    "option_a": "Sulphur",
+    "option_b": "Carbon",
+    "option_c": "Phosphorus",
+    "option_d": "Iodine",
+    "correct_option": "c",
+    "explanation": "White phosphorus is very reactive and catches fire at room temperature when exposed to air, so it is stored under water."
+  }
+]

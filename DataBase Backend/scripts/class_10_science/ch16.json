@@ -1,0 +1,323 @@
+[
+  {
+    "text": "Natural resources are:",
+    "option_a": "Man-made materials",
+    "option_b": "Gift of nature useful to humans",
+    "option_c": "Only living organisms",
+    "option_d": "Artificial products",
+    "correct_option": "b",
+    "explanation": "Natural resources are provided by nature and useful for humans."
+  },
+  {
+    "text": "Which is NOT a natural resource?",
+    "option_a": "Water",
+    "option_b": "Air",
+    "option_c": "Soil",
+    "option_d": "Electricity",
+    "correct_option": "d",
+    "explanation": "Electricity is man-made from natural resources."
+  },
+  {
+    "text": "Sustainable development means:",
+    "option_a": "Using all resources quickly",
+    "option_b": "Development without caring environment",
+    "option_c": "Meeting present needs without harming future",
+    "option_d": "Stopping development",
+    "correct_option": "c",
+    "explanation": "It ensures future generations can also use resources."
+  },
+  {
+    "text": "Which of the following is rapidly depleting?",
+    "option_a": "Sunlight",
+    "option_b": "Wind",
+    "option_c": "Forests",
+    "option_d": "Air",
+    "correct_option": "c",
+    "explanation": "Forests are rapidly decreasing due to human activities."
+  },
+  {
+    "text": "The 5R principle includes:",
+    "option_a": "Reduce, Reuse, Recycle, Recover, Refuse",
+    "option_b": "Read, Write, Run",
+    "option_c": "Reduce only",
+    "option_d": "Recycle only",
+    "correct_option": "a",
+    "explanation": "5R helps in sustainable waste management."
+  },
+
+  {
+    "text": "Switching off unused lights is an example of:",
+    "option_a": "Recycle",
+    "option_b": "Reuse",
+    "option_c": "Reduce",
+    "option_d": "Recover",
+    "correct_option": "c",
+    "explanation": "It reduces energy consumption."
+  },
+  {
+    "text": "Reuse means:",
+    "option_a": "Throwing waste",
+    "option_b": "Using again",
+    "option_c": "Burning waste",
+    "option_d": "Destroying",
+    "correct_option": "b",
+    "explanation": "Reuse saves resources."
+  },
+  {
+    "text": "Recycling converts:",
+    "option_a": "Waste into new products",
+    "option_b": "Energy to waste",
+    "option_c": "Water to air",
+    "option_d": "None",
+    "correct_option": "a",
+    "explanation": "Recycling reduces waste."
+  },
+  {
+    "text": "Conservation means:",
+    "option_a": "Destroying resources",
+    "option_b": "Saving resources",
+    "option_c": "Ignoring resources",
+    "option_d": "Overusing resources",
+    "correct_option": "b",
+    "explanation": "Conservation protects resources."
+  },
+  {
+    "text": "Chipko movement is related to:",
+    "option_a": "Water",
+    "option_b": "Forest conservation",
+    "option_c": "Air pollution",
+    "option_d": "Energy",
+    "correct_option": "b",
+    "explanation": "It aimed to protect trees."
+  },
+
+  {
+    "text": "Forest conservation helps in:",
+    "option_a": "Soil erosion",
+    "option_b": "Floods",
+    "option_c": "Maintaining biodiversity",
+    "option_d": "Pollution",
+    "correct_option": "c",
+    "explanation": "Forests support biodiversity."
+  },
+  {
+    "text": "Biodiversity means:",
+    "option_a": "Single species",
+    "option_b": "Variety of life forms",
+    "option_c": "Only plants",
+    "option_d": "Only animals",
+    "correct_option": "b",
+    "explanation": "It includes all species."
+  },
+  {
+    "text": "Stakeholders in forest include:",
+    "option_a": "Only government",
+    "option_b": "Only villagers",
+    "option_c": "All groups using forest",
+    "option_d": "None",
+    "correct_option": "c",
+    "explanation": "All stakeholders must be considered."
+  },
+  {
+    "text": "Wildlife conservation is important because:",
+    "option_a": "For food only",
+    "option_b": "For ecological balance",
+    "option_c": "For hunting",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "It maintains ecosystem balance."
+  },
+  {
+    "text": "Water is a:",
+    "option_a": "Limited resource",
+    "option_b": "Unlimited",
+    "option_c": "Artificial",
+    "option_d": "Waste",
+    "correct_option": "a",
+    "explanation": "Freshwater is limited."
+  },
+
+  {
+    "text": "Water harvesting means:",
+    "option_a": "Wasting water",
+    "option_b": "Collecting rainwater",
+    "option_c": "Polluting water",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "It stores rainwater."
+  },
+  {
+    "text": "Dam construction can cause:",
+    "option_a": "Benefits only",
+    "option_b": "Displacement of people",
+    "option_c": "No impact",
+    "option_d": "Less water",
+    "correct_option": "b",
+    "explanation": "Large dams displace people."
+  },
+  {
+    "text": "Ganga pollution is mainly due to:",
+    "option_a": "Rain",
+    "option_b": "Industrial waste",
+    "option_c": "Sunlight",
+    "option_d": "Wind",
+    "correct_option": "b",
+    "explanation": "Effluents pollute water."
+  },
+  {
+    "text": "Coliform bacteria indicate:",
+    "option_a": "Clean water",
+    "option_b": "Polluted water",
+    "option_c": "Pure water",
+    "option_d": "No bacteria",
+    "correct_option": "b",
+    "explanation": "They indicate contamination."
+  },
+  {
+    "text": "Which is renewable?",
+    "option_a": "Coal",
+    "option_b": "Petroleum",
+    "option_c": "Solar energy",
+    "option_d": "Gas",
+    "correct_option": "c",
+    "explanation": "Solar energy is renewable."
+  },
+
+  {
+    "text": "Which is non-renewable?",
+    "option_a": "Wind",
+    "option_b": "Sunlight",
+    "option_c": "Coal",
+    "option_d": "Water",
+    "correct_option": "c",
+    "explanation": "Coal is limited."
+  },
+  {
+    "text": "Overuse of resources leads to:",
+    "option_a": "Balance",
+    "option_b": "Depletion",
+    "option_c": "Growth",
+    "option_d": "Stability",
+    "correct_option": "b",
+    "explanation": "Resources get exhausted."
+  },
+  {
+    "text": "Forest products include:",
+    "option_a": "Wood",
+    "option_b": "Medicines",
+    "option_c": "Fruits",
+    "option_d": "All of these",
+    "correct_option": "d",
+    "explanation": "Forests provide many products."
+  },
+  {
+    "text": "Excess use of fertilizers causes:",
+    "option_a": "Clean water",
+    "option_b": "Water pollution",
+    "option_c": "Air pollution",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Fertilizers contaminate water."
+  },
+  {
+    "text": "Groundwater level increases by:",
+    "option_a": "Pollution",
+    "option_b": "Water harvesting",
+    "option_c": "Deforestation",
+    "option_d": "Burning",
+    "correct_option": "b",
+    "explanation": "Rainwater recharges groundwater."
+  },
+
+  {
+    "text": "Sustainable use means:",
+    "option_a": "Unlimited use",
+    "option_b": "Balanced use",
+    "option_c": "No use",
+    "option_d": "Overuse",
+    "correct_option": "b",
+    "explanation": "Use resources wisely."
+  },
+  {
+    "text": "Forest helps in:",
+    "option_a": "Soil erosion",
+    "option_b": "Flood control",
+    "option_c": "Pollution",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Forests prevent floods."
+  },
+  {
+    "text": "Main aim of resource management:",
+    "option_a": "Profit only",
+    "option_b": "Sustainability",
+    "option_c": "Destruction",
+    "option_d": "Waste",
+    "correct_option": "b",
+    "explanation": "Ensure long-term availability."
+  },
+  {
+    "text": "Which practice saves environment?",
+    "option_a": "Burning plastic",
+    "option_b": "Using cloth bags",
+    "option_c": "Dumping waste",
+    "option_d": "Cutting trees",
+    "correct_option": "b",
+    "explanation": "Cloth bags reduce pollution."
+  },
+  {
+    "text": "Deforestation leads to:",
+    "option_a": "More rainfall",
+    "option_b": "Soil erosion",
+    "option_c": "More oxygen",
+    "option_d": "Cooling",
+    "correct_option": "b",
+    "explanation": "Trees prevent soil erosion."
+  },
+
+  {
+    "text": "Which gas increases due to deforestation?",
+    "option_a": "Oxygen",
+    "option_b": "Carbon dioxide",
+    "option_c": "Nitrogen",
+    "option_d": "Hydrogen",
+    "correct_option": "b",
+    "explanation": "Less trees means more CO2."
+  },
+  {
+    "text": "Main source of freshwater is:",
+    "option_a": "Ocean",
+    "option_b": "Rain",
+    "option_c": "Ice",
+    "option_d": "River",
+    "correct_option": "b",
+    "explanation": "Rain replenishes freshwater."
+  },
+  {
+    "text": "Water cycle maintains:",
+    "option_a": "Temperature",
+    "option_b": "Water balance",
+    "option_c": "Air",
+    "option_d": "Energy",
+    "correct_option": "b",
+    "explanation": "It circulates water."
+  },
+  {
+    "text": "Which method reduces waste?",
+    "option_a": "Dumping",
+    "option_b": "5R principle",
+    "option_c": "Burning",
+    "option_d": "Ignoring",
+    "correct_option": "b",
+    "explanation": "5R reduces waste."
+  },
+  {
+    "text": "Community participation helps in:",
+    "option_a": "Pollution",
+    "option_b": "Resource management",
+    "option_c": "Waste",
+    "option_d": "Damage",
+    "correct_option": "b",
+    "explanation": "People involvement improves management."
+  }
+]

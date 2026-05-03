@@ -1,0 +1,362 @@
+[
+  {
+    "text": "Which of the following materials cannot be used to make a lens?",
+    "option_a": "Water",
+    "option_b": "Glass",
+    "option_c": "Plastic",
+    "option_d": "Clay",
+    "correct_option": "d",
+    "explanation": "Clay is opaque and does not allow light to pass through it, so it cannot be used to make a lens."
+  },
+  {
+    "text": "The laws of reflection hold true for:",
+    "option_a": "Plane mirrors only",
+    "option_b": "Concave mirrors only",
+    "option_c": "Convex mirrors only",
+    "option_d": "All reflecting surfaces",
+    "correct_option": "d",
+    "explanation": "The laws of reflection are universally applicable to all types of reflecting surfaces, regardless of their shape."
+  },
+  {
+    "text": "What is the focal length of a plane mirror?",
+    "option_a": "Zero",
+    "option_b": "Infinity",
+    "option_c": "25 cm",
+    "option_d": "-25 cm",
+    "correct_option": "b",
+    "explanation": "A plane mirror is considered a spherical mirror with an infinite radius of curvature, making its focal length infinity."
+  },
+  {
+    "text": "The image formed by a plane mirror is always:",
+    "option_a": "Real and erect",
+    "option_b": "Virtual and erect",
+    "option_c": "Real and inverted",
+    "option_d": "Virtual and inverted",
+    "correct_option": "b",
+    "explanation": "A plane mirror always forms a virtual, erect, and laterally inverted image that is the same size as the object."
+  },
+  {
+    "text": "What is the relationship between the radius of curvature (R) and the focal length (f) of a spherical mirror?",
+    "option_a": "R = f",
+    "option_b": "R = f/2",
+    "option_c": "R = 2f",
+    "option_d": "R = 3f",
+    "correct_option": "c",
+    "explanation": "For spherical mirrors with small apertures, the principal focus lies exactly midway between the pole and the centre of curvature, so R = 2f."
+  },
+  {
+    "text": "Which type of mirror is commonly used by dentists to see larger images of patients' teeth?",
+    "option_a": "Concave mirror",
+    "option_b": "Convex mirror",
+    "option_c": "Plane mirror",
+    "option_d": "Cylindrical mirror",
+    "correct_option": "a",
+    "explanation": "A concave mirror is used by dentists because it forms an erect and magnified virtual image when the object is held close to it."
+  },
+  {
+    "text": "Which mirror is used as a rear-view mirror in vehicles?",
+    "option_a": "Concave mirror",
+    "option_b": "Plane mirror",
+    "option_c": "Convex mirror",
+    "option_d": "Plano-convex mirror",
+    "correct_option": "c",
+    "explanation": "Convex mirrors are used because they always give an erect, though diminished, image and provide a wider field of view."
+  },
+  {
+    "text": "If an object is placed at the centre of curvature (C) of a concave mirror, where is the image formed?",
+    "option_a": "At the focus (F)",
+    "option_b": "Between F and C",
+    "option_c": "At the centre of curvature (C)",
+    "option_d": "Beyond C",
+    "correct_option": "c",
+    "explanation": "When the object is at C, a real, inverted image of the same size is formed precisely at C."
+  },
+  {
+    "text": "When an object is placed at the principal focus (F) of a concave mirror, the image is formed at:",
+    "option_a": "The centre of curvature",
+    "option_b": "Infinity",
+    "option_c": "The pole",
+    "option_d": "Behind the mirror",
+    "correct_option": "b",
+    "explanation": "Rays coming from an object at the focus become parallel after reflection, forming an image at infinity."
+  },
+  {
+    "text": "No matter how far you stand from a mirror, your image appears erect. The mirror is likely to be:",
+    "option_a": "Plane only",
+    "option_b": "Concave only",
+    "option_c": "Convex only",
+    "option_d": "Either plane or convex",
+    "correct_option": "d",
+    "explanation": "Both plane and convex mirrors exclusively form virtual and erect images regardless of the object's distance."
+  },
+  {
+    "text": "What is the SI unit of power of a lens?",
+    "option_a": "Metre",
+    "option_b": "Centimetre",
+    "option_c": "Dioptre",
+    "option_d": "Watt",
+    "correct_option": "c",
+    "explanation": "The SI unit of the power of a lens is the Dioptre (D), which is equivalent to reciprocal metres (1/m)."
+  },
+  {
+    "text": "The power of a convex lens is:",
+    "option_a": "Negative",
+    "option_b": "Positive",
+    "option_c": "Zero",
+    "option_d": "Infinite",
+    "correct_option": "b",
+    "explanation": "A convex lens has a positive focal length, and since Power = 1/f, its power is also positive."
+  },
+  {
+    "text": "The power of a concave lens is:",
+    "option_a": "Positive",
+    "option_b": "Negative",
+    "option_c": "Zero",
+    "option_d": "Variable",
+    "correct_option": "b",
+    "explanation": "A concave lens has a negative focal length according to sign convention, meaning its power is negative."
+  },
+  {
+    "text": "What is the refractive index of water?",
+    "option_a": "1.00",
+    "option_b": "1.33",
+    "option_c": "1.50",
+    "option_d": "2.42",
+    "correct_option": "b",
+    "explanation": "The absolute refractive index of water is approximately 1.33."
+  },
+  {
+    "text": "What is the speed of light in a vacuum?",
+    "option_a": "300,000 km/s",
+    "option_b": "30,000 km/s",
+    "option_c": "3,000 km/s",
+    "option_d": "300 km/s",
+    "correct_option": "a",
+    "explanation": "The speed of light in a vacuum is exactly 299,792,458 m/s, commonly approximated as 300,000 km/s (or 3 x 10^8 m/s)."
+  },
+  {
+    "text": "Which of the following represents the mirror formula?",
+    "option_a": "1/v - 1/u = 1/f",
+    "option_b": "1/v + 1/u = 1/f",
+    "option_c": "v/u = f",
+    "option_d": "u/v = f",
+    "correct_option": "b",
+    "explanation": "The mirror formula relates object distance (u), image distance (v), and focal length (f) as 1/v + 1/u = 1/f."
+  },
+  {
+    "text": "Which of the following represents the lens formula?",
+    "option_a": "1/v + 1/u = 1/f",
+    "option_b": "1/v - 1/u = 1/f",
+    "option_c": "1/u - 1/v = 1/f",
+    "option_d": "1/f + 1/v = 1/u",
+    "correct_option": "b",
+    "explanation": "The lens formula relates object distance (u), image distance (v), and focal length (f) as 1/v - 1/u = 1/f."
+  },
+  {
+    "text": "The magnification (m) produced by a spherical mirror is given by:",
+    "option_a": "m = v/u",
+    "option_b": "m = -v/u",
+    "option_c": "m = u/v",
+    "option_d": "m = -u/v",
+    "correct_option": "b",
+    "explanation": "For a mirror, linear magnification is the ratio of image height to object height, which is also equal to -v/u."
+  },
+  {
+    "text": "The magnification (m) produced by a lens is given by:",
+    "option_a": "m = -v/u",
+    "option_b": "m = v/u",
+    "option_c": "m = u/v",
+    "option_d": "m = -u/v",
+    "correct_option": "b",
+    "explanation": "For a lens, linear magnification relates to the object and image distances as m = v/u."
+  },
+  {
+    "text": "Snell's law of refraction states that the ratio of the sine of the angle of incidence to the sine of the angle of refraction is:",
+    "option_a": "Zero",
+    "option_b": "Negative",
+    "option_c": "A constant",
+    "option_d": "Always 1",
+    "correct_option": "c",
+    "explanation": "Snell's Law states that sin(i)/sin(r) = constant, where this constant is the refractive index of the second medium with respect to the first."
+  },
+  {
+    "text": "When a ray of light travels from an optically rarer medium to an optically denser medium, it:",
+    "option_a": "Bends towards the normal",
+    "option_b": "Bends away from the normal",
+    "option_c": "Travels undeviated",
+    "option_d": "Reflects back",
+    "correct_option": "a",
+    "explanation": "Light slows down when entering a denser medium, causing it to bend towards the normal."
+  },
+  {
+    "text": "When a ray of light travels from an optically denser medium to an optically rarer medium, it:",
+    "option_a": "Bends towards the normal",
+    "option_b": "Bends away from the normal",
+    "option_c": "Travels undeviated",
+    "option_d": "Absorbs into the medium",
+    "correct_option": "b",
+    "explanation": "Light speeds up when entering a rarer medium, causing it to bend away from the normal."
+  },
+  {
+    "text": "Which of the following materials has the highest absolute refractive index?",
+    "option_a": "Water",
+    "option_b": "Crown glass",
+    "option_c": "Ruby",
+    "option_d": "Diamond",
+    "correct_option": "d",
+    "explanation": "Diamond has a refractive index of 2.42, which is the highest among common optical materials, meaning light travels slowest in it."
+  },
+  {
+    "text": "The absolute refractive index of a medium is always:",
+    "option_a": "Less than 1",
+    "option_b": "Equal to 1",
+    "option_c": "Greater than 1",
+    "option_d": "Zero",
+    "correct_option": "c",
+    "explanation": "Because the speed of light in any medium is always less than its speed in a vacuum, the absolute refractive index (c/v) is always greater than 1."
+  },
+  {
+    "text": "A convex lens is also known as a:",
+    "option_a": "Diverging lens",
+    "option_b": "Converging lens",
+    "option_c": "Bifocal lens",
+    "option_d": "Cylindrical lens",
+    "correct_option": "b",
+    "explanation": "A convex lens is thicker in the middle and converges parallel rays of light passing through it."
+  },
+  {
+    "text": "A concave lens is also known as a:",
+    "option_a": "Converging lens",
+    "option_b": "Diverging lens",
+    "option_c": "Plano-convex lens",
+    "option_d": "Meniscus lens",
+    "correct_option": "b",
+    "explanation": "A concave lens is thinner in the middle and diverges parallel rays of light passing through it."
+  },
+  {
+    "text": "To obtain a real, inverted, and equal-sized image using a convex lens, where should the object be placed?",
+    "option_a": "At the focus (F)",
+    "option_b": "Between F and 2F",
+    "option_c": "At twice the focal length (2F)",
+    "option_d": "Beyond 2F",
+    "correct_option": "c",
+    "explanation": "When an object is placed at 2F1 of a convex lens, the image is formed at 2F2 and is real, inverted, and of the same size."
+  },
+  {
+    "text": "The centre of the reflecting surface of a spherical mirror is called the:",
+    "option_a": "Principal axis",
+    "option_b": "Focus",
+    "option_c": "Pole",
+    "option_d": "Radius of curvature",
+    "correct_option": "c",
+    "explanation": "The pole is the geometric centre of the reflecting surface of a spherical mirror."
+  },
+  {
+    "text": "The central point of a lens is known as its:",
+    "option_a": "Pole",
+    "option_b": "Optical centre",
+    "option_c": "Centre of curvature",
+    "option_d": "Principal focus",
+    "correct_option": "b",
+    "explanation": "The optical centre is the exact centre of a lens. A ray of light passing through it does not suffer any deviation."
+  },
+  {
+    "text": "A full-length image of a distant tall building can definitely be seen by using a:",
+    "option_a": "Concave mirror",
+    "option_b": "Convex mirror",
+    "option_c": "Plane mirror",
+    "option_d": "Both concave and plane mirrors",
+    "correct_option": "b",
+    "explanation": "Convex mirrors have a wider field of view and form diminished, erect images, making them ideal for seeing large objects entirely."
+  },
+  {
+    "text": "Find the focal length of a lens of power -2.0 D.",
+    "option_a": "-50 cm",
+    "option_b": "+50 cm",
+    "option_c": "-20 cm",
+    "option_d": "+20 cm",
+    "correct_option": "a",
+    "explanation": "Focal length f = 1/P. Therefore, f = 1 / (-2.0 D) = -0.5 metres, which is -50 cm."
+  },
+  {
+    "text": "What type of mirror is generally used as a shaving mirror?",
+    "option_a": "Plane mirror",
+    "option_b": "Concave mirror",
+    "option_c": "Convex mirror",
+    "option_d": "Parabolic mirror",
+    "correct_option": "b",
+    "explanation": "When the face is held close to a concave mirror (between pole and focus), it produces a magnified and erect image, aiding in shaving."
+  },
+  {
+    "text": "A light ray passing through the optical centre of a lens will:",
+    "option_a": "Pass through the focus",
+    "option_b": "Emerge parallel to the principal axis",
+    "option_c": "Pass undeviated",
+    "option_d": "Reflect back along the same path",
+    "correct_option": "c",
+    "explanation": "By definition, the optical centre is the point on the lens through which a ray of light passes without suffering any deviation."
+  },
+  {
+    "text": "The phenomenon of bending of light at the interface of two different media is called:",
+    "option_a": "Reflection",
+    "option_b": "Refraction",
+    "option_c": "Dispersion",
+    "option_d": "Scattering",
+    "correct_option": "b",
+    "explanation": "Refraction is the change in direction of light passing from one transparent medium to another due to a change in its speed."
+  },
+  {
+    "text": "The angle of incidence is equal to the angle of reflection:",
+    "option_a": "Always",
+    "option_b": "Sometimes",
+    "option_c": "Under special conditions",
+    "option_d": "Never",
+    "correct_option": "a",
+    "explanation": "According to the first law of reflection, the angle of incidence is always equal to the angle of reflection for all reflecting surfaces."
+  },
+  {
+    "text": "A ray of light traveling parallel to the principal axis of a concave mirror, after reflection, will pass through the:",
+    "option_a": "Centre of curvature",
+    "option_b": "Pole",
+    "option_c": "Principal focus",
+    "option_d": "Optical centre",
+    "correct_option": "c",
+    "explanation": "By the rules of ray tracing, any ray traveling parallel to the principal axis of a concave mirror passes through its principal focus after reflection."
+  },
+  {
+    "text": "If the magnification produced by a mirror is +1, what does this indicate?",
+    "option_a": "The image is real, inverted, and magnified.",
+    "option_b": "The image is virtual, erect, and of the same size.",
+    "option_c": "The image is virtual, inverted, and diminished.",
+    "option_d": "The image is real, erect, and of the same size.",
+    "correct_option": "b",
+    "explanation": "A magnification of +1 means the image height equals the object height (same size), and the positive sign indicates the image is virtual and erect. This is typical of a plane mirror."
+  },
+  {
+    "text": "What does a negative sign in the value of magnification indicate?",
+    "option_a": "The image is real and inverted.",
+    "option_b": "The image is virtual and erect.",
+    "option_c": "The image is diminished.",
+    "option_d": "The image is magnified.",
+    "correct_option": "a",
+    "explanation": "By convention, a negative magnification means the image falls below the principal axis, which indicates that it is real and inverted."
+  },
+  {
+    "text": "Which property of light determines the degree of convergence or divergence achieved by a lens?",
+    "option_a": "Focal length",
+    "option_b": "Aperture",
+    "option_c": "Power",
+    "option_d": "Radius of curvature",
+    "correct_option": "c",
+    "explanation": "The power of a lens is defined as the measure of its ability to converge or diverge light rays falling on it, mathematically equal to the reciprocal of focal length."
+  },
+  {
+    "text": "When an object is kept within the focus of a concave mirror, the image formed is:",
+    "option_a": "Real, inverted, and diminished",
+    "option_b": "Real, inverted, and magnified",
+    "option_c": "Virtual, erect, and diminished",
+    "option_d": "Virtual, erect, and magnified",
+    "correct_option": "d",
+    "explanation": "This is the only case where a concave mirror forms a virtual image. When the object is between P and F, the image forms behind the mirror, and is virtual, erect, and magnified."
+  }
+]

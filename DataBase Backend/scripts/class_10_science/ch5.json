@@ -1,0 +1,362 @@
+[
+  {
+    "text": "Which of the following are energy foods?",
+    "option_a": "Carbohydrates and fats",
+    "option_b": "Proteins and mineral salts",
+    "option_c": "Vitamins and minerals",
+    "option_d": "Water and roughage",
+    "correct_option": "a",
+    "explanation": "Carbohydrates and fats are the primary sources of energy for living organisms."
+  },
+  {
+    "text": "In which mode of nutrition does an organism derive its food from the body of another living organism without killing it?",
+    "option_a": "Saprotrophic nutrition",
+    "option_b": "Parasitic nutrition",
+    "option_c": "Holozoic nutrition",
+    "option_d": "Autotrophic nutrition",
+    "correct_option": "b",
+    "explanation": "In parasitic nutrition, the organism (parasite) lives on or inside another organism (host) and derives nutrients from it without immediately killing it."
+  },
+  {
+    "text": "The mode of nutrition found in fungi is:",
+    "option_a": "Parasitic nutrition",
+    "option_b": "Holozoic nutrition",
+    "option_c": "Autotrophic nutrition",
+    "option_d": "Saprotrophic nutrition",
+    "correct_option": "d",
+    "explanation": "Fungi break down dead and decaying organic matter outside their body and then absorb the nutrients, which is called saprotrophic nutrition."
+  },
+  {
+    "text": "The site of photosynthesis in the cells of a leaf is:",
+    "option_a": "Chloroplast",
+    "option_b": "Mitochondria",
+    "option_c": "Cytoplasm",
+    "option_d": "Protoplasm",
+    "correct_option": "a",
+    "explanation": "Chloroplasts contain chlorophyll, the green pigment responsible for capturing light energy for photosynthesis."
+  },
+  {
+    "text": "In Amoeba, food is digested in the:",
+    "option_a": "Food vacuole",
+    "option_b": "Mitochondria",
+    "option_c": "Pseudopodia",
+    "option_d": "Chloroplast",
+    "correct_option": "a",
+    "explanation": "Amoeba engulfs food using pseudopodia to form a food vacuole, where complex substances are broken down into simpler ones."
+  },
+  {
+    "text": "Which of the following events in the mouth cavity will be affected if salivary amylase is lacking in the saliva?",
+    "option_a": "Proteins breaking down into amino acids",
+    "option_b": "Starch breaking down into sugars",
+    "option_c": "Fats breaking down into fatty acids and glycerol",
+    "option_d": "Absorption of vitamins",
+    "correct_option": "b",
+    "explanation": "Salivary amylase is an enzyme that digests complex carbohydrates (starch) into simpler sugars."
+  },
+  {
+    "text": "Which region of the alimentary canal absorbs the digested food?",
+    "option_a": "Stomach",
+    "option_b": "Small intestine",
+    "option_c": "Large intestine",
+    "option_d": "Liver",
+    "correct_option": "b",
+    "explanation": "The small intestine has millions of finger-like projections called villi that increase the surface area for maximum absorption of digested food."
+  },
+  {
+    "text": "The contraction and expansion movement of the walls of the food pipe is called:",
+    "option_a": "Translocation",
+    "option_b": "Transpiration",
+    "option_c": "Peristaltic movement",
+    "option_d": "Digestion",
+    "correct_option": "c",
+    "explanation": "Peristaltic movements are rhythmic contractions of the smooth muscles in the alimentary canal that push food forward."
+  },
+  {
+    "text": "When a few drops of iodine solution are added to rice water, the solution turns blue-black in colour. This indicates that rice water contains:",
+    "option_a": "Fats",
+    "option_b": "Complex proteins",
+    "option_c": "Starch",
+    "option_d": "Simple proteins",
+    "correct_option": "c",
+    "explanation": "Iodine solution is an indicator used to test for the presence of starch. It turns blue-black when starch is present."
+  },
+  {
+    "text": "The exit of unabsorbed food material is regulated by:",
+    "option_a": "Liver",
+    "option_b": "Anus",
+    "option_c": "Small intestine",
+    "option_d": "Anal sphincter",
+    "correct_option": "d",
+    "explanation": "The anal sphincter is a muscular ring that regulates the release of faecal matter from the rectum through the anus."
+  },
+  {
+    "text": "What are the products obtained by anaerobic respiration in plants/yeast?",
+    "option_a": "Lactic acid + Energy",
+    "option_b": "Carbon dioxide + Water + Energy",
+    "option_c": "Ethanol + Carbon dioxide + Energy",
+    "option_d": "Pyruvate",
+    "correct_option": "c",
+    "explanation": "In yeast, during anaerobic respiration (fermentation), pyruvate is converted into ethanol and carbon dioxide, releasing a small amount of energy."
+  },
+  {
+    "text": "The breakdown of pyruvate to give carbon dioxide, water, and energy takes place in:",
+    "option_a": "Cytoplasm",
+    "option_b": "Mitochondria",
+    "option_c": "Chloroplast",
+    "option_d": "Nucleus",
+    "correct_option": "b",
+    "explanation": "Aerobic respiration, which involves the complete breakdown of pyruvate into CO2, water, and energy, occurs in the mitochondria."
+  },
+  {
+    "text": "Glycolysis, the process of breakdown of glucose into pyruvate, takes place in:",
+    "option_a": "Cytoplasm",
+    "option_b": "Mitochondria",
+    "option_c": "Golgi body",
+    "option_d": "Endoplasmic reticulum",
+    "correct_option": "a",
+    "explanation": "The first step of respiration, regardless of whether it is aerobic or anaerobic, is the breakdown of glucose into pyruvate in the cytoplasm."
+  },
+  {
+    "text": "Name the substances whose build-up in the muscles during vigorous physical exercise may cause cramps.",
+    "option_a": "Ethanol + Carbon dioxide + Energy",
+    "option_b": "Lactic acid + Energy",
+    "option_c": "Carbon dioxide + Water + Energy",
+    "option_d": "Pyruvate",
+    "correct_option": "b",
+    "explanation": "During heavy exercise, there is a lack of oxygen in our muscle cells, leading to the anaerobic breakdown of pyruvate into lactic acid, causing cramps."
+  },
+  {
+    "text": "Which of the following has the longest small intestine?",
+    "option_a": "Carnivore",
+    "option_b": "Omnivore",
+    "option_c": "Herbivore",
+    "option_d": "Autotroph",
+    "correct_option": "c",
+    "explanation": "Herbivores eat grass, which is rich in cellulose. Cellulose takes longer to digest, so they require a longer small intestine."
+  },
+  {
+    "text": "The process in which loss of water takes place in the form of water vapour through stomata is called:",
+    "option_a": "Transportation",
+    "option_b": "Transpiration",
+    "option_c": "Guttation",
+    "option_d": "Translocation",
+    "correct_option": "b",
+    "explanation": "Transpiration is the evaporative loss of water from the aerial parts of the plant, primarily through the stomata in the leaves."
+  },
+  {
+    "text": "The respiratory pigment in human beings is:",
+    "option_a": "Carotene",
+    "option_b": "Chlorophyll",
+    "option_c": "Haemoglobin",
+    "option_d": "Mitochondria",
+    "correct_option": "c",
+    "explanation": "Haemoglobin is the red pigment in red blood cells that has a high affinity for oxygen and transports it throughout the body."
+  },
+  {
+    "text": "Which plant tissue is responsible for the transport of water and minerals from roots to the leaves?",
+    "option_a": "Xylem",
+    "option_b": "Phloem",
+    "option_c": "Parenchyma",
+    "option_d": "Collenchyma",
+    "correct_option": "a",
+    "explanation": "The xylem consists of vessels and tracheids that form a continuous network to conduct water and minerals upward."
+  },
+  {
+    "text": "The movement of synthesized food from the leaves to other parts of the plant is called:",
+    "option_a": "Transpiration",
+    "option_b": "Respiration",
+    "option_c": "Transportation",
+    "option_d": "Translocation",
+    "correct_option": "d",
+    "explanation": "Translocation is the process of transporting soluble products of photosynthesis through the phloem tissue."
+  },
+  {
+    "text": "Blood consists of a fluid medium in which the cells are suspended. What is this fluid medium called?",
+    "option_a": "Lymph",
+    "option_b": "Platelets",
+    "option_c": "Plasma",
+    "option_d": "Serum",
+    "correct_option": "c",
+    "explanation": "Plasma is the pale yellow liquid component of blood that holds the blood cells in whole blood in suspension."
+  },
+  {
+    "text": "The right side of the human heart contains:",
+    "option_a": "Oxygenated blood",
+    "option_b": "Deoxygenated blood",
+    "option_c": "Mixed blood",
+    "option_d": "Lymph",
+    "correct_option": "b",
+    "explanation": "The right atrium receives deoxygenated blood from the body, and the right ventricle pumps it to the lungs for oxygenation."
+  },
+  {
+    "text": "Which blood vessels have thick, elastic walls to handle high pressure?",
+    "option_a": "Veins",
+    "option_b": "Capillaries",
+    "option_c": "Arteries",
+    "option_d": "Venules",
+    "correct_option": "c",
+    "explanation": "Arteries carry blood away from the heart to various organs under high pressure, so they have thick, elastic walls."
+  },
+  {
+    "text": "What prevents the backflow of blood inside the heart during contraction?",
+    "option_a": "Valves in heart",
+    "option_b": "Thick muscular walls of ventricles",
+    "option_c": "Thin walls of atria",
+    "option_d": "All of the above",
+    "correct_option": "a",
+    "explanation": "Valves ensure that blood flows in only one direction and prevent it from flowing backwards when the atria or ventricles contract."
+  },
+  {
+    "text": "Which of the following is responsible for blood clotting in a cut or wound?",
+    "option_a": "White blood cells",
+    "option_b": "Red blood cells",
+    "option_c": "Platelets",
+    "option_d": "Plasma",
+    "correct_option": "c",
+    "explanation": "Platelets circulate around the body and plug leaks by helping to clot the blood at the points of injury."
+  },
+  {
+    "text": "The instrument used to measure blood pressure is called a:",
+    "option_a": "Barometer",
+    "option_b": "Thermometer",
+    "option_c": "Electrocardiogram",
+    "option_d": "Sphygmomanometer",
+    "correct_option": "d",
+    "explanation": "A sphygmomanometer is the medical device used to measure the pressure of the blood in the arteries."
+  },
+  {
+    "text": "The functional unit of the human kidney is the:",
+    "option_a": "Neuron",
+    "option_b": "Nephron",
+    "option_c": "Glomerulus",
+    "option_d": "Ureter",
+    "correct_option": "b",
+    "explanation": "Nephrons are the microscopic structural and functional units of the kidney that filter blood to form urine."
+  },
+  {
+    "text": "The cup-shaped structure in the nephron that collects the filtered urine is called:",
+    "option_a": "Tubule",
+    "option_b": "Glomerulus",
+    "option_c": "Bowman's capsule",
+    "option_d": "Loop of Henle",
+    "correct_option": "c",
+    "explanation": "Bowman's capsule is a cup-like sack at the beginning of the tubular component of a nephron that performs the first step in the filtration of blood."
+  },
+  {
+    "text": "In plants, waste products may be stored as resins and gums, especially in:",
+    "option_a": "Leaves",
+    "option_b": "Bark",
+    "option_c": "Old xylem",
+    "option_d": "Roots",
+    "correct_option": "c",
+    "explanation": "Many plant waste products are stored in cellular vacuoles, or as resins and gums in old, non-functional xylem tissue."
+  },
+  {
+    "text": "The main excretory product in human beings is:",
+    "option_a": "Ammonia",
+    "option_b": "Uric acid",
+    "option_c": "Urea",
+    "option_d": "Amino acids",
+    "correct_option": "c",
+    "explanation": "The liver converts toxic ammonia into less toxic urea, which is then excreted by the kidneys in urine."
+  },
+  {
+    "text": "Which part of the brain controls the breathing rate in humans?",
+    "option_a": "Cerebrum",
+    "option_b": "Medulla oblongata",
+    "option_c": "Cerebellum",
+    "option_d": "Hypothalamus",
+    "correct_option": "b",
+    "explanation": "The medulla oblongata in the hindbrain contains the respiratory center that regulates involuntary breathing."
+  },
+  {
+    "text": "Rings of cartilage are present in the throat to:",
+    "option_a": "Help in speaking",
+    "option_b": "Filter the air",
+    "option_c": "Ensure that the air passage does not collapse",
+    "option_d": "Digest food",
+    "correct_option": "c",
+    "explanation": "The C-shaped cartilaginous rings provide structural support to the trachea, preventing it from collapsing when there is less air in it."
+  },
+  {
+    "text": "The balloon-like structures in the lungs where gas exchange takes place are called:",
+    "option_a": "Bronchi",
+    "option_b": "Bronchioles",
+    "option_c": "Alveoli",
+    "option_d": "Trachea",
+    "correct_option": "c",
+    "explanation": "Alveoli provide a very large surface area with thin walls and a rich blood supply for the efficient exchange of oxygen and carbon dioxide."
+  },
+  {
+    "text": "In human beings, the sequence of air passage during inhalation is:",
+    "option_a": "Nostrils \u2192 Larynx \u2192 Pharynx \u2192 Trachea \u2192 Lungs",
+    "option_b": "Nasal passage \u2192 Trachea \u2192 Pharynx \u2192 Larynx \u2192 Alveoli",
+    "option_c": "Larynx \u2192 Nostrils \u2192 Pharynx \u2192 Lungs",
+    "option_d": "Nostrils \u2192 Pharynx \u2192 Larynx \u2192 Trachea \u2192 Alveoli",
+    "correct_option": "d",
+    "explanation": "Air enters through the nostrils, passes through the pharynx and larynx, goes down the trachea, and finally reaches the alveoli in the lungs."
+  },
+  {
+    "text": "Gastric digestion takes place efficiently in:",
+    "option_a": "An acidic medium",
+    "option_b": "An alkaline medium",
+    "option_c": "A neutral medium",
+    "option_d": "A highly alkaline medium",
+    "correct_option": "a",
+    "explanation": "The gastric glands secrete hydrochloric acid (HCl), creating an acidic medium that is necessary for the enzyme pepsin to digest proteins."
+  },
+  {
+    "text": "The enzyme trypsin is secreted by the:",
+    "option_a": "Liver",
+    "option_b": "Stomach",
+    "option_c": "Salivary glands",
+    "option_d": "Pancreas",
+    "correct_option": "d",
+    "explanation": "The pancreas secretes pancreatic juice which contains enzymes like trypsin for digesting proteins and lipase for breaking down fats."
+  },
+  {
+    "text": "Which of the following helps in the emulsification of fats?",
+    "option_a": "Bile juice",
+    "option_b": "Pancreatic juice",
+    "option_c": "Intestinal juice",
+    "option_d": "Gastric juice",
+    "correct_option": "a",
+    "explanation": "Bile juice from the liver contains bile salts that break down large fat globules into smaller ones, increasing the efficiency of enzyme action."
+  },
+  {
+    "text": "Which of the following is known as the 'currency' of energy in most cellular processes?",
+    "option_a": "DNA",
+    "option_b": "ADP",
+    "option_c": "ATP",
+    "option_d": "RNA",
+    "correct_option": "c",
+    "explanation": "Adenosine Triphosphate (ATP) is formed during respiration and is used to fuel various energy-requiring activities of the cell."
+  },
+  {
+    "text": "The normal systolic and diastolic blood pressure in a healthy human is:",
+    "option_a": "120 mm Hg and 80 mm Hg",
+    "option_b": "80 mm Hg and 120 mm Hg",
+    "option_c": "140 mm Hg and 90 mm Hg",
+    "option_d": "90 mm Hg and 140 mm Hg",
+    "correct_option": "a",
+    "explanation": "A normal blood pressure reading is around 120/80 mm Hg, where 120 is the systolic pressure and 80 is the diastolic pressure."
+  },
+  {
+    "text": "What is the function of the artificial kidney (hemodialysis)?",
+    "option_a": "To remove nitrogenous waste products from the blood",
+    "option_b": "To filter oxygen into the blood",
+    "option_c": "To digest food externally",
+    "option_d": "To regulate body temperature",
+    "correct_option": "a",
+    "explanation": "Hemodialysis is an artificial process used to remove urea and other nitrogenous wastes from the blood of patients with kidney failure."
+  },
+  {
+    "text": "The opening and closing of the stomatal pore depends upon:",
+    "option_a": "Oxygen",
+    "option_b": "Temperature",
+    "option_c": "Water in guard cells",
+    "option_d": "Concentration of CO2 in stomata",
+    "correct_option": "c",
+    "explanation": "When water flows into the guard cells, they swell, causing the stomatal pore to open. When they lose water, they shrink and the pore closes."
+  }
+]

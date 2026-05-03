@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional
+from datetime import datetime
 import uuid
 
 class ChapterCompletionBase(BaseModel):
@@ -17,8 +18,11 @@ class ChapterCompletionUpdate(BaseModel):
     current_page: Optional[int] = None
 
 class ChapterPageOut(BaseModel):
-    current_page: int 
     uid: uuid.UUID
+    current_page: int
+    passed_at: Optional[datetime] = None
+    best_quiz_score: Optional[int] = None
+    quiz_attempts: int = 0
 
 class ChapterCompletionOut(ChapterCompletionBase):
     uid: uuid.UUID

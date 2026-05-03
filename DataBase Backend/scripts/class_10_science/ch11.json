@@ -1,0 +1,330 @@
+[
+  {
+    "text": "The image formed on the retina of the human eye is:",
+    "option_a": "Virtual and erect",
+    "option_b": "Real and inverted",
+    "option_c": "Virtual and inverted",
+    "option_d": "Real and erect",
+    "correct_option": "b",
+    "explanation": "The eye lens forms a real and inverted image on the retina."
+  },
+  {
+    "text": "The change in focal length of the eye lens is due to:",
+    "option_a": "Cornea",
+    "option_b": "Pupil",
+    "option_c": "Ciliary muscles",
+    "option_d": "Retina",
+    "correct_option": "c",
+    "explanation": "Ciliary muscles adjust the focal length of the eye lens."
+  },
+  {
+    "text": "The part of the eye that controls the amount of light entering is:",
+    "option_a": "Cornea",
+    "option_b": "Iris",
+    "option_c": "Retina",
+    "option_d": "Lens",
+    "correct_option": "b",
+    "explanation": "The iris controls the size of the pupil and regulates light entry."
+  },
+  {
+    "text": "The image is formed on which part of the eye?",
+    "option_a": "Cornea",
+    "option_b": "Iris",
+    "option_c": "Retina",
+    "option_d": "Pupil",
+    "correct_option": "c",
+    "explanation": "The retina acts as a screen for image formation."
+  },
+  {
+    "text": "The least distance of distinct vision for a normal eye is:",
+    "option_a": "20 cm",
+    "option_b": "25 cm",
+    "option_c": "30 cm",
+    "option_d": "15 cm",
+    "correct_option": "b",
+    "explanation": "For a normal eye, the least distance of distinct vision is 25 cm."
+  },
+  {
+    "text": "The far point of a normal human eye is:",
+    "option_a": "25 cm",
+    "option_b": "50 cm",
+    "option_c": "Infinity",
+    "option_d": "1 m",
+    "correct_option": "c",
+    "explanation": "A normal eye can see distant objects clearly at infinity."
+  },
+  {
+    "text": "The ability of the eye to focus on objects at different distances is called:",
+    "option_a": "Refraction",
+    "option_b": "Accommodation",
+    "option_c": "Dispersion",
+    "option_d": "Scattering",
+    "correct_option": "b",
+    "explanation": "Accommodation is the adjustment of focal length."
+  },
+  {
+    "text": "Myopia is also known as:",
+    "option_a": "Long-sightedness",
+    "option_b": "Short-sightedness",
+    "option_c": "Night blindness",
+    "option_d": "Color blindness",
+    "correct_option": "b",
+    "explanation": "Myopia means near objects are visible but distant ones are not."
+  },
+  {
+    "text": "Myopia can be corrected using:",
+    "option_a": "Convex lens",
+    "option_b": "Concave lens",
+    "option_c": "Plane mirror",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Concave lens diverges light to correct myopia."
+  },
+  {
+    "text": "Hypermetropia is also known as:",
+    "option_a": "Short-sightedness",
+    "option_b": "Long-sightedness",
+    "option_c": "Blindness",
+    "option_d": "Astigmatism",
+    "correct_option": "b",
+    "explanation": "Hypermetropia means distant objects are visible but near ones are not."
+  },
+
+  {
+    "text": "Hypermetropia is corrected using:",
+    "option_a": "Concave lens",
+    "option_b": "Convex lens",
+    "option_c": "Mirror",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Convex lens converges light to correct hypermetropia."
+  },
+  {
+    "text": "Presbyopia occurs due to:",
+    "option_a": "Infection",
+    "option_b": "Ageing",
+    "option_c": "Injury",
+    "option_d": "Vitamin deficiency",
+    "correct_option": "b",
+    "explanation": "Ageing reduces the power of accommodation."
+  },
+  {
+    "text": "Cataract leads to:",
+    "option_a": "Blurred vision",
+    "option_b": "Clear vision",
+    "option_c": "Color blindness",
+    "option_d": "Night blindness",
+    "correct_option": "a",
+    "explanation": "Cataract makes the lens opaque."
+  },
+  {
+    "text": "Twinkling of stars is due to:",
+    "option_a": "Reflection",
+    "option_b": "Atmospheric refraction",
+    "option_c": "Scattering",
+    "option_d": "Dispersion",
+    "correct_option": "b",
+    "explanation": "Light bends due to varying air densities."
+  },
+  {
+    "text": "The sky appears blue due to:",
+    "option_a": "Reflection",
+    "option_b": "Refraction",
+    "option_c": "Scattering of light",
+    "option_d": "Dispersion",
+    "correct_option": "c",
+    "explanation": "Blue light scatters more in the atmosphere."
+  },
+  {
+    "text": "Red colour is used for danger signals because:",
+    "option_a": "It travels fastest",
+    "option_b": "It scatters least",
+    "option_c": "It is brightest",
+    "option_d": "It reflects most",
+    "correct_option": "b",
+    "explanation": "Red light scatters the least and is visible from far."
+  },
+  {
+    "text": "Tyndall effect is related to:",
+    "option_a": "Reflection",
+    "option_b": "Scattering",
+    "option_c": "Refraction",
+    "option_d": "Dispersion",
+    "correct_option": "b",
+    "explanation": "It is scattering of light by particles."
+  },
+  {
+    "text": "White light splits into colours due to:",
+    "option_a": "Reflection",
+    "option_b": "Dispersion",
+    "option_c": "Refraction",
+    "option_d": "Scattering",
+    "correct_option": "b",
+    "explanation": "Dispersion separates light into spectrum."
+  },
+  {
+    "text": "The band of colours obtained after dispersion is called:",
+    "option_a": "Rainbow",
+    "option_b": "Spectrum",
+    "option_c": "Ray",
+    "option_d": "Beam",
+    "correct_option": "b",
+    "explanation": "Spectrum contains VIBGYOR colors."
+  },
+  {
+    "text": "The colour that deviates least is:",
+    "option_a": "Red",
+    "option_b": "Violet",
+    "option_c": "Blue",
+    "option_d": "Green",
+    "correct_option": "a",
+    "explanation": "Red light bends least."
+  },
+
+  {
+    "text": "The colour that deviates most is:",
+    "option_a": "Red",
+    "option_b": "Violet",
+    "option_c": "Yellow",
+    "option_d": "Green",
+    "correct_option": "b",
+    "explanation": "Violet bends the most."
+  },
+  {
+    "text": "Sun appears red at sunrise due to:",
+    "option_a": "Reflection",
+    "option_b": "Dispersion",
+    "option_c": "Scattering",
+    "option_d": "Refraction",
+    "correct_option": "c",
+    "explanation": "Blue light scatters away, leaving red."
+  },
+  {
+    "text": "Which part of eye refracts most light?",
+    "option_a": "Lens",
+    "option_b": "Cornea",
+    "option_c": "Retina",
+    "option_d": "Iris",
+    "correct_option": "b",
+    "explanation": "Most refraction occurs at cornea."
+  },
+  {
+    "text": "Pupil appears black because:",
+    "option_a": "It absorbs light",
+    "option_b": "It reflects light",
+    "option_c": "It refracts light",
+    "option_d": "None",
+    "correct_option": "a",
+    "explanation": "Light entering pupil is absorbed inside eye."
+  },
+  {
+    "text": "Power of accommodation decreases with:",
+    "option_a": "Light",
+    "option_b": "Age",
+    "option_c": "Color",
+    "option_d": "Distance",
+    "correct_option": "b",
+    "explanation": "Age reduces flexibility of lens."
+  },
+  {
+    "text": "Night blindness is caused by deficiency of:",
+    "option_a": "Vitamin A",
+    "option_b": "Vitamin B",
+    "option_c": "Vitamin C",
+    "option_d": "Vitamin D",
+    "correct_option": "a",
+    "explanation": "Vitamin A is essential for vision."
+  },
+
+  {
+    "text": "Which colour scatters the most?",
+    "option_a": "Red",
+    "option_b": "Blue",
+    "option_c": "Yellow",
+    "option_d": "Orange",
+    "correct_option": "b",
+    "explanation": "Short wavelength scatters more."
+  },
+  {
+    "text": "Rainbow is formed due to:",
+    "option_a": "Reflection",
+    "option_b": "Refraction",
+    "option_c": "Dispersion",
+    "option_d": "All of these",
+    "correct_option": "d",
+    "explanation": "Rainbow involves reflection, refraction, dispersion."
+  },
+  {
+    "text": "Which device splits white light?",
+    "option_a": "Mirror",
+    "option_b": "Lens",
+    "option_c": "Prism",
+    "option_d": "Glass",
+    "correct_option": "c",
+    "explanation": "Prism causes dispersion."
+  },
+  {
+    "text": "The cause of atmospheric refraction is:",
+    "option_a": "Temperature variation",
+    "option_b": "Density variation",
+    "option_c": "Both",
+    "option_d": "None",
+    "correct_option": "c",
+    "explanation": "Both density and temperature vary in air layers."
+  },
+
+  {
+    "text": "Stars appear higher than actual position due to:",
+    "option_a": "Reflection",
+    "option_b": "Refraction",
+    "option_c": "Dispersion",
+    "option_d": "Scattering",
+    "correct_option": "b",
+    "explanation": "Atmospheric refraction shifts position."
+  },
+  {
+    "text": "Advanced age causes which defect?",
+    "option_a": "Myopia",
+    "option_b": "Presbyopia",
+    "option_c": "Hypermetropia",
+    "option_d": "Astigmatism",
+    "correct_option": "b",
+    "explanation": "Presbyopia occurs due to ageing."
+  },
+  {
+    "text": "Human eye lens is made of:",
+    "option_a": "Glass",
+    "option_b": "Muscle",
+    "option_c": "Protein",
+    "option_d": "Water",
+    "correct_option": "c",
+    "explanation": "Lens consists of proteins."
+  },
+  {
+    "text": "The colored part of eye is:",
+    "option_a": "Retina",
+    "option_b": "Cornea",
+    "option_c": "Iris",
+    "option_d": "Lens",
+    "correct_option": "c",
+    "explanation": "Iris gives eye its color."
+  },
+  {
+    "text": "The function of retina is:",
+    "option_a": "Refract light",
+    "option_b": "Control light",
+    "option_c": "Form image",
+    "option_d": "Reflect light",
+    "correct_option": "c",
+    "explanation": "Retina forms image using photoreceptors."
+  },
+  {
+    "text": "Which phenomenon causes blue sky?",
+    "option_a": "Dispersion",
+    "option_b": "Scattering",
+    "option_c": "Reflection",
+    "option_d": "Refraction",
+    "correct_option": "b",
+    "explanation": "Short wavelength blue light scatters more."
+  }
+]

@@ -24,3 +24,6 @@ class Settings(BaseSettings):
         
     
 settings=Settings()
+
+QUIZ_QUESTIONS_PER_ATTEMPT = 10
+QUIZ_PASS_PERCENTAGE       = 70

@@ -1,0 +1,351 @@
+[
+  {
+    "text": "The SI unit of electric current is:",
+    "option_a": "Volt",
+    "option_b": "Ampere",
+    "option_c": "Ohm",
+    "option_d": "Coulomb",
+    "correct_option": "b",
+    "explanation": "Ampere is the SI unit of electric current."
+  },
+  {
+    "text": "Electric current is defined as:",
+    "option_a": "Flow of electrons",
+    "option_b": "Rate of flow of charge",
+    "option_c": "Potential difference",
+    "option_d": "Resistance",
+    "correct_option": "b",
+    "explanation": "Electric current is the rate of flow of electric charge."
+  },
+  {
+    "text": "The SI unit of electric charge is:",
+    "option_a": "Ampere",
+    "option_b": "Volt",
+    "option_c": "Coulomb",
+    "option_d": "Ohm",
+    "correct_option": "c",
+    "explanation": "Charge is measured in coulomb."
+  },
+  {
+    "text": "The direction of conventional current is:",
+    "option_a": "Same as electron flow",
+    "option_b": "Opposite to electron flow",
+    "option_c": "Random",
+    "option_d": "Circular",
+    "correct_option": "b",
+    "explanation": "Current flows opposite to electron movement."
+  },
+  {
+    "text": "The instrument used to measure current is:",
+    "option_a": "Voltmeter",
+    "option_b": "Ammeter",
+    "option_c": "Ohmmeter",
+    "option_d": "Galvanometer",
+    "correct_option": "b",
+    "explanation": "Ammeter measures electric current."
+  },
+  {
+    "text": "The instrument used to measure potential difference is:",
+    "option_a": "Ammeter",
+    "option_b": "Voltmeter",
+    "option_c": "Rheostat",
+    "option_d": "Battery",
+    "correct_option": "b",
+    "explanation": "Voltmeter measures potential difference."
+  },
+  {
+    "text": "The relation between V, I, and R is:",
+    "option_a": "V = IR",
+    "option_b": "I = VR",
+    "option_c": "R = VI",
+    "option_d": "V = I/R",
+    "correct_option": "a",
+    "explanation": "Ohm’s law: V = IR."
+  },
+  {
+    "text": "Ohm’s law is valid for:",
+    "option_a": "All materials",
+    "option_b": "Only metals",
+    "option_c": "Semiconductors",
+    "option_d": "Insulators",
+    "correct_option": "b",
+    "explanation": "Ohm’s law holds true for metallic conductors."
+  },
+  {
+    "text": "The SI unit of resistance is:",
+    "option_a": "Volt",
+    "option_b": "Ampere",
+    "option_c": "Ohm",
+    "option_d": "Watt",
+    "correct_option": "c",
+    "explanation": "Resistance is measured in ohms."
+  },
+  {
+    "text": "Resistance depends on:",
+    "option_a": "Length",
+    "option_b": "Area",
+    "option_c": "Material",
+    "option_d": "All of these",
+    "correct_option": "d",
+    "explanation": "Resistance depends on length, area, and material."
+  },
+
+  {
+    "text": "Resistance increases with:",
+    "option_a": "Increase in area",
+    "option_b": "Increase in length",
+    "option_c": "Decrease in length",
+    "option_d": "Decrease in temperature",
+    "correct_option": "b",
+    "explanation": "Resistance increases with length."
+  },
+  {
+    "text": "Resistors in series have equivalent resistance:",
+    "option_a": "Less than smallest",
+    "option_b": "Sum of resistances",
+    "option_c": "Product",
+    "option_d": "Zero",
+    "correct_option": "b",
+    "explanation": "Series: R = R1 + R2 + ..."
+  },
+  {
+    "text": "Resistors in parallel have equivalent resistance:",
+    "option_a": "Sum",
+    "option_b": "Product",
+    "option_c": "Less than smallest",
+    "option_d": "Equal",
+    "correct_option": "c",
+    "explanation": "Parallel resistance is always less than smallest resistor."
+  },
+  {
+    "text": "Formula for parallel resistance is:",
+    "option_a": "R1 + R2",
+    "option_b": "1/R = 1/R1 + 1/R2",
+    "option_c": "R = R1 × R2",
+    "option_d": "R = R1 - R2",
+    "correct_option": "b",
+    "explanation": "Parallel combination formula."
+  },
+  {
+    "text": "Electric power is defined as:",
+    "option_a": "Energy",
+    "option_b": "Rate of doing work",
+    "option_c": "Charge",
+    "option_d": "Voltage",
+    "correct_option": "b",
+    "explanation": "Power is rate of energy consumption."
+  },
+  {
+    "text": "Unit of electric power is:",
+    "option_a": "Volt",
+    "option_b": "Watt",
+    "option_c": "Ampere",
+    "option_d": "Ohm",
+    "correct_option": "b",
+    "explanation": "Power is measured in watt."
+  },
+  {
+    "text": "Power formula is:",
+    "option_a": "P = VI",
+    "option_b": "P = IR",
+    "option_c": "P = V/R",
+    "option_d": "P = I/R",
+    "correct_option": "a",
+    "explanation": "Basic power formula."
+  },
+  {
+    "text": "Another form of power is:",
+    "option_a": "I²R",
+    "option_b": "V²/R",
+    "option_c": "Both",
+    "option_d": "None",
+    "correct_option": "c",
+    "explanation": "Power can be written as I²R or V²/R."
+  },
+  {
+    "text": "Heating effect is due to:",
+    "option_a": "Resistance",
+    "option_b": "Voltage",
+    "option_c": "Current",
+    "option_d": "Magnetism",
+    "correct_option": "a",
+    "explanation": "Heat is produced due to resistance."
+  },
+  {
+    "text": "Heating effect formula is:",
+    "option_a": "H = VIt",
+    "option_b": "H = I²Rt",
+    "option_c": "H = V²Rt",
+    "option_d": "H = IRt",
+    "correct_option": "b",
+    "explanation": "Joule’s law: H = I²Rt."
+  },
+
+  {
+    "text": "1 kWh equals:",
+    "option_a": "1000 J",
+    "option_b": "3.6 × 10⁶ J",
+    "option_c": "360 J",
+    "option_d": "100 J",
+    "correct_option": "b",
+    "explanation": "1 kWh = 3.6 million joules."
+  },
+  {
+    "text": "Electric energy is:",
+    "option_a": "Power × time",
+    "option_b": "Voltage × resistance",
+    "option_c": "Current × resistance",
+    "option_d": "None",
+    "correct_option": "a",
+    "explanation": "Energy = Power × time."
+  },
+  {
+    "text": "The SI unit of power is:",
+    "option_a": "Joule",
+    "option_b": "Watt",
+    "option_c": "Ampere",
+    "option_d": "Volt",
+    "correct_option": "b",
+    "explanation": "Power unit is watt."
+  },
+  {
+    "text": "Fuse wire works on:",
+    "option_a": "Magnetic effect",
+    "option_b": "Heating effect",
+    "option_c": "Chemical effect",
+    "option_d": "Mechanical effect",
+    "correct_option": "b",
+    "explanation": "Fuse melts due to heating."
+  },
+  {
+    "text": "Fuse is connected in:",
+    "option_a": "Neutral wire",
+    "option_b": "Live wire",
+    "option_c": "Earth wire",
+    "option_d": "All",
+    "correct_option": "b",
+    "explanation": "Fuse is connected in live wire."
+  },
+
+  {
+    "text": "Good conductor example:",
+    "option_a": "Plastic",
+    "option_b": "Wood",
+    "option_c": "Copper",
+    "option_d": "Rubber",
+    "correct_option": "c",
+    "explanation": "Copper is a good conductor."
+  },
+  {
+    "text": "Resistivity depends on:",
+    "option_a": "Length",
+    "option_b": "Area",
+    "option_c": "Material",
+    "option_d": "Voltage",
+    "correct_option": "c",
+    "explanation": "Resistivity is property of material."
+  },
+  {
+    "text": "Unit of resistivity is:",
+    "option_a": "Ohm",
+    "option_b": "Ohm-meter",
+    "option_c": "Volt",
+    "option_d": "Ampere",
+    "correct_option": "b",
+    "explanation": "Unit is ohm-meter."
+  },
+
+  {
+    "text": "If resistance increases, current:",
+    "option_a": "Increases",
+    "option_b": "Decreases",
+    "option_c": "Remains same",
+    "option_d": "Zero",
+    "correct_option": "b",
+    "explanation": "I = V/R, so current decreases."
+  },
+  {
+    "text": "Parallel combination is used in homes because:",
+    "option_a": "Same current",
+    "option_b": "Same voltage",
+    "option_c": "Less power",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "All appliances get same voltage."
+  },
+
+  {
+    "text": "Commercial unit of electricity is:",
+    "option_a": "Joule",
+    "option_b": "kWh",
+    "option_c": "Watt",
+    "option_d": "Volt",
+    "correct_option": "b",
+    "explanation": "kWh is commercial unit."
+  },
+  {
+    "text": "1 unit =",
+    "option_a": "1 kWh",
+    "option_b": "100 J",
+    "option_c": "10 J",
+    "option_d": "1000 J",
+    "correct_option": "a",
+    "explanation": "1 unit = 1 kWh."
+  },
+
+  {
+    "text": "Current is measured in:",
+    "option_a": "Series",
+    "option_b": "Parallel",
+    "option_c": "Series connection",
+    "option_d": "Across circuit",
+    "correct_option": "c",
+    "explanation": "Ammeter is connected in series."
+  },
+  {
+    "text": "Voltmeter is connected in:",
+    "option_a": "Series",
+    "option_b": "Parallel",
+    "option_c": "Mixed",
+    "option_d": "None",
+    "correct_option": "b",
+    "explanation": "Voltmeter is connected in parallel."
+  },
+
+  {
+    "text": "Electric current produces:",
+    "option_a": "Heat",
+    "option_b": "Magnetic effect",
+    "option_c": "Chemical effect",
+    "option_d": "All",
+    "correct_option": "d",
+    "explanation": "All effects occur due to current."
+  },
+  {
+    "text": "Ohmic conductor shows:",
+    "option_a": "Linear V-I graph",
+    "option_b": "Curve",
+    "option_c": "Random",
+    "option_d": "None",
+    "correct_option": "a",
+    "explanation": "Ohmic materials follow linear relation."
+  },
+  {
+    "text": "If voltage doubles, current:",
+    "option_a": "Halves",
+    "option_b": "Doubles",
+    "option_c": "Remains same",
+    "option_d": "Zero",
+    "correct_option": "b",
+    "explanation": "From Ohm’s law."
+  },
+  {
+    "text": "The device used to control current is:",
+    "option_a": "Rheostat",
+    "option_b": "Battery",
+    "option_c": "Switch",
+    "option_d": "Fuse",
+    "correct_option": "a",
+    "explanation": "Rheostat varies resistance."
+  }
+]
