@@ -52,19 +52,63 @@ const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, se
 
                 <div className="chat-message-box-body" ref={bodyRef}>
                     {/* All messages in chronological order */}
-                    {liveTranscripts.map((msg, index) => (
-                        <div
-                            key={`msg-${index}`}
-                            className={`w-full flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                        >
+                    {liveTranscripts.map((msg, index) => {
+                        if (msg.role === 'videos') {
+                            return (
+                                <div key={`msg-${index}`} className="w-full flex justify-start">
+                                    <div className="w-full max-w-xs space-y-2 py-1">
+                                        <p className="text-xs font-semibold text-[var(--thm-primary)] px-1 mb-1">
+                                            Related Videos
+                                        </p>
+                                        {(msg.videos ?? []).map((video, vi) => (
+                                            <a
+                                                key={vi}
+                                                href={video.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-start gap-2 rounded-xl overflow-hidden bg-white dark:bg-[#161b22] border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow no-underline"
+                                            >
+                                                {video.thumbnail && (
+                                                    <img
+                                                        src={video.thumbnail}
+                                                        alt={video.title}
+                                                        className="w-20 h-14 object-cover flex-shrink-0"
+                                                    />
+                                                )}
+                                                <div className="flex-1 p-2 min-w-0">
+                                                    <p className="text-xs font-medium text-gray-800 dark:text-gray-100 line-clamp-2 leading-tight">
+                                                        {video.title}
+                                                    </p>
+                                                    {video.channel && (
+                                                        <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-1 truncate">
+                                                            {video.channel}
+                                                        </p>
+                                                    )}
+                                                    <span className="inline-block mt-1 text-[10px] font-semibold text-[var(--thm-primary)]">
+                                                        Watch ▶
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )
+                        }
+
+                        return (
                             <div
-                                className={`chat-message-box-body-content ${msg.role === 'user' ? '!bg-[var(--thm-primary)] !text-white' : 'chat-bubble-left'}`}
-                                style={msg.role === 'user' ? { ['--bubble-arrow-color' as any]: 'var(--thm-primary)' } : undefined}
+                                key={`msg-${index}`}
+                                className={`w-full flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                             >
-                                {msg.text}
+                                <div
+                                    className={`chat-message-box-body-content ${msg.role === 'user' ? '!bg-[var(--thm-primary)] !text-white' : 'chat-bubble-left'}`}
+                                    style={msg.role === 'user' ? { ['--bubble-arrow-color' as any]: 'var(--thm-primary)' } : undefined}
+                                >
+                                    {msg.text}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        )
+                    })}
 
                     {/* Currently streaming user text */}
                     {streamingUserText && (

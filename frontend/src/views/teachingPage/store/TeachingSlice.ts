@@ -8,9 +8,17 @@ export type ChapterContent = {
   book_id: string;
 };
 
+export type VideoCard = {
+  title: string;
+  url: string;
+  thumbnail: string;
+  channel: string;
+};
+
 export type TranscriptMessage = {
-  role: 'user' | 'model';
+  role: 'user' | 'model' | 'videos';
   text: string;
+  videos?: VideoCard[];
 };
 
 export type TeachingState = {
@@ -167,6 +175,9 @@ const teachingSlice = createSlice({
         state.liveTranscripts.push({ role: 'user', text });
       }
     },
+    addVideoMessage(state, action: PayloadAction<VideoCard[]>) {
+      state.liveTranscripts.push({ role: 'videos', text: '', videos: action.payload });
+    },
     clearLiveTranscripts(state) {
       state.liveTranscripts = [];
       state.streamingUserText = '';
@@ -227,6 +238,7 @@ export const {
   setCurrentPage, setInputPage, setStartButton,
   appendStreamingUserText, appendStreamingModelText,
   flushUserTranscript, flushModelTranscriptToChat, clearLiveTranscripts, addUserMessage,
+  addVideoMessage,
 } = teachingSlice.actions;
 
 export default teachingSlice.reducer;

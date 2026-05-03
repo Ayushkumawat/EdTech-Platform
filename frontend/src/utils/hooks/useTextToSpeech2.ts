@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { GoogleGenAI, LiveServerMessage, Modality, Session } from '@google/genai';
+import { GoogleGenAI, LiveServerMessage, Modality, Session, Type } from '@google/genai';
 import reducer, {
   setFrequencyData,
   setIsPlaying,
@@ -10,9 +10,11 @@ import reducer, {
   appendStreamingModelText,
   flushUserTranscript,
   flushModelTranscriptToChat,
+  addVideoMessage,
 } from '@/views/teachingPage/store';
 import { injectReducer } from '@/store';
 import { createBlob, decode, decodeAudioData, encode } from '@/features/liveAudio/utils';
+import { apiGetActivityVideos } from '@/services/ActivityServices';
 
 injectReducer('teaching', reducer);
 
@@ -222,6 +224,42 @@ const useTextToSpeech = (): TextToSpeechHook => {
         }
       }
 
+      // ── Function calling (agentic tool use) ───────────────────────────────
+      const toolCall = (message as any).toolCall;
+      if (toolCall?.functionCalls?.length) {
+        for (const call of toolCall.functionCalls) {
+          if (call.name === 'get_activity_videos') {
+            const topic: string = call.args?.topic ?? '';
+            console.log('[GeminiLive] Tool call: get_activity_videos, topic=', topic);
+            try {
+              const res = await apiGetActivityVideos(topic);
+              const videos = res.data?.videos ?? [];
+              if (videos.length > 0) {
+                dispatch(addVideoMessage(videos));
+              }
+              // Send tool response back to Gemini so it can continue talking
+              liveSessionRef.current?.sendToolResponse({
+                functionResponses: [{
+                  id: call.id,
+                  name: 'get_activity_videos',
+                  response: { videos },
+                }],
+              });
+            } catch (err) {
+              console.error('[GeminiLive] get_activity_videos failed:', err);
+              // Send empty response so Gemini isn't left waiting
+              liveSessionRef.current?.sendToolResponse({
+                functionResponses: [{
+                  id: call.id,
+                  name: 'get_activity_videos',
+                  response: { videos: [] },
+                }],
+              });
+            }
+          }
+        }
+      }
+
       // Capture output transcription for conversation history + live display
       if ((message.serverContent as any)?.outputTranscription?.text) {
         const text = (message.serverContent as any).outputTranscription.text;
@@ -373,6 +411,22 @@ const useTextToSpeech = (): TextToSpeechHook => {
       speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Orus' } } },
       inputAudioTranscription: {},
       outputAudioTranscription: {},
+      tools: [{
+        functionDeclarations: [{
+          name: 'get_activity_videos',
+          description: 'Call this function when the lesson mentions a practical activity, experiment, or demonstration. Returns relevant YouTube video links for the student to watch.',
+          parameters: {
+            type: Type.OBJECT,
+            properties: {
+              topic: {
+                type: Type.STRING,
+                description: 'The activity or experiment topic to find videos for (e.g. "acid-base reaction", "photosynthesis experiment")',
+              },
+            },
+            required: ['topic'],
+          },
+        }],
+      }],
     };
 
     const systemParts: any[] = [];
