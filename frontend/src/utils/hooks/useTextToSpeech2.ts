@@ -205,6 +205,23 @@ const useTextToSpeech = (): TextToSpeechHook => {
 
   const handleLiveMessage = useCallback(async (message: LiveServerMessage) => {
     try {
+      // Log usage metadata if present
+      const usageMetadata = (message as any).usageMetadata || (message as any).usage_metadata;
+      if (usageMetadata) {
+        const totalTokenCount = usageMetadata.totalTokenCount || usageMetadata.total_token_count || usageMetadata.totalTokenCount;
+        
+        // Only log and dispatch if we have an actual count to avoid spamming undefined
+        if (totalTokenCount) {
+          console.log(`%c[Gemini API] Tokens Used: ${totalTokenCount}`, 'color: #00ff00; font-weight: bold; font-size: 12px');
+          
+          window.dispatchEvent(
+            new CustomEvent('liveAudioUsageUpdate', { 
+              detail: { tokenCount: totalTokenCount } 
+            })
+          );
+        }
+      }
+
       // Capture output transcription for conversation history + live display
       if ((message.serverContent as any)?.outputTranscription?.text) {
         const text = (message.serverContent as any).outputTranscription.text;

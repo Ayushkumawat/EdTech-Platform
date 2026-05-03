@@ -14,9 +14,10 @@ interface MessageBoxProps {
     startMicStream?: (imageUrl?: string) => Promise<void>;
     stopMicStream?: () => void;
     isMicActive?: boolean;
+    isUsageInactive?: boolean;
 }
 
-const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, setChatMessages, teacherName, subjectName, medium, startMicStream, stopMicStream, isMicActive }) => {
+const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, setChatMessages, teacherName, subjectName, medium, startMicStream, stopMicStream, isMicActive, isUsageInactive }) => {
     const liveTranscripts = useAppSelector((state) => state.teaching.data.liveTranscripts);
     const streamingUserText = useAppSelector((state) => state.teaching.data.streamingUserText);
     const streamingModelText = useAppSelector((state) => state.teaching.data.streamingModelText);
@@ -89,7 +90,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ handleApiCall, chatMessages, se
                     )}
                 </div>
 
-                <MessageInput handleApiCall={handleApiCall} setChatMessages={setChatMessages} chatMessages={chatMessages} startMicStream={startMicStream} stopMicStream={stopMicStream} isMicActive={isMicActive} />
+                <MessageInput handleApiCall={handleApiCall} setChatMessages={setChatMessages} chatMessages={chatMessages} startMicStream={startMicStream} stopMicStream={stopMicStream} isMicActive={isMicActive} isUsageInactive={isUsageInactive} />
             </div>
         </div>
     )

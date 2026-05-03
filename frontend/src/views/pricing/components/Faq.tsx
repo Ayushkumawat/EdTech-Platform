@@ -1,38 +1,36 @@
 import { useState } from 'react'
-import Card from '@/components/ui/Card'
-import Menu from '@/components/ui/Menu'
 import Question from './Question'
 import { questionList, questionCategory } from '../constants'
 import isLastChild from '@/utils/isLastChild'
+import classNames from 'classnames'
 
 const Faq = () => {
     const [selectedCategory, setSelectedCategory] = useState('subscription')
 
     return (
-        <Card>
-            <h3 className="mt-2">FAQ</h3>
-            <div className="flex flex-col md:flex-row gap-4 md:gap-20 mt-8">
+        <div className="bg-[#1a212e] p-6 md:p-10 rounded-2xl border border-gray-800">
+            <h3 className="text-3xl font-bold text-white mb-8">Frequently Asked Questions</h3>
+            <div className="flex flex-col md:flex-row gap-4 md:gap-20">
                 <div className="min-w-[230px]">
-                    <Menu className="bg-gray-100 dark:bg-[#11161f]">
+                    <div className="bg-[#11161f] rounded-xl overflow-hidden border border-gray-800">
                         {Object.entries(questionList).map(([key]) => (
-                            <Menu.MenuItem
+                            <div
                                 key={key}
-                                isActive={key === selectedCategory}
-                                eventKey={key}
-                                onSelect={setSelectedCategory}
-                                className={`bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 ${
-                                    key === selectedCategory 
-                                        ? '!bg-gray-900 !text-white dark:bg-gray-900 !dark:text-white' 
-                                        : ''
-                                }`}
+                                onClick={() => setSelectedCategory(key)}
+                                className={classNames(
+                                    'px-6 py-4 cursor-pointer text-sm font-semibold transition-all',
+                                    key === selectedCategory
+                                        ? 'bg-[var(--thm-primary)] text-white'
+                                        : 'text-gray-500 hover:bg-gray-800/50 hover:text-gray-300'
+                                )}
                             >
                                 {questionCategory[key]}
-                            </Menu.MenuItem>
+                            </div>
                         ))}
-                    </Menu>
+                    </div>
                 </div>
-                <div className="max-w-[800px] my-2">
-                    <div className="">
+                <div className="flex-grow max-w-[800px]">
+                    <div className="space-y-2">
                         {questionList[selectedCategory].map(
                             (question, index) => (
                                 <Question
@@ -51,7 +49,7 @@ const Faq = () => {
                     </div>
                 </div>
             </div>
-        </Card>
+        </div>
     )
 }
 

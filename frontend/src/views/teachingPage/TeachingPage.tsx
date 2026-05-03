@@ -19,6 +19,7 @@ import reducer, {
 } from './store'
 import React, { useEffect, useState, useCallback } from 'react'
 import { useAppDispatch as useBooksAppDispatch, useAppSelector as useBooksAppSelector, getBookDetail } from '@/views/Books/books-all/store'
+import { useAppDispatch as useAuthAppDispatch, useAppSelector as useAuthAppSelector, fetchUsageStatus } from '@/store'
 import useTextToSpeech2 from '@/utils/hooks/useTextToSpeech2'
 import { injectReducer } from '@/store'
 import { useNavigate } from 'react-router-dom'
@@ -32,11 +33,16 @@ const TeachingPage = () => {
     const { chapterId, bookId }: any = useParams<{ chapterId: string; bookId: string }>()
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+    const authDispatch = useAuthAppDispatch()
     const { smaller } = useResponsive()
     const mobileVisual = useAppSelector((state) => state.teaching.data.mobileVisual,)
     const chapterData = useAppSelector((state) => state.teaching.data.chapterData)
     const chapterLoading = useAppSelector((state) => state.teaching.data.chapterLoading)
     const error = useAppSelector((state) => state.teaching.data.error)
+    
+    // Get user usage state from auth store
+    const userUsageState = useAuthAppSelector((state) => state.auth.user.usage_state)
+    const isUsageInactive = userUsageState === 'Inactive'
 
     const [chatMessages, setChatMessages] = useState<string[] | undefined>([]);
 
@@ -84,6 +90,26 @@ const TeachingPage = () => {
             navigate(`${APP_PREFIX_PATH}/my_books`, { replace: true })
         }
     }, [error])
+
+    // Listen for token usage updates from live audio component
+    useEffect(() => {
+        const handleUsageUpdate = async (event: Event) => {
+            const detail = (event as CustomEvent).detail;
+            if (detail?.tokenCount) {
+                try {
+                    // This calls the backend to update credits based on Gemini's token count
+                    await authDispatch(fetchUsageStatus(detail.tokenCount)).unwrap();
+                } catch (err) {
+                    console.error('Error updating credits in backend:', err);
+                }
+            }
+        };
+
+        window.addEventListener('liveAudioUsageUpdate', handleUsageUpdate);
+        return () => {
+            window.removeEventListener('liveAudioUsageUpdate', handleUsageUpdate);
+        };
+    }, [authDispatch]);
 
     // Fetch book detail from route params only if not already in store
     useEffect(() => {
@@ -152,11 +178,11 @@ const TeachingPage = () => {
                                     initialHeight={[15, 15, 15, 15]}
                                     intensity={50}
                                 />
-                                <MessageBox handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} teacherName={bookDetail?.teacher} subjectName={bookDetail?.subject?.name} medium={bookDetail?.medium} startMicStream={startMicStream} stopMicStream={stopMicStream} isMicActive={isMicActive} />
+                                <MessageBox handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} teacherName={bookDetail?.teacher} subjectName={bookDetail?.subject?.name} medium={bookDetail?.medium} startMicStream={startMicStream} stopMicStream={stopMicStream} isMicActive={isMicActive} isUsageInactive={isUsageInactive} />
                             </div>
                         ) : (
                             <>
-                                <MessageInput handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} startMicStream={startMicStream} stopMicStream={stopMicStream} isMicActive={isMicActive} />
+                                <MessageInput handleApiCall={handleApiCall} chatMessages={chatMessages} setChatMessages={setChatMessages} startMicStream={startMicStream} stopMicStream={stopMicStream} isMicActive={isMicActive} isUsageInactive={isUsageInactive} />
                                 <div
                                     className={`mobile-visulization-conatiner w-full ${mobileVisual ? 'active-mobile-visulization-conatiner' : ''}`}
                                     style={{ pointerEvents: 'none' }}

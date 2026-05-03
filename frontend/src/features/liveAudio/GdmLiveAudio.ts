@@ -190,6 +190,30 @@ export class GdmLiveAudio extends LitElement {
 						} catch {}
 					},
 					onmessage: async (message: LiveServerMessage) => {
+						// First, just log that we received a message
+						console.log('MESSAGE_RECEIVED:', message);
+						
+						// Log the usage metadata properties specifically
+						if ((message as any).usage_metadata) {
+							console.log('USAGE_METADATA_FOUND:', (message as any).usage_metadata);
+						}
+						
+						// Log all top-level keys
+						console.log('MESSAGE_KEYS:', Object.keys(message as any));
+						
+						// Check server content
+						const serverContent = (message as any).serverContent;
+						if (serverContent) {
+							console.log('SERVER_CONTENT_KEYS:', Object.keys(serverContent));
+							if (serverContent.usageMetadata) {
+								console.log('USAGE_IN_SERVER_CONTENT:', serverContent.usageMetadata);
+							}
+						}
+						
+						// Try accessing usage directly and log it
+						const usage = (message as any).usage_metadata || (message as any).usageMetadata;
+						console.log('EXTRACTED_USAGE:', usage);
+
 						const parts = message.serverContent?.modelTurn?.parts ?? [];
 
 						for (const part of parts) {

@@ -1,17 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import type { PaymentCycle, SelectedPlan } from '../types';
+import type { PaymentCycle, SelectedPlan, SubscriptionPlan } from '../types';
 import { apiGetAllSubscriptions } from '@/services/SubscriptionServices';
-
-export type SubscriptionPlan = {
-    plan_name: string;
-    plan_description: string;
-    hours_per_day: number;
-    daily_limit: number;
-    duration: string;
-    cost: number;
-    discount: number;
-    uid: string;
-};
 
 export type PricingState = {
     paymentCycle: PaymentCycle;

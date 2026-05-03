@@ -100,7 +100,7 @@ const _UserDropdown = ({ className }: CommonProps) => {
                                     {user.loading ? (
                                         <Spinner size={14} />
                                     ) : (
-                                        (user.daily_usage || 0).toLocaleString()
+                                        (user.daily_credits || 0).toLocaleString()
                                     )}
                                 </span>
                             )}

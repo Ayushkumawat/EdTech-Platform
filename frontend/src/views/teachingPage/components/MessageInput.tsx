@@ -17,9 +17,10 @@ interface MessageInputProps {
     startMicStream?: (imageUrl?: string) => Promise<void>;
     stopMicStream?: () => void;
     isMicActive?: boolean;
+    isUsageInactive?: boolean;
 }
 
-const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessages, chatMessages, startMicStream, stopMicStream, isMicActive = false }) => {
+const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessages, chatMessages, startMicStream, stopMicStream, isMicActive = false, isUsageInactive = false }) => {
     const [message, setMessage] = useState('')
     const startButton = useAppSelector((state) => state.teaching.data.startButton)
     const { smaller } = useResponsive()
@@ -32,27 +33,43 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
       : undefined;
     const dispatch = useAppDispatch()
 
-    const shouldDisableInput = useMemo(() => false, []);
+    const shouldDisableInput = useMemo(() => {
+      // Disable if usage is inactive
+      return isUsageInactive;
+    }, [isUsageInactive]);
 
     const startTeaching = () => {
+        // Don't start teaching if usage is inactive
+        if (isUsageInactive) {
+            alert('Usage limit reached! Please upgrade your plan to continue learning.');
+            return;
+        }
         dispatch(setStartButton(false))
         console.log(current_page_image)
         handleApiCall('start teaching this page', current_page_image)
     }
 
     const handleMicToggle = useCallback(() => {
+        if (isUsageInactive) {
+            alert('Usage limit reached! Please upgrade your plan to continue learning.');
+            return;
+        }
         if (isMicActive) {
             stopMicStream?.();
         } else {
             startMicStream?.(current_page_image);
         }
-    }, [isMicActive, startMicStream, stopMicStream, current_page_image]);
+    }, [isMicActive, startMicStream, stopMicStream, current_page_image, isUsageInactive]);
 
     const handleSendMessage = useCallback(() => {
+        if (isUsageInactive) {
+            alert('Usage limit reached! Please upgrade your plan to continue learning.');
+            return;
+        }
         if (!message.trim()) return;
         handleApiCall(message, current_page_image);
         setMessage('');
-    }, [message, handleApiCall, current_page_image]);
+    }, [message, handleApiCall, current_page_image, isUsageInactive]);
 
     const sharedStyle: React.CSSProperties = {
         pointerEvents: shouldDisableInput ? 'none' as const : 'auto' as const,
@@ -61,7 +78,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
 
     const buttonStyle: React.CSSProperties = {
         ...sharedStyle,
-        cursor: startButton ? 'pointer' : 'not-allowed',
+        cursor: (startButton && !isUsageInactive) ? 'pointer' : 'not-allowed',
     }
 
     const inputStyle: React.CSSProperties = {
@@ -73,11 +90,11 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
         <>
             <div className="send-message-button-box">
                 <div
-                    className={`start-teaching-button ${startButton ? '' : 'start-teaching-button-deactive'}`}
-                    onClick={startButton ? startTeaching : undefined}
+                    className={`start-teaching-button ${startButton && !isUsageInactive ? '' : 'start-teaching-button-deactive'}`}
+                    onClick={(startButton && !isUsageInactive) ? startTeaching : undefined}
                     style={buttonStyle}
                 >
-                    {startButton && 'Start Learning'}
+                    {isUsageInactive ? 'Usage Limit Reached' : (startButton && 'Start Learning')}
                 </div>
 
                 <div
@@ -88,7 +105,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ handleApiCall, setChatMessa
                 >
                     <input
                         type="text"
-                        placeholder={!isMicActive ? 'Enter Your Message' : 'Voice mode active...'}
+                        placeholder={isUsageInactive ? 'Usage limit reached' : (!isMicActive ? 'Enter Your Message' : 'Voice mode active...')}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         onKeyDown={(e) => { if (e.key === 'Enter') handleSendMessage(); }}

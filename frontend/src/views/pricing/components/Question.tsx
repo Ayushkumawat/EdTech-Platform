@@ -20,27 +20,27 @@ const Question = (props: QuestionProps) => {
         <div
             className={classNames(
                 'flex flex-col w-full',
-                border && 'border-b bordergray-200 dark:border-gray-700',
+                border && 'border-b border-gray-800',
                 isFirstChild ? 'pb-6' : 'py-6',
             )}
         >
             <div
-                className="flex items-center gap-4 transition-colors h6 font-semibold cursor-pointer group"
+                className="flex items-center gap-4 transition-colors h6 font-bold cursor-pointer group text-gray-200"
                 role="button"
                 onClick={() => setExpand(!expand)}
             >
-                <span className="text-2xl">
-                    {expand ? <TbPlus /> : <TbMinus />}
+                <span className="text-xl">
+                    {expand ? <TbMinus className="text-[var(--thm-primary)]" /> : <TbPlus />}
                 </span>
-                <span className="group-hover:text-primary">{title}</span>
+                <span className="group-hover:text-[var(--thm-primary)]">{title}</span>
             </div>
             <AnimatePresence>
                 {expand && (
                     <motion.div
-                        className="mt-4 ltr:ml-10"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                        className="mt-4 ltr:ml-10 text-gray-400 text-sm leading-relaxed"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
                     >
                         {content}
                     </motion.div>

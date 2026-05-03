@@ -1,5 +1,9 @@
 export type PaymentCycle = 'monthly' | 'annually'
 
+export type SubscriptionFeature = {
+    text: string
+}
+
 export type SelectedPlan = {
     planName: string
     planId: string
@@ -11,20 +15,28 @@ export type SelectedPlan = {
     discount: number
 }
 
+export type SubscriptionPlan = {
+    uid: string
+    plan_name: string
+    plan_description: string
+    cost: number
+    duration: string
+    discount: number
+    hours_per_day: number
+    daily_limit: number
+    tag?: string
+    sub_description?: string
+    token_limit?: string
+    token_sub_text?: string
+    features?: string[]
+    recommended?: boolean
+    color?: string
+}
+
 export type GetPricingPanResponse = {
     featuresModel: {
         id: string
         description: string
     }[]
-    plans: {
-        id: string
-        name: string
-        description: string
-        price: {
-            monthly: number
-            annually: number
-        }
-        features: string[]
-        recommended: boolean
-    }[]
+    plans: SubscriptionPlan[]
 }
