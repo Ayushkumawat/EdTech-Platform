@@ -4,6 +4,7 @@ import Spinner from '@/components/ui/Spinner'
 import withHeaderItem from '@/utils/hoc/withHeaderItem'
 import useAuth from '@/utils/hooks/useAuth'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import classNames from 'classnames'
 import { HiOutlineLogout, HiOutlineUser, HiOutlineCog } from 'react-icons/hi'
 import type { CommonProps } from '@/@types/common'
@@ -41,15 +42,16 @@ const _UserDropdown = ({ className }: CommonProps) => {
     const user = useAppSelector((state) => state.auth.user)
     const dispatch = useAppDispatch()
 
-    const fetchCurrentUsage = async () => {
-        if (user.loading) return // Prevent multiple calls
-        
-        try {
-            await dispatch(fetchCurrentUser())
-        } catch (error) {
-            console.error('Error fetching current usage:', error)
+    // Fetch user credits only once when component mounts or when user changes
+    useEffect(() => {
+        if (!user.email) {
+            // User not logged in yet
+            return
         }
-    }
+        
+        // Fetch user data once on mount or when user changes
+        dispatch(fetchCurrentUser())
+    }, [user.email, dispatch])
 
     const UserAvatar = (
         <div className={classNames(className, 'flex items-center gap-1  border-[var(--thm-primary)] border-[2px] p-[3px]')}>
@@ -64,7 +66,6 @@ const _UserDropdown = ({ className }: CommonProps) => {
                 renderTitle={UserAvatar}
                 placement="bottom-end"
                 trigger='hover'
-                onMouseEnter={fetchCurrentUsage}
             >
                 <Dropdown.Item variant="header">
                     <div className="py-3 px-3 flex items-center gap-2">
