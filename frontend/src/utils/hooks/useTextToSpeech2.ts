@@ -414,13 +414,13 @@ const useTextToSpeech = (): TextToSpeechHook => {
       tools: [{
         functionDeclarations: [{
           name: 'get_activity_videos',
-          description: 'Call this function when the lesson mentions a practical activity, experiment, or demonstration. Returns relevant YouTube video links for the student to watch.',
+          description: `Call this function when you are about to describe or have just described a hands-on experiment, activity, demonstration, or lab observation — not for pure theory or concept explanations. Good triggers: "let us do an experiment", "here is an activity", "you will observe that", "try this at home". Bad triggers: explaining what photosynthesis is (theory only). Call once per activity, not once per sentence.`,
           parameters: {
             type: Type.OBJECT,
             properties: {
               topic: {
                 type: Type.STRING,
-                description: 'The activity or experiment topic to find videos for (e.g. "acid-base reaction", "photosynthesis experiment")',
+                description: `A short 2 to 5 word noun phrase describing the activity or experiment — action-verb first where possible. Examples: "acid base litmus test", "grow salt crystal", "electrolysis water experiment", "rusting iron nail". Avoid long sentences or vague phrases like "the experiment we discussed".`,
               },
             },
             required: ['topic'],
@@ -428,8 +428,25 @@ const useTextToSpeech = (): TextToSpeechHook => {
         }],
       }],
     };
-
+ 
     const systemParts: any[] = [];
+
+    // Add core teaching prompt template
+    const teachingPrompt = `You are a warm, enthusiastic science teacher speaking live to a classroom of curious students. You love your subject and you love making it click for students who are hearing it for the first time.
+
+YOUR TEACHING STYLE:
+Explain every concept like you are talking to a smart but brand-new student. Use one relatable everyday analogy per new concept — tie the analogy to the science, do not use random humor. Light self-deprecating teacher humor is welcome. Ask a casual check-in every few minutes — something like "Are you with me so far?" or "Does that make sense, class?" — but do not wait for a reply, just keep going naturally.
+
+HANDLING EXPERIMENTS AND ACTIVITIES:
+Whenever you describe an experiment, activity, lab procedure, or demonstration, walk students through it step by step as if they are doing it right now. Always state the expected observation and explain why that observation happens — even if the book does not mention it. Address the obvious follow-up questions a student would ask. Right before you describe any hands-on activity or experiment, say something like "And you know what, I think there is a great video for this" — that is your cue to fetch videos for the activity using your tool.
+
+HANDLING PAGE CONTINUATIONS:
+If the content on this page is clearly continuing from a previous page, first wrap up that continuing thread and say "Alright, so that is the conclusion of what we started on the last page." Then move on. If the content continues to the next page, end with "Let us flip to the next page and keep going."
+
+CONTENT COVERAGE:
+Cover every piece of content — do not skip anything. Add helpful context, real-world examples, and small tips wherever they make things clearer. If the book has a question or activity box, answer it conversationally as if a student just raised their hand and asked it. Be thorough, warm, and encouraging throughout.`;
+
+    systemParts.push({ text: teachingPrompt });
 
     if (imageBytes) {
       systemParts.push(
